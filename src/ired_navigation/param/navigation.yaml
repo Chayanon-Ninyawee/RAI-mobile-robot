@@ -220,15 +220,11 @@ controller_server:
       critics:
         - Oscillation
         - BaseObstacle
-        - PathAlign
         - PathDist
         - GoalDist
         - ired_dwb_critics::GoalYawCritic
 
       BaseObstacle.scale: 0.50
-
-      PathAlign.scale: 32.0
-      PathAlign.forward_point_distance: 0.1
 
       PathDist.scale: 32.0
 
