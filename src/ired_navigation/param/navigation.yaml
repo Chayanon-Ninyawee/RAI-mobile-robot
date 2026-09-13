@@ -152,7 +152,7 @@ controller_server:
 
       # Final goal tolerance
       xy_goal_tolerance: 0.05
-      yaw_goal_tolerance: 0.05
+      yaw_goal_tolerance: 0.10
 
     FollowPath:
       plugin: "dwb_core::DWBLocalPlanner"
