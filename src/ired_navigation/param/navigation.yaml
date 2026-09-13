@@ -61,7 +61,7 @@ amcl:
 bt_navigator:
   ros__parameters:
     global_frame: map
-    robot_base_frame: base_link
+    robot_base_frame: base_footprint
     transform_tolerance: 0.5
 
     filter_duration: 0.3
@@ -197,11 +197,11 @@ controller_server:
       # Sampling
       # ------------------------------------------------
 
-      vx_samples: 20
-      vy_samples: 20
-      vtheta_samples: 40
+      vx_samples: 10
+      vy_samples: 10
+      vtheta_samples: 20
 
-      sim_time: 1.5
+      sim_time: 1.0
 
       linear_granularity: 0.05
       angular_granularity: 0.025
@@ -251,7 +251,7 @@ local_costmap:
       publish_frequency: 2.0
 
       global_frame: odom
-      robot_base_frame: base_link
+      robot_base_frame: base_footprint
 
       rolling_window: true
 
@@ -292,7 +292,7 @@ global_costmap:
       publish_frequency: 1.0
 
       global_frame: map
-      robot_base_frame: base_link
+      robot_base_frame: base_footprint
 
       transform_tolerance: 0.5
 
@@ -396,7 +396,7 @@ behavior_server:
 
     local_frame: odom
     global_frame: map
-    robot_base_frame: base_link
+    robot_base_frame: base_footprint
 
     transform_timeout: 0.1
     simulate_ahead_time: 2.0
