@@ -40,6 +40,7 @@ class IMU(Node):
         self.declare_parameter("imu_raw_topic", "/ired/imu/raw")
         self.declare_parameter("imu_data_topic", "/ired/imu/data")
         self.declare_parameter("rpy_topic", "/ired/imu/rollpitchyaw")
+        self.declare_parameter("yaw_scale", 1.1)
 
         # ROS Parameters
         self.imu_raw_topic = (
@@ -51,6 +52,7 @@ class IMU(Node):
         self.rpy_topic = (
             self.get_parameter("rpy_topic").get_parameter_value().string_value
         )
+        self.yaw_scale = self.get_parameter("yaw_scale").value
 
     def DEG2RAD(self, degree):
         return degree * 0.01745329252
@@ -87,7 +89,12 @@ class IMU(Node):
             (self.angular_velocity[self.Y] * diff_time.nanoseconds / 1e9)
         )
         self.rpy_data.yaw += self.DEG2RAD(
-            (self.angular_velocity[self.Z] * diff_time.nanoseconds / 1e9)
+            (
+                self.angular_velocity[self.Z]
+                * self.yaw_scale
+                * diff_time.nanoseconds
+                / 1e9
+            )
         )
 
     def calculateIMU(self):
