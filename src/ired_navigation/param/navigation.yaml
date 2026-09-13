@@ -176,7 +176,7 @@ controller_server:
       max_vel_theta: 1.0
 
       min_speed_xy: 0.0
-      max_speed_xy: 0.3
+      max_speed_xy: 0.6
 
       min_speed_theta: 0.0
       max_speed_theta: 1.0
@@ -220,6 +220,7 @@ controller_server:
       critics:
         - Oscillation
         - BaseObstacle
+        - GoalAlign
         - PathAlign
         - PathDist
         - GoalDist
@@ -235,10 +236,6 @@ controller_server:
       PathDist.scale: 32.0
 
       GoalDist.scale: 24.0
-
-      RotateToGoal.scale: 32.0
-      RotateToGoal.slowing_factor: 5.0
-      RotateToGoal.lookahead_time: -1.0
 
     enable_stamped_cmd_vel: true
 
