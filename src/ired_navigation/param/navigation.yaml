@@ -363,7 +363,7 @@ planner_server:
       allow_unknown: true
 
       # Orient the final path segment toward the goal
-      use_final_approach_orientation: true
+      use_final_approach_orientation: false
 
 behavior_server:
   ros__parameters:

@@ -18,106 +18,124 @@ bool GoalYawCritic::prepare(const geometry_msgs::msg::Pose2D &pose,
   const double yaw_error =
       std::abs(angles::shortest_angular_distance(current_yaw_, goal_yaw_));
 
-  // Start rotating again if we drift outside
-  // the alignment threshold.
-  const double rotate_threshold = 0.17;
+  // Consider the robot aligned within about 1.7 degrees.
+  const double rotate_threshold = 0.07;
 
+  // Robot is still rotating toward the goal.
   if (yaw_error > rotate_threshold) {
-    settling_ = false;
+    phase_ = Phase::ROTATE;
     return true;
   }
 
-  // Only start the settling timer once the robot
-  // has actually stopped rotating.
+  // We are aligned, so make sure the robot has actually stopped
+  // rotating before starting the settling timer.
   const double angular_velocity_threshold = 0.05;
 
-  if (!settling_ && std::abs(current_wz_) < angular_velocity_threshold) {
+  if (phase_ == Phase::ROTATE &&
+      std::abs(current_wz_) < angular_velocity_threshold) {
+    phase_ = Phase::SETTLE;
     aligned_time_ = rclcpp::Clock(RCL_ROS_TIME).now();
-    settling_ = true;
+  }
+
+  // If already settling, wait for the settling period.
+  if (phase_ == Phase::SETTLE) {
+    const double settle_time = 0.5;
+
+    const double elapsed =
+        (rclcpp::Clock(RCL_ROS_TIME).now() - aligned_time_).seconds();
+
+    if (elapsed >= settle_time) {
+      phase_ = Phase::MOVE;
+    }
   }
 
   return true;
 }
 
 double GoalYawCritic::scoreTrajectory(const dwb_msgs::msg::Trajectory2D &traj) {
-  if (traj.poses.empty()) {
-    return 0.0;
-  }
+  const auto &velocity = traj.velocity;
+
+  const double vx = velocity.x;
+  const double vy = velocity.y;
+  const double wz = velocity.theta;
 
   const double initial_error =
       std::abs(angles::shortest_angular_distance(current_yaw_, goal_yaw_));
 
-  const double final_yaw = traj.poses.back().theta;
+  const double final_yaw =
+      traj.poses.empty() ? current_yaw_ : traj.poses.back().theta;
 
   const double final_error =
       std::abs(angles::shortest_angular_distance(final_yaw, goal_yaw_));
 
-  const double rotate_threshold = 0.17;
+  const double rotate_threshold = 0.07;
 
-  // --------------------------------------------------
-  // Phase 1: Rotate toward the goal heading.
-  // --------------------------------------------------
-  if (initial_error > rotate_threshold) {
-    bool translating = false;
+  const double velocity_epsilon = 0.01;
 
-    for (const auto &pose : traj.poses) {
-      const double dx = pose.x - traj.poses.front().x;
+  // ------------------------------------------------------------
+  // Phase 1: ROTATE
+  //
+  // Only angular velocity is allowed.
+  // ------------------------------------------------------------
+  if (phase_ == Phase::ROTATE) {
 
-      const double dy = pose.y - traj.poses.front().y;
-
-      if (std::hypot(dx, dy) > 0.01) {
-        translating = true;
-        break;
-      }
-    }
-
-    // Completely forbid translation while rotating.
-    if (translating) {
+    // Reject anything that translates.
+    if (std::abs(vx) > velocity_epsilon || std::abs(vy) > velocity_epsilon) {
       return 1000.0;
     }
 
-    // Prefer trajectories that reduce the yaw error.
-    return final_error / initial_error;
-  }
-
-  // --------------------------------------------------
-  // Phase 2: Settling.
-  // --------------------------------------------------
-  if (settling_) {
-    const double settle_time = 0.5;
-
-    const double elapsed =
-        (rclcpp::Clock(RCL_ROS_TIME).now() - aligned_time_).seconds();
-
-    if (elapsed < settle_time) {
-      bool translating = false;
-
-      for (const auto &pose : traj.poses) {
-        const double dx = pose.x - traj.poses.front().x;
-
-        const double dy = pose.y - traj.poses.front().y;
-
-        if (std::hypot(dx, dy) > 0.01) {
-          translating = true;
-          break;
-        }
-      }
-
-      // Still settling, so forbid translation.
-      if (translating) {
-        return 1000.0;
-      }
-
-      // During settling, still prefer staying close
-      // to the target heading.
-      return final_error;
+    // Reject trajectories that do not rotate.
+    if (std::abs(wz) <= velocity_epsilon) {
+      return 1000.0;
     }
+
+    // Prefer trajectories that reduce the goal yaw error.
+    if (initial_error > rotate_threshold) {
+      return final_error / initial_error;
+    }
+
+    return final_error;
   }
 
-  // --------------------------------------------------
-  // Phase 3: Settled.
-  // Translation is now allowed.
-  // --------------------------------------------------
+  // ------------------------------------------------------------
+  // Phase 2: SETTLE
+  //
+  // Everything must be zero.
+  // ------------------------------------------------------------
+  if (phase_ == Phase::SETTLE) {
+
+    if (std::abs(vx) > velocity_epsilon || std::abs(vy) > velocity_epsilon ||
+        std::abs(wz) > velocity_epsilon) {
+      return 1000.0;
+    }
+
+    return final_error;
+  }
+
+  // ------------------------------------------------------------
+  // Phase 3: MOVE
+  //
+  // Only forward vx is allowed.
+  // vy and wz must be zero.
+  // ------------------------------------------------------------
+
+  // Reject sideways movement.
+  if (std::abs(vy) > velocity_epsilon) {
+    return 1000.0;
+  }
+
+  // Reject rotation.
+  if (std::abs(wz) > velocity_epsilon) {
+    return 1000.0;
+  }
+
+  // Reject backwards movement.
+  if (vx < -velocity_epsilon) {
+    return 1000.0;
+  }
+
+  // Once we're moving, strongly prefer staying aligned
+  // with the final goal heading.
   return final_error;
 }
 

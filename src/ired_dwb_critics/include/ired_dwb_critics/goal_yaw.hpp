@@ -16,12 +16,15 @@ public:
   double scoreTrajectory(const dwb_msgs::msg::Trajectory2D &traj) override;
 
 private:
+  enum class Phase { ROTATE, SETTLE, MOVE };
+
   double current_yaw_{0.0};
   double goal_yaw_{0.0};
   double current_wz_{0.0};
 
+  Phase phase_{Phase::ROTATE};
+
   rclcpp::Time aligned_time_;
-  bool settling_{false};
 };
 
 } // namespace ired_dwb_critics
