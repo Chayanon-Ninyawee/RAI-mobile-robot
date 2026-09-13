@@ -92,8 +92,8 @@ bt_navigator:
       - follow_path
       - nav_thru_poses
       - nav_to_pose
-      - spin
       - route
+      - spin
       - undock_robot
       - wait
 
@@ -147,7 +147,6 @@ controller_server:
 
     goal_checker:
       plugin: "nav2_controller::SimpleGoalChecker"
-
       stateful: true
 
       # Final goal tolerance
@@ -187,21 +186,21 @@ controller_server:
 
       acc_lim_x: 3.5
       acc_lim_y: 3.5
-      acc_lim_theta: 3.2
+      acc_lim_theta: 2.2
 
       decel_lim_x: -3.5
       decel_lim_y: -3.5
-      decel_lim_theta: -3.2
+      decel_lim_theta: -2.2
 
       # ------------------------------------------------
       # Sampling
       # ------------------------------------------------
 
-      vx_samples: 10
-      vy_samples: 10
-      vtheta_samples: 20
+      vx_samples: 15
+      vy_samples: 15
+      vtheta_samples: 15
 
-      sim_time: 1.0
+      sim_time: 0.8
 
       linear_granularity: 0.05
       angular_granularity: 0.025
@@ -217,19 +216,33 @@ controller_server:
       short_circuit_trajectory_evaluation: true
       stateful: true
 
+      # ------------------------------------------------
+      # Critics
+      # ------------------------------------------------
+
       critics:
         - Oscillation
         - BaseObstacle
         - PathAlign
         - PathDist
         - GoalDist
-        # - ired_dwb_critics::GoalYawCritic
 
       BaseObstacle.scale: 0.50
-      PathAlign.scale: 24.0
-      PathDist.scale: 50.0
+
+      # Keep robot heading aligned with the path
+      PathAlign.scale: 20.0
+      PathAlign.forward_point_distance: 0.20
+
+      # Strong path tracking
+      PathDist.scale: 40.0
+
+      # Goal progress, but do not overpower path tracking
       GoalDist.scale: 20.0
-      ired_dwb_critics::GoalYawCritic.scale: 10.0
+
+      # GoalYawCritic disabled for now.
+      # Add it back after path tracking is working.
+      # - ired_dwb_critics::GoalYawCritic
+      # ired_dwb_critics::GoalYawCritic.scale: 10.0
 
     enable_stamped_cmd_vel: true
 
@@ -350,6 +363,9 @@ planner_server:
       tolerance: 0.5
       use_astar: false
       allow_unknown: true
+
+      # Orient the final path segment toward the goal
+      use_final_approach_orientation: true
 
 behavior_server:
   ros__parameters:
