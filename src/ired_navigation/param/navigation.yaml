@@ -234,7 +234,7 @@ controller_server:
 
       GoalDist.scale: 24.0
 
-      GoalYaw.scale: 20.0
+      GoalYaw.scale: 5.0
 
     enable_stamped_cmd_vel: true
 
