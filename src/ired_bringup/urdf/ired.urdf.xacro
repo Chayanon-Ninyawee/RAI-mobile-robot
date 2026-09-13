@@ -10,6 +10,7 @@
     <link name="base_scan"/>
     <link name="aruco_camera_link"/>
     <link name="base_cartesian_link"/>
+    <link name="imu_link"/>
     
     <!-- Base Joint (Projects ground reference to chassis center) -->
     <joint name="base_joint" type="fixed">
@@ -17,6 +18,14 @@
         <child link="base_link"/>
         <!-- Z = Elevation from ground to base_link origin (e.g., 0.05 m wheel radius) -->
         <origin xyz="0.0 0.0 0.65" rpy="0.0 0.0 0.0"/>
+    </joint>
+
+    <!-- IMU Sensor Joint -->
+    <joint name="imu_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="imu_link"/>
+        <!-- Adjust to match the physical IMU mounting position -->
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
     </joint>
 
     <!-- LiDAR Sensor Joint -->
