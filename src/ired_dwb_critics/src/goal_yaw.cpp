@@ -25,17 +25,42 @@ double GoalYawCritic::scoreTrajectory(const dwb_msgs::msg::Trajectory2D &traj) {
   const double current_error =
       std::abs(angles::shortest_angular_distance(current_yaw_, goal_yaw_));
 
-  const double final_yaw = traj.poses.back().theta;
+  double total_error = 0.0;
+  double total_weight = 0.0;
 
-  const double final_error =
-      std::abs(angles::shortest_angular_distance(final_yaw, goal_yaw_));
+  const size_t count = traj.poses.size();
 
-  // Reward trajectories that reduce the yaw error.
-  //
-  // 0.0 = maximum improvement
-  // 1.0 = no improvement
-  // >1.0 = yaw got worse
-  double score = 1.0 + (final_error - current_error) / M_PI;
+  for (size_t i = 0; i < count; ++i) {
+    const double yaw_error = std::abs(
+        angles::shortest_angular_distance(traj.poses[i].theta, goal_yaw_));
+
+    /*
+     * Give earlier poses more importance.
+     *
+     * weight = 2.0 at the beginning
+     * weight = 1.0 at the end
+     *
+     * This encourages the robot to start rotating early
+     * instead of waiting until the end of the trajectory.
+     */
+    const double progress =
+        static_cast<double>(i) / static_cast<double>(count - 1);
+
+    const double weight = 2.0 - progress;
+
+    total_error += yaw_error * weight;
+    total_weight += weight;
+  }
+
+  const double average_error = total_error / total_weight;
+
+  /*
+   * Normalize to approximately 0..1.
+   *
+   * Compare against the current error so trajectories that
+   * actually improve the heading are preferred.
+   */
+  double score = 1.0 + (average_error - current_error) / M_PI;
 
   return std::max(0.0, score);
 }
