@@ -235,12 +235,12 @@ controller_server:
       # PathAlign.forward_point_distance: 0.20
 
       # Strong path tracking
-      PathDist.scale: 40.0
+      PathDist.scale: 50.0
 
       # Goal progress, but do not overpower path tracking
       GoalDist.scale: 20.0
 
-      ired_dwb_critics::GoalYawCritic.scale: 15.0
+      ired_dwb_critics::GoalYawCritic.scale: 20.0
 
     enable_stamped_cmd_vel: true
 
