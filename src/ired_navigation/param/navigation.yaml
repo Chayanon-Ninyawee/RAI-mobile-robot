@@ -218,10 +218,8 @@ controller_server:
       stateful: true
 
       critics:
-        - RotateToGoal
         - Oscillation
         - BaseObstacle
-        - GoalAlign
         - PathAlign
         - PathDist
         - GoalDist
@@ -259,7 +257,7 @@ local_costmap:
       height: 3
       resolution: 0.05
 
-      robot_radius: 0.17
+      robot_radius: 0.23
 
       plugins:
         - obstacle_layer
