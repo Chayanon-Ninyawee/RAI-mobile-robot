@@ -37,7 +37,7 @@ class IREDController(Node):
         )
 
         # Initialise ROS Timers
-        timer_period = 0.05  # seconds
+        timer_period = 0.02  # seconds
         self.timer = self.create_timer(timer_period, self.update_callback)
 
         # ROS Logger

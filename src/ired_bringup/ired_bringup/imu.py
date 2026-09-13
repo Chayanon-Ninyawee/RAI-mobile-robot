@@ -21,7 +21,7 @@ class IMU(Node):
         self.create_subscription(Twist, self.imu_raw_topic, self.fetchIMUCallback, 10)
 
         # Initialise ROS Timers
-        timer_period = 0.05  # seconds
+        timer_period = 0.02  # seconds
         self.timer = self.create_timer(timer_period, self.update_callback)
 
         # ROS Logger
