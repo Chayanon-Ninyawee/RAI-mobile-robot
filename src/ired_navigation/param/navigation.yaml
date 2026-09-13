@@ -157,7 +157,10 @@ controller_server:
 
       debug_trajectory_details: false
 
+      # ============================================================
       # Omniwheel robot
+      # ============================================================
+
       min_vel_x: -1.5
       max_vel_x: 1.5
 
@@ -173,7 +176,10 @@ controller_server:
       min_speed_theta: 0.0
       max_speed_theta: 0.8
 
+      # ============================================================
       # Acceleration
+      # ============================================================
+
       acc_lim_x: 3.5
       acc_lim_y: 3.5
       acc_lim_theta: 2.2
@@ -182,7 +188,10 @@ controller_server:
       decel_lim_y: -3.5
       decel_lim_theta: -2.2
 
+      # ============================================================
       # Sampling
+      # ============================================================
+
       vx_samples: 15
       vy_samples: 15
       vtheta_samples: 15
@@ -200,8 +209,16 @@ controller_server:
       short_circuit_trajectory_evaluation: true
       stateful: true
 
-      # Follow the path without forcing robot heading to match it.
-      # RotateToGoal handles the final orientation.
+      # ============================================================
+      # Critics
+      #
+      # No PathAlign / GoalAlign:
+      # robot is allowed to move sideways without rotating.
+      #
+      # BaseObstacle handles local obstacle avoidance.
+      # RotateToGoal handles final orientation.
+      # ============================================================
+
       critics:
         - RotateToGoal
         - Oscillation
@@ -209,11 +226,14 @@ controller_server:
         - PathDist
         - GoalDist
 
-      BaseObstacle.scale: 0.50
+      # Stronger obstacle avoidance
+      BaseObstacle.scale: 1.0
 
+      # Continue making progress toward the path/goal
       PathDist.scale: 50.0
       GoalDist.scale: 20.0
 
+      # Only strongly cares about orientation near the goal
       RotateToGoal.scale: 32.0
       RotateToGoal.slowing_factor: 5.0
       RotateToGoal.lookahead_time: -1.0
@@ -235,6 +255,8 @@ local_costmap:
       height: 3.0
       resolution: 0.05
 
+      # Actual radius = 0.215 m
+      # Use 0.23 m conservatively.
       robot_radius: 0.23
 
       plugins:
@@ -249,12 +271,22 @@ local_costmap:
         scan:
           topic: /scan_filtered
           max_obstacle_height: 2.0
+
           clearing: true
           marking: true
+
           data_type: LaserScan
+
+          obstacle_max_range: 2.5
+          obstacle_min_range: 0.0
+
+          raytrace_max_range: 3.0
+          raytrace_min_range: 0.0
 
       inflation_layer:
         plugin: nav2_costmap_2d::InflationLayer
+
+        # Gives DWB a useful safety buffer around obstacles.
         inflation_radius: 0.45
         cost_scaling_factor: 5.0
 
@@ -271,7 +303,10 @@ global_costmap:
 
       transform_tolerance: 0.5
 
+      # Actual radius = 0.215 m
+      # Use 0.23 m conservatively.
       robot_radius: 0.23
+
       resolution: 0.05
 
       track_unknown_space: true
@@ -283,6 +318,7 @@ global_costmap:
 
       static_layer:
         plugin: nav2_costmap_2d::StaticLayer
+
         map_subscribe_transient_local: true
         transform_tolerance: 0.1
 
@@ -294,8 +330,10 @@ global_costmap:
         scan:
           topic: /scan_filtered
           max_obstacle_height: 2.0
+
           clearing: true
           marking: true
+
           data_type: LaserScan
 
           raytrace_max_range: 3.0
@@ -306,8 +344,10 @@ global_costmap:
 
       inflation_layer:
         plugin: nav2_costmap_2d::InflationLayer
-        inflation_radius: 0.20
-        cost_scaling_factor: 12.0
+
+        # Give the global planner some obstacle clearance too.
+        inflation_radius: 0.30
+        cost_scaling_factor: 10.0
 
       always_send_full_costmap: true
 
@@ -331,9 +371,12 @@ planner_server:
 
     GridBased:
       plugin: nav2_navfn_planner::NavfnPlanner
+
       tolerance: 0.5
       use_astar: false
       allow_unknown: true
+
+      # Do not force the robot to face the final path direction.
       use_final_approach_orientation: false
 
 behavior_server:
@@ -407,6 +450,7 @@ collision_monitor:
 
     transform_tolerance: 0.5
     source_timeout: 5.0
+
     base_shift_correction: true
     stop_pub_timeout: 2.0
 
@@ -422,6 +466,15 @@ collision_monitor:
       topic: /scan_filtered
       enabled: true
 
+    # ============================================================
+    # Collision zones
+    #
+    # Robot radius = 0.23 m
+    #
+    # Slow down before reaching the robot footprint.
+    # Stop before actually reaching the robot footprint.
+    # ============================================================
+
     polygons:
       - PolygonStop
       - PolygonSlow
@@ -429,19 +482,29 @@ collision_monitor:
 
     PolygonStop:
       type: circle
-      radius: 0.17
+
+      # Emergency stop zone.
+      # Larger than the 0.23 m physical radius.
+      radius: 0.28
+
       action_type: stop
       min_points: 4
+
       visualize: true
       polygon_pub_topic: polygon_stop
       enabled: true
 
     PolygonSlow:
       type: circle
-      radius: 0.17
+
+      # Start slowing down well before the stop zone.
+      radius: 0.33
+
       action_type: slowdown
       min_points: 4
+
       slowdown_ratio: 0.3
+
       visualize: true
       polygon_pub_topic: polygon_slowdown
       enabled: true
@@ -449,10 +512,14 @@ collision_monitor:
     FootprintApproach:
       type: polygon
       action_type: approach
+
       footprint_topic: /local_costmap/published_footprint
+
       time_before_collision: 2.0
       simulation_time_step: 0.02
+
       min_points: 6
+
       visualize: false
       enabled: true
 
