@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<robot name="IRED">
+    <!-- Links -->
+    <link name="base_footprint"/>
+    <link name="base_link"/>
+    <link name="wheel_front_left_link"/>
+    <link name="wheel_front_right_link"/>
+    <link name="wheel_rear_left_link"/>
+    <link name="wheel_rear_right_link"/>
+    <link name="base_scan"/>
+    <link name="aruco_camera_link"/>
+    <link name="base_cartesian_link"/>
+    
+    <!-- Base Joint (Projects ground reference to chassis center) -->
+    <joint name="base_joint" type="fixed">
+        <parent link="base_footprint"/>
+        <child link="base_link"/>
+        <!-- Z = Elevation from ground to base_link origin (e.g., 0.05 m wheel radius) -->
+        <origin xyz="0.0 0.0 0.65" rpy="0.0 0.0 0.0"/>
+    </joint>
+
+    <!-- LiDAR Sensor Joint -->
+    <joint name="scan_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="base_scan"/>
+        <!-- Adjust X, Y, Z to match your physical LiDAR placement -->
+        <origin xyz="0.005 0.0 0.38309" rpy="0.0 0.0 3.14159265"/>
+    </joint>
+
+    <!-- ArUco Camera Joint -->
+    <joint name="aruco_camera_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="aruco_camera_link"/>
+        <!-- Adjust X, Y, Z to match your camera mounting position -->
+        <origin xyz="0.23 0.0 0.34" rpy="0.0 0.0 0.0"/>
+    </joint>
+
+    <!-- Base Cartesian Joint -->
+    <joint name="base_cartesian_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="base_cartesian_link"/>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+    </joint>
+
+    <!-- Continuous Wheel Joints -->
+    <!-- Front Right Wheel -->
+    <joint name="wheel_front_right_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="wheel_front_right_link"/>
+        <axis xyz="0 0 1"/>
+        <!-- X = +half wheelbase, Y = -half track width -->
+        <origin xyz="0.152 -0.152 0.0" rpy="1.57079632679 -0.0 0.0"/>
+    </joint>
+
+    <!-- Front Left Wheel -->
+    <joint name="wheel_front_left_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="wheel_front_left_link"/>
+        <axis xyz="0 0 1"/>
+        <!-- X = +half wheelbase, Y = +half track width -->
+        <origin xyz="0.152 0.152 0.0" rpy="-1.57079632679 -0.0 0.0"/>
+    </joint>
+
+    <!-- Rear Right Wheel -->
+    <joint name="wheel_rear_right_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="wheel_rear_right_link"/>
+        <axis xyz="0 0 1"/>
+        <!-- X = -half wheelbase, Y = -half track width -->
+        <origin xyz="-0.152 -0.152 0.0" rpy="1.57079632679 0.0 0.0"/>
+    </joint>
+
+    <!-- Rear Left Wheel -->
+    <joint name="wheel_rear_left_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="wheel_rear_left_link"/>
+        <axis xyz="0 0 1"/>
+        <!-- X = -half wheelbase, Y = +half track width -->
+        <origin xyz="-0.151 0.151 0.0" rpy="-1.57079632679 0.0 0.0"/>
+    </joint>
+</robot>

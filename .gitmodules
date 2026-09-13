@@ -1,0 +1,9 @@
+[submodule "src/ired_navigation"]
+	path = src/ired_navigation
+	url = https://github.com/iredrobotics/ired_navigation.git
+[submodule "src/ired_teleop"]
+	path = src/ired_teleop
+	url = http://gitlab.raikmitl.com/ired/ired_teleop.git
+[submodule "src/rplidar_ros"]
+	path = src/rplidar_ros
+	url = https://gitlab.raikmitl.com/ired/rplidar_ros.git
