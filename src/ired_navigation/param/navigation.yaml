@@ -209,7 +209,7 @@ controller_server:
       transform_tolerance: 0.2
 
       # DWB internal goal tolerance
-      xy_goal_tolerance: 0.05
+      xy_goal_tolerance: 0.10
 
       # Consider stopped below 5 cm/s
       trans_stopped_velocity: 0.05
