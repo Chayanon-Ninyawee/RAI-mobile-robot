@@ -115,27 +115,19 @@ double GoalYawCritic::scoreTrajectory(const dwb_msgs::msg::Trajectory2D &traj) {
   // ------------------------------------------------------------
   // Phase 3: MOVE
   //
-  // Only forward vx is allowed.
-  // vy and wz must be zero.
+  // Allow translation in X/Y.
+  // Do not allow rotation.
   // ------------------------------------------------------------
-
-  // Reject sideways movement.
-  if (std::abs(vy) > velocity_epsilon) {
-    return 1000.0;
-  }
 
   // Reject rotation.
   if (std::abs(wz) > velocity_epsilon) {
     return 1000.0;
   }
 
-  // Reject backwards movement.
-  if (vx < -velocity_epsilon) {
-    return 1000.0;
-  }
+  // Allow both vx and vy because this is an omni robot.
+  // DWB can now choose the translation direction needed
+  // to reach the target while keeping the final heading fixed.
 
-  // Once we're moving, strongly prefer staying aligned
-  // with the final goal heading.
   return final_error;
 }
 
