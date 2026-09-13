@@ -164,22 +164,22 @@ controller_server:
       # ------------------------------------------------
 
       # Forward / backward
-      min_vel_x: -0.3
-      max_vel_x: 0.3
+      min_vel_x: -0.6
+      max_vel_x: 0.6
 
       # Left / right strafing
-      min_vel_y: -0.3
-      max_vel_y: 0.3
+      min_vel_y: -0.6
+      max_vel_y: 0.6
 
       # Rotation
-      min_vel_theta: -1.0
-      max_vel_theta: 1.0
+      min_vel_theta: -1.5
+      max_vel_theta: 1.5
 
       min_speed_xy: 0.0
       max_speed_xy: 0.6
 
       min_speed_theta: 0.0
-      max_speed_theta: 1.0
+      max_speed_theta: 1.5
 
       # ------------------------------------------------
       # Acceleration limits
@@ -220,7 +220,6 @@ controller_server:
       critics:
         - Oscillation
         - BaseObstacle
-        - GoalAlign
         - PathAlign
         - PathDist
         - GoalDist
@@ -542,8 +541,8 @@ velocity_smoother:
     feedback: "OPEN_LOOP"
 
     # X, Y, angular velocity
-    max_velocity: [0.3, 0.3, 1.5]
-    min_velocity: [-0.3, -0.3, -1.5]
+    max_velocity: [0.6, 0.6, 1.5]
+    min_velocity: [-0.6, -0.6, -1.5]
 
     deadband_velocity: [0.0, 0.0, 0.0]
 
