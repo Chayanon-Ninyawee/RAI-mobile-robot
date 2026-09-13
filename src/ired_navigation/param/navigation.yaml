@@ -231,8 +231,8 @@ controller_server:
       BaseObstacle.scale: 0.50
 
       # Keep robot heading aligned with the path
-      PathAlign.scale: 20.0
-      PathAlign.forward_point_distance: 0.20
+      # PathAlign.scale: 20.0
+      # PathAlign.forward_point_distance: 0.20
 
       # Strong path tracking
       PathDist.scale: 40.0
@@ -240,7 +240,7 @@ controller_server:
       # Goal progress, but do not overpower path tracking
       GoalDist.scale: 20.0
 
-      ired_dwb_critics::GoalYawCritic.scale: 10.0
+      ired_dwb_critics::GoalYawCritic.scale: 15.0
 
     enable_stamped_cmd_vel: true
 

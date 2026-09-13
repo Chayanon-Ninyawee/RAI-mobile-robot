@@ -2,6 +2,7 @@
 #define IRED_DWB_CRITICS__GOAL_YAW_HPP_
 
 #include "dwb_core/trajectory_critic.hpp"
+#include "rclcpp/rclcpp.hpp"
 
 namespace ired_dwb_critics {
 
@@ -17,6 +18,10 @@ public:
 private:
   double current_yaw_{0.0};
   double goal_yaw_{0.0};
+  double current_wz_{0.0};
+
+  rclcpp::Time aligned_time_;
+  bool settling_{false};
 };
 
 } // namespace ired_dwb_critics
