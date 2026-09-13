@@ -42,9 +42,6 @@ amcl:
     beam_skip_threshold: 0.3
     do_beamskip: false
 
-    laser_max_range: 6.0
-    laser_min_range: -1.0
-
     save_pose_rate: 2.0
 
     tf_broadcast: true
@@ -60,7 +57,6 @@ amcl:
     set_initial_pose: false
     always_reset_initial_pose: false
     first_map_only: false
-
 
 bt_navigator:
   ros__parameters:
@@ -79,7 +75,7 @@ bt_navigator:
     goals_blackboard_id: goals
     path_blackboard_id: path
 
-    navigators: ['navigate_to_pose', 'navigate_through_poses']
+    navigators: ["navigate_to_pose", "navigate_through_poses"]
 
     navigate_to_pose:
       plugin: "nav2_bt_navigator::NavigateToPoseNavigator"
@@ -101,13 +97,12 @@ bt_navigator:
       - undock_robot
       - wait
 
-
 docking_server:
   ros__parameters:
-    dock_plugins: ['nova_carter_dock']
+    dock_plugins: ["nova_carter_dock"]
 
     nova_carter_dock:
-      plugin: 'opennav_docking::SimpleChargingDock'
+      plugin: "opennav_docking::SimpleChargingDock"
 
     docks:
       - home_dock
@@ -115,22 +110,21 @@ docking_server:
       - flex_dock2
 
     home_dock:
-      type: 'nova_carter_dock'
+      type: "nova_carter_dock"
       frame: map
       pose: [0.0, 0.0, 0.0]
 
     flex_dock1:
-      type: 'nova_carter_dock'
+      type: "nova_carter_dock"
       frame: map
       pose: [10.0, 10.0, 0.0]
 
     flex_dock2:
-      type: 'nova_carter_dock'
+      type: "nova_carter_dock"
       frame: map
       pose: [30.0, 30.0, 0.0]
 
     enable_stamped_cmd_vel: true
-
 
 controller_server:
   ros__parameters:
@@ -250,7 +244,6 @@ controller_server:
 
     enable_stamped_cmd_vel: true
 
-
 local_costmap:
   local_costmap:
     ros__parameters:
@@ -291,7 +284,6 @@ local_costmap:
         cost_scaling_factor: 12.0
 
       always_send_full_costmap: true
-
 
 global_costmap:
   global_costmap:
@@ -347,11 +339,9 @@ global_costmap:
 
       always_send_full_costmap: true
 
-
 map_server:
   ros__parameters:
     yaml_filename: "map.yaml"
-
 
 map_saver:
   ros__parameters:
@@ -359,7 +349,6 @@ map_saver:
     free_thresh_default: 0.25
     occupied_thresh_default: 0.65
     map_subscribe_transient_local: true
-
 
 planner_server:
   ros__parameters:
@@ -372,7 +361,6 @@ planner_server:
       tolerance: 0.5
       use_astar: false
       allow_unknown: true
-
 
 behavior_server:
   ros__parameters:
@@ -419,7 +407,6 @@ behavior_server:
 
     enable_stamped_cmd_vel: true
 
-
 waypoint_follower:
   ros__parameters:
     loop_rate: 20
@@ -431,7 +418,6 @@ waypoint_follower:
       plugin: "nav2_waypoint_follower::WaitAtWaypoint"
       enabled: true
       waypoint_pause_duration: 200
-
 
 collision_monitor:
   ros__parameters:
@@ -551,7 +537,6 @@ collision_monitor:
         linear_max: 1.0
         theta_min: -1.0
         theta_max: 1.0
-
 
 velocity_smoother:
   ros__parameters:
