@@ -220,15 +220,12 @@ controller_server:
       critics:
         - Oscillation
         - BaseObstacle
-        - GoalAlign
         - PathAlign
         - PathDist
         - GoalDist
+        - GoalYaw
 
       BaseObstacle.scale: 0.50
-
-      GoalAlign.scale: 24.0
-      GoalAlign.forward_point_distance: 0.1
 
       PathAlign.scale: 32.0
       PathAlign.forward_point_distance: 0.1
@@ -236,6 +233,8 @@ controller_server:
       PathDist.scale: 32.0
 
       GoalDist.scale: 24.0
+
+      GoalYaw.scale: 20.0
 
     enable_stamped_cmd_vel: true
 
