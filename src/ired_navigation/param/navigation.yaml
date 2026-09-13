@@ -234,7 +234,7 @@ controller_server:
 
       GoalDist.scale: 24.0
 
-      ired_dwb_critics::GoalYawCritic.scale: 5.0
+      ired_dwb_critics::GoalYawCritic.scale: 20.0
 
     enable_stamped_cmd_vel: true
 
