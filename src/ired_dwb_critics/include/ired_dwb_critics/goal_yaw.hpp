@@ -15,6 +15,7 @@ public:
   double scoreTrajectory(const dwb_msgs::msg::Trajectory2D &traj) override;
 
 private:
+  double current_yaw_{0.0};
   double goal_yaw_{0.0};
 };
 

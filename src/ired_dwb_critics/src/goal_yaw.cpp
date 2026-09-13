@@ -1,5 +1,6 @@
 #include "ired_dwb_critics/goal_yaw.hpp"
 
+#include <algorithm>
 #include <cmath>
 
 #include "angles/angles.h"
@@ -7,10 +8,11 @@
 
 namespace ired_dwb_critics {
 
-bool GoalYawCritic::prepare(const geometry_msgs::msg::Pose2D &,
+bool GoalYawCritic::prepare(const geometry_msgs::msg::Pose2D &pose,
                             const nav_2d_msgs::msg::Twist2D &,
                             const geometry_msgs::msg::Pose2D &goal,
                             const nav_2d_msgs::msg::Path2D &) {
+  current_yaw_ = pose.theta;
   goal_yaw_ = goal.theta;
   return true;
 }
@@ -20,16 +22,22 @@ double GoalYawCritic::scoreTrajectory(const dwb_msgs::msg::Trajectory2D &traj) {
     return 0.0;
   }
 
-  double total_error = 0.0;
+  const double current_error =
+      std::abs(angles::shortest_angular_distance(current_yaw_, goal_yaw_));
 
-  for (const auto &pose : traj.poses) {
-    const double yaw_error =
-        std::abs(angles::shortest_angular_distance(pose.theta, goal_yaw_));
+  const double final_yaw = traj.poses.back().theta;
 
-    total_error += yaw_error;
-  }
+  const double final_error =
+      std::abs(angles::shortest_angular_distance(final_yaw, goal_yaw_));
 
-  return (total_error / traj.poses.size()) / M_PI;
+  // Reward trajectories that reduce the yaw error.
+  //
+  // 0.0 = maximum improvement
+  // 1.0 = no improvement
+  // >1.0 = yaw got worse
+  double score = 1.0 + (final_error - current_error) / M_PI;
+
+  return std::max(0.0, score);
 }
 
 } // namespace ired_dwb_critics
