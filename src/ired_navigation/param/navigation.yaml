@@ -223,7 +223,7 @@ controller_server:
       critics:
         - Oscillation
         - BaseObstacle
-        - PathAlign
+        # - PathAlign
         - PathDist
         - GoalDist
 
