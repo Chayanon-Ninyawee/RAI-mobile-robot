@@ -1,6 +1,5 @@
 #include "ired_dwb_critics/goal_yaw.hpp"
 
-#include <algorithm>
 #include <cmath>
 
 #include "angles/angles.h"
@@ -14,6 +13,7 @@ bool GoalYawCritic::prepare(const geometry_msgs::msg::Pose2D &pose,
                             const nav_2d_msgs::msg::Path2D &) {
   current_yaw_ = pose.theta;
   goal_yaw_ = goal.theta;
+
   return true;
 }
 
@@ -22,47 +22,59 @@ double GoalYawCritic::scoreTrajectory(const dwb_msgs::msg::Trajectory2D &traj) {
     return 0.0;
   }
 
-  const double current_error =
+  const double yaw_error =
       std::abs(angles::shortest_angular_distance(current_yaw_, goal_yaw_));
 
-  double total_error = 0.0;
-  double total_weight = 0.0;
-
-  const size_t count = traj.poses.size();
-
-  for (size_t i = 0; i < count; ++i) {
-    const double yaw_error = std::abs(
-        angles::shortest_angular_distance(traj.poses[i].theta, goal_yaw_));
-
-    /*
-     * Give earlier poses more importance.
-     *
-     * weight = 2.0 at the beginning
-     * weight = 1.0 at the end
-     *
-     * This encourages the robot to start rotating early
-     * instead of waiting until the end of the trajectory.
-     */
-    const double progress =
-        static_cast<double>(i) / static_cast<double>(count - 1);
-
-    const double weight = 2.0 - progress;
-
-    total_error += yaw_error * weight;
-    total_weight += weight;
+  /*
+   * If we are already facing the goal, don't care about rotation.
+   */
+  if (yaw_error < 0.10) {
+    return 0.0;
   }
 
-  const double average_error = total_error / total_weight;
+  /*
+   * Look at the angular velocity used by this trajectory.
+   *
+   * We want the robot to rotate while it is moving.
+   */
+  const double wz = traj.velocity.theta;
 
   /*
-   * Normalize to approximately 0..1.
+   * Determine which direction the robot needs to rotate.
    *
-   * Compare against the current error so trajectories that
-   * actually improve the heading are preferred.
+   * Positive  -> counter-clockwise
+   * Negative  -> clockwise
    */
-  double score = 1.0 + (average_error - current_error) / M_PI;
+  const double yaw_direction =
+      angles::shortest_angular_distance(current_yaw_, goal_yaw_);
 
-  return std::max(0.0, score);
+  /*
+   * No rotation:
+   * penalize it when there is still significant yaw error.
+   */
+  if (std::abs(wz) < 0.05) {
+    return 1.0;
+  }
+
+  /*
+   * Wrong rotation direction:
+   * penalize heavily.
+   */
+  if ((yaw_direction > 0.0 && wz < 0.0) || (yaw_direction < 0.0 && wz > 0.0)) {
+    return 1.0;
+  }
+
+  /*
+   * Correct rotation direction.
+   *
+   * Smaller score = better.
+   *
+   * Prefer stronger rotation when the yaw error is large,
+   * but don't make rotation dominate the translational critics.
+   */
+  const double rotation = std::min(std::abs(wz) / 0.8, 1.0);
+
+  return 1.0 - rotation;
 }
 
 } // namespace ired_dwb_critics
