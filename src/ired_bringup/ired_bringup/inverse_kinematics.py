@@ -25,7 +25,7 @@ class INVERSEKINEMATICS(Node):
         )
 
         # Initialise ROS Timers
-        timer_period = 0.1  # seconds
+        timer_period = 0.05  # seconds
         self.timer = self.create_timer(timer_period, self.update_callback)
 
         # ROS Logger
@@ -159,8 +159,8 @@ class INVERSEKINEMATICS(Node):
             self.wheel_speed_fb = [0.0] * 4
 
         self.calculateInverseKinematics()
-        #motor_command = self.calculateMotorPID(self.wheel_speed_cmd)
-        #self.motor_speed.speed = [round(x, 4) for x in motor_command]
+        # motor_command = self.calculateMotorPID(self.wheel_speed_cmd)
+        # self.motor_speed.speed = [round(x, 4) for x in motor_command]
         self.motor_speed.speed = [round(2.7 * x, 4) for x in self.wheel_speed_cmd]
         self.speed_control_pub.publish(self.motor_speed)
 

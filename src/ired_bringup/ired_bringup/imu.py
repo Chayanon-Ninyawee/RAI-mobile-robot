@@ -1,48 +1,60 @@
 #!/usr/bin/env python3
 import rclpy
-from rclpy.node import Node
-
 from geometry_msgs.msg import Twist
 from ired_msgs.msg import IMUData
+from rclpy.node import Node
 from sensor_msgs.msg import Imu
 from tf_transformations import quaternion_from_euler
 
+
 class IMU(Node):
     def __init__(self):
-        super().__init__('imu_node')
-        
+        super().__init__("imu_node")
+
         # Initialise Variables and Parameters
         self.initial_parameters()
         self.initial_variables()
-        
+
         # Initialise ROS Publisher and Subscriber
         self.imu_data_pub = self.create_publisher(Imu, self.imu_data_topic, 10)
         self.rpy_pub = self.create_publisher(IMUData, self.rpy_topic, 10)
         self.create_subscription(Twist, self.imu_raw_topic, self.fetchIMUCallback, 10)
-        
+
         # Initialise ROS Timers
-        timer_period = 0.1 # seconds
+        timer_period = 0.05  # seconds
         self.timer = self.create_timer(timer_period, self.update_callback)
-        
+
         # ROS Logger
-        self.get_logger().info(f"IMU : ROS publisher on {self.imu_data_topic} [sensor_msgs/Imu]")
-        self.get_logger().info(f"IMU : ROS publisher on {self.rpy_topic} [ired_msgs/IMUData]")
-        self.get_logger().info(f"IMU : ROS subscriber on {self.imu_raw_topic} [geometry_msgs/Twist]")
+        self.get_logger().info(
+            f"IMU : ROS publisher on {self.imu_data_topic} [sensor_msgs/Imu]"
+        )
+        self.get_logger().info(
+            f"IMU : ROS publisher on {self.rpy_topic} [ired_msgs/IMUData]"
+        )
+        self.get_logger().info(
+            f"IMU : ROS subscriber on {self.imu_raw_topic} [geometry_msgs/Twist]"
+        )
 
     def initial_parameters(self):
         # Declare parameters
         self.declare_parameter("imu_raw_topic", "/ired/imu/raw")
         self.declare_parameter("imu_data_topic", "/ired/imu/data")
         self.declare_parameter("rpy_topic", "/ired/imu/rollpitchyaw")
-        
+
         # ROS Parameters
-        self.imu_raw_topic = self.get_parameter('imu_raw_topic').get_parameter_value().string_value
-        self.imu_data_topic = self.get_parameter('imu_data_topic').get_parameter_value().string_value
-        self.rpy_topic = self.get_parameter('rpy_topic').get_parameter_value().string_value
-    
+        self.imu_raw_topic = (
+            self.get_parameter("imu_raw_topic").get_parameter_value().string_value
+        )
+        self.imu_data_topic = (
+            self.get_parameter("imu_data_topic").get_parameter_value().string_value
+        )
+        self.rpy_topic = (
+            self.get_parameter("rpy_topic").get_parameter_value().string_value
+        )
+
     def DEG2RAD(self, degree):
         return degree * 0.01745329252
-    
+
     def initial_variables(self):
         self.imu_data = Imu()
         self.imu_data.header.frame_id = "imu_link"
@@ -66,12 +78,18 @@ class IMU(Node):
         self.linear_acceleration[self.X] = msg.linear.x
         self.linear_acceleration[self.Y] = msg.linear.y
         self.linear_acceleration[self.Z] = msg.linear.z
-        
+
     def calculateRPY(self, diff_time):
-        self.rpy_data.roll += self.DEG2RAD((self.angular_velocity[self.X] * diff_time.nanoseconds / 1e9))
-        self.rpy_data.pitch += self.DEG2RAD((self.angular_velocity[self.Y] * diff_time.nanoseconds / 1e9))
-        self.rpy_data.yaw += self.DEG2RAD((self.angular_velocity[self.Z] * diff_time.nanoseconds / 1e9))
-    
+        self.rpy_data.roll += self.DEG2RAD(
+            (self.angular_velocity[self.X] * diff_time.nanoseconds / 1e9)
+        )
+        self.rpy_data.pitch += self.DEG2RAD(
+            (self.angular_velocity[self.Y] * diff_time.nanoseconds / 1e9)
+        )
+        self.rpy_data.yaw += self.DEG2RAD(
+            (self.angular_velocity[self.Z] * diff_time.nanoseconds / 1e9)
+        )
+
     def calculateIMU(self):
         qx, qy, qz, qw = quaternion_from_euler(0.0, 0.0, self.rpy_data.yaw)
         self.imu_data.orientation.x = qx
@@ -100,20 +118,22 @@ class IMU(Node):
 
         self.calculateRPY(duration)
         self.rpy_pub.publish(self.rpy_data)
-        #self.get_logger().info(f"r: {self.rpy_data.roll}, p: {self.rpy_data.pitch}, y: {self.rpy_data.yaw}")
+        # self.get_logger().info(f"r: {self.rpy_data.roll}, p: {self.rpy_data.pitch}, y: {self.rpy_data.yaw}")
 
         self.calculateIMU()
         self.imu_data.header.stamp = time_now.to_msg()
         self.imu_data_pub.publish(self.imu_data)
 
+
 def main(args=None):
     rclpy.init(args=args)
     imu_node = IMU()
-    
+
     rclpy.spin(imu_node)
-    
+
     imu_node.destroy_node()
     rclpy.shutdown()
-    
-if __name__ == '__main__':
+
+
+if __name__ == "__main__":
     main()
