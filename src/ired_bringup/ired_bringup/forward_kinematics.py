@@ -79,10 +79,28 @@ class FORWARDKINEMATICS(Node):
         # bl: motor and encoder + mean CCW (GOOD)
         # br: motor and encoder + mean CW  (fix in software)
 
-        v_fl = self.wheel_speed_fb[self.FLEFT] * self.rpm_to_mps
-        v_fr = -self.wheel_speed_fb[self.FRIGHT] * self.rpm_to_mps
-        v_rl = self.wheel_speed_fb[self.RLEFT] * self.rpm_to_mps
-        v_rr = -self.wheel_speed_fb[self.RRIGHT] * self.rpm_to_mps
+        encoder_compensation_mult = 1.5
+
+        v_fl = (
+            self.wheel_speed_fb[self.FLEFT]
+            * self.rpm_to_mps
+            * encoder_compensation_mult
+        )
+        v_fr = (
+            -self.wheel_speed_fb[self.FRIGHT]
+            * self.rpm_to_mps
+            * encoder_compensation_mult
+        )
+        v_rl = (
+            self.wheel_speed_fb[self.RLEFT]
+            * self.rpm_to_mps
+            * encoder_compensation_mult
+        )
+        v_rr = (
+            -self.wheel_speed_fb[self.RRIGHT]
+            * self.rpm_to_mps
+            * encoder_compensation_mult
+        )
 
         k = self.wheel_seperation
         s = 1.41421356237
