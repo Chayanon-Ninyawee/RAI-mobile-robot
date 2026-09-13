@@ -193,9 +193,9 @@ class ODOM(Node):
         self.odom_pose[self.X] += delta_x
         self.odom_pose[self.Y] += delta_y
         self.odom_pose[self.Z] = theta
-        self.get_logger().info(
-            f"x: {self.odom_pose[self.X]}, y: {self.odom_pose[self.Y]}, theta: {self.odom_pose[self.Z]}"
-        )
+        # self.get_logger().info(
+        #     f"x: {self.odom_pose[self.X]}, y: {self.odom_pose[self.Y]}, theta: {self.odom_pose[self.Z]}"
+        # )
 
         self.odom_data.pose.pose.position.x = self.odom_pose[self.X]
         self.odom_data.pose.pose.position.y = self.odom_pose[self.Y]
