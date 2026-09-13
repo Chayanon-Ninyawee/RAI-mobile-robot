@@ -16,13 +16,20 @@ public:
   double scoreTrajectory(const dwb_msgs::msg::Trajectory2D &traj) override;
 
 private:
-  enum class Phase { ROTATE, SETTLE, MOVE };
+  enum class Phase { MOVE, ROTATE, SETTLE };
 
   double current_yaw_{0.0};
   double goal_yaw_{0.0};
   double current_wz_{0.0};
 
-  Phase phase_{Phase::ROTATE};
+  double current_x_{0.0};
+  double current_y_{0.0};
+  double goal_x_{0.0};
+  double goal_y_{0.0};
+
+  double goal_distance_{0.0};
+
+  Phase phase_{Phase::MOVE};
 
   rclcpp::Time aligned_time_;
 };

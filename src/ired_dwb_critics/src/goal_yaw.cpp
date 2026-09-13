@@ -11,33 +11,51 @@ bool GoalYawCritic::prepare(const geometry_msgs::msg::Pose2D &pose,
                             const nav_2d_msgs::msg::Twist2D &vel,
                             const geometry_msgs::msg::Pose2D &goal,
                             const nav_2d_msgs::msg::Path2D &) {
+  current_x_ = pose.x;
+  current_y_ = pose.y;
+
   current_yaw_ = pose.theta;
   goal_yaw_ = goal.theta;
+
   current_wz_ = vel.theta;
+
+  goal_x_ = goal.x;
+  goal_y_ = goal.y;
+
+  goal_distance_ = std::hypot(goal_x_ - current_x_, goal_y_ - current_y_);
+
+  // Start final rotation when we are close enough
+  // to the goal position.
+  const double rotate_distance = 0.10;
+
+  if (goal_distance_ > rotate_distance) {
+    phase_ = Phase::MOVE;
+    return true;
+  }
+
+  // We are close to the goal.
+  // Switch to final rotation.
+  if (phase_ == Phase::MOVE) {
+    phase_ = Phase::ROTATE;
+  }
 
   const double yaw_error =
       std::abs(angles::shortest_angular_distance(current_yaw_, goal_yaw_));
 
-  // Consider the robot aligned within about 1.7 degrees.
   const double rotate_threshold = 0.07;
 
-  // Robot is still rotating toward the goal.
-  if (yaw_error > rotate_threshold) {
-    phase_ = Phase::ROTATE;
-    return true;
+  // Once the final yaw is reached, wait for the robot
+  // to physically stop rotating before finishing.
+  if (phase_ == Phase::ROTATE && yaw_error <= rotate_threshold) {
+    const double angular_velocity_threshold = 0.05;
+
+    if (std::abs(current_wz_) < angular_velocity_threshold) {
+      phase_ = Phase::SETTLE;
+
+      aligned_time_ = rclcpp::Clock(RCL_ROS_TIME).now();
+    }
   }
 
-  // We are aligned, so make sure the robot has actually stopped
-  // rotating before starting the settling timer.
-  const double angular_velocity_threshold = 0.05;
-
-  if (phase_ == Phase::ROTATE &&
-      std::abs(current_wz_) < angular_velocity_threshold) {
-    phase_ = Phase::SETTLE;
-    aligned_time_ = rclcpp::Clock(RCL_ROS_TIME).now();
-  }
-
-  // If already settling, wait for the settling period.
   if (phase_ == Phase::SETTLE) {
     const double settle_time = 0.5;
 
@@ -45,7 +63,9 @@ bool GoalYawCritic::prepare(const geometry_msgs::msg::Pose2D &pose,
         (rclcpp::Clock(RCL_ROS_TIME).now() - aligned_time_).seconds();
 
     if (elapsed >= settle_time) {
-      phase_ = Phase::MOVE;
+      // Stay in ROTATE after settling so the critic
+      // continues protecting the final yaw.
+      phase_ = Phase::ROTATE;
     }
   }
 
@@ -59,49 +79,74 @@ double GoalYawCritic::scoreTrajectory(const dwb_msgs::msg::Trajectory2D &traj) {
   const double vy = velocity.y;
   const double wz = velocity.theta;
 
-  const double initial_error =
-      std::abs(angles::shortest_angular_distance(current_yaw_, goal_yaw_));
-
   const double final_yaw =
       traj.poses.empty() ? current_yaw_ : traj.poses.back().theta;
 
   const double final_error =
       std::abs(angles::shortest_angular_distance(final_yaw, goal_yaw_));
 
-  const double rotate_threshold = 0.07;
+  const double yaw_error =
+      std::abs(angles::shortest_angular_distance(current_yaw_, goal_yaw_));
 
   const double velocity_epsilon = 0.01;
 
-  // ------------------------------------------------------------
-  // Phase 1: ROTATE
+  // ============================================================
+  // PHASE 1: MOVE
   //
-  // Only angular velocity is allowed.
-  // ------------------------------------------------------------
+  // Far from the goal:
+  // - Allow vx
+  // - Allow vy
+  // - Allow small wz
+  //
+  // Do NOT force the robot to maintain the final yaw yet.
+  // ============================================================
+
+  if (phase_ == Phase::MOVE) {
+
+    // Strongly discourage rotation while travelling,
+    // but do NOT completely forbid it.
+    //
+    // This allows DWB to make small heading corrections
+    // instead of getting stuck.
+    const double rotation_penalty = std::abs(wz) * 5.0;
+
+    return final_error * 0.5 + rotation_penalty;
+  }
+
+  // ============================================================
+  // PHASE 2: ROTATE
+  //
+  // Close to the goal:
+  // - No vx
+  // - No vy
+  // - Only wz
+  //
+  // This forces the final heading correction to happen
+  // in place.
+  // ============================================================
+
   if (phase_ == Phase::ROTATE) {
 
-    // Reject anything that translates.
+    // Reject translation.
     if (std::abs(vx) > velocity_epsilon || std::abs(vy) > velocity_epsilon) {
       return 1000.0;
     }
 
-    // Reject trajectories that do not rotate.
-    if (std::abs(wz) <= velocity_epsilon) {
+    // If we still have yaw error, require rotation.
+    if (yaw_error > 0.07 && std::abs(wz) <= velocity_epsilon) {
       return 1000.0;
     }
 
-    // Prefer trajectories that reduce the goal yaw error.
-    if (initial_error > rotate_threshold) {
-      return final_error / initial_error;
-    }
-
+    // Prefer trajectories that reduce final yaw error.
     return final_error;
   }
 
-  // ------------------------------------------------------------
-  // Phase 2: SETTLE
+  // ============================================================
+  // PHASE 3: SETTLE
   //
-  // Everything must be zero.
-  // ------------------------------------------------------------
+  // Completely stop.
+  // ============================================================
+
   if (phase_ == Phase::SETTLE) {
 
     if (std::abs(vx) > velocity_epsilon || std::abs(vy) > velocity_epsilon ||
@@ -111,22 +156,6 @@ double GoalYawCritic::scoreTrajectory(const dwb_msgs::msg::Trajectory2D &traj) {
 
     return final_error;
   }
-
-  // ------------------------------------------------------------
-  // Phase 3: MOVE
-  //
-  // Allow translation in X/Y.
-  // Do not allow rotation.
-  // ------------------------------------------------------------
-
-  // Reject rotation.
-  if (std::abs(wz) > velocity_epsilon) {
-    return 1000.0;
-  }
-
-  // Allow both vx and vy because this is an omni robot.
-  // DWB can now choose the translation direction needed
-  // to reach the target while keeping the final heading fixed.
 
   return final_error;
 }
