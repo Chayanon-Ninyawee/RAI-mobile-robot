@@ -62,8 +62,8 @@ class ODOM(Node):
         self.declare_parameter("rpy_topic", "/ired/imu/rollpitchyaw")
         self.declare_parameter("robot_speed_topic", "/ired/speed")
         self.declare_parameter("odom_tf_publish", True)
-        self.declare_parameter("rpm_to_mps", 0.003560471674)
-        self.declare_parameter("wheel_radius", 0.34)
+        self.declare_parameter("rpm_to_mps", 0.00664970445)
+        self.declare_parameter("wheel_radius", 0.0635)
 
         # ROS Parameters
         self.odom_topic = (

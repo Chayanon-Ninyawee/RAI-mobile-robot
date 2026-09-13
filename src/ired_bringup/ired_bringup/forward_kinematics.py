@@ -79,7 +79,7 @@ class FORWARDKINEMATICS(Node):
         # bl: motor and encoder + mean CCW (GOOD)
         # br: motor and encoder + mean CW  (fix in software)
 
-        encoder_compensation_mult = 0.9
+        encoder_compensation_mult = 1.1
 
         v_fl = (
             self.wheel_speed_fb[self.FLEFT]
