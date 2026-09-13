@@ -226,6 +226,7 @@ controller_server:
         # - PathAlign
         - PathDist
         - GoalDist
+        - ired_dwb_critics::GoalYawCritic
 
       BaseObstacle.scale: 0.50
 
@@ -239,10 +240,7 @@ controller_server:
       # Goal progress, but do not overpower path tracking
       GoalDist.scale: 20.0
 
-      # GoalYawCritic disabled for now.
-      # Add it back after path tracking is working.
-      # - ired_dwb_critics::GoalYawCritic
-      # ired_dwb_critics::GoalYawCritic.scale: 10.0
+      ired_dwb_critics::GoalYawCritic.scale: 10.0
 
     enable_stamped_cmd_vel: true
 

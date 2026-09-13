@@ -22,59 +22,42 @@ double GoalYawCritic::scoreTrajectory(const dwb_msgs::msg::Trajectory2D &traj) {
     return 0.0;
   }
 
-  const double yaw_error =
+  const double initial_error =
       std::abs(angles::shortest_angular_distance(current_yaw_, goal_yaw_));
 
-  /*
-   * If we are already facing the goal, don't care about rotation.
-   */
-  if (yaw_error < 0.10) {
-    return 0.0;
+  const double final_yaw = traj.poses.back().theta;
+
+  const double final_error =
+      std::abs(angles::shortest_angular_distance(final_yaw, goal_yaw_));
+
+  // Rotate in place first.
+  const double rotate_threshold = 0.17;
+
+  if (initial_error > rotate_threshold) {
+    bool translating = false;
+
+    for (const auto &pose : traj.poses) {
+      const double dx = pose.x - traj.poses.front().x;
+      const double dy = pose.y - traj.poses.front().y;
+
+      if (std::hypot(dx, dy) > 0.01) {
+        translating = true;
+        break;
+      }
+    }
+
+    if (translating) {
+      return 1000.0;
+    }
   }
 
-  /*
-   * Look at the angular velocity used by this trajectory.
-   *
-   * We want the robot to rotate while it is moving.
-   */
-  const double wz = traj.velocity.theta;
-
-  /*
-   * Determine which direction the robot needs to rotate.
-   *
-   * Positive  -> counter-clockwise
-   * Negative  -> clockwise
-   */
-  const double yaw_direction =
-      angles::shortest_angular_distance(current_yaw_, goal_yaw_);
-
-  /*
-   * No rotation:
-   * penalize it when there is still significant yaw error.
-   */
-  if (std::abs(wz) < 0.05) {
-    return 1.0;
+  // Once sufficiently aligned, prefer trajectories
+  // that reduce the remaining goal yaw error.
+  if (initial_error > 0.001) {
+    return final_error / initial_error;
   }
 
-  /*
-   * Wrong rotation direction:
-   * penalize heavily.
-   */
-  if ((yaw_direction > 0.0 && wz < 0.0) || (yaw_direction < 0.0 && wz > 0.0)) {
-    return 1.0;
-  }
-
-  /*
-   * Correct rotation direction.
-   *
-   * Smaller score = better.
-   *
-   * Prefer stronger rotation when the yaw error is large,
-   * but don't make rotation dominate the translational critics.
-   */
-  const double rotation = std::min(std::abs(wz) / 0.8, 1.0);
-
-  return 1.0 - rotation;
+  return final_error;
 }
 
 } // namespace ired_dwb_critics
