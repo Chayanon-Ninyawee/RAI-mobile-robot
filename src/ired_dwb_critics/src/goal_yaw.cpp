@@ -20,10 +20,16 @@ double GoalYawCritic::scoreTrajectory(const dwb_msgs::msg::Trajectory2D &traj) {
     return 0.0;
   }
 
-  const double final_yaw = traj.poses.back().theta;
+  double total_error = 0.0;
 
-  return std::abs(angles::shortest_angular_distance(final_yaw, goal_yaw_)) /
-         M_PI;
+  for (const auto &pose : traj.poses) {
+    const double yaw_error =
+        std::abs(angles::shortest_angular_distance(pose.theta, goal_yaw_));
+
+    total_error += yaw_error;
+  }
+
+  return (total_error / traj.poses.size()) / M_PI;
 }
 
 } // namespace ired_dwb_critics
