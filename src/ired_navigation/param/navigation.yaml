@@ -151,8 +151,8 @@ controller_server:
       stateful: true
 
       # Final goal tolerance
-      xy_goal_tolerance: 0.10
-      yaw_goal_tolerance: 0.10
+      xy_goal_tolerance: 0.05
+      yaw_goal_tolerance: 0.05
 
     FollowPath:
       plugin: "dwb_core::DWBLocalPlanner"
@@ -164,19 +164,19 @@ controller_server:
       # ------------------------------------------------
 
       # Forward / backward
-      min_vel_x: -1.0
-      max_vel_x: 1.0
+      min_vel_x: -1.5
+      max_vel_x: 1.5
 
       # Left / right strafing
-      min_vel_y: -1.0
-      max_vel_y: 1.0
+      min_vel_y: -1.5
+      max_vel_y: 1.5
 
       # Rotation
       min_vel_theta: -0.8
       max_vel_theta: 0.8
 
       min_speed_xy: 0.0
-      max_speed_xy: 1.0
+      max_speed_xy: 1.5
 
       min_speed_theta: 0.0
       max_speed_theta: 0.8
@@ -222,7 +222,7 @@ controller_server:
         - BaseObstacle
         - PathDist
         - GoalDist
-        - ired_dwb_critics::GoalYawCritic
+        # - ired_dwb_critics::GoalYawCritic
 
       BaseObstacle.scale: 0.50
       PathDist.scale: 32.0
@@ -534,8 +534,8 @@ velocity_smoother:
     feedback: "OPEN_LOOP"
 
     # X, Y, angular velocity
-    max_velocity: [1.0, 1.0, 0.8]
-    min_velocity: [-1.0, -1.0, -0.8]
+    max_velocity: [1.5, 1.5, 0.8]
+    min_velocity: [-1.5, -1.5, -0.8]
 
     deadband_velocity: [0.0, 0.0, 0.0]
 
