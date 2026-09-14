@@ -6,7 +6,7 @@ from geometry_msgs.msg import TransformStamped, TwistStamped
 from ired_msgs.msg import IMUData, MotorData
 from nav_msgs.msg import Odometry
 from rclpy.node import Node
-from sensor_msgs.msg import JointState
+from sensor_msgs.msg import JointState, LaserScan
 from tf2_msgs.msg import TFMessage
 from tf_transformations import quaternion_from_euler
 
@@ -21,9 +21,11 @@ class ODOM(Node):
 
         # Initialise ROS Publisher and Subscriber
         self.odom_data_pub = self.create_publisher(Odometry, self.odom_topic, 10)
+
         self.joint_states_pub = self.create_publisher(
             JointState, self.joint_state_topic, 10
         )
+
         self.tf_pub = self.create_publisher(TFMessage, "/tf", 10)
 
         self.create_subscription(
@@ -35,6 +37,8 @@ class ODOM(Node):
         self.create_subscription(
             TwistStamped, self.robot_speed_topic, self.fetchRobotSpeedCallback, 10
         )
+
+        self.create_subscription(LaserScan, self.scan_topic, self.fetchScanCallback, 10)
 
         # ROS Logger
         self.get_logger().info(
@@ -52,6 +56,9 @@ class ODOM(Node):
         self.get_logger().info(
             f"ODOM : ROS subscriber on {self.robot_speed_topic} [geometry_msgs/TwistStamped]"
         )
+        self.get_logger().info(
+            f"ODOM : ROS subscriber on {self.scan_topic} [sensor_msgs/LaserScan]"
+        )
 
     def initial_parameters(self):
         # Declare parameters
@@ -60,6 +67,7 @@ class ODOM(Node):
         self.declare_parameter("motor_data_topic", "/ired/motor/data")
         self.declare_parameter("rpy_topic", "/ired/imu/rollpitchyaw")
         self.declare_parameter("robot_speed_topic", "/ired/speed")
+        self.declare_parameter("scan_topic", "/scan_filtered")
         self.declare_parameter("odom_tf_publish", True)
         self.declare_parameter("rpm_to_mps", 0.00664970445)
         self.declare_parameter("wheel_radius", 0.0635)
@@ -83,6 +91,10 @@ class ODOM(Node):
 
         self.robot_speed_topic = (
             self.get_parameter("robot_speed_topic").get_parameter_value().string_value
+        )
+
+        self.scan_topic = (
+            self.get_parameter("scan_topic").get_parameter_value().string_value
         )
 
         self.odom_tf_publish = (
@@ -218,14 +230,41 @@ class ODOM(Node):
         self.joint_states.header.stamp = msg.header.stamp
         self.joint_states_pub.publish(self.joint_states)
 
-        if self.odom_tf_publish:
-            odom_tf = TransformStamped()
-            self.updateTF(odom_tf)
+        # DO NOT publish odom TF here.
+        #
+        # TF is now published from fetchScanCallback()
+        # so that Cartographer only receives odom TF when
+        # a LiDAR scan arrives.
 
-            odom_tf_msg = TFMessage()
-            odom_tf_msg.transforms.append(odom_tf)
+    def fetchScanCallback(self, msg):
+        if not self.odom_tf_publish:
+            return
 
-            self.tf_pub.publish(odom_tf_msg)
+        # We need an odometry sample before we can publish TF.
+        if self.prev_speed_time is None:
+            return
+
+        # Publish the latest odom pose when the LiDAR scan arrives.
+        #
+        # IMPORTANT:
+        # The pose is the latest integrated odom pose,
+        # but the TF timestamp is the LiDAR scan timestamp.
+        odom_tf = TransformStamped()
+
+        odom_tf.header.stamp = msg.header.stamp
+        odom_tf.header.frame_id = "odom"
+        odom_tf.child_frame_id = "base_footprint"
+
+        odom_tf.transform.translation.x = self.odom_data.pose.pose.position.x
+        odom_tf.transform.translation.y = self.odom_data.pose.pose.position.y
+        odom_tf.transform.translation.z = self.odom_data.pose.pose.position.z
+
+        odom_tf.transform.rotation = self.odom_data.pose.pose.orientation
+
+        odom_tf_msg = TFMessage()
+        odom_tf_msg.transforms.append(odom_tf)
+
+        self.tf_pub.publish(odom_tf_msg)
 
     def updateOdometry(self, diff_time):
         step_time = diff_time.nanoseconds / 1e9
@@ -276,16 +315,6 @@ class ODOM(Node):
     def updateJoint(self):
         self.joint_states.position = self.last_position
         self.joint_states.velocity = self.last_velocity
-
-    def updateTF(self, odom_tf):
-        odom_tf.header = self.odom_data.header
-        odom_tf.child_frame_id = self.odom_data.child_frame_id
-
-        odom_tf.transform.translation.x = self.odom_data.pose.pose.position.x
-        odom_tf.transform.translation.y = self.odom_data.pose.pose.position.y
-        odom_tf.transform.translation.z = self.odom_data.pose.pose.position.z
-
-        odom_tf.transform.rotation = self.odom_data.pose.pose.orientation
 
 
 def main(args=None):
