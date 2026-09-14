@@ -4,11 +4,10 @@ import struct
 import crcmod
 import rclpy
 import serial
-from geometry_msgs.msg import Twist
+from geometry_msgs.msg import TwistStamped
 from ired_msgs.msg import MotorData, MotorSpeed
 from ired_msgs.srv import PIDTuning
 from rclpy.node import Node
-from std_msgs.msg import String
 from std_srvs.srv import Empty
 
 
@@ -21,10 +20,11 @@ class IREDController(Node):
         self.initial_variables()
 
         # Initialise ROS Publisher and Subscriber
-        self.imu_raw_pub = self.create_publisher(Twist, self.imu_raw_topic, 10)
+        self.imu_raw_pub = self.create_publisher(TwistStamped, self.imu_raw_topic, 10)
         self.motor_data_pub = self.create_publisher(
             MotorData, self.motor_data_topic, 10
         )
+
         self.create_subscription(
             MotorSpeed, self.motor_control_topic, self.commandMotorSpeedCallback, 10
         )
@@ -36,13 +36,13 @@ class IREDController(Node):
             PIDTuning, "/ired/pid/tuning", self.commandPIDTuningCallback
         )
 
-        # Initialise ROS Timers
-        timer_period = 0.02  # seconds
+        # Initialise ROS Timer
+        timer_period = 0.04  # 25 Hz
         self.timer = self.create_timer(timer_period, self.update_callback)
 
         # ROS Logger
         self.get_logger().info(
-            f"iRED Controller : Setup publisher on {self.imu_raw_topic} [geometry_msgs/Twist]"
+            f"iRED Controller : Setup publisher on {self.imu_raw_topic} [geometry_msgs/TwistStamped]"
         )
         self.get_logger().info(
             f"iRED Controller : Setup publisher on {self.motor_data_topic} [ired_msgs/MotorData]"
@@ -51,13 +51,13 @@ class IREDController(Node):
             f"iRED Controller : Setup subscriber on {self.motor_control_topic} [ired_msgs/MotorSpeed]"
         )
         self.get_logger().info(
-            f"iRED Controller : Setup service server on /ired/imu/reset [std_srvs/Empty]"
+            "iRED Controller : Setup service server on /ired/imu/reset [std_srvs/Empty]"
         )
         self.get_logger().info(
-            f"iRED Controller : Setup service server on /ired/pid/reset [std_srvs/Empty]"
+            "iRED Controller : Setup service server on /ired/pid/reset [std_srvs/Empty]"
         )
         self.get_logger().info(
-            f"iRED Controller : Setup service server on /ired/pid/tuning [ired_msgs/PIDTuning]"
+            "iRED Controller : Setup service server on /ired/pid/tuning [ired_msgs/PIDTuning]"
         )
 
         # Serial Modbus
@@ -87,16 +87,29 @@ class IREDController(Node):
         )
 
     def initial_variables(self):
-        self.imu_raw_msg = Twist()
+        self.imu_raw_msg = TwistStamped()
+        self.imu_raw_msg.header.frame_id = "imu_link"
+
         self.motor_data_msg = MotorData()
+        self.motor_data_msg.header.frame_id = "base_footprint"
+
         self.pid_data = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
         self.last_time_cmd_vel = self.get_clock().now()
+
         self.imu_reset_check = False
         self.pid_reset_check = False
         self.pid_update_check = False
         self.pid_tuning_check = False
+
         self.pid_tuning_motor = ""
         self.pid_tuning_value = [0.0, 0.0, 0.0]
+
+        # Last successful Modbus sample
+        self.last_sample_time = None
+
+        # Modbus read data
+        self.modbus_read_data = None
 
     def commandIMUResetCallback(self, request, response):
         self.get_logger().info("iRED Controller : Start Calibration of MP9250...")
@@ -115,15 +128,18 @@ class IREDController(Node):
             self.get_logger().info(
                 f"iRED Controller : PID Tuning motor {request.motor}"
             )
+
             self.pid_tuning_check = True
             self.pid_tuning_motor = request.motor
             self.pid_tuning_value = [request.kp, request.ki, request.kd]
+
             response.status = True
         else:
             self.get_logger().warn(
                 "Wrong Motor: FL-FrontLeft FR-FrontRight RL-RearLeft RR-RearRight"
             )
             response.status = False
+
         return response
 
     def commandMotorSpeedCallback(self, msg):
@@ -137,6 +153,7 @@ class IREDController(Node):
 
         # Serial Parameter
         self.crc16 = crcmod.predefined.mkCrcFun("modbus")
+
         self.serial_communication = serial.Serial(
             port=self.serial_port,
             baudrate=self.serial_baud,
@@ -145,6 +162,7 @@ class IREDController(Node):
             stopbits=1,
             timeout=1,
         )
+
         self.modbus_slave_id = 0x01
         self.modbus_function_read_holdingregs = 0x03
         self.modbus_function_read_inputregs = 0x04
@@ -152,7 +170,9 @@ class IREDController(Node):
 
         # Start initialise data
         self.get_logger().info("iRED Controller : Start Calibration of MP9250...")
+
         self.modbusSendData([1], 0x0022, 1)
+
         self.get_logger().info("iRED Controller : Calibration End")
 
         if not self.modbusReadData(self.modbus_function_read_holdingregs, 0x0008, 12):
@@ -164,14 +184,19 @@ class IREDController(Node):
         modbus_start_addr = start_addr
         modbus_write_data = write_data
         modbus_write_regs = modbus_write_data * 2
+
         frame = bytearray()
+
         frame.append(self.modbus_slave_id)
         frame.append(self.modbus_function_write_multiregs)
+
         frame += modbus_start_addr.to_bytes(2, "big")
         frame += modbus_write_regs.to_bytes(2, "big")
         frame.append(modbus_write_regs * 2)
+
         for val in datas:
             frame += struct.pack(">f", val)
+
         crc = self.crc16(frame)
         frame += crc.to_bytes(2, byteorder="little")
 
@@ -181,11 +206,15 @@ class IREDController(Node):
         modbus_start_addr = start_addr
         modbus_read_data = read_data
         modbus_read_regs_ = modbus_read_data * 2
+
         frame = bytearray()
+
         frame.append(self.modbus_slave_id)
         frame.append(function)
+
         frame += modbus_start_addr.to_bytes(2, "big")
         frame += modbus_read_regs_.to_bytes(2, "big")
+
         crc = self.crc16(frame)
         frame += crc.to_bytes(2, byteorder="little")
 
@@ -193,47 +222,58 @@ class IREDController(Node):
 
     def modbusSendData(self, datas, start_addr, write_data):
         write_frame = self.modbusBuildSendData(datas, start_addr, write_data)
+
         self.serial_communication.write(write_frame)
 
         write_resp = self.serial_communication.read(8)
+
         if len(write_resp) == 8:
             return True
-        else:
-            self.get_logger().warn("Write: No or incomplete response")
-            return False
+
+        self.get_logger().warn("Write: No or incomplete response")
+        return False
 
     def modbusReadData(self, function, start_addr, read_data):
         read_frame = self.modbusBuildReadData(function, start_addr, read_data)
+
         self.serial_communication.write(read_frame)
+
         expected_bytes = 3 + (read_data * 2) * 2 + 2
+
         read_resp = self.serial_communication.read(expected_bytes)
 
-        if len(read_resp) == expected_bytes:
-            if read_resp[-2:] != self.crc16(read_resp[:-2]).to_bytes(2, "little"):
-                self.get_logger().warn("Read: CRC mismatch")
-                return False
-            else:
-                data_bytes = read_resp[3:-2]
-                self.modbus_read_data = []
-                for i in range(0, len(data_bytes), 4):
-                    chunk = data_bytes[i : i + 4]
-                    val = struct.unpack(">f", chunk)[0]
-                    self.modbus_read_data.append(val)
-                return True
-        else:
-            self.get_logger().warn("Read: No or incomplete respons")
+        if len(read_resp) != expected_bytes:
+            self.get_logger().warn("Read: No or incomplete response")
             return False
+
+        if read_resp[-2:] != self.crc16(read_resp[:-2]).to_bytes(2, "little"):
+            self.get_logger().warn("Read: CRC mismatch")
+            return False
+
+        data_bytes = read_resp[3:-2]
+
+        self.modbus_read_data = []
+
+        for i in range(0, len(data_bytes), 4):
+            chunk = data_bytes[i : i + 4]
+            val = struct.unpack(">f", chunk)[0]
+            self.modbus_read_data.append(val)
+
+        return True
 
     def setupPIDData(self):
         self.motor_data_msg.pid_motor_front_left[0] = self.modbus_read_data[0]
         self.motor_data_msg.pid_motor_front_left[1] = self.modbus_read_data[1]
         self.motor_data_msg.pid_motor_front_left[2] = self.modbus_read_data[2]
+
         self.motor_data_msg.pid_motor_front_right[0] = self.modbus_read_data[3]
         self.motor_data_msg.pid_motor_front_right[1] = self.modbus_read_data[4]
         self.motor_data_msg.pid_motor_front_right[2] = self.modbus_read_data[5]
+
         self.motor_data_msg.pid_motor_rear_left[0] = self.modbus_read_data[6]
         self.motor_data_msg.pid_motor_rear_left[1] = self.modbus_read_data[7]
         self.motor_data_msg.pid_motor_rear_left[2] = self.modbus_read_data[8]
+
         self.motor_data_msg.pid_motor_rear_right[0] = self.modbus_read_data[9]
         self.motor_data_msg.pid_motor_rear_right[1] = self.modbus_read_data[10]
         self.motor_data_msg.pid_motor_rear_right[2] = self.modbus_read_data[11]
@@ -242,46 +282,53 @@ class IREDController(Node):
         if received_data:
             self.motor_data_msg.speed_fb[0] = self.modbus_read_data[0]
             self.motor_data_msg.speed_fb[1] = self.modbus_read_data[1]
-            self.motor_data_msg.speed_fb[2] = self.modbus_read_data[
-                2
-            ]  # BL encoder inversion
+            self.motor_data_msg.speed_fb[2] = self.modbus_read_data[2]
             self.motor_data_msg.speed_fb[3] = self.modbus_read_data[3]
-            self.imu_raw_msg.linear.x = self.modbus_read_data[4]
-            self.imu_raw_msg.linear.y = self.modbus_read_data[5]
-            self.imu_raw_msg.linear.z = self.modbus_read_data[6]
-            self.imu_raw_msg.angular.x = self.modbus_read_data[7]
-            self.imu_raw_msg.angular.y = self.modbus_read_data[8]
-            self.imu_raw_msg.angular.z = self.modbus_read_data[9]
+
+            self.imu_raw_msg.twist.linear.x = self.modbus_read_data[4]
+            self.imu_raw_msg.twist.linear.y = self.modbus_read_data[5]
+            self.imu_raw_msg.twist.linear.z = self.modbus_read_data[6]
+            self.imu_raw_msg.twist.angular.x = self.modbus_read_data[7]
+            self.imu_raw_msg.twist.angular.y = self.modbus_read_data[8]
+            self.imu_raw_msg.twist.angular.z = self.modbus_read_data[9]
         else:
             self.motor_data_msg.speed_fb[0] = 0.0
             self.motor_data_msg.speed_fb[1] = 0.0
             self.motor_data_msg.speed_fb[2] = 0.0
             self.motor_data_msg.speed_fb[3] = 0.0
-            self.imu_raw_msg.linear.x = 0.0
-            self.imu_raw_msg.linear.y = 0.0
-            self.imu_raw_msg.linear.z = 0.0
-            self.imu_raw_msg.angular.x = 0.0
-            self.imu_raw_msg.angular.y = 0.0
-            self.imu_raw_msg.angular.z = 0.0
+
+            self.imu_raw_msg.twist.linear.x = 0.0
+            self.imu_raw_msg.twist.linear.y = 0.0
+            self.imu_raw_msg.twist.linear.z = 0.0
+            self.imu_raw_msg.twist.angular.x = 0.0
+            self.imu_raw_msg.twist.angular.y = 0.0
+            self.imu_raw_msg.twist.angular.z = 0.0
 
     def PIDTuningModbus(self):
         if self.pid_tuning_motor == "FL":
             pid_starting_addr = 0x0008
+
             self.motor_data_msg.pid_motor_front_left[0] = self.pid_tuning_value[0]
             self.motor_data_msg.pid_motor_front_left[1] = self.pid_tuning_value[1]
             self.motor_data_msg.pid_motor_front_left[2] = self.pid_tuning_value[2]
+
         elif self.pid_tuning_motor == "FR":
             pid_starting_addr = 0x000E
+
             self.motor_data_msg.pid_motor_front_right[0] = self.pid_tuning_value[0]
             self.motor_data_msg.pid_motor_front_right[1] = self.pid_tuning_value[1]
             self.motor_data_msg.pid_motor_front_right[2] = self.pid_tuning_value[2]
+
         elif self.pid_tuning_motor == "RL":
             pid_starting_addr = 0x0014
+
             self.motor_data_msg.pid_motor_rear_left[0] = self.pid_tuning_value[0]
             self.motor_data_msg.pid_motor_rear_left[1] = self.pid_tuning_value[1]
             self.motor_data_msg.pid_motor_rear_left[2] = self.pid_tuning_value[2]
+
         else:
             pid_starting_addr = 0x001A
+
             self.motor_data_msg.pid_motor_rear_right[0] = self.pid_tuning_value[0]
             self.motor_data_msg.pid_motor_rear_right[1] = self.pid_tuning_value[1]
             self.motor_data_msg.pid_motor_rear_right[2] = self.pid_tuning_value[2]
@@ -289,63 +336,99 @@ class IREDController(Node):
         return self.modbusSendData(self.pid_tuning_value, pid_starting_addr, 3)
 
     def update_callback(self):
+        # Check motor command timeout
         time_now = self.get_clock().now()
 
         # Zero if time out
         if (time_now - self.last_time_cmd_vel).nanoseconds / 1e9 > 1.0:
             self.motor_data_msg.speed_sp = [0.0] * 4
 
-        # Invert the Back Left Motor
-        # speed_cmd = self.motor_data_msg.speed_sp.copy()
-        # speed_cmd[2] = -speed_cmd[2]  # BL/RL motor inversion
-
-        # if not self.modbusSendData(speed_cmd, 0x0000, 4):
+        # Send motor speed command
         if not self.modbusSendData(self.motor_data_msg.speed_sp, 0x0000, 4):
             self.get_logger().warn("Cannot send data to iRED Controller...")
 
-        if (
-            not self.modbusReadData(self.modbus_function_read_inputregs, 0x0000, 10)
-            or self.modbus_read_data is None
-        ):
-            self.readInputRegs(False)
-            self.get_logger().warn("Cannot read data from iRED Controller...")
-        else:
+        # Read motor feedback and IMU.
+        #
+        # Everything returned by this single Modbus read belongs
+        # to the same sensor sample.
+        read_success = self.modbusReadData(
+            self.modbus_function_read_inputregs, 0x0000, 10
+        )
+
+        if read_success and self.modbus_read_data is not None:
+            # Timestamp immediately after receiving the complete
+            # Modbus response.
+            sample_time = self.get_clock().now()
+            sample_stamp = sample_time.to_msg()
+
             self.readInputRegs(True)
 
-        self.imu_raw_pub.publish(self.imu_raw_msg)
-        self.motor_data_pub.publish(self.motor_data_msg)
+            # IMPORTANT:
+            # MotorData and IMU use the exact same timestamp.
+            self.motor_data_msg.header.stamp = sample_stamp
+            self.imu_raw_msg.header.stamp = sample_stamp
 
+            # Publish only valid sensor samples.
+            self.imu_raw_pub.publish(self.imu_raw_msg)
+            self.motor_data_pub.publish(self.motor_data_msg)
+
+            self.last_sample_time = sample_time
+
+        else:
+            # Do not publish this as a fresh sensor sample.
+            # The next successful Modbus read will publish again.
+            self.readInputRegs(False)
+
+            self.get_logger().warn("Cannot read data from iRED Controller...")
+
+        # Reset PID
         if self.pid_reset_check:
             self.modbusSendData([1], 0x0020, 1)
+
             self.pid_reset_check = False
             self.pid_update_check = False
+
             self.get_logger().info("iRED Controller : Completed Reset PID Data.")
 
+        # Update PID data
         if not self.pid_update_check:
             if not self.modbusReadData(
                 self.modbus_function_read_holdingregs, 0x0008, 12
             ):
-                self.get_logger().info("iRED Controller : Cannot update new PID Dta...")
+                self.get_logger().info(
+                    "iRED Controller : Cannot update new PID Data..."
+                )
             else:
                 self.setupPIDData()
-                self.get_logger().warn("iRED Controller : New PID data updated.")
                 self.pid_update_check = True
 
+                self.get_logger().warn("iRED Controller : New PID data updated.")
+
+        # IMU calibration
         if self.imu_reset_check:
             self.modbusSendData([1], 0x0022, 1)
+
             self.imu_reset_check = False
+
             self.get_logger().info("iRED Controller : Calibration End")
 
+        # PID tuning
         if self.pid_tuning_check:
             self.PIDTuningModbus()
+
             self.pid_tuning_check = False
+
             self.get_logger().info(
-                f"PID {self.pid_tuning_motor} Kp: {self.pid_tuning_value[0]} Ki: {self.pid_tuning_value[1]} Kd: {self.pid_tuning_value[2]}"
+                f"PID {self.pid_tuning_motor} "
+                f"Kp: {self.pid_tuning_value[0]} "
+                f"Ki: {self.pid_tuning_value[1]} "
+                f"Kd: {self.pid_tuning_value[2]}"
             )
 
 
 def main(args=None):
     rclpy.init(args=args)
+
     ired_controller_ = IREDController()
 
     rclpy.spin(ired_controller_)

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import rclpy
-from geometry_msgs.msg import Twist
+from geometry_msgs.msg import TwistStamped
 from ired_msgs.msg import IMUData
 from rclpy.node import Node
 from sensor_msgs.msg import Imu
@@ -18,11 +18,9 @@ class IMU(Node):
         # Initialise ROS Publisher and Subscriber
         self.imu_data_pub = self.create_publisher(Imu, self.imu_data_topic, 10)
         self.rpy_pub = self.create_publisher(IMUData, self.rpy_topic, 10)
-        self.create_subscription(Twist, self.imu_raw_topic, self.fetchIMUCallback, 10)
-
-        # Initialise ROS Timers
-        timer_period = 0.02  # seconds
-        self.timer = self.create_timer(timer_period, self.update_callback)
+        self.create_subscription(
+            TwistStamped, self.imu_raw_topic, self.fetchIMUCallback, 10
+        )
 
         # ROS Logger
         self.get_logger().info(
@@ -32,17 +30,15 @@ class IMU(Node):
             f"IMU : ROS publisher on {self.rpy_topic} [ired_msgs/IMUData]"
         )
         self.get_logger().info(
-            f"IMU : ROS subscriber on {self.imu_raw_topic} [geometry_msgs/Twist]"
+            f"IMU : ROS subscriber on {self.imu_raw_topic} [geometry_msgs/TwistStamped]"
         )
 
     def initial_parameters(self):
-        # Declare parameters
         self.declare_parameter("imu_raw_topic", "/ired/imu/raw")
         self.declare_parameter("imu_data_topic", "/ired/imu/data")
         self.declare_parameter("rpy_topic", "/ired/imu/rollpitchyaw")
-        self.declare_parameter("yaw_scale", 1.1)
+        self.declare_parameter("yaw_scale", 1.0)
 
-        # ROS Parameters
         self.imu_raw_topic = (
             self.get_parameter("imu_raw_topic").get_parameter_value().string_value
         )
@@ -60,80 +56,110 @@ class IMU(Node):
     def initial_variables(self):
         self.imu_data = Imu()
         self.imu_data.header.frame_id = "imu_link"
+
         self.rpy_data = IMUData()
+        self.rpy_data.header.frame_id = "imu_link"
         self.rpy_data.roll = 0.0
         self.rpy_data.pitch = 0.0
         self.rpy_data.yaw = 0.0
+
         self.angular_velocity = [0.0, 0.0, 0.0]
         self.linear_acceleration = [0.0, 0.0, 0.0]
-        self.rpy = [0.0, 0.0, 0.0]
-        self.prev_update_time = self.get_clock().now()
-        self.last_time_imu = self.get_clock().now()
+
         self.X, self.Y, self.Z = 0, 1, 2
-        self.ROLL, self.PITCH, self.YAW = 0, 1, 2
+
+        # Timestamp of the previous IMU sample
+        self.prev_imu_time = None
 
     def fetchIMUCallback(self, msg):
-        self.last_time_imu = self.get_clock().now()
-        self.angular_velocity[self.X] = msg.angular.x
-        self.angular_velocity[self.Y] = msg.angular.y
-        self.angular_velocity[self.Z] = msg.angular.z
-        self.linear_acceleration[self.X] = msg.linear.x
-        self.linear_acceleration[self.Y] = msg.linear.y
-        self.linear_acceleration[self.Z] = msg.linear.z
+        current_time = rclpy.time.Time.from_msg(msg.header.stamp)
+
+        # First IMU sample.
+        # We need two timestamps before we can calculate dt.
+        if self.prev_imu_time is None:
+            self.prev_imu_time = current_time
+
+            self.angular_velocity[self.X] = msg.twist.angular.x
+            self.angular_velocity[self.Y] = msg.twist.angular.y
+            self.angular_velocity[self.Z] = msg.twist.angular.z
+
+            self.linear_acceleration[self.X] = msg.twist.linear.x
+            self.linear_acceleration[self.Y] = msg.twist.linear.y
+            self.linear_acceleration[self.Z] = msg.twist.linear.z
+
+            self.calculateIMU()
+
+            self.imu_data.header.stamp = msg.header.stamp
+            self.rpy_data.header.stamp = msg.header.stamp
+
+            self.rpy_pub.publish(self.rpy_data)
+            self.imu_data_pub.publish(self.imu_data)
+
+            return
+
+        # Calculate the actual time between IMU samples
+        diff_time = current_time - self.prev_imu_time
+        self.prev_imu_time = current_time
+
+        # Ignore invalid timestamps
+        if diff_time.nanoseconds <= 0:
+            self.get_logger().warn("IMU timestamp went backwards or did not advance")
+            return
+
+        # Read new IMU data
+        self.angular_velocity[self.X] = msg.twist.angular.x
+        self.angular_velocity[self.Y] = msg.twist.angular.y
+        self.angular_velocity[self.Z] = msg.twist.angular.z
+
+        self.linear_acceleration[self.X] = msg.twist.linear.x
+        self.linear_acceleration[self.Y] = msg.twist.linear.y
+        self.linear_acceleration[self.Z] = msg.twist.linear.z
+
+        # Integrate using the actual IMU sample interval
+        self.calculateRPY(diff_time)
+
+        # Calculate output IMU message
+        self.calculateIMU()
+
+        # Both messages use the exact same sensor timestamp
+        self.imu_data.header.stamp = msg.header.stamp
+        self.rpy_data.header.stamp = msg.header.stamp
+
+        # Publish
+        self.rpy_pub.publish(self.rpy_data)
+        self.imu_data_pub.publish(self.imu_data)
 
     def calculateRPY(self, diff_time):
-        self.rpy_data.roll += self.DEG2RAD(
-            (self.angular_velocity[self.X] * diff_time.nanoseconds / 1e9)
-        )
-        self.rpy_data.pitch += self.DEG2RAD(
-            (self.angular_velocity[self.Y] * diff_time.nanoseconds / 1e9)
-        )
+        dt = diff_time.nanoseconds / 1e9
+
+        self.rpy_data.roll += self.DEG2RAD(self.angular_velocity[self.X] * dt)
+
+        self.rpy_data.pitch += self.DEG2RAD(self.angular_velocity[self.Y] * dt)
+
         self.rpy_data.yaw += self.DEG2RAD(
-            (
-                self.angular_velocity[self.Z]
-                * self.yaw_scale
-                * diff_time.nanoseconds
-                / 1e9
-            )
+            self.angular_velocity[self.Z] * self.yaw_scale * dt
         )
 
     def calculateIMU(self):
         qx, qy, qz, qw = quaternion_from_euler(0.0, 0.0, self.rpy_data.yaw)
+
         self.imu_data.orientation.x = qx
         self.imu_data.orientation.y = qy
         self.imu_data.orientation.z = qz
         self.imu_data.orientation.w = qw
+
         self.imu_data.angular_velocity.x = self.DEG2RAD(self.angular_velocity[self.X])
         self.imu_data.angular_velocity.y = self.DEG2RAD(self.angular_velocity[self.Y])
         self.imu_data.angular_velocity.z = self.DEG2RAD(self.angular_velocity[self.Z])
+
         self.imu_data.linear_acceleration.x = self.linear_acceleration[self.X]
         self.imu_data.linear_acceleration.y = self.linear_acceleration[self.Y]
         self.imu_data.linear_acceleration.z = self.linear_acceleration[self.Z]
 
-    def update_callback(self):
-        time_now = self.get_clock().now()
-        duration = time_now - self.prev_update_time
-        self.prev_update_time = time_now
-
-        if (time_now - self.last_time_imu).nanoseconds / 1e9 > 1.0:
-            self.angular_velocity[self.X] = 0.0
-            self.angular_velocity[self.Y] = 0.0
-            self.angular_velocity[self.Z] = 0.0
-            self.linear_acceleration[self.X] = 0.0
-            self.linear_acceleration[self.Y] = 0.0
-            self.linear_acceleration[self.Z] = 0.0
-
-        self.calculateRPY(duration)
-        self.rpy_pub.publish(self.rpy_data)
-        # self.get_logger().info(f"r: {self.rpy_data.roll}, p: {self.rpy_data.pitch}, y: {self.rpy_data.yaw}")
-
-        self.calculateIMU()
-        self.imu_data.header.stamp = time_now.to_msg()
-        self.imu_data_pub.publish(self.imu_data)
-
 
 def main(args=None):
     rclpy.init(args=args)
+
     imu_node = IMU()
 
     rclpy.spin(imu_node)

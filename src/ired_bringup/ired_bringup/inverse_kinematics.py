@@ -25,7 +25,7 @@ class INVERSEKINEMATICS(Node):
         )
 
         # Initialise ROS Timers
-        timer_period = 0.02  # seconds
+        timer_period = 0.04  # 25 Hz
         self.timer = self.create_timer(timer_period, self.update_callback)
 
         # ROS Logger
