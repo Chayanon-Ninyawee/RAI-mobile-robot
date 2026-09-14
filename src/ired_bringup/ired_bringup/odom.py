@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-from math import cos, isnan, sin
+from collections import deque
+from math import cos, isnan, pi, sin
 
 import rclpy
 from geometry_msgs.msg import TransformStamped, TwistStamped
@@ -170,6 +171,12 @@ class ODOM(Node):
         # Timestamp of the previous /ired/speed sample
         self.prev_speed_time = None
 
+        # History of:
+        # (timestamp_ns, x, y, yaw)
+        #
+        # Used to interpolate the odom pose at the exact LiDAR timestamp.
+        self.odom_history = deque(maxlen=20)
+
         # Latest sensor data
         self.wheel_speed_cmd = [0.0, 0.0, 0.0, 0.0]
         self.rpy_data = IMUData()
@@ -205,21 +212,42 @@ class ODOM(Node):
             self.linear_y = msg.twist.linear.y
             self.angular_z = msg.twist.angular.z
 
+            # Store the initial pose.
+            self.odom_history.append(
+                (
+                    current_time.nanoseconds,
+                    self.odom_pose[self.X],
+                    self.odom_pose[self.Y],
+                    self.odom_pose[self.Z],
+                )
+            )
+
             return
 
         diff_time = current_time - self.prev_speed_time
-        self.prev_speed_time = current_time
 
         # Ignore invalid timestamps.
         if diff_time.nanoseconds <= 0:
             self.get_logger().warn("Received /ired/speed with invalid timestamp")
             return
 
+        self.prev_speed_time = current_time
+
         self.linear_x = msg.twist.linear.x
         self.linear_y = msg.twist.linear.y
         self.angular_z = msg.twist.angular.z
 
         self.updateOdometry(diff_time)
+
+        # Store the odometry pose at this exact timestamp.
+        self.odom_history.append(
+            (
+                current_time.nanoseconds,
+                self.odom_pose[self.X],
+                self.odom_pose[self.Y],
+                self.odom_pose[self.Z],
+            )
+        )
 
         # Use the sensor sample timestamp everywhere.
         self.odom_data.header.stamp = msg.header.stamp
@@ -230,41 +258,120 @@ class ODOM(Node):
         self.joint_states.header.stamp = msg.header.stamp
         self.joint_states_pub.publish(self.joint_states)
 
-        # DO NOT publish odom TF here.
-        #
-        # TF is now published from fetchScanCallback()
-        # so that Cartographer only receives odom TF when
-        # a LiDAR scan arrives.
+        # TF is published from fetchScanCallback().
+        # This allows the TF pose to be interpolated to the
+        # exact LiDAR timestamp.
 
     def fetchScanCallback(self, msg):
         if not self.odom_tf_publish:
             return
 
-        # We need an odometry sample before we can publish TF.
-        if self.prev_speed_time is None:
+        if len(self.odom_history) < 2:
             return
 
-        # Publish the latest odom pose when the LiDAR scan arrives.
-        #
-        # IMPORTANT:
-        # The pose is the latest integrated odom pose,
-        # but the TF timestamp is the LiDAR scan timestamp.
+        scan_time = rclpy.time.Time.from_msg(msg.header.stamp).nanoseconds
+
+        pose = self.interpolatePose(scan_time)
+
+        if pose is None:
+            return
+
+        x, y, yaw = pose
+
+        qx, qy, qz, qw = quaternion_from_euler(
+            0.0,
+            0.0,
+            yaw,
+        )
+
         odom_tf = TransformStamped()
 
+        # EXACT LiDAR timestamp
         odom_tf.header.stamp = msg.header.stamp
         odom_tf.header.frame_id = "odom"
         odom_tf.child_frame_id = "base_footprint"
 
-        odom_tf.transform.translation.x = self.odom_data.pose.pose.position.x
-        odom_tf.transform.translation.y = self.odom_data.pose.pose.position.y
-        odom_tf.transform.translation.z = self.odom_data.pose.pose.position.z
+        odom_tf.transform.translation.x = x
+        odom_tf.transform.translation.y = y
+        odom_tf.transform.translation.z = 0.0
 
-        odom_tf.transform.rotation = self.odom_data.pose.pose.orientation
+        odom_tf.transform.rotation.x = qx
+        odom_tf.transform.rotation.y = qy
+        odom_tf.transform.rotation.z = qz
+        odom_tf.transform.rotation.w = qw
 
         odom_tf_msg = TFMessage()
         odom_tf_msg.transforms.append(odom_tf)
 
         self.tf_pub.publish(odom_tf_msg)
+
+    def interpolatePose(self, timestamp_ns):
+        """
+        Interpolate odometry pose at timestamp_ns.
+
+        Finds two odom samples:
+
+            previous <= timestamp <= next
+
+        and linearly interpolates x/y/yaw between them.
+        """
+
+        previous = None
+        next_pose = None
+
+        for sample in self.odom_history:
+            sample_time = sample[0]
+
+            if sample_time <= timestamp_ns:
+                previous = sample
+
+            if sample_time >= timestamp_ns:
+                next_pose = sample
+                break
+
+        # No sample at or after the requested timestamp.
+        #
+        # This means the LiDAR timestamp is newer than the newest
+        # odom sample. We do not extrapolate.
+        if previous is None or next_pose is None:
+            return None
+
+        # Exact timestamp match.
+        if previous[0] == next_pose[0]:
+            return (
+                previous[1],
+                previous[2],
+                previous[3],
+            )
+
+        t0 = previous[0]
+        t1 = next_pose[0]
+
+        ratio = (timestamp_ns - t0) / (t1 - t0)
+
+        x0 = previous[1]
+        y0 = previous[2]
+        yaw0 = previous[3]
+
+        x1 = next_pose[1]
+        y1 = next_pose[2]
+        yaw1 = next_pose[3]
+
+        x = x0 + (x1 - x0) * ratio
+        y = y0 + (y1 - y0) * ratio
+
+        # Interpolate yaw through the shortest angular path.
+        yaw_diff = yaw1 - yaw0
+
+        while yaw_diff > pi:
+            yaw_diff -= 2.0 * pi
+
+        while yaw_diff < -pi:
+            yaw_diff += 2.0 * pi
+
+        yaw = yaw0 + yaw_diff * ratio
+
+        return x, y, yaw
 
     def updateOdometry(self, diff_time):
         step_time = diff_time.nanoseconds / 1e9
