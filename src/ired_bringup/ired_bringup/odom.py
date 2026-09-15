@@ -258,20 +258,16 @@ class ODOM(Node):
         self.joint_states.header.stamp = msg.header.stamp
         self.joint_states_pub.publish(self.joint_states)
 
-        # TF is published from fetchScanCallback().
-        # This allows the TF pose to be interpolated to the
-        # exact LiDAR timestamp.
-
     def fetchScanCallback(self, msg):
         if not self.odom_tf_publish:
             return
 
-        if len(self.odom_history) < 2:
+        if len(self.odom_history) == 0:
             return
 
         scan_time = rclpy.time.Time.from_msg(msg.header.stamp).nanoseconds
 
-        pose = self.interpolatePose(scan_time)
+        pose = self.getPoseAtTime(scan_time)
 
         if pose is None:
             return
@@ -286,7 +282,7 @@ class ODOM(Node):
 
         odom_tf = TransformStamped()
 
-        # EXACT LiDAR timestamp
+        # Use the exact LiDAR timestamp.
         odom_tf.header.stamp = msg.header.stamp
         odom_tf.header.frame_id = "odom"
         odom_tf.child_frame_id = "base_footprint"
@@ -305,17 +301,69 @@ class ODOM(Node):
 
         self.tf_pub.publish(odom_tf_msg)
 
-    def interpolatePose(self, timestamp_ns):
+    def getPoseAtTime(self, timestamp_ns):
         """
-        Interpolate odometry pose at timestamp_ns.
+        Get the odom pose at timestamp_ns.
 
-        Finds two odom samples:
+        Cases:
 
-            previous <= timestamp <= next
+        1. timestamp is between two odom samples:
+           interpolate.
 
-        and linearly interpolates x/y/yaw between them.
+        2. timestamp exactly matches an odom sample:
+           return that sample.
+
+        3. timestamp is newer than the newest odom sample:
+           extrapolate using the latest velocity.
+
+        4. timestamp is older than the oldest odom sample:
+           return None.
         """
 
+        oldest = self.odom_history[0]
+        newest = self.odom_history[-1]
+
+        oldest_time = oldest[0]
+        newest_time = newest[0]
+
+        # ---------------------------------------------------------
+        # Timestamp is older than our history.
+        # ---------------------------------------------------------
+        if timestamp_ns < oldest_time:
+            return None
+
+        # ---------------------------------------------------------
+        # Timestamp is newer than the newest odom sample.
+        #
+        # Extrapolate using the latest velocity and latest yaw.
+        # ---------------------------------------------------------
+        if timestamp_ns > newest_time:
+            dt = (timestamp_ns - newest_time) / 1e9
+
+            x0 = newest[1]
+            y0 = newest[2]
+            yaw0 = newest[3]
+
+            # Use the latest IMU yaw for the current orientation.
+            yaw = self.rpy_data.yaw
+
+            # Extrapolate the body-frame velocity into the world frame.
+            delta_x = (self.linear_x * cos(yaw) - self.linear_y * sin(yaw)) * dt
+
+            delta_y = (self.linear_x * sin(yaw) + self.linear_y * cos(yaw)) * dt
+
+            x = x0 + delta_x
+            y = y0 + delta_y
+
+            return x, y, yaw
+
+        # ---------------------------------------------------------
+        # Timestamp is inside the history.
+        #
+        # Find:
+        #
+        # previous <= timestamp <= next
+        # ---------------------------------------------------------
         previous = None
         next_pose = None
 
@@ -329,10 +377,6 @@ class ODOM(Node):
                 next_pose = sample
                 break
 
-        # No sample at or after the requested timestamp.
-        #
-        # This means the LiDAR timestamp is newer than the newest
-        # odom sample. We do not extrapolate.
         if previous is None or next_pose is None:
             return None
 
