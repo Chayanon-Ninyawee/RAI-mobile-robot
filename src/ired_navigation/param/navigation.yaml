@@ -161,17 +161,17 @@ controller_server:
       # Omniwheel robot
       # ============================================================
 
-      min_vel_x: -1.5
-      max_vel_x: 1.5
+      min_vel_x: -0.8
+      max_vel_x: 0.8
 
-      min_vel_y: -1.5
-      max_vel_y: 1.5
+      min_vel_y: -0.8
+      max_vel_y: 0.8
 
       min_vel_theta: -0.8
       max_vel_theta: 0.8
 
       min_speed_xy: 0.0
-      max_speed_xy: 1.5
+      max_speed_xy: 0.8
 
       min_speed_theta: 0.0
       max_speed_theta: 0.8
@@ -530,8 +530,8 @@ velocity_smoother:
     feedback: OPEN_LOOP
 
     # vx, vy, wz
-    max_velocity: [1.5, 1.5, 0.8]
-    min_velocity: [-1.5, -1.5, -0.8]
+    max_velocity: [0.8, 0.8, 0.8]
+    min_velocity: [-0.8, -0.8, -0.8]
 
     deadband_velocity: [0.0, 0.0, 0.0]
 
