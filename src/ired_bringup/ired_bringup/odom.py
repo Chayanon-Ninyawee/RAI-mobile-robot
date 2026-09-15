@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
-from collections import deque
-from math import cos, isnan, pi, sin
+from math import cos, isnan, sin
 
 import rclpy
 from geometry_msgs.msg import TransformStamped, TwistStamped
 from ired_msgs.msg import IMUData, MotorData
 from nav_msgs.msg import Odometry
 from rclpy.node import Node
-from sensor_msgs.msg import JointState, LaserScan
+from sensor_msgs.msg import JointState
 from tf2_msgs.msg import TFMessage
 from tf_transformations import quaternion_from_euler
 
@@ -39,8 +38,6 @@ class ODOM(Node):
             TwistStamped, self.robot_speed_topic, self.fetchRobotSpeedCallback, 10
         )
 
-        self.create_subscription(LaserScan, self.scan_topic, self.fetchScanCallback, 10)
-
         # ROS Logger
         self.get_logger().info(
             f"ODOM : ROS publisher on {self.odom_topic} [nav_msgs/Odometry]"
@@ -57,9 +54,6 @@ class ODOM(Node):
         self.get_logger().info(
             f"ODOM : ROS subscriber on {self.robot_speed_topic} [geometry_msgs/TwistStamped]"
         )
-        self.get_logger().info(
-            f"ODOM : ROS subscriber on {self.scan_topic} [sensor_msgs/LaserScan]"
-        )
 
     def initial_parameters(self):
         # Declare parameters
@@ -68,7 +62,6 @@ class ODOM(Node):
         self.declare_parameter("motor_data_topic", "/ired/motor/data")
         self.declare_parameter("rpy_topic", "/ired/imu/rollpitchyaw")
         self.declare_parameter("robot_speed_topic", "/ired/speed")
-        self.declare_parameter("scan_topic", "/scan_filtered")
         self.declare_parameter("odom_tf_publish", True)
         self.declare_parameter("rpm_to_mps", 0.00664970445)
         self.declare_parameter("wheel_radius", 0.0635)
@@ -92,10 +85,6 @@ class ODOM(Node):
 
         self.robot_speed_topic = (
             self.get_parameter("robot_speed_topic").get_parameter_value().string_value
-        )
-
-        self.scan_topic = (
-            self.get_parameter("scan_topic").get_parameter_value().string_value
         )
 
         self.odom_tf_publish = (
@@ -171,12 +160,6 @@ class ODOM(Node):
         # Timestamp of the previous /ired/speed sample
         self.prev_speed_time = None
 
-        # History of:
-        # (timestamp_ns, x, y, yaw)
-        #
-        # Used to interpolate the odom pose at the exact LiDAR timestamp.
-        self.odom_history = deque(maxlen=20)
-
         # Latest sensor data
         self.wheel_speed_cmd = [0.0, 0.0, 0.0, 0.0]
         self.rpy_data = IMUData()
@@ -212,16 +195,6 @@ class ODOM(Node):
             self.linear_y = msg.twist.linear.y
             self.angular_z = msg.twist.angular.z
 
-            # Store the initial pose.
-            self.odom_history.append(
-                (
-                    current_time.nanoseconds,
-                    self.odom_pose[self.X],
-                    self.odom_pose[self.Y],
-                    self.odom_pose[self.Z],
-                )
-            )
-
             return
 
         diff_time = current_time - self.prev_speed_time
@@ -233,62 +206,43 @@ class ODOM(Node):
 
         self.prev_speed_time = current_time
 
+        # Store latest velocity.
         self.linear_x = msg.twist.linear.x
         self.linear_y = msg.twist.linear.y
         self.angular_z = msg.twist.angular.z
 
+        # Update odometry.
         self.updateOdometry(diff_time)
 
-        # Store the odometry pose at this exact timestamp.
-        self.odom_history.append(
-            (
-                current_time.nanoseconds,
-                self.odom_pose[self.X],
-                self.odom_pose[self.Y],
-                self.odom_pose[self.Z],
-            )
-        )
-
-        # Use the sensor sample timestamp everywhere.
+        # Use the /ired/speed timestamp everywhere.
         self.odom_data.header.stamp = msg.header.stamp
         self.odom_data_pub.publish(self.odom_data)
 
+        # Update and publish wheel joint state.
         self.updateJoint()
 
         self.joint_states.header.stamp = msg.header.stamp
         self.joint_states_pub.publish(self.joint_states)
 
-    def fetchScanCallback(self, msg):
-        if not self.odom_tf_publish:
-            return
+        # Publish odom -> base_footprint TF immediately.
+        if self.odom_tf_publish:
+            self.publishOdomTF(msg.header.stamp)
 
-        if len(self.odom_history) == 0:
-            return
-
-        scan_time = rclpy.time.Time.from_msg(msg.header.stamp).nanoseconds
-
-        pose = self.getPoseAtTime(scan_time)
-
-        if pose is None:
-            return
-
-        x, y, yaw = pose
-
+    def publishOdomTF(self, stamp):
         qx, qy, qz, qw = quaternion_from_euler(
             0.0,
             0.0,
-            yaw,
+            self.odom_pose[self.Z],
         )
 
         odom_tf = TransformStamped()
 
-        # Use the exact LiDAR timestamp.
-        odom_tf.header.stamp = msg.header.stamp
+        odom_tf.header.stamp = stamp
         odom_tf.header.frame_id = "odom"
         odom_tf.child_frame_id = "base_footprint"
 
-        odom_tf.transform.translation.x = x
-        odom_tf.transform.translation.y = y
+        odom_tf.transform.translation.x = self.odom_pose[self.X]
+        odom_tf.transform.translation.y = self.odom_pose[self.Y]
         odom_tf.transform.translation.z = 0.0
 
         odom_tf.transform.rotation.x = qx
@@ -300,122 +254,6 @@ class ODOM(Node):
         odom_tf_msg.transforms.append(odom_tf)
 
         self.tf_pub.publish(odom_tf_msg)
-
-    def getPoseAtTime(self, timestamp_ns):
-        """
-        Get the odom pose at timestamp_ns.
-
-        Cases:
-
-        1. timestamp is between two odom samples:
-           interpolate.
-
-        2. timestamp exactly matches an odom sample:
-           return that sample.
-
-        3. timestamp is newer than the newest odom sample:
-           extrapolate using the latest velocity.
-
-        4. timestamp is older than the oldest odom sample:
-           return None.
-        """
-
-        oldest = self.odom_history[0]
-        newest = self.odom_history[-1]
-
-        oldest_time = oldest[0]
-        newest_time = newest[0]
-
-        # ---------------------------------------------------------
-        # Timestamp is older than our history.
-        # ---------------------------------------------------------
-        if timestamp_ns < oldest_time:
-            return None
-
-        # ---------------------------------------------------------
-        # Timestamp is newer than the newest odom sample.
-        #
-        # Extrapolate using the latest velocity and latest yaw.
-        # ---------------------------------------------------------
-        if timestamp_ns > newest_time:
-            dt = (timestamp_ns - newest_time) / 1e9
-
-            x0 = newest[1]
-            y0 = newest[2]
-            yaw0 = newest[3]
-
-            # Use the latest IMU yaw for the current orientation.
-            yaw = self.rpy_data.yaw
-
-            # Extrapolate the body-frame velocity into the world frame.
-            delta_x = (self.linear_x * cos(yaw) - self.linear_y * sin(yaw)) * dt
-
-            delta_y = (self.linear_x * sin(yaw) + self.linear_y * cos(yaw)) * dt
-
-            x = x0 + delta_x
-            y = y0 + delta_y
-
-            return x, y, yaw
-
-        # ---------------------------------------------------------
-        # Timestamp is inside the history.
-        #
-        # Find:
-        #
-        # previous <= timestamp <= next
-        # ---------------------------------------------------------
-        previous = None
-        next_pose = None
-
-        for sample in self.odom_history:
-            sample_time = sample[0]
-
-            if sample_time <= timestamp_ns:
-                previous = sample
-
-            if sample_time >= timestamp_ns:
-                next_pose = sample
-                break
-
-        if previous is None or next_pose is None:
-            return None
-
-        # Exact timestamp match.
-        if previous[0] == next_pose[0]:
-            return (
-                previous[1],
-                previous[2],
-                previous[3],
-            )
-
-        t0 = previous[0]
-        t1 = next_pose[0]
-
-        ratio = (timestamp_ns - t0) / (t1 - t0)
-
-        x0 = previous[1]
-        y0 = previous[2]
-        yaw0 = previous[3]
-
-        x1 = next_pose[1]
-        y1 = next_pose[2]
-        yaw1 = next_pose[3]
-
-        x = x0 + (x1 - x0) * ratio
-        y = y0 + (y1 - y0) * ratio
-
-        # Interpolate yaw through the shortest angular path.
-        yaw_diff = yaw1 - yaw0
-
-        while yaw_diff > pi:
-            yaw_diff -= 2.0 * pi
-
-        while yaw_diff < -pi:
-            yaw_diff += 2.0 * pi
-
-        yaw = yaw0 + yaw_diff * ratio
-
-        return x, y, yaw
 
     def updateOdometry(self, diff_time):
         step_time = diff_time.nanoseconds / 1e9
@@ -432,12 +270,17 @@ class ODOM(Node):
         self.odom_pose[self.Y] += delta_y
         self.odom_pose[self.Z] = theta
 
+        # Update odometry position
         self.odom_data.pose.pose.position.x = self.odom_pose[self.X]
         self.odom_data.pose.pose.position.y = self.odom_pose[self.Y]
         self.odom_data.pose.pose.position.z = 0.0
 
         # Update odometry orientation
-        qx, qy, qz, qw = quaternion_from_euler(0.0, 0.0, self.odom_pose[self.Z])
+        qx, qy, qz, qw = quaternion_from_euler(
+            0.0,
+            0.0,
+            self.odom_pose[self.Z],
+        )
 
         self.odom_data.pose.pose.orientation.x = qx
         self.odom_data.pose.pose.orientation.y = qy
