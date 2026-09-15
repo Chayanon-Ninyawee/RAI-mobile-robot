@@ -232,7 +232,7 @@ controller_server:
       PathDist.scale: 60.0
 
       # Only strongly cares about orientation near the goal
-      RotateToGoal.scale: 5.0
+      RotateToGoal.scale: 1.0
       RotateToGoal.slowing_factor: 5.0
       RotateToGoal.lookahead_time: -1.0
 
@@ -275,17 +275,17 @@ local_costmap:
 
           data_type: LaserScan
 
-          obstacle_max_range: 2.5
-          obstacle_min_range: 0.0
-
           raytrace_max_range: 3.0
           raytrace_min_range: 0.0
+
+          obstacle_max_range: 3.0
+          obstacle_min_range: 0.0
 
       inflation_layer:
         plugin: nav2_costmap_2d::InflationLayer
 
         # Gives DWB a useful safety buffer around obstacles.
-        inflation_radius: 0.45
+        inflation_radius: 0.35
         cost_scaling_factor: 5.0
 
       always_send_full_costmap: true
