@@ -227,7 +227,7 @@ controller_server:
         - GoalDist
 
       # Stronger obstacle avoidance
-      BaseObstacle.scale: 1.0
+      BaseObstacle.scale: 5.0
 
       # Continue making progress toward the path/goal
       PathDist.scale: 60.0
@@ -287,8 +287,8 @@ local_costmap:
         plugin: nav2_costmap_2d::InflationLayer
 
         # Gives DWB a useful safety buffer around obstacles.
-        inflation_radius: 0.45
-        cost_scaling_factor: 5.0
+        inflation_radius: 0.65
+        cost_scaling_factor: 3.0
 
       always_send_full_costmap: true
 
