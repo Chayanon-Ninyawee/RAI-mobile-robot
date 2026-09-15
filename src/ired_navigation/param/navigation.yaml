@@ -226,10 +226,10 @@ controller_server:
         - PathDist
 
       # Stronger obstacle avoidance
-      BaseObstacle.scale: 1.0
+      BaseObstacle.scale: 10.0
 
       # Continue making progress toward the path/goal
-      PathDist.scale: 100.0
+      PathDist.scale: 60.0
 
       # Only strongly cares about orientation near the goal
       RotateToGoal.scale: 32.0
