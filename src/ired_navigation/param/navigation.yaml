@@ -230,8 +230,8 @@ controller_server:
       BaseObstacle.scale: 1.0
 
       # Continue making progress toward the path/goal
-      PathDist.scale: 60.0
-      GoalDist.scale: 10.0
+      PathDist.scale: 80.0
+      GoalDist.scale: 5.0
 
       # Only strongly cares about orientation near the goal
       RotateToGoal.scale: 32.0
