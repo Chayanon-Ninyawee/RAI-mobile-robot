@@ -192,11 +192,11 @@ controller_server:
       # Sampling
       # ============================================================
 
-      vx_samples: 10
-      vy_samples: 10
-      vtheta_samples: 12
+      vx_samples: 8
+      vy_samples: 8
+      vtheta_samples: 10
 
-      sim_time: 1.0
+      sim_time: 0.6
 
       linear_granularity: 0.05
       angular_granularity: 0.025
@@ -227,7 +227,7 @@ controller_server:
         - GoalDist
 
       # Stronger obstacle avoidance
-      BaseObstacle.scale: 5.0
+      BaseObstacle.scale: 1.0
 
       # Continue making progress toward the path/goal
       PathDist.scale: 60.0
@@ -287,16 +287,16 @@ local_costmap:
         plugin: nav2_costmap_2d::InflationLayer
 
         # Gives DWB a useful safety buffer around obstacles.
-        inflation_radius: 0.65
-        cost_scaling_factor: 3.0
+        inflation_radius: 0.45
+        cost_scaling_factor: 5.0
 
       always_send_full_costmap: true
 
 global_costmap:
   global_costmap:
     ros__parameters:
-      update_frequency: 1.0
-      publish_frequency: 1.0
+      update_frequency: 5.0
+      publish_frequency: 2.0
 
       global_frame: map
       robot_base_frame: base_footprint
