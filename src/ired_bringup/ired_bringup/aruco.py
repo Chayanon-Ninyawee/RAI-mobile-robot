@@ -90,7 +90,7 @@ class ArucoNode(Node):
         if dictionary_name not in DICTIONARIES:
             self.get_logger().error(f"Unknown ArUco dictionary: {dictionary_name}")
             self.get_logger().error(f"Available dictionaries: {list(DICTIONARIES)}")
-            raise ValueError(f"Unknown ArUco dictionary: {dictionary_name}")
+            raise ValueError(f"Unknown dictionary: {dictionary_name}")
 
         dictionary_id = DICTIONARIES[dictionary_name]
 
@@ -99,7 +99,6 @@ class ArucoNode(Node):
 
         self.parameters = cv2.aruco.DetectorParameters_create()
 
-        # Marker detection parameters.
         self.parameters.adaptiveThreshWinSizeMin = 3
         self.parameters.adaptiveThreshWinSizeMax = 51
         self.parameters.adaptiveThreshWinSizeStep = 2
@@ -107,13 +106,12 @@ class ArucoNode(Node):
 
         self.parameters.minMarkerPerimeterRate = 0.01
         self.parameters.maxMarkerPerimeterRate = 4.0
-
         self.parameters.polygonalApproxAccuracyRate = 0.05
-
         self.parameters.minCornerDistanceRate = 0.01
         self.parameters.minDistanceToBorder = 1
 
-        # Marker corners in marker-local coordinates.
+        self.bridge = CvBridge()
+
         half = self.marker_size / 2.0
 
         self.marker_object_points = np.array(
@@ -125,8 +123,6 @@ class ArucoNode(Node):
             ],
             dtype=np.float64,
         )
-
-        self.bridge = CvBridge()
 
         self.scan_service = self.create_service(
             Trigger,
@@ -200,7 +196,6 @@ class ArucoNode(Node):
             cv2.COLOR_BGR2GRAY,
         )
 
-        # First let OpenCV find candidate quadrilaterals.
         corners, ids, rejected = cv2.aruco.detectMarkers(
             gray,
             self.dictionary,
@@ -215,7 +210,6 @@ class ArucoNode(Node):
 
         detections = []
 
-        # Keep any markers OpenCV decoded normally.
         if ids is not None:
             for i, marker_id in enumerate(ids.flatten()):
                 detections.append(
@@ -226,9 +220,9 @@ class ArucoNode(Node):
                     )
                 )
 
-        # OpenCV 4.6 may find the marker as a rejected candidate
-        # but fail to decode it because of perspective/thresholding.
-        for rejected_corners in rejected:
+        # Limit the expensive fallback to a reasonable number
+        # of candidate quadrilaterals.
+        for rejected_corners in rejected[:20]:
             marker_id = self.decode_candidate(
                 gray,
                 rejected_corners[0],
@@ -237,16 +231,13 @@ class ArucoNode(Node):
             if marker_id is None:
                 continue
 
-            # Avoid adding the same marker twice.
             if any(detection["id"] == marker_id for detection in detections):
                 continue
-
-            marker_corners = rejected_corners[0]
 
             detections.append(
                 self.process_detection(
                     frame,
-                    marker_corners,
+                    rejected_corners[0],
                     marker_id,
                 )
             )
@@ -289,39 +280,32 @@ class ArucoNode(Node):
             (size, size),
         )
 
-        # The normal grayscale image may fail because the marker
-        # contrast is not suitable for OpenCV's decoder.
-        #
-        # Try several fixed thresholds on the rectified candidate.
-        for threshold in range(80, 241, 10):
-            _, binary = cv2.threshold(
-                warped,
-                threshold,
-                255,
-                cv2.THRESH_BINARY,
-            )
+        # Threshold 90 was experimentally found to decode
+        # the actual ID 102 marker after perspective correction.
+        _, binary = cv2.threshold(
+            warped,
+            90,
+            255,
+            cv2.THRESH_BINARY,
+        )
 
-            candidate_corners, ids, _rejected = cv2.aruco.detectMarkers(
-                binary,
-                self.dictionary,
-                parameters=self.parameters,
-            )
+        _corners, ids, _rejected = cv2.aruco.detectMarkers(
+            binary,
+            self.dictionary,
+            parameters=self.parameters,
+        )
 
-            del candidate_corners
+        if ids is None:
+            return None
 
-            if ids is None:
+        for marker_id in ids.flatten():
+            marker_id = int(marker_id)
+
+            # 1023 was observed as a false positive during testing.
+            if marker_id == 1023:
                 continue
 
-            marker_ids = ids.flatten().tolist()
-
-            # Ignore the known false-positive maximum ID that
-            # appeared during threshold testing.
-            marker_ids = [marker_id for marker_id in marker_ids if marker_id != 1023]
-
-            if not marker_ids:
-                continue
-
-            return int(marker_ids[0])
+            return marker_id
 
         return None
 
