@@ -233,11 +233,11 @@ controller_server:
       PathDist.scale: 60.0
 
       # Only strongly cares about orientation near the goal
-      RotateToGoal.scale: 32.0
+      RotateToGoal.scale: 1.0
       RotateToGoal.slowing_factor: 5.0
       RotateToGoal.lookahead_time: -1.0
 
-      Twirling.scale: 10.0
+      Twirling.scale: 1.0
 
     enable_stamped_cmd_vel: true
 
