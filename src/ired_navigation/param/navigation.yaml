@@ -237,7 +237,7 @@ controller_server:
       RotateToGoal.slowing_factor: 5.0
       RotateToGoal.lookahead_time: -1.0
 
-      Twirling.scale: 1.0
+      # Twirling.scale: 1.0
 
     enable_stamped_cmd_vel: true
 
