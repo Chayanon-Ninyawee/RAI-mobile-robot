@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3cmakeqq
 
 import json
 import math
@@ -151,7 +151,6 @@ class ArucoNode(Node):
 
         try:
             frame = self.camera.capture()
-            cv2.imwrite("/tmp/aruco_test.jpg", frame)
         except RuntimeError as e:
             response.success = False
             response.message = str(e)
