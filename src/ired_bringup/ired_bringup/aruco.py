@@ -43,7 +43,7 @@ class ArucoNode(Node):
         self.declare_parameter("camera_index", 0)
         self.declare_parameter("frame_width", 640)
         self.declare_parameter("frame_height", 480)
-        self.declare_parameter("warmup_frames", 3)
+        self.declare_parameter("warmup_seconds", 1.0)
 
         self.declare_parameter("marker_size_m", 0.07)
         self.declare_parameter("dictionary", "DICT_ARUCO_ORIGINAL")
@@ -59,7 +59,7 @@ class ArucoNode(Node):
         camera_index = self.get_parameter("camera_index").value
         frame_width = self.get_parameter("frame_width").value
         frame_height = self.get_parameter("frame_height").value
-        warmup_frames = self.get_parameter("warmup_frames").value
+        warmup_seconds = self.get_parameter("warmup_seconds").value
 
         self.marker_size = self.get_parameter("marker_size_m").value
 
@@ -76,7 +76,7 @@ class ArucoNode(Node):
             index=camera_index,
             width=frame_width,
             height=frame_height,
-            warmup_frames=warmup_frames,
+            warmup_seconds=warmup_seconds,
         )
 
         # Camera calibration
