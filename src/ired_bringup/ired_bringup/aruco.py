@@ -196,14 +196,21 @@ class ArucoNode(Node):
             cv2.COLOR_BGR2GRAY,
         )
 
-        corners, ids, rejected = cv2.aruco.detectMarkers(
+        _, thresholded = cv2.threshold(
             gray,
+            200,
+            255,
+            cv2.THRESH_BINARY,
+        )
+
+        corners, ids, rejected = cv2.aruco.detectMarkers(
+            thresholded,
             self.dictionary,
             parameters=self.parameters,
         )
 
         self.get_logger().info(
-            f"ArUco raw detection: "
+            f"ArUco detection: "
             f"ids={None if ids is None else ids.flatten().tolist()}, "
             f"rejected={len(rejected)}"
         )
