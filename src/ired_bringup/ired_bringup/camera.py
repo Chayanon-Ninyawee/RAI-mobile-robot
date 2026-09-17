@@ -4,7 +4,7 @@ import cv2
 
 
 class Camera:
-    def __init__(self, index=0, width=640, height=480, warmup_frames=3):
+    def __init__(self, index=0, width=640, height=480, warmup_frames=10):
         self.index = index
         self.width = width
         self.height = height
