@@ -195,16 +195,21 @@ class ArucoNode(Node):
             cv2.COLOR_BGR2GRAY,
         )
 
-        corners, ids, _rejected = cv2.aruco.detectMarkers(
+        corners, ids, rejected = cv2.aruco.detectMarkers(
             gray,
             self.dictionary,
             parameters=self.parameters,
         )
 
+        self.get_logger().info(
+            f"ArUco raw detection: "
+            f"ids={None if ids is None else ids.flatten().tolist()}, "
+            f"rejected={len(rejected)}"
+        )
+
         if ids is None or len(ids) == 0:
             return []
 
-        # Draw all detected markers on the image.
         cv2.aruco.drawDetectedMarkers(
             frame,
             corners,
@@ -219,7 +224,6 @@ class ArucoNode(Node):
                 dtype=np.float64,
             )
 
-            # Calculate apparent marker size in pixels.
             edge_lengths = []
 
             for j in range(4):
@@ -230,7 +234,12 @@ class ArucoNode(Node):
 
             size_px = float(np.mean(edge_lengths))
 
-            # Estimate marker pose.
+            detection = {
+                "id": int(marker_id),
+                "size_px": size_px,
+            }
+
+            # Try pose estimation, but don't discard the marker if it fails.
             ok, rvec, tvec = cv2.solvePnP(
                 self.marker_object_points,
                 marker_corners,
@@ -238,68 +247,74 @@ class ArucoNode(Node):
                 self.dist_coeffs,
             )
 
-            if not ok:
-                continue
+            if ok:
+                x = float(tvec[0][0])
+                y = float(tvec[1][0])
+                z = float(tvec[2][0])
 
-            x = float(tvec[0][0])
-            y = float(tvec[1][0])
-            z = float(tvec[2][0])
+                distance = math.sqrt(x * x + y * y + z * z)
 
-            distance = math.sqrt(x * x + y * y + z * z)
+                angular_size_rad = 2.0 * math.atan(
+                    size_px / (2.0 * self.camera_matrix[0, 0])
+                )
 
-            # Calculate apparent angular size.
-            angular_size_rad = 2.0 * math.atan(
-                size_px / (2.0 * self.camera_matrix[0, 0])
-            )
+                angular_size_deg = math.degrees(angular_size_rad)
 
-            angular_size_deg = math.degrees(angular_size_rad)
-
-            # Draw the estimated pose axes.
-            cv2.drawFrameAxes(
-                frame,
-                self.camera_matrix,
-                self.dist_coeffs,
-                rvec,
-                tvec,
-                self.marker_size * 0.5,
-            )
-
-            # Draw useful information next to the marker.
-            center = np.mean(marker_corners, axis=0)
-            center_x = int(center[0])
-            center_y = int(center[1])
-
-            label = (
-                f"ID {int(marker_id)} " f"{distance:.2f}m " f"{angular_size_deg:.1f}deg"
-            )
-
-            cv2.putText(
-                frame,
-                label,
-                (center_x, center_y - 10),
-                cv2.FONT_HERSHEY_SIMPLEX,
-                0.5,
-                (0, 255, 0),
-                2,
-                cv2.LINE_AA,
-            )
-
-            detections.append(
-                {
-                    "id": int(marker_id),
-                    "distance_m": distance,
-                    "size_px": size_px,
-                    "angular_size_deg": angular_size_deg,
-                    "position_m": {
-                        "x": x,
-                        "y": y,
-                        "z": z,
-                    },
+                detection["distance_m"] = distance
+                detection["angular_size_deg"] = angular_size_deg
+                detection["position_m"] = {
+                    "x": x,
+                    "y": y,
+                    "z": z,
                 }
-            )
 
-        # Closest first.
-        detections.sort(key=lambda detection: detection["distance_m"])
+                cv2.drawFrameAxes(
+                    frame,
+                    self.camera_matrix,
+                    self.dist_coeffs,
+                    rvec,
+                    tvec,
+                    self.marker_size * 0.5,
+                )
+
+                center = np.mean(
+                    marker_corners,
+                    axis=0,
+                )
+
+                center_x = int(center[0])
+                center_y = int(center[1])
+
+                label = (
+                    f"ID {int(marker_id)} "
+                    f"{distance:.2f}m "
+                    f"{angular_size_deg:.1f}deg"
+                )
+
+                cv2.putText(
+                    frame,
+                    label,
+                    (center_x, center_y - 10),
+                    cv2.FONT_HERSHEY_SIMPLEX,
+                    0.5,
+                    (0, 255, 0),
+                    2,
+                    cv2.LINE_AA,
+                )
+
+            else:
+                self.get_logger().warn(
+                    f"solvePnP failed for marker ID {int(marker_id)}"
+                )
+
+            detections.append(detection)
+
+        detections.sort(
+            key=lambda detection: detection.get(
+                "distance_m",
+                float("inf"),
+            )
+        )
 
         return detections
 
