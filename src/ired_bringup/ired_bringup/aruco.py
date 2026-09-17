@@ -148,6 +148,7 @@ class ArucoNode(Node):
         # Capture one still frame.
         try:
             frame = self.camera.capture()
+            cv2.imwrite("/tmp/aruco_test.jpg", frame)
         except RuntimeError as e:
             response.success = False
             response.message = str(e)
