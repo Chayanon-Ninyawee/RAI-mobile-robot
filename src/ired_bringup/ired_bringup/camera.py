@@ -1,14 +1,22 @@
 #!/usr/bin/env python3
 
+import time
+
 import cv2
 
 
 class Camera:
-    def __init__(self, index=0, width=640, height=480, warmup_frames=10):
+    def __init__(
+        self,
+        index=0,
+        width=640,
+        height=480,
+        warmup_seconds=1.0,
+    ):
         self.index = index
         self.width = width
         self.height = height
-        self.warmup_frames = warmup_frames
+        self.warmup_seconds = warmup_seconds
 
     def capture(self):
         cap = cv2.VideoCapture(self.index, cv2.CAP_V4L2)
@@ -20,11 +28,17 @@ class Camera:
         cap.set(cv2.CAP_PROP_FRAME_WIDTH, self.width)
         cap.set(cv2.CAP_PROP_FRAME_HEIGHT, self.height)
 
-        frame = None
+        deadline = time.monotonic() + self.warmup_seconds
 
-        # Let auto exposure / white balance settle.
-        for _ in range(self.warmup_frames):
+        while time.monotonic() < deadline:
             ret, frame = cap.read()
+
+            if not ret:
+                cap.release()
+                raise RuntimeError("Failed to read camera")
+
+        # Capture the actual frame used by the detector.
+        ret, frame = cap.read()
 
         cap.release()
 
