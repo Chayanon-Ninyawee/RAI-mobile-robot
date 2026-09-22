@@ -220,8 +220,8 @@ controller_server:
       # ============================================================
 
       critics:
-        - RotateToGoal
-        - Twirling
+        # - RotateToGoal
+        # - Twirling
         - Oscillation
         - BaseObstacle
         - PathDist
