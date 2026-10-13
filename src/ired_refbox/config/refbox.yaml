@@ -1,3 +1,4 @@
+# TEAM_CYAN
 ired_refbox:
   ros__parameters:
     refbox_host: "172.16.1.107"
@@ -14,3 +15,20 @@ ired_refbox:
     private_recv_port: 4441
 
     pose_topic: "/amcl_pose"
+# TEAM_MAGENTA
+# ired_refbox:
+#   ros__parameters:
+#     refbox_host: "172.16.1.107"
+#     crypto_key: "randomkey"
+#
+#     team_color: "MAGENTA"
+#     team_name: "TEAM_MAGENTA"
+#     robot_number: 1
+#     peer_name: "Women"
+#
+#     public_send_port: 4444
+#     public_recv_port: 4501
+#     private_send_port: 4447
+#     private_recv_port: 4442
+#
+#     pose_topic: "/amcl_pose"
