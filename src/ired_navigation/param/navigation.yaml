@@ -170,10 +170,10 @@ controller_server:
       min_vel_theta: -1.2
       max_vel_theta: 1.2
 
-      min_speed_xy: 0.0
-      max_speed_xy: 0.8
+      min_speed_xy: 0.05
+      max_speed_xy: 0.80
 
-      min_speed_theta: 0.0
+      min_speed_theta: 0.2
       max_speed_theta: 1.2
 
       # ============================================================
@@ -415,7 +415,7 @@ behavior_server:
     simulate_ahead_time: 2.0
 
     max_rotational_vel: 1.2
-    min_rotational_vel: 0.4
+    min_rotational_vel: 0.2
     rotational_acc_lim: 3.2
 
     enable_stamped_cmd_vel: true
