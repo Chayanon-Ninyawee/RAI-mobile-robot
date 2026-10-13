@@ -130,7 +130,7 @@ controller_server:
     min_y_velocity_threshold: 0.001
     min_theta_velocity_threshold: 0.001
 
-    failure_tolerance: 0.3
+    failure_tolerance: 1.0
 
     progress_checker_plugins:
       - progress_checker
@@ -149,7 +149,7 @@ controller_server:
     goal_checker:
       plugin: nav2_controller::SimpleGoalChecker
       stateful: true
-      xy_goal_tolerance: 0.10
+      xy_goal_tolerance: 0.05
       yaw_goal_tolerance: 0.10
 
     FollowPath:
@@ -194,16 +194,16 @@ controller_server:
 
       vx_samples: 8
       vy_samples: 8
-      vtheta_samples: 10
+      vtheta_samples: 20
 
-      sim_time: 0.6
+      sim_time: 1.0
 
       linear_granularity: 0.05
       angular_granularity: 0.025
 
       transform_tolerance: 0.2
 
-      xy_goal_tolerance: 0.10
+      xy_goal_tolerance: 0.05
       trans_stopped_velocity: 0.05
 
       short_circuit_trajectory_evaluation: true
