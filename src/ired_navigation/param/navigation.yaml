@@ -221,7 +221,6 @@ controller_server:
 
       critics:
         - RotateToGoal
-        - Twirling
         - Oscillation
         - BaseObstacle
         - PathDist
@@ -234,8 +233,6 @@ controller_server:
       RotateToGoal.scale: 15.0
       RotateToGoal.slowing_factor: 5.0
       RotateToGoal.lookahead_time: -1.0
-
-      Twirling.scale: 1.0
 
     enable_stamped_cmd_vel: true
 
