@@ -167,8 +167,8 @@ controller_server:
       min_vel_y: -0.8
       max_vel_y: 0.8
 
-      min_vel_theta: -0.8
-      max_vel_theta: 0.8
+      min_vel_theta: -1.2
+      max_vel_theta: 1.2
 
       min_speed_xy: 0.0
       max_speed_xy: 0.8
@@ -417,7 +417,7 @@ behavior_server:
     transform_timeout: 0.1
     simulate_ahead_time: 2.0
 
-    max_rotational_vel: 1.0
+    max_rotational_vel: 1.2
     min_rotational_vel: 0.4
     rotational_acc_lim: 3.2
 
@@ -531,8 +531,8 @@ velocity_smoother:
     feedback: OPEN_LOOP
 
     # vx, vy, wz
-    max_velocity: [0.8, 0.8, 0.8]
-    min_velocity: [-0.8, -0.8, -0.8]
+    max_velocity: [0.8, 0.8, 1.2]
+    min_velocity: [-0.8, -0.8, -1.2]
 
     deadband_velocity: [0.0, 0.0, 0.0]
 
