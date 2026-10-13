@@ -280,10 +280,10 @@ class IREDController(Node):
 
     def readInputRegs(self, received_data):
         if received_data:
-            self.motor_data_msg.speed_fb[0] = self.modbus_read_data[0]
-            self.motor_data_msg.speed_fb[1] = self.modbus_read_data[1]
-            self.motor_data_msg.speed_fb[2] = self.modbus_read_data[2]
-            self.motor_data_msg.speed_fb[3] = self.modbus_read_data[3]
+            self.motor_data_msg.speed_fb[0] = 2 * self.modbus_read_data[0]
+            self.motor_data_msg.speed_fb[1] = 2 * self.modbus_read_data[1]
+            self.motor_data_msg.speed_fb[2] = 2 * self.modbus_read_data[2]
+            self.motor_data_msg.speed_fb[3] = 2 * self.modbus_read_data[3]
 
             self.imu_raw_msg.twist.linear.x = self.modbus_read_data[4]
             self.imu_raw_msg.twist.linear.y = self.modbus_read_data[5]
