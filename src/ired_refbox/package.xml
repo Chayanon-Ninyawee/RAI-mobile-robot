@@ -6,8 +6,8 @@
     ROS 2 interface for communication with the RoboCup Logistics League RefBox.
   </description>
 
-  <maintainer email="TODO">TODO</maintainer>
-  <license>TODO</license>
+  <maintainer email="ired@todo.todo">ired</maintainer>
+  <license>MIT</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
