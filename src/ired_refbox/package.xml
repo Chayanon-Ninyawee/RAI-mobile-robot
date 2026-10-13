@@ -1,4 +1,3 @@
-
 <?xml version="1.0"?>
 <package format="3">
   <name>ired_refbox</name>
@@ -28,4 +27,3 @@
     <build_type>ament_cmake</build_type>
   </export>
 </package>
-

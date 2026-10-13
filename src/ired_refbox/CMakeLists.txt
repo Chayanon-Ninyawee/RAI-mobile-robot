@@ -42,14 +42,14 @@ target_compile_features(ired_refbox_node PRIVATE cxx_std_17)
 target_compile_definitions(ired_refbox_node PRIVATE HAVE_LIBCRYPTO)
 
 target_include_directories(
-  ired_refbox_node PRIVATE "${PROTOBUF_DIR}" "${PROTOBUF_COMM_DIR}/include"
-                           ${Protobuf_INCLUDE_DIRS})
+  ired_refbox_node
+  PRIVATE "${THIRD_PARTY_DIR}" "${PROTOBUF_DIR}" "${PROTOBUF_COMM_DIR}/include"
+          ${Protobuf_INCLUDE_DIRS})
 
 ament_target_dependencies(ired_refbox_node rclcpp std_msgs geometry_msgs)
 
-target_link_libraries(
-  ired_refbox_node PRIVATE ${Protobuf_LIBRARIES} OpenSSL::Crypto Boost::system
-                           Boost::thread)
+target_link_libraries(ired_refbox_node ${Protobuf_LIBRARIES} OpenSSL::Crypto
+                      Boost::system Boost::thread)
 
 install(TARGETS ired_refbox_node DESTINATION lib/${PROJECT_NAME})
 
