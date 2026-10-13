@@ -438,9 +438,11 @@ void ProtobufBroadcastPeer::handle_recv(const boost::system::error_code &error,
               in_endpoint_,
               "Received encrypted message but encryption is disabled");
         } else if (crypto_buf_ && (frame_header.cipher == PB_ENCRYPTION_NONE)) {
-          sig_recv_error_(
-              in_endpoint_,
-              "Received plain text message but encryption is enabled");
+          // Accept an unencrypted packet even when encryption is enabled.
+          memcpy(in_data_, enc_in_data_, bytes_rcvd);
+          // sig_recv_error_(
+          //     in_endpoint_,
+          //     "Received plain text message but encryption is enabled");
         } else {
           if (crypto_buf_ && (frame_header.cipher != PB_ENCRYPTION_NONE)) {
             // we need to decrypt first
