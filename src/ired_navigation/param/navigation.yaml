@@ -155,7 +155,7 @@ controller_server:
     FollowPath:
       plugin: dwb_core::DWBLocalPlanner
 
-      debug_trajectory_details: false
+      debug_trajectory_details: true
 
       # ============================================================
       # Omniwheel robot
@@ -174,7 +174,7 @@ controller_server:
       max_speed_xy: 0.8
 
       min_speed_theta: 0.0
-      max_speed_theta: 0.8
+      max_speed_theta: 1.2
 
       # ============================================================
       # Acceleration
@@ -232,7 +232,7 @@ controller_server:
       GoalDist.scale: 24.0
 
       RotateToGoal.scale: 15.0
-      RotateToGoal.slowing_factor: 0.0
+      RotateToGoal.slowing_factor: 5.0
       RotateToGoal.lookahead_time: -1.0
 
       Twirling.scale: 1.0
