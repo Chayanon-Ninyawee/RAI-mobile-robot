@@ -1,0 +1,16 @@
+ired_refbox:
+  ros__parameters:
+    refbox_host: "192.168.122.210"
+    crypto_key: "randomkey"
+
+    team_color: "CYAN"
+    team_name: "TEAM_CYAN"
+    robot_number: 1
+    peer_name: "Women"
+
+    public_send_port: 4444
+    public_recv_port: 4448
+    private_send_port: 4446
+    private_recv_port: 4441
+
+    pose_topic: "/amcl_pose"
