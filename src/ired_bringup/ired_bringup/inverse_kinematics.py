@@ -161,7 +161,7 @@ class INVERSEKINEMATICS(Node):
         self.calculateInverseKinematics()
         # motor_command = self.calculateMotorPID(self.wheel_speed_cmd)
         # self.motor_speed.speed = [round(x, 4) for x in motor_command]
-        self.motor_speed.speed = [round(1.7 * x, 4) for x in self.wheel_speed_cmd]
+        self.motor_speed.speed = [round(1.36 * x, 4) for x in self.wheel_speed_cmd]
         self.speed_control_pub.publish(self.motor_speed)
 
 
