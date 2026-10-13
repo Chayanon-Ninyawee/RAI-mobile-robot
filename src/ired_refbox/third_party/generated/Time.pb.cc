@@ -16,43 +16,49 @@
 #include <google/protobuf/port_def.inc>
 
 PROTOBUF_PRAGMA_INIT_SEG
+
+namespace _pb = ::PROTOBUF_NAMESPACE_ID;
+namespace _pbi = _pb::internal;
+
 namespace llsf_msgs {
-constexpr Time::Time(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : sec_(int64_t{0})
-  , nsec_(int64_t{0}){}
+PROTOBUF_CONSTEXPR Time::Time(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.sec_)*/int64_t{0}
+  , /*decltype(_impl_.nsec_)*/int64_t{0}} {}
 struct TimeDefaultTypeInternal {
-  constexpr TimeDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR TimeDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~TimeDefaultTypeInternal() {}
   union {
     Time _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT TimeDefaultTypeInternal _Time_default_instance_;
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TimeDefaultTypeInternal _Time_default_instance_;
 }  // namespace llsf_msgs
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_Time_2eproto[1];
-static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_Time_2eproto = nullptr;
-static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_Time_2eproto = nullptr;
+static ::_pb::Metadata file_level_metadata_Time_2eproto[1];
+static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_Time_2eproto = nullptr;
+static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_Time_2eproto = nullptr;
 
 const uint32_t TableStruct_Time_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Time, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Time, _impl_._has_bits_),
   PROTOBUF_FIELD_OFFSET(::llsf_msgs::Time, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Time, sec_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Time, nsec_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Time, _impl_.sec_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Time, _impl_.nsec_),
   0,
   1,
 };
-static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 8, -1, sizeof(::llsf_msgs::Time)},
 };
 
-static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::llsf_msgs::_Time_default_instance_),
+static const ::_pb::Message* const file_default_instances[] = {
+  &::llsf_msgs::_Time_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_Time_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -60,26 +66,28 @@ const char descriptor_table_protodef_Time_2eproto[] PROTOBUF_SECTION_VARIABLE(pr
   " \002(\003\022\014\n\004nsec\030\002 \002(\003B-\n\037org.robocup_logist"
   "ics.llsf_msgsB\nTimeProtos"
   ;
-static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_Time_2eproto_once;
-const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_Time_2eproto = {
-  false, false, 105, descriptor_table_protodef_Time_2eproto, "Time.proto", 
-  &descriptor_table_Time_2eproto_once, nullptr, 0, 1,
-  schemas, file_default_instances, TableStruct_Time_2eproto::offsets,
-  file_level_metadata_Time_2eproto, file_level_enum_descriptors_Time_2eproto, file_level_service_descriptors_Time_2eproto,
+static ::_pbi::once_flag descriptor_table_Time_2eproto_once;
+const ::_pbi::DescriptorTable descriptor_table_Time_2eproto = {
+    false, false, 105, descriptor_table_protodef_Time_2eproto,
+    "Time.proto",
+    &descriptor_table_Time_2eproto_once, nullptr, 0, 1,
+    schemas, file_default_instances, TableStruct_Time_2eproto::offsets,
+    file_level_metadata_Time_2eproto, file_level_enum_descriptors_Time_2eproto,
+    file_level_service_descriptors_Time_2eproto,
 };
-PROTOBUF_ATTRIBUTE_WEAK const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable* descriptor_table_Time_2eproto_getter() {
+PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_Time_2eproto_getter() {
   return &descriptor_table_Time_2eproto;
 }
 
 // Force running AddDescriptors() at dynamic initialization time.
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY static ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptorsRunner dynamic_init_dummy_Time_2eproto(&descriptor_table_Time_2eproto);
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_Time_2eproto(&descriptor_table_Time_2eproto);
 namespace llsf_msgs {
 
 // ===================================================================
 
 class Time::_Internal {
  public:
-  using HasBits = decltype(std::declval<Time>()._has_bits_);
+  using HasBits = decltype(std::declval<Time>()._impl_._has_bits_);
   static void set_has_sec(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
@@ -94,48 +102,52 @@ class Time::_Internal {
 Time::Time(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:llsf_msgs.Time)
 }
 Time::Time(const Time& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  Time* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.sec_){}
+    , decltype(_impl_.nsec_){}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::memcpy(&sec_, &from.sec_,
-    static_cast<size_t>(reinterpret_cast<char*>(&nsec_) -
-    reinterpret_cast<char*>(&sec_)) + sizeof(nsec_));
+  ::memcpy(&_impl_.sec_, &from._impl_.sec_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.nsec_) -
+    reinterpret_cast<char*>(&_impl_.sec_)) + sizeof(_impl_.nsec_));
   // @@protoc_insertion_point(copy_constructor:llsf_msgs.Time)
 }
 
-inline void Time::SharedCtor() {
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&sec_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&nsec_) -
-    reinterpret_cast<char*>(&sec_)) + sizeof(nsec_));
+inline void Time::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.sec_){int64_t{0}}
+    , decltype(_impl_.nsec_){int64_t{0}}
+  };
 }
 
 Time::~Time() {
   // @@protoc_insertion_point(destructor:llsf_msgs.Time)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void Time::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
 }
 
-void Time::ArenaDtor(void* object) {
-  Time* _this = reinterpret_cast< Time* >(object);
-  (void)_this;
-}
-void Time::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void Time::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void Time::Clear() {
@@ -144,28 +156,28 @@ void Time::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
-    ::memset(&sec_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&nsec_) -
-        reinterpret_cast<char*>(&sec_)) + sizeof(nsec_));
+    ::memset(&_impl_.sec_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&_impl_.nsec_) -
+        reinterpret_cast<char*>(&_impl_.sec_)) + sizeof(_impl_.nsec_));
   }
-  _has_bits_.Clear();
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* Time::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* Time::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // required int64 sec = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           _Internal::set_has_sec(&has_bits);
-          sec_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          _impl_.sec_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -174,7 +186,7 @@ const char* Time::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::inter
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
           _Internal::set_has_nsec(&has_bits);
-          nsec_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          _impl_.nsec_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -195,7 +207,7 @@ const char* Time::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::inter
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -209,21 +221,21 @@ uint8_t* Time::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   // required int64 sec = 1;
   if (cached_has_bits & 0x00000001u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(1, this->_internal_sec(), target);
+    target = ::_pbi::WireFormatLite::WriteInt64ToArray(1, this->_internal_sec(), target);
   }
 
   // required int64 nsec = 2;
   if (cached_has_bits & 0x00000002u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_nsec(), target);
+    target = ::_pbi::WireFormatLite::WriteInt64ToArray(2, this->_internal_nsec(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:llsf_msgs.Time)
@@ -236,12 +248,12 @@ size_t Time::RequiredFieldsByteSizeFallback() const {
 
   if (_internal_has_sec()) {
     // required int64 sec = 1;
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_sec());
+    total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(this->_internal_sec());
   }
 
   if (_internal_has_nsec()) {
     // required int64 nsec = 2;
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_nsec());
+    total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(this->_internal_nsec());
   }
 
   return total_size;
@@ -250,12 +262,12 @@ size_t Time::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:llsf_msgs.Time)
   size_t total_size = 0;
 
-  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
+  if (((_impl_._has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
     // required int64 sec = 1;
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_sec());
+    total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(this->_internal_sec());
 
     // required int64 nsec = 2;
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_nsec());
+    total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(this->_internal_nsec());
 
   } else {
     total_size += RequiredFieldsByteSizeFallback();
@@ -264,39 +276,35 @@ size_t Time::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Time::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     Time::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Time::GetClassData() const { return &_class_data_; }
 
-void Time::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<Time *>(to)->MergeFrom(
-      static_cast<const Time &>(from));
-}
 
-
-void Time::MergeFrom(const Time& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.Time)
-  GOOGLE_DCHECK_NE(&from, this);
+void Time::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<Time*>(&to_msg);
+  auto& from = static_cast<const Time&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.Time)
+  GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = from._has_bits_[0];
+  cached_has_bits = from._impl_._has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
     if (cached_has_bits & 0x00000001u) {
-      sec_ = from.sec_;
+      _this->_impl_.sec_ = from._impl_.sec_;
     }
     if (cached_has_bits & 0x00000002u) {
-      nsec_ = from.nsec_;
+      _this->_impl_.nsec_ = from._impl_.nsec_;
     }
-    _has_bits_[0] |= cached_has_bits;
+    _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void Time::CopyFrom(const Time& from) {
@@ -307,24 +315,24 @@ void Time::CopyFrom(const Time& from) {
 }
 
 bool Time::IsInitialized() const {
-  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
+  if (_Internal::MissingRequiredFields(_impl_._has_bits_)) return false;
   return true;
 }
 
 void Time::InternalSwap(Time* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(Time, nsec_)
-      + sizeof(Time::nsec_)
-      - PROTOBUF_FIELD_OFFSET(Time, sec_)>(
-          reinterpret_cast<char*>(&sec_),
-          reinterpret_cast<char*>(&other->sec_));
+      PROTOBUF_FIELD_OFFSET(Time, _impl_.nsec_)
+      + sizeof(Time::_impl_.nsec_)
+      - PROTOBUF_FIELD_OFFSET(Time, _impl_.sec_)>(
+          reinterpret_cast<char*>(&_impl_.sec_),
+          reinterpret_cast<char*>(&other->_impl_.sec_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Time::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_Time_2eproto_getter, &descriptor_table_Time_2eproto_once,
       file_level_metadata_Time_2eproto[0]);
 }
@@ -332,7 +340,8 @@ void Time::InternalSwap(Time* other) {
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace llsf_msgs
 PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::llsf_msgs::Time* Arena::CreateMaybeMessage< ::llsf_msgs::Time >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::llsf_msgs::Time*
+Arena::CreateMaybeMessage< ::llsf_msgs::Time >(Arena* arena) {
   return Arena::CreateMessageInternal< ::llsf_msgs::Time >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE

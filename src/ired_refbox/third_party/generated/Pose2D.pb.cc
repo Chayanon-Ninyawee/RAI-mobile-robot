@@ -16,49 +16,55 @@
 #include <google/protobuf/port_def.inc>
 
 PROTOBUF_PRAGMA_INIT_SEG
+
+namespace _pb = ::PROTOBUF_NAMESPACE_ID;
+namespace _pbi = _pb::internal;
+
 namespace llsf_msgs {
-constexpr Pose2D::Pose2D(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : timestamp_(nullptr)
-  , x_(0)
-  , y_(0)
-  , ori_(0){}
+PROTOBUF_CONSTEXPR Pose2D::Pose2D(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.timestamp_)*/nullptr
+  , /*decltype(_impl_.x_)*/0
+  , /*decltype(_impl_.y_)*/0
+  , /*decltype(_impl_.ori_)*/0} {}
 struct Pose2DDefaultTypeInternal {
-  constexpr Pose2DDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR Pose2DDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~Pose2DDefaultTypeInternal() {}
   union {
     Pose2D _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Pose2DDefaultTypeInternal _Pose2D_default_instance_;
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Pose2DDefaultTypeInternal _Pose2D_default_instance_;
 }  // namespace llsf_msgs
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_Pose2D_2eproto[1];
-static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_Pose2D_2eproto = nullptr;
-static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_Pose2D_2eproto = nullptr;
+static ::_pb::Metadata file_level_metadata_Pose2D_2eproto[1];
+static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_Pose2D_2eproto = nullptr;
+static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_Pose2D_2eproto = nullptr;
 
 const uint32_t TableStruct_Pose2D_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Pose2D, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Pose2D, _impl_._has_bits_),
   PROTOBUF_FIELD_OFFSET(::llsf_msgs::Pose2D, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Pose2D, timestamp_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Pose2D, x_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Pose2D, y_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Pose2D, ori_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Pose2D, _impl_.timestamp_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Pose2D, _impl_.x_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Pose2D, _impl_.y_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Pose2D, _impl_.ori_),
   0,
   1,
   2,
   3,
 };
-static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 10, -1, sizeof(::llsf_msgs::Pose2D)},
 };
 
-static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::llsf_msgs::_Pose2D_default_instance_),
+static const ::_pb::Message* const file_default_instances[] = {
+  &::llsf_msgs::_Pose2D_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_Pose2D_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -68,29 +74,31 @@ const char descriptor_table_protodef_Pose2D_2eproto[] PROTOBUF_SECTION_VARIABLE(
   "\n\037org.robocup_logistics.llsf_msgsB\014Pose2"
   "DProtos"
   ;
-static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_Pose2D_2eproto_deps[1] = {
+static const ::_pbi::DescriptorTable* const descriptor_table_Pose2D_2eproto_deps[1] = {
   &::descriptor_table_Time_2eproto,
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_Pose2D_2eproto_once;
-const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_Pose2D_2eproto = {
-  false, false, 167, descriptor_table_protodef_Pose2D_2eproto, "Pose2D.proto", 
-  &descriptor_table_Pose2D_2eproto_once, descriptor_table_Pose2D_2eproto_deps, 1, 1,
-  schemas, file_default_instances, TableStruct_Pose2D_2eproto::offsets,
-  file_level_metadata_Pose2D_2eproto, file_level_enum_descriptors_Pose2D_2eproto, file_level_service_descriptors_Pose2D_2eproto,
+static ::_pbi::once_flag descriptor_table_Pose2D_2eproto_once;
+const ::_pbi::DescriptorTable descriptor_table_Pose2D_2eproto = {
+    false, false, 167, descriptor_table_protodef_Pose2D_2eproto,
+    "Pose2D.proto",
+    &descriptor_table_Pose2D_2eproto_once, descriptor_table_Pose2D_2eproto_deps, 1, 1,
+    schemas, file_default_instances, TableStruct_Pose2D_2eproto::offsets,
+    file_level_metadata_Pose2D_2eproto, file_level_enum_descriptors_Pose2D_2eproto,
+    file_level_service_descriptors_Pose2D_2eproto,
 };
-PROTOBUF_ATTRIBUTE_WEAK const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable* descriptor_table_Pose2D_2eproto_getter() {
+PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_Pose2D_2eproto_getter() {
   return &descriptor_table_Pose2D_2eproto;
 }
 
 // Force running AddDescriptors() at dynamic initialization time.
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY static ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptorsRunner dynamic_init_dummy_Pose2D_2eproto(&descriptor_table_Pose2D_2eproto);
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_Pose2D_2eproto(&descriptor_table_Pose2D_2eproto);
 namespace llsf_msgs {
 
 // ===================================================================
 
 class Pose2D::_Internal {
  public:
-  using HasBits = decltype(std::declval<Pose2D>()._has_bits_);
+  using HasBits = decltype(std::declval<Pose2D>()._impl_._has_bits_);
   static const ::llsf_msgs::Time& timestamp(const Pose2D* msg);
   static void set_has_timestamp(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
@@ -111,63 +119,69 @@ class Pose2D::_Internal {
 
 const ::llsf_msgs::Time&
 Pose2D::_Internal::timestamp(const Pose2D* msg) {
-  return *msg->timestamp_;
+  return *msg->_impl_.timestamp_;
 }
 void Pose2D::clear_timestamp() {
-  if (timestamp_ != nullptr) timestamp_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
+  if (_impl_.timestamp_ != nullptr) _impl_.timestamp_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 Pose2D::Pose2D(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:llsf_msgs.Pose2D)
 }
 Pose2D::Pose2D(const Pose2D& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  Pose2D* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.timestamp_){nullptr}
+    , decltype(_impl_.x_){}
+    , decltype(_impl_.y_){}
+    , decltype(_impl_.ori_){}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   if (from._internal_has_timestamp()) {
-    timestamp_ = new ::llsf_msgs::Time(*from.timestamp_);
-  } else {
-    timestamp_ = nullptr;
+    _this->_impl_.timestamp_ = new ::llsf_msgs::Time(*from._impl_.timestamp_);
   }
-  ::memcpy(&x_, &from.x_,
-    static_cast<size_t>(reinterpret_cast<char*>(&ori_) -
-    reinterpret_cast<char*>(&x_)) + sizeof(ori_));
+  ::memcpy(&_impl_.x_, &from._impl_.x_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.ori_) -
+    reinterpret_cast<char*>(&_impl_.x_)) + sizeof(_impl_.ori_));
   // @@protoc_insertion_point(copy_constructor:llsf_msgs.Pose2D)
 }
 
-inline void Pose2D::SharedCtor() {
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&timestamp_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&ori_) -
-    reinterpret_cast<char*>(&timestamp_)) + sizeof(ori_));
+inline void Pose2D::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.timestamp_){nullptr}
+    , decltype(_impl_.x_){0}
+    , decltype(_impl_.y_){0}
+    , decltype(_impl_.ori_){0}
+  };
 }
 
 Pose2D::~Pose2D() {
   // @@protoc_insertion_point(destructor:llsf_msgs.Pose2D)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void Pose2D::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete timestamp_;
+  if (this != internal_default_instance()) delete _impl_.timestamp_;
 }
 
-void Pose2D::ArenaDtor(void* object) {
-  Pose2D* _this = reinterpret_cast< Pose2D* >(object);
-  (void)_this;
-}
-void Pose2D::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void Pose2D::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void Pose2D::Clear() {
@@ -176,26 +190,26 @@ void Pose2D::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(timestamp_ != nullptr);
-    timestamp_->Clear();
+    GOOGLE_DCHECK(_impl_.timestamp_ != nullptr);
+    _impl_.timestamp_->Clear();
   }
   if (cached_has_bits & 0x0000000eu) {
-    ::memset(&x_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&ori_) -
-        reinterpret_cast<char*>(&x_)) + sizeof(ori_));
+    ::memset(&_impl_.x_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&_impl_.ori_) -
+        reinterpret_cast<char*>(&_impl_.x_)) + sizeof(_impl_.ori_));
   }
-  _has_bits_.Clear();
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* Pose2D::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* Pose2D::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // required .llsf_msgs.Time timestamp = 1;
       case 1:
@@ -209,7 +223,7 @@ const char* Pose2D::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::int
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 21)) {
           _Internal::set_has_x(&has_bits);
-          x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          _impl_.x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
         } else
           goto handle_unusual;
@@ -218,7 +232,7 @@ const char* Pose2D::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::int
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 29)) {
           _Internal::set_has_y(&has_bits);
-          y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          _impl_.y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
         } else
           goto handle_unusual;
@@ -227,7 +241,7 @@ const char* Pose2D::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::int
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 37)) {
           _Internal::set_has_ori(&has_bits);
-          ori_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          _impl_.ori_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
         } else
           goto handle_unusual;
@@ -248,7 +262,7 @@ const char* Pose2D::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::int
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -262,35 +276,34 @@ uint8_t* Pose2D::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   // required .llsf_msgs.Time timestamp = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::timestamp(this), target, stream);
+      InternalWriteMessage(1, _Internal::timestamp(this),
+        _Internal::timestamp(this).GetCachedSize(), target, stream);
   }
 
   // required float x = 2;
   if (cached_has_bits & 0x00000002u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(2, this->_internal_x(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(2, this->_internal_x(), target);
   }
 
   // required float y = 3;
   if (cached_has_bits & 0x00000004u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(3, this->_internal_y(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(3, this->_internal_y(), target);
   }
 
   // required float ori = 4;
   if (cached_has_bits & 0x00000008u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(4, this->_internal_ori(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(4, this->_internal_ori(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:llsf_msgs.Pose2D)
@@ -305,7 +318,7 @@ size_t Pose2D::RequiredFieldsByteSizeFallback() const {
     // required .llsf_msgs.Time timestamp = 1;
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *timestamp_);
+        *_impl_.timestamp_);
   }
 
   if (_internal_has_x()) {
@@ -329,11 +342,11 @@ size_t Pose2D::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:llsf_msgs.Pose2D)
   size_t total_size = 0;
 
-  if (((_has_bits_[0] & 0x0000000f) ^ 0x0000000f) == 0) {  // All required fields are present.
+  if (((_impl_._has_bits_[0] & 0x0000000f) ^ 0x0000000f) == 0) {  // All required fields are present.
     // required .llsf_msgs.Time timestamp = 1;
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *timestamp_);
+        *_impl_.timestamp_);
 
     // required float x = 2;
     total_size += 1 + 4;
@@ -351,45 +364,42 @@ size_t Pose2D::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Pose2D::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     Pose2D::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Pose2D::GetClassData() const { return &_class_data_; }
 
-void Pose2D::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<Pose2D *>(to)->MergeFrom(
-      static_cast<const Pose2D &>(from));
-}
 
-
-void Pose2D::MergeFrom(const Pose2D& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.Pose2D)
-  GOOGLE_DCHECK_NE(&from, this);
+void Pose2D::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<Pose2D*>(&to_msg);
+  auto& from = static_cast<const Pose2D&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.Pose2D)
+  GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = from._has_bits_[0];
+  cached_has_bits = from._impl_._has_bits_[0];
   if (cached_has_bits & 0x0000000fu) {
     if (cached_has_bits & 0x00000001u) {
-      _internal_mutable_timestamp()->::llsf_msgs::Time::MergeFrom(from._internal_timestamp());
+      _this->_internal_mutable_timestamp()->::llsf_msgs::Time::MergeFrom(
+          from._internal_timestamp());
     }
     if (cached_has_bits & 0x00000002u) {
-      x_ = from.x_;
+      _this->_impl_.x_ = from._impl_.x_;
     }
     if (cached_has_bits & 0x00000004u) {
-      y_ = from.y_;
+      _this->_impl_.y_ = from._impl_.y_;
     }
     if (cached_has_bits & 0x00000008u) {
-      ori_ = from.ori_;
+      _this->_impl_.ori_ = from._impl_.ori_;
     }
-    _has_bits_[0] |= cached_has_bits;
+    _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void Pose2D::CopyFrom(const Pose2D& from) {
@@ -400,9 +410,9 @@ void Pose2D::CopyFrom(const Pose2D& from) {
 }
 
 bool Pose2D::IsInitialized() const {
-  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
+  if (_Internal::MissingRequiredFields(_impl_._has_bits_)) return false;
   if (_internal_has_timestamp()) {
-    if (!timestamp_->IsInitialized()) return false;
+    if (!_impl_.timestamp_->IsInitialized()) return false;
   }
   return true;
 }
@@ -410,17 +420,17 @@ bool Pose2D::IsInitialized() const {
 void Pose2D::InternalSwap(Pose2D* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(Pose2D, ori_)
-      + sizeof(Pose2D::ori_)
-      - PROTOBUF_FIELD_OFFSET(Pose2D, timestamp_)>(
-          reinterpret_cast<char*>(&timestamp_),
-          reinterpret_cast<char*>(&other->timestamp_));
+      PROTOBUF_FIELD_OFFSET(Pose2D, _impl_.ori_)
+      + sizeof(Pose2D::_impl_.ori_)
+      - PROTOBUF_FIELD_OFFSET(Pose2D, _impl_.timestamp_)>(
+          reinterpret_cast<char*>(&_impl_.timestamp_),
+          reinterpret_cast<char*>(&other->_impl_.timestamp_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Pose2D::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_Pose2D_2eproto_getter, &descriptor_table_Pose2D_2eproto_once,
       file_level_metadata_Pose2D_2eproto[0]);
 }
@@ -428,7 +438,8 @@ void Pose2D::InternalSwap(Pose2D* other) {
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace llsf_msgs
 PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::llsf_msgs::Pose2D* Arena::CreateMaybeMessage< ::llsf_msgs::Pose2D >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::llsf_msgs::Pose2D*
+Arena::CreateMaybeMessage< ::llsf_msgs::Pose2D >(Arena* arena) {
   return Arena::CreateMessageInternal< ::llsf_msgs::Pose2D >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE

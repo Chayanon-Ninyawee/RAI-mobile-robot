@@ -16,125 +16,133 @@
 #include <google/protobuf/port_def.inc>
 
 PROTOBUF_PRAGMA_INIT_SEG
+
+namespace _pb = ::PROTOBUF_NAMESPACE_ID;
+namespace _pbi = _pb::internal;
+
 namespace llsf_msgs {
-constexpr UnconfirmedDelivery::UnconfirmedDelivery(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : delivery_time_(nullptr)
-  , id_(0u)
-  , team_(0)
-{}
+PROTOBUF_CONSTEXPR UnconfirmedDelivery::UnconfirmedDelivery(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.delivery_time_)*/nullptr
+  , /*decltype(_impl_.id_)*/0u
+  , /*decltype(_impl_.team_)*/0} {}
 struct UnconfirmedDeliveryDefaultTypeInternal {
-  constexpr UnconfirmedDeliveryDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR UnconfirmedDeliveryDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~UnconfirmedDeliveryDefaultTypeInternal() {}
   union {
     UnconfirmedDelivery _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT UnconfirmedDeliveryDefaultTypeInternal _UnconfirmedDelivery_default_instance_;
-constexpr Order::Order(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : ring_colors_()
-  , unconfirmed_deliveries_()
-  , id_(0u)
-  , complexity_(0)
-
-  , quantity_requested_(0u)
-  , quantity_delivered_cyan_(0u)
-  , quantity_delivered_magenta_(0u)
-  , delivery_period_begin_(0u)
-  , delivery_period_end_(0u)
-  , delivery_gate_(0u)
-  , competitive_(false)
-  , base_color_(1)
-
-  , cap_color_(1)
-{}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UnconfirmedDeliveryDefaultTypeInternal _UnconfirmedDelivery_default_instance_;
+PROTOBUF_CONSTEXPR Order::Order(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.ring_colors_)*/{}
+  , /*decltype(_impl_.unconfirmed_deliveries_)*/{}
+  , /*decltype(_impl_.id_)*/0u
+  , /*decltype(_impl_.complexity_)*/0
+  , /*decltype(_impl_.quantity_requested_)*/0u
+  , /*decltype(_impl_.quantity_delivered_cyan_)*/0u
+  , /*decltype(_impl_.quantity_delivered_magenta_)*/0u
+  , /*decltype(_impl_.delivery_period_begin_)*/0u
+  , /*decltype(_impl_.delivery_period_end_)*/0u
+  , /*decltype(_impl_.delivery_gate_)*/0u
+  , /*decltype(_impl_.competitive_)*/false
+  , /*decltype(_impl_.base_color_)*/1
+  , /*decltype(_impl_.cap_color_)*/1} {}
 struct OrderDefaultTypeInternal {
-  constexpr OrderDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR OrderDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~OrderDefaultTypeInternal() {}
   union {
     Order _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT OrderDefaultTypeInternal _Order_default_instance_;
-constexpr OrderInfo::OrderInfo(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : orders_(){}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 OrderDefaultTypeInternal _Order_default_instance_;
+PROTOBUF_CONSTEXPR OrderInfo::OrderInfo(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.orders_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct OrderInfoDefaultTypeInternal {
-  constexpr OrderInfoDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR OrderInfoDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~OrderInfoDefaultTypeInternal() {}
   union {
     OrderInfo _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT OrderInfoDefaultTypeInternal _OrderInfo_default_instance_;
-constexpr SetOrderDelivered::SetOrderDelivered(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : team_color_(0)
-
-  , order_id_(0u){}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 OrderInfoDefaultTypeInternal _OrderInfo_default_instance_;
+PROTOBUF_CONSTEXPR SetOrderDelivered::SetOrderDelivered(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.team_color_)*/0
+  , /*decltype(_impl_.order_id_)*/0u} {}
 struct SetOrderDeliveredDefaultTypeInternal {
-  constexpr SetOrderDeliveredDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR SetOrderDeliveredDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~SetOrderDeliveredDefaultTypeInternal() {}
   union {
     SetOrderDelivered _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT SetOrderDeliveredDefaultTypeInternal _SetOrderDelivered_default_instance_;
-constexpr ConfirmDelivery::ConfirmDelivery(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : delivery_id_(0u)
-  , correct_(false){}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SetOrderDeliveredDefaultTypeInternal _SetOrderDelivered_default_instance_;
+PROTOBUF_CONSTEXPR ConfirmDelivery::ConfirmDelivery(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.delivery_id_)*/0u
+  , /*decltype(_impl_.correct_)*/false} {}
 struct ConfirmDeliveryDefaultTypeInternal {
-  constexpr ConfirmDeliveryDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR ConfirmDeliveryDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~ConfirmDeliveryDefaultTypeInternal() {}
   union {
     ConfirmDelivery _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ConfirmDeliveryDefaultTypeInternal _ConfirmDelivery_default_instance_;
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ConfirmDeliveryDefaultTypeInternal _ConfirmDelivery_default_instance_;
 }  // namespace llsf_msgs
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_OrderInfo_2eproto[5];
-static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_OrderInfo_2eproto[6];
-static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_OrderInfo_2eproto = nullptr;
+static ::_pb::Metadata file_level_metadata_OrderInfo_2eproto[5];
+static const ::_pb::EnumDescriptor* file_level_enum_descriptors_OrderInfo_2eproto[6];
+static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_OrderInfo_2eproto = nullptr;
 
 const uint32_t TableStruct_OrderInfo_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::UnconfirmedDelivery, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::UnconfirmedDelivery, _impl_._has_bits_),
   PROTOBUF_FIELD_OFFSET(::llsf_msgs::UnconfirmedDelivery, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::UnconfirmedDelivery, id_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::UnconfirmedDelivery, team_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::UnconfirmedDelivery, delivery_time_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::UnconfirmedDelivery, _impl_.id_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::UnconfirmedDelivery, _impl_.team_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::UnconfirmedDelivery, _impl_.delivery_time_),
   1,
   2,
   0,
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Order, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Order, _impl_._has_bits_),
   PROTOBUF_FIELD_OFFSET(::llsf_msgs::Order, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Order, id_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Order, complexity_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Order, base_color_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Order, ring_colors_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Order, cap_color_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Order, quantity_requested_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Order, quantity_delivered_cyan_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Order, quantity_delivered_magenta_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Order, delivery_period_begin_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Order, delivery_period_end_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Order, delivery_gate_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Order, unconfirmed_deliveries_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Order, competitive_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Order, _impl_.id_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Order, _impl_.complexity_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Order, _impl_.base_color_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Order, _impl_.ring_colors_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Order, _impl_.cap_color_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Order, _impl_.quantity_requested_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Order, _impl_.quantity_delivered_cyan_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Order, _impl_.quantity_delivered_magenta_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Order, _impl_.delivery_period_begin_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Order, _impl_.delivery_period_end_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Order, _impl_.delivery_gate_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Order, _impl_.unconfirmed_deliveries_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Order, _impl_.competitive_),
   0,
   1,
   9,
@@ -154,29 +162,29 @@ const uint32_t TableStruct_OrderInfo_2eproto::offsets[] PROTOBUF_SECTION_VARIABL
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::OrderInfo, orders_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::SetOrderDelivered, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::OrderInfo, _impl_.orders_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::SetOrderDelivered, _impl_._has_bits_),
   PROTOBUF_FIELD_OFFSET(::llsf_msgs::SetOrderDelivered, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::SetOrderDelivered, team_color_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::SetOrderDelivered, order_id_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::SetOrderDelivered, _impl_.team_color_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::SetOrderDelivered, _impl_.order_id_),
   0,
   1,
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::ConfirmDelivery, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::ConfirmDelivery, _impl_._has_bits_),
   PROTOBUF_FIELD_OFFSET(::llsf_msgs::ConfirmDelivery, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::ConfirmDelivery, delivery_id_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::ConfirmDelivery, correct_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::ConfirmDelivery, _impl_.delivery_id_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::ConfirmDelivery, _impl_.correct_),
   0,
   1,
 };
-static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 9, -1, sizeof(::llsf_msgs::UnconfirmedDelivery)},
   { 12, 31, -1, sizeof(::llsf_msgs::Order)},
   { 44, -1, -1, sizeof(::llsf_msgs::OrderInfo)},
@@ -184,12 +192,12 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 61, 69, -1, sizeof(::llsf_msgs::ConfirmDelivery)},
 };
 
-static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::llsf_msgs::_UnconfirmedDelivery_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::llsf_msgs::_Order_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::llsf_msgs::_OrderInfo_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::llsf_msgs::_SetOrderDelivered_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::llsf_msgs::_ConfirmDelivery_default_instance_),
+static const ::_pb::Message* const file_default_instances[] = {
+  &::llsf_msgs::_UnconfirmedDelivery_default_instance_._instance,
+  &::llsf_msgs::_Order_default_instance_._instance,
+  &::llsf_msgs::_OrderInfo_default_instance_._instance,
+  &::llsf_msgs::_SetOrderDelivered_default_instance_._instance,
+  &::llsf_msgs::_ConfirmDelivery_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_OrderInfo_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -222,24 +230,26 @@ const char descriptor_table_protodef_OrderInfo_2eproto[] PROTOBUF_SECTION_VARIAB
   "\n\007COMP_ID\020\320\017\022\014\n\010MSG_TYPE\020.B2\n\037org.robocu"
   "p_logistics.llsf_msgsB\017OrderInfoProtos"
   ;
-static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_OrderInfo_2eproto_deps[3] = {
+static const ::_pbi::DescriptorTable* const descriptor_table_OrderInfo_2eproto_deps[3] = {
   &::descriptor_table_ProductColor_2eproto,
   &::descriptor_table_Team_2eproto,
   &::descriptor_table_Time_2eproto,
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_OrderInfo_2eproto_once;
-const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_OrderInfo_2eproto = {
-  false, false, 1118, descriptor_table_protodef_OrderInfo_2eproto, "OrderInfo.proto", 
-  &descriptor_table_OrderInfo_2eproto_once, descriptor_table_OrderInfo_2eproto_deps, 3, 5,
-  schemas, file_default_instances, TableStruct_OrderInfo_2eproto::offsets,
-  file_level_metadata_OrderInfo_2eproto, file_level_enum_descriptors_OrderInfo_2eproto, file_level_service_descriptors_OrderInfo_2eproto,
+static ::_pbi::once_flag descriptor_table_OrderInfo_2eproto_once;
+const ::_pbi::DescriptorTable descriptor_table_OrderInfo_2eproto = {
+    false, false, 1118, descriptor_table_protodef_OrderInfo_2eproto,
+    "OrderInfo.proto",
+    &descriptor_table_OrderInfo_2eproto_once, descriptor_table_OrderInfo_2eproto_deps, 3, 5,
+    schemas, file_default_instances, TableStruct_OrderInfo_2eproto::offsets,
+    file_level_metadata_OrderInfo_2eproto, file_level_enum_descriptors_OrderInfo_2eproto,
+    file_level_service_descriptors_OrderInfo_2eproto,
 };
-PROTOBUF_ATTRIBUTE_WEAK const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable* descriptor_table_OrderInfo_2eproto_getter() {
+PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_OrderInfo_2eproto_getter() {
   return &descriptor_table_OrderInfo_2eproto;
 }
 
 // Force running AddDescriptors() at dynamic initialization time.
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY static ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptorsRunner dynamic_init_dummy_OrderInfo_2eproto(&descriptor_table_OrderInfo_2eproto);
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_OrderInfo_2eproto(&descriptor_table_OrderInfo_2eproto);
 namespace llsf_msgs {
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* UnconfirmedDelivery_CompType_descriptor() {
   ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_OrderInfo_2eproto);
@@ -376,7 +386,7 @@ constexpr int ConfirmDelivery::CompType_ARRAYSIZE;
 
 class UnconfirmedDelivery::_Internal {
  public:
-  using HasBits = decltype(std::declval<UnconfirmedDelivery>()._has_bits_);
+  using HasBits = decltype(std::declval<UnconfirmedDelivery>()._impl_._has_bits_);
   static void set_has_id(HasBits* has_bits) {
     (*has_bits)[0] |= 2u;
   }
@@ -394,63 +404,67 @@ class UnconfirmedDelivery::_Internal {
 
 const ::llsf_msgs::Time&
 UnconfirmedDelivery::_Internal::delivery_time(const UnconfirmedDelivery* msg) {
-  return *msg->delivery_time_;
+  return *msg->_impl_.delivery_time_;
 }
 void UnconfirmedDelivery::clear_delivery_time() {
-  if (delivery_time_ != nullptr) delivery_time_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
+  if (_impl_.delivery_time_ != nullptr) _impl_.delivery_time_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 UnconfirmedDelivery::UnconfirmedDelivery(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:llsf_msgs.UnconfirmedDelivery)
 }
 UnconfirmedDelivery::UnconfirmedDelivery(const UnconfirmedDelivery& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  UnconfirmedDelivery* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.delivery_time_){nullptr}
+    , decltype(_impl_.id_){}
+    , decltype(_impl_.team_){}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   if (from._internal_has_delivery_time()) {
-    delivery_time_ = new ::llsf_msgs::Time(*from.delivery_time_);
-  } else {
-    delivery_time_ = nullptr;
+    _this->_impl_.delivery_time_ = new ::llsf_msgs::Time(*from._impl_.delivery_time_);
   }
-  ::memcpy(&id_, &from.id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&team_) -
-    reinterpret_cast<char*>(&id_)) + sizeof(team_));
+  ::memcpy(&_impl_.id_, &from._impl_.id_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.team_) -
+    reinterpret_cast<char*>(&_impl_.id_)) + sizeof(_impl_.team_));
   // @@protoc_insertion_point(copy_constructor:llsf_msgs.UnconfirmedDelivery)
 }
 
-inline void UnconfirmedDelivery::SharedCtor() {
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&delivery_time_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&team_) -
-    reinterpret_cast<char*>(&delivery_time_)) + sizeof(team_));
+inline void UnconfirmedDelivery::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.delivery_time_){nullptr}
+    , decltype(_impl_.id_){0u}
+    , decltype(_impl_.team_){0}
+  };
 }
 
 UnconfirmedDelivery::~UnconfirmedDelivery() {
   // @@protoc_insertion_point(destructor:llsf_msgs.UnconfirmedDelivery)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void UnconfirmedDelivery::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete delivery_time_;
+  if (this != internal_default_instance()) delete _impl_.delivery_time_;
 }
 
-void UnconfirmedDelivery::ArenaDtor(void* object) {
-  UnconfirmedDelivery* _this = reinterpret_cast< UnconfirmedDelivery* >(object);
-  (void)_this;
-}
-void UnconfirmedDelivery::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void UnconfirmedDelivery::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void UnconfirmedDelivery::Clear() {
@@ -459,32 +473,32 @@ void UnconfirmedDelivery::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(delivery_time_ != nullptr);
-    delivery_time_->Clear();
+    GOOGLE_DCHECK(_impl_.delivery_time_ != nullptr);
+    _impl_.delivery_time_->Clear();
   }
   if (cached_has_bits & 0x00000006u) {
-    ::memset(&id_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&team_) -
-        reinterpret_cast<char*>(&id_)) + sizeof(team_));
+    ::memset(&_impl_.id_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&_impl_.team_) -
+        reinterpret_cast<char*>(&_impl_.id_)) + sizeof(_impl_.team_));
   }
-  _has_bits_.Clear();
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* UnconfirmedDelivery::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* UnconfirmedDelivery::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // required uint32 id = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           _Internal::set_has_id(&has_bits);
-          id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _impl_.id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -526,7 +540,7 @@ const char* UnconfirmedDelivery::_InternalParse(const char* ptr, ::PROTOBUF_NAME
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -540,30 +554,29 @@ uint8_t* UnconfirmedDelivery::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   // required uint32 id = 1;
   if (cached_has_bits & 0x00000002u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->_internal_id(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(1, this->_internal_id(), target);
   }
 
   // required .llsf_msgs.Team team = 2;
   if (cached_has_bits & 0x00000004u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
       2, this->_internal_team(), target);
   }
 
   // required .llsf_msgs.Time delivery_time = 3;
   if (cached_has_bits & 0x00000001u) {
-    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        3, _Internal::delivery_time(this), target, stream);
+      InternalWriteMessage(3, _Internal::delivery_time(this),
+        _Internal::delivery_time(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:llsf_msgs.UnconfirmedDelivery)
@@ -578,18 +591,18 @@ size_t UnconfirmedDelivery::RequiredFieldsByteSizeFallback() const {
     // required .llsf_msgs.Time delivery_time = 3;
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *delivery_time_);
+        *_impl_.delivery_time_);
   }
 
   if (_internal_has_id()) {
     // required uint32 id = 1;
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_id());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_id());
   }
 
   if (_internal_has_team()) {
     // required .llsf_msgs.Team team = 2;
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_team());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_team());
   }
 
   return total_size;
@@ -598,18 +611,18 @@ size_t UnconfirmedDelivery::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:llsf_msgs.UnconfirmedDelivery)
   size_t total_size = 0;
 
-  if (((_has_bits_[0] & 0x00000007) ^ 0x00000007) == 0) {  // All required fields are present.
+  if (((_impl_._has_bits_[0] & 0x00000007) ^ 0x00000007) == 0) {  // All required fields are present.
     // required .llsf_msgs.Time delivery_time = 3;
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *delivery_time_);
+        *_impl_.delivery_time_);
 
     // required uint32 id = 1;
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_id());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_id());
 
     // required .llsf_msgs.Team team = 2;
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_team());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_team());
 
   } else {
     total_size += RequiredFieldsByteSizeFallback();
@@ -618,42 +631,39 @@ size_t UnconfirmedDelivery::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData UnconfirmedDelivery::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     UnconfirmedDelivery::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*UnconfirmedDelivery::GetClassData() const { return &_class_data_; }
 
-void UnconfirmedDelivery::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<UnconfirmedDelivery *>(to)->MergeFrom(
-      static_cast<const UnconfirmedDelivery &>(from));
-}
 
-
-void UnconfirmedDelivery::MergeFrom(const UnconfirmedDelivery& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.UnconfirmedDelivery)
-  GOOGLE_DCHECK_NE(&from, this);
+void UnconfirmedDelivery::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<UnconfirmedDelivery*>(&to_msg);
+  auto& from = static_cast<const UnconfirmedDelivery&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.UnconfirmedDelivery)
+  GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = from._has_bits_[0];
+  cached_has_bits = from._impl_._has_bits_[0];
   if (cached_has_bits & 0x00000007u) {
     if (cached_has_bits & 0x00000001u) {
-      _internal_mutable_delivery_time()->::llsf_msgs::Time::MergeFrom(from._internal_delivery_time());
+      _this->_internal_mutable_delivery_time()->::llsf_msgs::Time::MergeFrom(
+          from._internal_delivery_time());
     }
     if (cached_has_bits & 0x00000002u) {
-      id_ = from.id_;
+      _this->_impl_.id_ = from._impl_.id_;
     }
     if (cached_has_bits & 0x00000004u) {
-      team_ = from.team_;
+      _this->_impl_.team_ = from._impl_.team_;
     }
-    _has_bits_[0] |= cached_has_bits;
+    _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void UnconfirmedDelivery::CopyFrom(const UnconfirmedDelivery& from) {
@@ -664,9 +674,9 @@ void UnconfirmedDelivery::CopyFrom(const UnconfirmedDelivery& from) {
 }
 
 bool UnconfirmedDelivery::IsInitialized() const {
-  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
+  if (_Internal::MissingRequiredFields(_impl_._has_bits_)) return false;
   if (_internal_has_delivery_time()) {
-    if (!delivery_time_->IsInitialized()) return false;
+    if (!_impl_.delivery_time_->IsInitialized()) return false;
   }
   return true;
 }
@@ -674,17 +684,17 @@ bool UnconfirmedDelivery::IsInitialized() const {
 void UnconfirmedDelivery::InternalSwap(UnconfirmedDelivery* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(UnconfirmedDelivery, team_)
-      + sizeof(UnconfirmedDelivery::team_)
-      - PROTOBUF_FIELD_OFFSET(UnconfirmedDelivery, delivery_time_)>(
-          reinterpret_cast<char*>(&delivery_time_),
-          reinterpret_cast<char*>(&other->delivery_time_));
+      PROTOBUF_FIELD_OFFSET(UnconfirmedDelivery, _impl_.team_)
+      + sizeof(UnconfirmedDelivery::_impl_.team_)
+      - PROTOBUF_FIELD_OFFSET(UnconfirmedDelivery, _impl_.delivery_time_)>(
+          reinterpret_cast<char*>(&_impl_.delivery_time_),
+          reinterpret_cast<char*>(&other->_impl_.delivery_time_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata UnconfirmedDelivery::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_OrderInfo_2eproto_getter, &descriptor_table_OrderInfo_2eproto_once,
       file_level_metadata_OrderInfo_2eproto[0]);
 }
@@ -693,7 +703,7 @@ void UnconfirmedDelivery::InternalSwap(UnconfirmedDelivery* other) {
 
 class Order::_Internal {
  public:
-  using HasBits = decltype(std::declval<Order>()._has_bits_);
+  using HasBits = decltype(std::declval<Order>()._impl_._has_bits_);
   static void set_has_id(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
@@ -734,55 +744,77 @@ class Order::_Internal {
 
 Order::Order(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
-  ring_colors_(arena),
-  unconfirmed_deliveries_(arena) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:llsf_msgs.Order)
 }
 Order::Order(const Order& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_),
-      ring_colors_(from.ring_colors_),
-      unconfirmed_deliveries_(from.unconfirmed_deliveries_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  Order* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.ring_colors_){from._impl_.ring_colors_}
+    , decltype(_impl_.unconfirmed_deliveries_){from._impl_.unconfirmed_deliveries_}
+    , decltype(_impl_.id_){}
+    , decltype(_impl_.complexity_){}
+    , decltype(_impl_.quantity_requested_){}
+    , decltype(_impl_.quantity_delivered_cyan_){}
+    , decltype(_impl_.quantity_delivered_magenta_){}
+    , decltype(_impl_.delivery_period_begin_){}
+    , decltype(_impl_.delivery_period_end_){}
+    , decltype(_impl_.delivery_gate_){}
+    , decltype(_impl_.competitive_){}
+    , decltype(_impl_.base_color_){}
+    , decltype(_impl_.cap_color_){}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::memcpy(&id_, &from.id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&cap_color_) -
-    reinterpret_cast<char*>(&id_)) + sizeof(cap_color_));
+  ::memcpy(&_impl_.id_, &from._impl_.id_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.cap_color_) -
+    reinterpret_cast<char*>(&_impl_.id_)) + sizeof(_impl_.cap_color_));
   // @@protoc_insertion_point(copy_constructor:llsf_msgs.Order)
 }
 
-inline void Order::SharedCtor() {
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&id_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&competitive_) -
-    reinterpret_cast<char*>(&id_)) + sizeof(competitive_));
-base_color_ = 1;
-cap_color_ = 1;
+inline void Order::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.ring_colors_){arena}
+    , decltype(_impl_.unconfirmed_deliveries_){arena}
+    , decltype(_impl_.id_){0u}
+    , decltype(_impl_.complexity_){0}
+    , decltype(_impl_.quantity_requested_){0u}
+    , decltype(_impl_.quantity_delivered_cyan_){0u}
+    , decltype(_impl_.quantity_delivered_magenta_){0u}
+    , decltype(_impl_.delivery_period_begin_){0u}
+    , decltype(_impl_.delivery_period_end_){0u}
+    , decltype(_impl_.delivery_gate_){0u}
+    , decltype(_impl_.competitive_){false}
+    , decltype(_impl_.base_color_){1}
+    , decltype(_impl_.cap_color_){1}
+  };
 }
 
 Order::~Order() {
   // @@protoc_insertion_point(destructor:llsf_msgs.Order)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void Order::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.ring_colors_.~RepeatedField();
+  _impl_.unconfirmed_deliveries_.~RepeatedPtrField();
 }
 
-void Order::ArenaDtor(void* object) {
-  Order* _this = reinterpret_cast< Order* >(object);
-  (void)_this;
-}
-void Order::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void Order::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void Order::Clear() {
@@ -791,35 +823,35 @@ void Order::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  ring_colors_.Clear();
-  unconfirmed_deliveries_.Clear();
-  cached_has_bits = _has_bits_[0];
+  _impl_.ring_colors_.Clear();
+  _impl_.unconfirmed_deliveries_.Clear();
+  cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x000000ffu) {
-    ::memset(&id_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&delivery_gate_) -
-        reinterpret_cast<char*>(&id_)) + sizeof(delivery_gate_));
+    ::memset(&_impl_.id_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&_impl_.delivery_gate_) -
+        reinterpret_cast<char*>(&_impl_.id_)) + sizeof(_impl_.delivery_gate_));
   }
   if (cached_has_bits & 0x00000700u) {
-    competitive_ = false;
-    base_color_ = 1;
-    cap_color_ = 1;
+    _impl_.competitive_ = false;
+    _impl_.base_color_ = 1;
+    _impl_.cap_color_ = 1;
   }
-  _has_bits_.Clear();
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* Order::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* Order::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // required uint32 id = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           _Internal::set_has_id(&has_bits);
-          id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _impl_.id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -888,7 +920,7 @@ const char* Order::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::inte
       case 6:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 48)) {
           _Internal::set_has_quantity_requested(&has_bits);
-          quantity_requested_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _impl_.quantity_requested_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -897,7 +929,7 @@ const char* Order::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::inte
       case 7:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 56)) {
           _Internal::set_has_quantity_delivered_cyan(&has_bits);
-          quantity_delivered_cyan_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _impl_.quantity_delivered_cyan_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -906,7 +938,7 @@ const char* Order::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::inte
       case 8:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 64)) {
           _Internal::set_has_quantity_delivered_magenta(&has_bits);
-          quantity_delivered_magenta_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _impl_.quantity_delivered_magenta_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -915,7 +947,7 @@ const char* Order::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::inte
       case 9:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 72)) {
           _Internal::set_has_delivery_period_begin(&has_bits);
-          delivery_period_begin_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _impl_.delivery_period_begin_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -924,7 +956,7 @@ const char* Order::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::inte
       case 10:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 80)) {
           _Internal::set_has_delivery_period_end(&has_bits);
-          delivery_period_end_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _impl_.delivery_period_end_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -933,7 +965,7 @@ const char* Order::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::inte
       case 11:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 88)) {
           _Internal::set_has_delivery_gate(&has_bits);
-          delivery_gate_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _impl_.delivery_gate_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -955,7 +987,7 @@ const char* Order::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::inte
       case 13:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 104)) {
           _Internal::set_has_competitive(&has_bits);
-          competitive_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          _impl_.competitive_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -976,7 +1008,7 @@ const char* Order::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::inte
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -990,93 +1022,93 @@ uint8_t* Order::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   // required uint32 id = 1;
   if (cached_has_bits & 0x00000001u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->_internal_id(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(1, this->_internal_id(), target);
   }
 
   // required .llsf_msgs.Order.Complexity complexity = 2;
   if (cached_has_bits & 0x00000002u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
       2, this->_internal_complexity(), target);
   }
 
   // required .llsf_msgs.BaseColor base_color = 3;
   if (cached_has_bits & 0x00000200u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
       3, this->_internal_base_color(), target);
   }
 
   // repeated .llsf_msgs.RingColor ring_colors = 4;
   for (int i = 0, n = this->_internal_ring_colors_size(); i < n; i++) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
         4, this->_internal_ring_colors(i), target);
   }
 
   // required .llsf_msgs.CapColor cap_color = 5;
   if (cached_has_bits & 0x00000400u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
       5, this->_internal_cap_color(), target);
   }
 
   // required uint32 quantity_requested = 6;
   if (cached_has_bits & 0x00000004u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(6, this->_internal_quantity_requested(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(6, this->_internal_quantity_requested(), target);
   }
 
   // required uint32 quantity_delivered_cyan = 7;
   if (cached_has_bits & 0x00000008u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(7, this->_internal_quantity_delivered_cyan(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(7, this->_internal_quantity_delivered_cyan(), target);
   }
 
   // required uint32 quantity_delivered_magenta = 8;
   if (cached_has_bits & 0x00000010u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(8, this->_internal_quantity_delivered_magenta(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(8, this->_internal_quantity_delivered_magenta(), target);
   }
 
   // required uint32 delivery_period_begin = 9;
   if (cached_has_bits & 0x00000020u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(9, this->_internal_delivery_period_begin(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(9, this->_internal_delivery_period_begin(), target);
   }
 
   // required uint32 delivery_period_end = 10;
   if (cached_has_bits & 0x00000040u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(10, this->_internal_delivery_period_end(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(10, this->_internal_delivery_period_end(), target);
   }
 
   // required uint32 delivery_gate = 11;
   if (cached_has_bits & 0x00000080u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(11, this->_internal_delivery_gate(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(11, this->_internal_delivery_gate(), target);
   }
 
   // repeated .llsf_msgs.UnconfirmedDelivery unconfirmed_deliveries = 12;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->_internal_unconfirmed_deliveries_size()); i < n; i++) {
-    target = stream->EnsureSpace(target);
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_unconfirmed_deliveries_size()); i < n; i++) {
+    const auto& repfield = this->_internal_unconfirmed_deliveries(i);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(12, this->_internal_unconfirmed_deliveries(i), target, stream);
+        InternalWriteMessage(12, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   // required bool competitive = 13;
   if (cached_has_bits & 0x00000100u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(13, this->_internal_competitive(), target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(13, this->_internal_competitive(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:llsf_msgs.Order)
@@ -1089,43 +1121,43 @@ size_t Order::RequiredFieldsByteSizeFallback() const {
 
   if (_internal_has_id()) {
     // required uint32 id = 1;
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_id());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_id());
   }
 
   if (_internal_has_complexity()) {
     // required .llsf_msgs.Order.Complexity complexity = 2;
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_complexity());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_complexity());
   }
 
   if (_internal_has_quantity_requested()) {
     // required uint32 quantity_requested = 6;
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_quantity_requested());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_quantity_requested());
   }
 
   if (_internal_has_quantity_delivered_cyan()) {
     // required uint32 quantity_delivered_cyan = 7;
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_quantity_delivered_cyan());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_quantity_delivered_cyan());
   }
 
   if (_internal_has_quantity_delivered_magenta()) {
     // required uint32 quantity_delivered_magenta = 8;
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_quantity_delivered_magenta());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_quantity_delivered_magenta());
   }
 
   if (_internal_has_delivery_period_begin()) {
     // required uint32 delivery_period_begin = 9;
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_delivery_period_begin());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_delivery_period_begin());
   }
 
   if (_internal_has_delivery_period_end()) {
     // required uint32 delivery_period_end = 10;
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_delivery_period_end());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_delivery_period_end());
   }
 
   if (_internal_has_delivery_gate()) {
     // required uint32 delivery_gate = 11;
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_delivery_gate());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_delivery_gate());
   }
 
   if (_internal_has_competitive()) {
@@ -1136,13 +1168,13 @@ size_t Order::RequiredFieldsByteSizeFallback() const {
   if (_internal_has_base_color()) {
     // required .llsf_msgs.BaseColor base_color = 3;
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_base_color());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_base_color());
   }
 
   if (_internal_has_cap_color()) {
     // required .llsf_msgs.CapColor cap_color = 5;
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_cap_color());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_cap_color());
   }
 
   return total_size;
@@ -1151,42 +1183,42 @@ size_t Order::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:llsf_msgs.Order)
   size_t total_size = 0;
 
-  if (((_has_bits_[0] & 0x000007ff) ^ 0x000007ff) == 0) {  // All required fields are present.
+  if (((_impl_._has_bits_[0] & 0x000007ff) ^ 0x000007ff) == 0) {  // All required fields are present.
     // required uint32 id = 1;
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_id());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_id());
 
     // required .llsf_msgs.Order.Complexity complexity = 2;
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_complexity());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_complexity());
 
     // required uint32 quantity_requested = 6;
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_quantity_requested());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_quantity_requested());
 
     // required uint32 quantity_delivered_cyan = 7;
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_quantity_delivered_cyan());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_quantity_delivered_cyan());
 
     // required uint32 quantity_delivered_magenta = 8;
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_quantity_delivered_magenta());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_quantity_delivered_magenta());
 
     // required uint32 delivery_period_begin = 9;
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_delivery_period_begin());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_delivery_period_begin());
 
     // required uint32 delivery_period_end = 10;
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_delivery_period_end());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_delivery_period_end());
 
     // required uint32 delivery_gate = 11;
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_delivery_gate());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_delivery_gate());
 
     // required bool competitive = 13;
     total_size += 1 + 1;
 
     // required .llsf_msgs.BaseColor base_color = 3;
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_base_color());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_base_color());
 
     // required .llsf_msgs.CapColor cap_color = 5;
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_cap_color());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_cap_color());
 
   } else {
     total_size += RequiredFieldsByteSizeFallback();
@@ -1199,7 +1231,7 @@ size_t Order::ByteSizeLong() const {
   {
     size_t data_size = 0;
     unsigned int count = static_cast<unsigned int>(this->_internal_ring_colors_size());for (unsigned int i = 0; i < count; i++) {
-      data_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(
+      data_size += ::_pbi::WireFormatLite::EnumSize(
         this->_internal_ring_colors(static_cast<int>(i)));
     }
     total_size += (1UL * count) + data_size;
@@ -1207,76 +1239,72 @@ size_t Order::ByteSizeLong() const {
 
   // repeated .llsf_msgs.UnconfirmedDelivery unconfirmed_deliveries = 12;
   total_size += 1UL * this->_internal_unconfirmed_deliveries_size();
-  for (const auto& msg : this->unconfirmed_deliveries_) {
+  for (const auto& msg : this->_impl_.unconfirmed_deliveries_) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Order::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     Order::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Order::GetClassData() const { return &_class_data_; }
 
-void Order::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<Order *>(to)->MergeFrom(
-      static_cast<const Order &>(from));
-}
 
-
-void Order::MergeFrom(const Order& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.Order)
-  GOOGLE_DCHECK_NE(&from, this);
+void Order::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<Order*>(&to_msg);
+  auto& from = static_cast<const Order&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.Order)
+  GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  ring_colors_.MergeFrom(from.ring_colors_);
-  unconfirmed_deliveries_.MergeFrom(from.unconfirmed_deliveries_);
-  cached_has_bits = from._has_bits_[0];
+  _this->_impl_.ring_colors_.MergeFrom(from._impl_.ring_colors_);
+  _this->_impl_.unconfirmed_deliveries_.MergeFrom(from._impl_.unconfirmed_deliveries_);
+  cached_has_bits = from._impl_._has_bits_[0];
   if (cached_has_bits & 0x000000ffu) {
     if (cached_has_bits & 0x00000001u) {
-      id_ = from.id_;
+      _this->_impl_.id_ = from._impl_.id_;
     }
     if (cached_has_bits & 0x00000002u) {
-      complexity_ = from.complexity_;
+      _this->_impl_.complexity_ = from._impl_.complexity_;
     }
     if (cached_has_bits & 0x00000004u) {
-      quantity_requested_ = from.quantity_requested_;
+      _this->_impl_.quantity_requested_ = from._impl_.quantity_requested_;
     }
     if (cached_has_bits & 0x00000008u) {
-      quantity_delivered_cyan_ = from.quantity_delivered_cyan_;
+      _this->_impl_.quantity_delivered_cyan_ = from._impl_.quantity_delivered_cyan_;
     }
     if (cached_has_bits & 0x00000010u) {
-      quantity_delivered_magenta_ = from.quantity_delivered_magenta_;
+      _this->_impl_.quantity_delivered_magenta_ = from._impl_.quantity_delivered_magenta_;
     }
     if (cached_has_bits & 0x00000020u) {
-      delivery_period_begin_ = from.delivery_period_begin_;
+      _this->_impl_.delivery_period_begin_ = from._impl_.delivery_period_begin_;
     }
     if (cached_has_bits & 0x00000040u) {
-      delivery_period_end_ = from.delivery_period_end_;
+      _this->_impl_.delivery_period_end_ = from._impl_.delivery_period_end_;
     }
     if (cached_has_bits & 0x00000080u) {
-      delivery_gate_ = from.delivery_gate_;
+      _this->_impl_.delivery_gate_ = from._impl_.delivery_gate_;
     }
-    _has_bits_[0] |= cached_has_bits;
+    _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
   if (cached_has_bits & 0x00000700u) {
     if (cached_has_bits & 0x00000100u) {
-      competitive_ = from.competitive_;
+      _this->_impl_.competitive_ = from._impl_.competitive_;
     }
     if (cached_has_bits & 0x00000200u) {
-      base_color_ = from.base_color_;
+      _this->_impl_.base_color_ = from._impl_.base_color_;
     }
     if (cached_has_bits & 0x00000400u) {
-      cap_color_ = from.cap_color_;
+      _this->_impl_.cap_color_ = from._impl_.cap_color_;
     }
-    _has_bits_[0] |= cached_has_bits;
+    _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void Order::CopyFrom(const Order& from) {
@@ -1287,8 +1315,8 @@ void Order::CopyFrom(const Order& from) {
 }
 
 bool Order::IsInitialized() const {
-  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
-  if (!::PROTOBUF_NAMESPACE_ID::internal::AllAreInitialized(unconfirmed_deliveries_))
+  if (_Internal::MissingRequiredFields(_impl_._has_bits_)) return false;
+  if (!::PROTOBUF_NAMESPACE_ID::internal::AllAreInitialized(_impl_.unconfirmed_deliveries_))
     return false;
   return true;
 }
@@ -1296,21 +1324,21 @@ bool Order::IsInitialized() const {
 void Order::InternalSwap(Order* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
-  ring_colors_.InternalSwap(&other->ring_colors_);
-  unconfirmed_deliveries_.InternalSwap(&other->unconfirmed_deliveries_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  _impl_.ring_colors_.InternalSwap(&other->_impl_.ring_colors_);
+  _impl_.unconfirmed_deliveries_.InternalSwap(&other->_impl_.unconfirmed_deliveries_);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(Order, competitive_)
-      + sizeof(Order::competitive_)
-      - PROTOBUF_FIELD_OFFSET(Order, id_)>(
-          reinterpret_cast<char*>(&id_),
-          reinterpret_cast<char*>(&other->id_));
-  swap(base_color_, other->base_color_);
-  swap(cap_color_, other->cap_color_);
+      PROTOBUF_FIELD_OFFSET(Order, _impl_.competitive_)
+      + sizeof(Order::_impl_.competitive_)
+      - PROTOBUF_FIELD_OFFSET(Order, _impl_.id_)>(
+          reinterpret_cast<char*>(&_impl_.id_),
+          reinterpret_cast<char*>(&other->_impl_.id_));
+  swap(_impl_.base_color_, other->_impl_.base_color_);
+  swap(_impl_.cap_color_, other->_impl_.cap_color_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Order::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_OrderInfo_2eproto_getter, &descriptor_table_OrderInfo_2eproto_once,
       file_level_metadata_OrderInfo_2eproto[1]);
 }
@@ -1323,43 +1351,47 @@ class OrderInfo::_Internal {
 
 OrderInfo::OrderInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
-  orders_(arena) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:llsf_msgs.OrderInfo)
 }
 OrderInfo::OrderInfo(const OrderInfo& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      orders_(from.orders_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  OrderInfo* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.orders_){from._impl_.orders_}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   // @@protoc_insertion_point(copy_constructor:llsf_msgs.OrderInfo)
 }
 
-inline void OrderInfo::SharedCtor() {
+inline void OrderInfo::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.orders_){arena}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
 }
 
 OrderInfo::~OrderInfo() {
   // @@protoc_insertion_point(destructor:llsf_msgs.OrderInfo)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void OrderInfo::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.orders_.~RepeatedPtrField();
 }
 
-void OrderInfo::ArenaDtor(void* object) {
-  OrderInfo* _this = reinterpret_cast< OrderInfo* >(object);
-  (void)_this;
-}
-void OrderInfo::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void OrderInfo::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void OrderInfo::Clear() {
@@ -1368,15 +1400,15 @@ void OrderInfo::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  orders_.Clear();
+  _impl_.orders_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* OrderInfo::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* OrderInfo::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // repeated .llsf_msgs.Order orders = 1;
       case 1:
@@ -1421,15 +1453,15 @@ uint8_t* OrderInfo::_InternalSerialize(
   (void) cached_has_bits;
 
   // repeated .llsf_msgs.Order orders = 1;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->_internal_orders_size()); i < n; i++) {
-    target = stream->EnsureSpace(target);
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_orders_size()); i < n; i++) {
+    const auto& repfield = this->_internal_orders(i);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(1, this->_internal_orders(i), target, stream);
+        InternalWriteMessage(1, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:llsf_msgs.OrderInfo)
@@ -1446,35 +1478,31 @@ size_t OrderInfo::ByteSizeLong() const {
 
   // repeated .llsf_msgs.Order orders = 1;
   total_size += 1UL * this->_internal_orders_size();
-  for (const auto& msg : this->orders_) {
+  for (const auto& msg : this->_impl_.orders_) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData OrderInfo::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     OrderInfo::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*OrderInfo::GetClassData() const { return &_class_data_; }
 
-void OrderInfo::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<OrderInfo *>(to)->MergeFrom(
-      static_cast<const OrderInfo &>(from));
-}
 
-
-void OrderInfo::MergeFrom(const OrderInfo& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.OrderInfo)
-  GOOGLE_DCHECK_NE(&from, this);
+void OrderInfo::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<OrderInfo*>(&to_msg);
+  auto& from = static_cast<const OrderInfo&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.OrderInfo)
+  GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  orders_.MergeFrom(from.orders_);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_impl_.orders_.MergeFrom(from._impl_.orders_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void OrderInfo::CopyFrom(const OrderInfo& from) {
@@ -1485,7 +1513,7 @@ void OrderInfo::CopyFrom(const OrderInfo& from) {
 }
 
 bool OrderInfo::IsInitialized() const {
-  if (!::PROTOBUF_NAMESPACE_ID::internal::AllAreInitialized(orders_))
+  if (!::PROTOBUF_NAMESPACE_ID::internal::AllAreInitialized(_impl_.orders_))
     return false;
   return true;
 }
@@ -1493,11 +1521,11 @@ bool OrderInfo::IsInitialized() const {
 void OrderInfo::InternalSwap(OrderInfo* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  orders_.InternalSwap(&other->orders_);
+  _impl_.orders_.InternalSwap(&other->_impl_.orders_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata OrderInfo::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_OrderInfo_2eproto_getter, &descriptor_table_OrderInfo_2eproto_once,
       file_level_metadata_OrderInfo_2eproto[2]);
 }
@@ -1506,7 +1534,7 @@ void OrderInfo::InternalSwap(OrderInfo* other) {
 
 class SetOrderDelivered::_Internal {
  public:
-  using HasBits = decltype(std::declval<SetOrderDelivered>()._has_bits_);
+  using HasBits = decltype(std::declval<SetOrderDelivered>()._impl_._has_bits_);
   static void set_has_team_color(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
@@ -1521,48 +1549,52 @@ class SetOrderDelivered::_Internal {
 SetOrderDelivered::SetOrderDelivered(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:llsf_msgs.SetOrderDelivered)
 }
 SetOrderDelivered::SetOrderDelivered(const SetOrderDelivered& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  SetOrderDelivered* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.team_color_){}
+    , decltype(_impl_.order_id_){}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::memcpy(&team_color_, &from.team_color_,
-    static_cast<size_t>(reinterpret_cast<char*>(&order_id_) -
-    reinterpret_cast<char*>(&team_color_)) + sizeof(order_id_));
+  ::memcpy(&_impl_.team_color_, &from._impl_.team_color_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.order_id_) -
+    reinterpret_cast<char*>(&_impl_.team_color_)) + sizeof(_impl_.order_id_));
   // @@protoc_insertion_point(copy_constructor:llsf_msgs.SetOrderDelivered)
 }
 
-inline void SetOrderDelivered::SharedCtor() {
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&team_color_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&order_id_) -
-    reinterpret_cast<char*>(&team_color_)) + sizeof(order_id_));
+inline void SetOrderDelivered::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.team_color_){0}
+    , decltype(_impl_.order_id_){0u}
+  };
 }
 
 SetOrderDelivered::~SetOrderDelivered() {
   // @@protoc_insertion_point(destructor:llsf_msgs.SetOrderDelivered)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void SetOrderDelivered::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
 }
 
-void SetOrderDelivered::ArenaDtor(void* object) {
-  SetOrderDelivered* _this = reinterpret_cast< SetOrderDelivered* >(object);
-  (void)_this;
-}
-void SetOrderDelivered::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void SetOrderDelivered::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void SetOrderDelivered::Clear() {
@@ -1571,22 +1603,22 @@ void SetOrderDelivered::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
-    ::memset(&team_color_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&order_id_) -
-        reinterpret_cast<char*>(&team_color_)) + sizeof(order_id_));
+    ::memset(&_impl_.team_color_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&_impl_.order_id_) -
+        reinterpret_cast<char*>(&_impl_.team_color_)) + sizeof(_impl_.order_id_));
   }
-  _has_bits_.Clear();
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* SetOrderDelivered::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* SetOrderDelivered::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // required .llsf_msgs.Team team_color = 1;
       case 1:
@@ -1605,7 +1637,7 @@ const char* SetOrderDelivered::_InternalParse(const char* ptr, ::PROTOBUF_NAMESP
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
           _Internal::set_has_order_id(&has_bits);
-          order_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _impl_.order_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -1626,7 +1658,7 @@ const char* SetOrderDelivered::_InternalParse(const char* ptr, ::PROTOBUF_NAMESP
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -1640,22 +1672,22 @@ uint8_t* SetOrderDelivered::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   // required .llsf_msgs.Team team_color = 1;
   if (cached_has_bits & 0x00000001u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
       1, this->_internal_team_color(), target);
   }
 
   // required uint32 order_id = 2;
   if (cached_has_bits & 0x00000002u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(2, this->_internal_order_id(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(2, this->_internal_order_id(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:llsf_msgs.SetOrderDelivered)
@@ -1669,12 +1701,12 @@ size_t SetOrderDelivered::RequiredFieldsByteSizeFallback() const {
   if (_internal_has_team_color()) {
     // required .llsf_msgs.Team team_color = 1;
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_team_color());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_team_color());
   }
 
   if (_internal_has_order_id()) {
     // required uint32 order_id = 2;
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_order_id());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_order_id());
   }
 
   return total_size;
@@ -1683,13 +1715,13 @@ size_t SetOrderDelivered::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:llsf_msgs.SetOrderDelivered)
   size_t total_size = 0;
 
-  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
+  if (((_impl_._has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
     // required .llsf_msgs.Team team_color = 1;
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_team_color());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_team_color());
 
     // required uint32 order_id = 2;
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_order_id());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_order_id());
 
   } else {
     total_size += RequiredFieldsByteSizeFallback();
@@ -1698,39 +1730,35 @@ size_t SetOrderDelivered::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData SetOrderDelivered::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     SetOrderDelivered::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SetOrderDelivered::GetClassData() const { return &_class_data_; }
 
-void SetOrderDelivered::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<SetOrderDelivered *>(to)->MergeFrom(
-      static_cast<const SetOrderDelivered &>(from));
-}
 
-
-void SetOrderDelivered::MergeFrom(const SetOrderDelivered& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.SetOrderDelivered)
-  GOOGLE_DCHECK_NE(&from, this);
+void SetOrderDelivered::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<SetOrderDelivered*>(&to_msg);
+  auto& from = static_cast<const SetOrderDelivered&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.SetOrderDelivered)
+  GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = from._has_bits_[0];
+  cached_has_bits = from._impl_._has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
     if (cached_has_bits & 0x00000001u) {
-      team_color_ = from.team_color_;
+      _this->_impl_.team_color_ = from._impl_.team_color_;
     }
     if (cached_has_bits & 0x00000002u) {
-      order_id_ = from.order_id_;
+      _this->_impl_.order_id_ = from._impl_.order_id_;
     }
-    _has_bits_[0] |= cached_has_bits;
+    _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void SetOrderDelivered::CopyFrom(const SetOrderDelivered& from) {
@@ -1741,24 +1769,24 @@ void SetOrderDelivered::CopyFrom(const SetOrderDelivered& from) {
 }
 
 bool SetOrderDelivered::IsInitialized() const {
-  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
+  if (_Internal::MissingRequiredFields(_impl_._has_bits_)) return false;
   return true;
 }
 
 void SetOrderDelivered::InternalSwap(SetOrderDelivered* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(SetOrderDelivered, order_id_)
-      + sizeof(SetOrderDelivered::order_id_)
-      - PROTOBUF_FIELD_OFFSET(SetOrderDelivered, team_color_)>(
-          reinterpret_cast<char*>(&team_color_),
-          reinterpret_cast<char*>(&other->team_color_));
+      PROTOBUF_FIELD_OFFSET(SetOrderDelivered, _impl_.order_id_)
+      + sizeof(SetOrderDelivered::_impl_.order_id_)
+      - PROTOBUF_FIELD_OFFSET(SetOrderDelivered, _impl_.team_color_)>(
+          reinterpret_cast<char*>(&_impl_.team_color_),
+          reinterpret_cast<char*>(&other->_impl_.team_color_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata SetOrderDelivered::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_OrderInfo_2eproto_getter, &descriptor_table_OrderInfo_2eproto_once,
       file_level_metadata_OrderInfo_2eproto[3]);
 }
@@ -1767,7 +1795,7 @@ void SetOrderDelivered::InternalSwap(SetOrderDelivered* other) {
 
 class ConfirmDelivery::_Internal {
  public:
-  using HasBits = decltype(std::declval<ConfirmDelivery>()._has_bits_);
+  using HasBits = decltype(std::declval<ConfirmDelivery>()._impl_._has_bits_);
   static void set_has_delivery_id(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
@@ -1782,48 +1810,52 @@ class ConfirmDelivery::_Internal {
 ConfirmDelivery::ConfirmDelivery(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:llsf_msgs.ConfirmDelivery)
 }
 ConfirmDelivery::ConfirmDelivery(const ConfirmDelivery& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ConfirmDelivery* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.delivery_id_){}
+    , decltype(_impl_.correct_){}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::memcpy(&delivery_id_, &from.delivery_id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&correct_) -
-    reinterpret_cast<char*>(&delivery_id_)) + sizeof(correct_));
+  ::memcpy(&_impl_.delivery_id_, &from._impl_.delivery_id_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.correct_) -
+    reinterpret_cast<char*>(&_impl_.delivery_id_)) + sizeof(_impl_.correct_));
   // @@protoc_insertion_point(copy_constructor:llsf_msgs.ConfirmDelivery)
 }
 
-inline void ConfirmDelivery::SharedCtor() {
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&delivery_id_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&correct_) -
-    reinterpret_cast<char*>(&delivery_id_)) + sizeof(correct_));
+inline void ConfirmDelivery::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.delivery_id_){0u}
+    , decltype(_impl_.correct_){false}
+  };
 }
 
 ConfirmDelivery::~ConfirmDelivery() {
   // @@protoc_insertion_point(destructor:llsf_msgs.ConfirmDelivery)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void ConfirmDelivery::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
 }
 
-void ConfirmDelivery::ArenaDtor(void* object) {
-  ConfirmDelivery* _this = reinterpret_cast< ConfirmDelivery* >(object);
-  (void)_this;
-}
-void ConfirmDelivery::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ConfirmDelivery::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void ConfirmDelivery::Clear() {
@@ -1832,28 +1864,28 @@ void ConfirmDelivery::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
-    ::memset(&delivery_id_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&correct_) -
-        reinterpret_cast<char*>(&delivery_id_)) + sizeof(correct_));
+    ::memset(&_impl_.delivery_id_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&_impl_.correct_) -
+        reinterpret_cast<char*>(&_impl_.delivery_id_)) + sizeof(_impl_.correct_));
   }
-  _has_bits_.Clear();
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ConfirmDelivery::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ConfirmDelivery::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // required uint32 delivery_id = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           _Internal::set_has_delivery_id(&has_bits);
-          delivery_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _impl_.delivery_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -1862,7 +1894,7 @@ const char* ConfirmDelivery::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPAC
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
           _Internal::set_has_correct(&has_bits);
-          correct_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          _impl_.correct_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -1883,7 +1915,7 @@ const char* ConfirmDelivery::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPAC
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -1897,21 +1929,21 @@ uint8_t* ConfirmDelivery::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   // required uint32 delivery_id = 1;
   if (cached_has_bits & 0x00000001u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->_internal_delivery_id(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(1, this->_internal_delivery_id(), target);
   }
 
   // required bool correct = 2;
   if (cached_has_bits & 0x00000002u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(2, this->_internal_correct(), target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(2, this->_internal_correct(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:llsf_msgs.ConfirmDelivery)
@@ -1924,7 +1956,7 @@ size_t ConfirmDelivery::RequiredFieldsByteSizeFallback() const {
 
   if (_internal_has_delivery_id()) {
     // required uint32 delivery_id = 1;
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_delivery_id());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_delivery_id());
   }
 
   if (_internal_has_correct()) {
@@ -1938,9 +1970,9 @@ size_t ConfirmDelivery::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:llsf_msgs.ConfirmDelivery)
   size_t total_size = 0;
 
-  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
+  if (((_impl_._has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
     // required uint32 delivery_id = 1;
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_delivery_id());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_delivery_id());
 
     // required bool correct = 2;
     total_size += 1 + 1;
@@ -1952,39 +1984,35 @@ size_t ConfirmDelivery::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ConfirmDelivery::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     ConfirmDelivery::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ConfirmDelivery::GetClassData() const { return &_class_data_; }
 
-void ConfirmDelivery::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<ConfirmDelivery *>(to)->MergeFrom(
-      static_cast<const ConfirmDelivery &>(from));
-}
 
-
-void ConfirmDelivery::MergeFrom(const ConfirmDelivery& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.ConfirmDelivery)
-  GOOGLE_DCHECK_NE(&from, this);
+void ConfirmDelivery::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ConfirmDelivery*>(&to_msg);
+  auto& from = static_cast<const ConfirmDelivery&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.ConfirmDelivery)
+  GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = from._has_bits_[0];
+  cached_has_bits = from._impl_._has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
     if (cached_has_bits & 0x00000001u) {
-      delivery_id_ = from.delivery_id_;
+      _this->_impl_.delivery_id_ = from._impl_.delivery_id_;
     }
     if (cached_has_bits & 0x00000002u) {
-      correct_ = from.correct_;
+      _this->_impl_.correct_ = from._impl_.correct_;
     }
-    _has_bits_[0] |= cached_has_bits;
+    _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ConfirmDelivery::CopyFrom(const ConfirmDelivery& from) {
@@ -1995,24 +2023,24 @@ void ConfirmDelivery::CopyFrom(const ConfirmDelivery& from) {
 }
 
 bool ConfirmDelivery::IsInitialized() const {
-  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
+  if (_Internal::MissingRequiredFields(_impl_._has_bits_)) return false;
   return true;
 }
 
 void ConfirmDelivery::InternalSwap(ConfirmDelivery* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ConfirmDelivery, correct_)
-      + sizeof(ConfirmDelivery::correct_)
-      - PROTOBUF_FIELD_OFFSET(ConfirmDelivery, delivery_id_)>(
-          reinterpret_cast<char*>(&delivery_id_),
-          reinterpret_cast<char*>(&other->delivery_id_));
+      PROTOBUF_FIELD_OFFSET(ConfirmDelivery, _impl_.correct_)
+      + sizeof(ConfirmDelivery::_impl_.correct_)
+      - PROTOBUF_FIELD_OFFSET(ConfirmDelivery, _impl_.delivery_id_)>(
+          reinterpret_cast<char*>(&_impl_.delivery_id_),
+          reinterpret_cast<char*>(&other->_impl_.delivery_id_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ConfirmDelivery::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_OrderInfo_2eproto_getter, &descriptor_table_OrderInfo_2eproto_once,
       file_level_metadata_OrderInfo_2eproto[4]);
 }
@@ -2020,19 +2048,24 @@ void ConfirmDelivery::InternalSwap(ConfirmDelivery* other) {
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace llsf_msgs
 PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::llsf_msgs::UnconfirmedDelivery* Arena::CreateMaybeMessage< ::llsf_msgs::UnconfirmedDelivery >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::llsf_msgs::UnconfirmedDelivery*
+Arena::CreateMaybeMessage< ::llsf_msgs::UnconfirmedDelivery >(Arena* arena) {
   return Arena::CreateMessageInternal< ::llsf_msgs::UnconfirmedDelivery >(arena);
 }
-template<> PROTOBUF_NOINLINE ::llsf_msgs::Order* Arena::CreateMaybeMessage< ::llsf_msgs::Order >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::llsf_msgs::Order*
+Arena::CreateMaybeMessage< ::llsf_msgs::Order >(Arena* arena) {
   return Arena::CreateMessageInternal< ::llsf_msgs::Order >(arena);
 }
-template<> PROTOBUF_NOINLINE ::llsf_msgs::OrderInfo* Arena::CreateMaybeMessage< ::llsf_msgs::OrderInfo >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::llsf_msgs::OrderInfo*
+Arena::CreateMaybeMessage< ::llsf_msgs::OrderInfo >(Arena* arena) {
   return Arena::CreateMessageInternal< ::llsf_msgs::OrderInfo >(arena);
 }
-template<> PROTOBUF_NOINLINE ::llsf_msgs::SetOrderDelivered* Arena::CreateMaybeMessage< ::llsf_msgs::SetOrderDelivered >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::llsf_msgs::SetOrderDelivered*
+Arena::CreateMaybeMessage< ::llsf_msgs::SetOrderDelivered >(Arena* arena) {
   return Arena::CreateMessageInternal< ::llsf_msgs::SetOrderDelivered >(arena);
 }
-template<> PROTOBUF_NOINLINE ::llsf_msgs::ConfirmDelivery* Arena::CreateMaybeMessage< ::llsf_msgs::ConfirmDelivery >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::llsf_msgs::ConfirmDelivery*
+Arena::CreateMaybeMessage< ::llsf_msgs::ConfirmDelivery >(Arena* arena) {
   return Arena::CreateMessageInternal< ::llsf_msgs::ConfirmDelivery >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE

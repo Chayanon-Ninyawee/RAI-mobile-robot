@@ -16,46 +16,52 @@
 #include <google/protobuf/port_def.inc>
 
 PROTOBUF_PRAGMA_INIT_SEG
+
+namespace _pb = ::PROTOBUF_NAMESPACE_ID;
+namespace _pbi = _pb::internal;
+
 namespace llsf_msgs {
-constexpr SimTimeSync::SimTimeSync(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : sim_time_(nullptr)
-  , real_time_factor_(0)
-  , paused_(false){}
+PROTOBUF_CONSTEXPR SimTimeSync::SimTimeSync(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.sim_time_)*/nullptr
+  , /*decltype(_impl_.real_time_factor_)*/0
+  , /*decltype(_impl_.paused_)*/false} {}
 struct SimTimeSyncDefaultTypeInternal {
-  constexpr SimTimeSyncDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR SimTimeSyncDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~SimTimeSyncDefaultTypeInternal() {}
   union {
     SimTimeSync _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT SimTimeSyncDefaultTypeInternal _SimTimeSync_default_instance_;
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SimTimeSyncDefaultTypeInternal _SimTimeSync_default_instance_;
 }  // namespace llsf_msgs
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_SimTimeSync_2eproto[1];
-static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_SimTimeSync_2eproto[1];
-static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_SimTimeSync_2eproto = nullptr;
+static ::_pb::Metadata file_level_metadata_SimTimeSync_2eproto[1];
+static const ::_pb::EnumDescriptor* file_level_enum_descriptors_SimTimeSync_2eproto[1];
+static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_SimTimeSync_2eproto = nullptr;
 
 const uint32_t TableStruct_SimTimeSync_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::SimTimeSync, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::SimTimeSync, _impl_._has_bits_),
   PROTOBUF_FIELD_OFFSET(::llsf_msgs::SimTimeSync, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::SimTimeSync, sim_time_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::SimTimeSync, real_time_factor_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::SimTimeSync, paused_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::SimTimeSync, _impl_.sim_time_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::SimTimeSync, _impl_.real_time_factor_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::SimTimeSync, _impl_.paused_),
   0,
   1,
   2,
 };
-static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 9, -1, sizeof(::llsf_msgs::SimTimeSync)},
 };
 
-static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::llsf_msgs::_SimTimeSync_default_instance_),
+static const ::_pb::Message* const file_default_instances[] = {
+  &::llsf_msgs::_SimTimeSync_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_SimTimeSync_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -66,22 +72,24 @@ const char descriptor_table_protodef_SimTimeSync_2eproto[] PROTOBUF_SECTION_VARI
   "\017\022\r\n\010MSG_TYPE\020\307\002B4\n\037org.robocup_logistic"
   "s.llsf_msgsB\021SimTimeSyncProtos"
   ;
-static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_SimTimeSync_2eproto_deps[1] = {
+static const ::_pbi::DescriptorTable* const descriptor_table_SimTimeSync_2eproto_deps[1] = {
   &::descriptor_table_Time_2eproto,
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_SimTimeSync_2eproto_once;
-const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_SimTimeSync_2eproto = {
-  false, false, 230, descriptor_table_protodef_SimTimeSync_2eproto, "SimTimeSync.proto", 
-  &descriptor_table_SimTimeSync_2eproto_once, descriptor_table_SimTimeSync_2eproto_deps, 1, 1,
-  schemas, file_default_instances, TableStruct_SimTimeSync_2eproto::offsets,
-  file_level_metadata_SimTimeSync_2eproto, file_level_enum_descriptors_SimTimeSync_2eproto, file_level_service_descriptors_SimTimeSync_2eproto,
+static ::_pbi::once_flag descriptor_table_SimTimeSync_2eproto_once;
+const ::_pbi::DescriptorTable descriptor_table_SimTimeSync_2eproto = {
+    false, false, 230, descriptor_table_protodef_SimTimeSync_2eproto,
+    "SimTimeSync.proto",
+    &descriptor_table_SimTimeSync_2eproto_once, descriptor_table_SimTimeSync_2eproto_deps, 1, 1,
+    schemas, file_default_instances, TableStruct_SimTimeSync_2eproto::offsets,
+    file_level_metadata_SimTimeSync_2eproto, file_level_enum_descriptors_SimTimeSync_2eproto,
+    file_level_service_descriptors_SimTimeSync_2eproto,
 };
-PROTOBUF_ATTRIBUTE_WEAK const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable* descriptor_table_SimTimeSync_2eproto_getter() {
+PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_SimTimeSync_2eproto_getter() {
   return &descriptor_table_SimTimeSync_2eproto;
 }
 
 // Force running AddDescriptors() at dynamic initialization time.
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY static ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptorsRunner dynamic_init_dummy_SimTimeSync_2eproto(&descriptor_table_SimTimeSync_2eproto);
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_SimTimeSync_2eproto(&descriptor_table_SimTimeSync_2eproto);
 namespace llsf_msgs {
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* SimTimeSync_CompType_descriptor() {
   ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_SimTimeSync_2eproto);
@@ -109,7 +117,7 @@ constexpr int SimTimeSync::CompType_ARRAYSIZE;
 
 class SimTimeSync::_Internal {
  public:
-  using HasBits = decltype(std::declval<SimTimeSync>()._has_bits_);
+  using HasBits = decltype(std::declval<SimTimeSync>()._impl_._has_bits_);
   static const ::llsf_msgs::Time& sim_time(const SimTimeSync* msg);
   static void set_has_sim_time(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
@@ -127,63 +135,67 @@ class SimTimeSync::_Internal {
 
 const ::llsf_msgs::Time&
 SimTimeSync::_Internal::sim_time(const SimTimeSync* msg) {
-  return *msg->sim_time_;
+  return *msg->_impl_.sim_time_;
 }
 void SimTimeSync::clear_sim_time() {
-  if (sim_time_ != nullptr) sim_time_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
+  if (_impl_.sim_time_ != nullptr) _impl_.sim_time_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 SimTimeSync::SimTimeSync(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:llsf_msgs.SimTimeSync)
 }
 SimTimeSync::SimTimeSync(const SimTimeSync& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  SimTimeSync* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.sim_time_){nullptr}
+    , decltype(_impl_.real_time_factor_){}
+    , decltype(_impl_.paused_){}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   if (from._internal_has_sim_time()) {
-    sim_time_ = new ::llsf_msgs::Time(*from.sim_time_);
-  } else {
-    sim_time_ = nullptr;
+    _this->_impl_.sim_time_ = new ::llsf_msgs::Time(*from._impl_.sim_time_);
   }
-  ::memcpy(&real_time_factor_, &from.real_time_factor_,
-    static_cast<size_t>(reinterpret_cast<char*>(&paused_) -
-    reinterpret_cast<char*>(&real_time_factor_)) + sizeof(paused_));
+  ::memcpy(&_impl_.real_time_factor_, &from._impl_.real_time_factor_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.paused_) -
+    reinterpret_cast<char*>(&_impl_.real_time_factor_)) + sizeof(_impl_.paused_));
   // @@protoc_insertion_point(copy_constructor:llsf_msgs.SimTimeSync)
 }
 
-inline void SimTimeSync::SharedCtor() {
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&sim_time_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&paused_) -
-    reinterpret_cast<char*>(&sim_time_)) + sizeof(paused_));
+inline void SimTimeSync::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.sim_time_){nullptr}
+    , decltype(_impl_.real_time_factor_){0}
+    , decltype(_impl_.paused_){false}
+  };
 }
 
 SimTimeSync::~SimTimeSync() {
   // @@protoc_insertion_point(destructor:llsf_msgs.SimTimeSync)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void SimTimeSync::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete sim_time_;
+  if (this != internal_default_instance()) delete _impl_.sim_time_;
 }
 
-void SimTimeSync::ArenaDtor(void* object) {
-  SimTimeSync* _this = reinterpret_cast< SimTimeSync* >(object);
-  (void)_this;
-}
-void SimTimeSync::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void SimTimeSync::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void SimTimeSync::Clear() {
@@ -192,26 +204,26 @@ void SimTimeSync::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(sim_time_ != nullptr);
-    sim_time_->Clear();
+    GOOGLE_DCHECK(_impl_.sim_time_ != nullptr);
+    _impl_.sim_time_->Clear();
   }
   if (cached_has_bits & 0x00000006u) {
-    ::memset(&real_time_factor_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&paused_) -
-        reinterpret_cast<char*>(&real_time_factor_)) + sizeof(paused_));
+    ::memset(&_impl_.real_time_factor_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&_impl_.paused_) -
+        reinterpret_cast<char*>(&_impl_.real_time_factor_)) + sizeof(_impl_.paused_));
   }
-  _has_bits_.Clear();
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* SimTimeSync::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* SimTimeSync::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // required .llsf_msgs.Time sim_time = 1;
       case 1:
@@ -225,7 +237,7 @@ const char* SimTimeSync::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 21)) {
           _Internal::set_has_real_time_factor(&has_bits);
-          real_time_factor_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          _impl_.real_time_factor_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
         } else
           goto handle_unusual;
@@ -234,7 +246,7 @@ const char* SimTimeSync::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
           _Internal::set_has_paused(&has_bits);
-          paused_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          _impl_.paused_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -255,7 +267,7 @@ const char* SimTimeSync::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -269,29 +281,28 @@ uint8_t* SimTimeSync::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   // required .llsf_msgs.Time sim_time = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::sim_time(this), target, stream);
+      InternalWriteMessage(1, _Internal::sim_time(this),
+        _Internal::sim_time(this).GetCachedSize(), target, stream);
   }
 
   // required float real_time_factor = 2;
   if (cached_has_bits & 0x00000002u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(2, this->_internal_real_time_factor(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(2, this->_internal_real_time_factor(), target);
   }
 
   // required bool paused = 3;
   if (cached_has_bits & 0x00000004u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(3, this->_internal_paused(), target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(3, this->_internal_paused(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:llsf_msgs.SimTimeSync)
@@ -306,7 +317,7 @@ size_t SimTimeSync::RequiredFieldsByteSizeFallback() const {
     // required .llsf_msgs.Time sim_time = 1;
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *sim_time_);
+        *_impl_.sim_time_);
   }
 
   if (_internal_has_real_time_factor()) {
@@ -325,11 +336,11 @@ size_t SimTimeSync::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:llsf_msgs.SimTimeSync)
   size_t total_size = 0;
 
-  if (((_has_bits_[0] & 0x00000007) ^ 0x00000007) == 0) {  // All required fields are present.
+  if (((_impl_._has_bits_[0] & 0x00000007) ^ 0x00000007) == 0) {  // All required fields are present.
     // required .llsf_msgs.Time sim_time = 1;
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *sim_time_);
+        *_impl_.sim_time_);
 
     // required float real_time_factor = 2;
     total_size += 1 + 4;
@@ -344,42 +355,39 @@ size_t SimTimeSync::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData SimTimeSync::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     SimTimeSync::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SimTimeSync::GetClassData() const { return &_class_data_; }
 
-void SimTimeSync::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<SimTimeSync *>(to)->MergeFrom(
-      static_cast<const SimTimeSync &>(from));
-}
 
-
-void SimTimeSync::MergeFrom(const SimTimeSync& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.SimTimeSync)
-  GOOGLE_DCHECK_NE(&from, this);
+void SimTimeSync::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<SimTimeSync*>(&to_msg);
+  auto& from = static_cast<const SimTimeSync&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.SimTimeSync)
+  GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = from._has_bits_[0];
+  cached_has_bits = from._impl_._has_bits_[0];
   if (cached_has_bits & 0x00000007u) {
     if (cached_has_bits & 0x00000001u) {
-      _internal_mutable_sim_time()->::llsf_msgs::Time::MergeFrom(from._internal_sim_time());
+      _this->_internal_mutable_sim_time()->::llsf_msgs::Time::MergeFrom(
+          from._internal_sim_time());
     }
     if (cached_has_bits & 0x00000002u) {
-      real_time_factor_ = from.real_time_factor_;
+      _this->_impl_.real_time_factor_ = from._impl_.real_time_factor_;
     }
     if (cached_has_bits & 0x00000004u) {
-      paused_ = from.paused_;
+      _this->_impl_.paused_ = from._impl_.paused_;
     }
-    _has_bits_[0] |= cached_has_bits;
+    _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void SimTimeSync::CopyFrom(const SimTimeSync& from) {
@@ -390,9 +398,9 @@ void SimTimeSync::CopyFrom(const SimTimeSync& from) {
 }
 
 bool SimTimeSync::IsInitialized() const {
-  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
+  if (_Internal::MissingRequiredFields(_impl_._has_bits_)) return false;
   if (_internal_has_sim_time()) {
-    if (!sim_time_->IsInitialized()) return false;
+    if (!_impl_.sim_time_->IsInitialized()) return false;
   }
   return true;
 }
@@ -400,17 +408,17 @@ bool SimTimeSync::IsInitialized() const {
 void SimTimeSync::InternalSwap(SimTimeSync* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(SimTimeSync, paused_)
-      + sizeof(SimTimeSync::paused_)
-      - PROTOBUF_FIELD_OFFSET(SimTimeSync, sim_time_)>(
-          reinterpret_cast<char*>(&sim_time_),
-          reinterpret_cast<char*>(&other->sim_time_));
+      PROTOBUF_FIELD_OFFSET(SimTimeSync, _impl_.paused_)
+      + sizeof(SimTimeSync::_impl_.paused_)
+      - PROTOBUF_FIELD_OFFSET(SimTimeSync, _impl_.sim_time_)>(
+          reinterpret_cast<char*>(&_impl_.sim_time_),
+          reinterpret_cast<char*>(&other->_impl_.sim_time_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata SimTimeSync::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_SimTimeSync_2eproto_getter, &descriptor_table_SimTimeSync_2eproto_once,
       file_level_metadata_SimTimeSync_2eproto[0]);
 }
@@ -418,7 +426,8 @@ void SimTimeSync::InternalSwap(SimTimeSync* other) {
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace llsf_msgs
 PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::llsf_msgs::SimTimeSync* Arena::CreateMaybeMessage< ::llsf_msgs::SimTimeSync >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::llsf_msgs::SimTimeSync*
+Arena::CreateMaybeMessage< ::llsf_msgs::SimTimeSync >(Arena* arena) {
   return Arena::CreateMessageInternal< ::llsf_msgs::SimTimeSync >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE

@@ -16,13 +16,17 @@
 #include <google/protobuf/port_def.inc>
 
 PROTOBUF_PRAGMA_INIT_SEG
+
+namespace _pb = ::PROTOBUF_NAMESPACE_ID;
+namespace _pbi = _pb::internal;
+
 namespace llsf_msgs {
 }  // namespace llsf_msgs
-static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_Zone_2eproto[1];
-static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_Zone_2eproto = nullptr;
+static const ::_pb::EnumDescriptor* file_level_enum_descriptors_Zone_2eproto[1];
+static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_Zone_2eproto = nullptr;
 const uint32_t TableStruct_Zone_2eproto::offsets[1] = {};
-static constexpr ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema* schemas = nullptr;
-static constexpr ::PROTOBUF_NAMESPACE_ID::Message* const* file_default_instances = nullptr;
+static constexpr ::_pbi::MigrationSchema* schemas = nullptr;
+static constexpr ::_pb::Message* const* file_default_instances = nullptr;
 
 const char descriptor_table_protodef_Zone_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\nZone.proto\022\tllsf_msgs*\311\t\n\004Zone\022\t\n\005C_Z1"
@@ -59,19 +63,21 @@ const char descriptor_table_protodef_Zone_2eproto[] PROTOBUF_SECTION_VARIABLE(pr
   "\n\n\005M_Z41\020\221\010B-\n\037org.robocup_logistics.lls"
   "f_msgsB\nZoneProtos"
   ;
-static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_Zone_2eproto_once;
-const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_Zone_2eproto = {
-  false, false, 1298, descriptor_table_protodef_Zone_2eproto, "Zone.proto", 
-  &descriptor_table_Zone_2eproto_once, nullptr, 0, 0,
-  schemas, file_default_instances, TableStruct_Zone_2eproto::offsets,
-  nullptr, file_level_enum_descriptors_Zone_2eproto, file_level_service_descriptors_Zone_2eproto,
+static ::_pbi::once_flag descriptor_table_Zone_2eproto_once;
+const ::_pbi::DescriptorTable descriptor_table_Zone_2eproto = {
+    false, false, 1298, descriptor_table_protodef_Zone_2eproto,
+    "Zone.proto",
+    &descriptor_table_Zone_2eproto_once, nullptr, 0, 0,
+    schemas, file_default_instances, TableStruct_Zone_2eproto::offsets,
+    nullptr, file_level_enum_descriptors_Zone_2eproto,
+    file_level_service_descriptors_Zone_2eproto,
 };
-PROTOBUF_ATTRIBUTE_WEAK const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable* descriptor_table_Zone_2eproto_getter() {
+PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_Zone_2eproto_getter() {
   return &descriptor_table_Zone_2eproto;
 }
 
 // Force running AddDescriptors() at dynamic initialization time.
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY static ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptorsRunner dynamic_init_dummy_Zone_2eproto(&descriptor_table_Zone_2eproto);
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_Zone_2eproto(&descriptor_table_Zone_2eproto);
 namespace llsf_msgs {
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* Zone_descriptor() {
   ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_Zone_2eproto);

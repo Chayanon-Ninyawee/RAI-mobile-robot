@@ -16,66 +16,71 @@
 #include <google/protobuf/port_def.inc>
 
 PROTOBUF_PRAGMA_INIT_SEG
-namespace llsf_msgs {
-constexpr Robot::Robot(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , team_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , host_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , last_seen_(nullptr)
-  , pose_(nullptr)
-  , vision_pose_(nullptr)
-  , number_(0u)
-  , maintenance_time_remaining_(0)
-  , maintenance_cycles_(0u)
-  , team_color_(0)
 
-  , state_(1)
-{}
+namespace _pb = ::PROTOBUF_NAMESPACE_ID;
+namespace _pbi = _pb::internal;
+
+namespace llsf_msgs {
+PROTOBUF_CONSTEXPR Robot::Robot(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.team_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.host_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.last_seen_)*/nullptr
+  , /*decltype(_impl_.pose_)*/nullptr
+  , /*decltype(_impl_.vision_pose_)*/nullptr
+  , /*decltype(_impl_.number_)*/0u
+  , /*decltype(_impl_.maintenance_time_remaining_)*/0
+  , /*decltype(_impl_.maintenance_cycles_)*/0u
+  , /*decltype(_impl_.team_color_)*/0
+  , /*decltype(_impl_.state_)*/1} {}
 struct RobotDefaultTypeInternal {
-  constexpr RobotDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR RobotDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~RobotDefaultTypeInternal() {}
   union {
     Robot _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT RobotDefaultTypeInternal _Robot_default_instance_;
-constexpr RobotInfo::RobotInfo(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : robots_(){}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RobotDefaultTypeInternal _Robot_default_instance_;
+PROTOBUF_CONSTEXPR RobotInfo::RobotInfo(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.robots_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct RobotInfoDefaultTypeInternal {
-  constexpr RobotInfoDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR RobotInfoDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~RobotInfoDefaultTypeInternal() {}
   union {
     RobotInfo _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT RobotInfoDefaultTypeInternal _RobotInfo_default_instance_;
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RobotInfoDefaultTypeInternal _RobotInfo_default_instance_;
 }  // namespace llsf_msgs
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_RobotInfo_2eproto[2];
-static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_RobotInfo_2eproto[3];
-static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_RobotInfo_2eproto = nullptr;
+static ::_pb::Metadata file_level_metadata_RobotInfo_2eproto[2];
+static const ::_pb::EnumDescriptor* file_level_enum_descriptors_RobotInfo_2eproto[3];
+static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_RobotInfo_2eproto = nullptr;
 
 const uint32_t TableStruct_RobotInfo_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Robot, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Robot, _impl_._has_bits_),
   PROTOBUF_FIELD_OFFSET(::llsf_msgs::Robot, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Robot, name_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Robot, team_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Robot, team_color_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Robot, number_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Robot, host_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Robot, last_seen_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Robot, pose_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Robot, vision_pose_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Robot, state_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Robot, maintenance_time_remaining_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Robot, maintenance_cycles_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Robot, _impl_.name_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Robot, _impl_.team_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Robot, _impl_.team_color_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Robot, _impl_.number_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Robot, _impl_.host_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Robot, _impl_.last_seen_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Robot, _impl_.pose_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Robot, _impl_.vision_pose_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Robot, _impl_.state_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Robot, _impl_.maintenance_time_remaining_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Robot, _impl_.maintenance_cycles_),
   0,
   1,
   9,
@@ -93,16 +98,16 @@ const uint32_t TableStruct_RobotInfo_2eproto::offsets[] PROTOBUF_SECTION_VARIABL
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::RobotInfo, robots_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::RobotInfo, _impl_.robots_),
 };
-static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 17, -1, sizeof(::llsf_msgs::Robot)},
   { 28, -1, -1, sizeof(::llsf_msgs::RobotInfo)},
 };
 
-static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::llsf_msgs::_Robot_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::llsf_msgs::_RobotInfo_default_instance_),
+static const ::_pb::Message* const file_default_instances[] = {
+  &::llsf_msgs::_Robot_default_instance_._instance,
+  &::llsf_msgs::_RobotInfo_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_RobotInfo_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -123,24 +128,26 @@ const char descriptor_table_protodef_RobotInfo_2eproto[] PROTOBUF_SECTION_VARIAB
   "ISQUALIFIED\020\003B2\n\037org.robocup_logistics.l"
   "lsf_msgsB\017RobotInfoProtos"
   ;
-static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_RobotInfo_2eproto_deps[3] = {
+static const ::_pbi::DescriptorTable* const descriptor_table_RobotInfo_2eproto_deps[3] = {
   &::descriptor_table_Pose2D_2eproto,
   &::descriptor_table_Team_2eproto,
   &::descriptor_table_Time_2eproto,
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_RobotInfo_2eproto_once;
-const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_RobotInfo_2eproto = {
-  false, false, 625, descriptor_table_protodef_RobotInfo_2eproto, "RobotInfo.proto", 
-  &descriptor_table_RobotInfo_2eproto_once, descriptor_table_RobotInfo_2eproto_deps, 3, 2,
-  schemas, file_default_instances, TableStruct_RobotInfo_2eproto::offsets,
-  file_level_metadata_RobotInfo_2eproto, file_level_enum_descriptors_RobotInfo_2eproto, file_level_service_descriptors_RobotInfo_2eproto,
+static ::_pbi::once_flag descriptor_table_RobotInfo_2eproto_once;
+const ::_pbi::DescriptorTable descriptor_table_RobotInfo_2eproto = {
+    false, false, 625, descriptor_table_protodef_RobotInfo_2eproto,
+    "RobotInfo.proto",
+    &descriptor_table_RobotInfo_2eproto_once, descriptor_table_RobotInfo_2eproto_deps, 3, 2,
+    schemas, file_default_instances, TableStruct_RobotInfo_2eproto::offsets,
+    file_level_metadata_RobotInfo_2eproto, file_level_enum_descriptors_RobotInfo_2eproto,
+    file_level_service_descriptors_RobotInfo_2eproto,
 };
-PROTOBUF_ATTRIBUTE_WEAK const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable* descriptor_table_RobotInfo_2eproto_getter() {
+PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_RobotInfo_2eproto_getter() {
   return &descriptor_table_RobotInfo_2eproto;
 }
 
 // Force running AddDescriptors() at dynamic initialization time.
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY static ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptorsRunner dynamic_init_dummy_RobotInfo_2eproto(&descriptor_table_RobotInfo_2eproto);
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_RobotInfo_2eproto(&descriptor_table_RobotInfo_2eproto);
 namespace llsf_msgs {
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* Robot_CompType_descriptor() {
   ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_RobotInfo_2eproto);
@@ -204,7 +211,7 @@ bool RobotState_IsValid(int value) {
 
 class Robot::_Internal {
  public:
-  using HasBits = decltype(std::declval<Robot>()._has_bits_);
+  using HasBits = decltype(std::declval<Robot>()._impl_._has_bits_);
   static void set_has_name(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
@@ -248,131 +255,146 @@ class Robot::_Internal {
 
 const ::llsf_msgs::Time&
 Robot::_Internal::last_seen(const Robot* msg) {
-  return *msg->last_seen_;
+  return *msg->_impl_.last_seen_;
 }
 const ::llsf_msgs::Pose2D&
 Robot::_Internal::pose(const Robot* msg) {
-  return *msg->pose_;
+  return *msg->_impl_.pose_;
 }
 const ::llsf_msgs::Pose2D&
 Robot::_Internal::vision_pose(const Robot* msg) {
-  return *msg->vision_pose_;
+  return *msg->_impl_.vision_pose_;
 }
 void Robot::clear_last_seen() {
-  if (last_seen_ != nullptr) last_seen_->Clear();
-  _has_bits_[0] &= ~0x00000008u;
+  if (_impl_.last_seen_ != nullptr) _impl_.last_seen_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000008u;
 }
 void Robot::clear_pose() {
-  if (pose_ != nullptr) pose_->Clear();
-  _has_bits_[0] &= ~0x00000010u;
+  if (_impl_.pose_ != nullptr) _impl_.pose_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000010u;
 }
 void Robot::clear_vision_pose() {
-  if (vision_pose_ != nullptr) vision_pose_->Clear();
-  _has_bits_[0] &= ~0x00000020u;
+  if (_impl_.vision_pose_ != nullptr) _impl_.vision_pose_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000020u;
 }
 Robot::Robot(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:llsf_msgs.Robot)
 }
 Robot::Robot(const Robot& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  Robot* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.name_){}
+    , decltype(_impl_.team_){}
+    , decltype(_impl_.host_){}
+    , decltype(_impl_.last_seen_){nullptr}
+    , decltype(_impl_.pose_){nullptr}
+    , decltype(_impl_.vision_pose_){nullptr}
+    , decltype(_impl_.number_){}
+    , decltype(_impl_.maintenance_time_remaining_){}
+    , decltype(_impl_.maintenance_cycles_){}
+    , decltype(_impl_.team_color_){}
+    , decltype(_impl_.state_){}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.name_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+    _impl_.name_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (from._internal_has_name()) {
-    name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_name(), 
-      GetArenaForAllocation());
+    _this->_impl_.name_.Set(from._internal_name(), 
+      _this->GetArenaForAllocation());
   }
-  team_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.team_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    team_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+    _impl_.team_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (from._internal_has_team()) {
-    team_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_team(), 
-      GetArenaForAllocation());
+    _this->_impl_.team_.Set(from._internal_team(), 
+      _this->GetArenaForAllocation());
   }
-  host_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.host_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    host_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+    _impl_.host_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (from._internal_has_host()) {
-    host_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_host(), 
-      GetArenaForAllocation());
+    _this->_impl_.host_.Set(from._internal_host(), 
+      _this->GetArenaForAllocation());
   }
   if (from._internal_has_last_seen()) {
-    last_seen_ = new ::llsf_msgs::Time(*from.last_seen_);
-  } else {
-    last_seen_ = nullptr;
+    _this->_impl_.last_seen_ = new ::llsf_msgs::Time(*from._impl_.last_seen_);
   }
   if (from._internal_has_pose()) {
-    pose_ = new ::llsf_msgs::Pose2D(*from.pose_);
-  } else {
-    pose_ = nullptr;
+    _this->_impl_.pose_ = new ::llsf_msgs::Pose2D(*from._impl_.pose_);
   }
   if (from._internal_has_vision_pose()) {
-    vision_pose_ = new ::llsf_msgs::Pose2D(*from.vision_pose_);
-  } else {
-    vision_pose_ = nullptr;
+    _this->_impl_.vision_pose_ = new ::llsf_msgs::Pose2D(*from._impl_.vision_pose_);
   }
-  ::memcpy(&number_, &from.number_,
-    static_cast<size_t>(reinterpret_cast<char*>(&state_) -
-    reinterpret_cast<char*>(&number_)) + sizeof(state_));
+  ::memcpy(&_impl_.number_, &from._impl_.number_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.state_) -
+    reinterpret_cast<char*>(&_impl_.number_)) + sizeof(_impl_.state_));
   // @@protoc_insertion_point(copy_constructor:llsf_msgs.Robot)
 }
 
-inline void Robot::SharedCtor() {
-name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-team_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  team_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-host_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  host_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&last_seen_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&team_color_) -
-    reinterpret_cast<char*>(&last_seen_)) + sizeof(team_color_));
-state_ = 1;
+inline void Robot::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.name_){}
+    , decltype(_impl_.team_){}
+    , decltype(_impl_.host_){}
+    , decltype(_impl_.last_seen_){nullptr}
+    , decltype(_impl_.pose_){nullptr}
+    , decltype(_impl_.vision_pose_){nullptr}
+    , decltype(_impl_.number_){0u}
+    , decltype(_impl_.maintenance_time_remaining_){0}
+    , decltype(_impl_.maintenance_cycles_){0u}
+    , decltype(_impl_.team_color_){0}
+    , decltype(_impl_.state_){1}
+  };
+  _impl_.name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.team_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.team_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.host_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.host_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 Robot::~Robot() {
   // @@protoc_insertion_point(destructor:llsf_msgs.Robot)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void Robot::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  team_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  host_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (this != internal_default_instance()) delete last_seen_;
-  if (this != internal_default_instance()) delete pose_;
-  if (this != internal_default_instance()) delete vision_pose_;
+  _impl_.name_.Destroy();
+  _impl_.team_.Destroy();
+  _impl_.host_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.last_seen_;
+  if (this != internal_default_instance()) delete _impl_.pose_;
+  if (this != internal_default_instance()) delete _impl_.vision_pose_;
 }
 
-void Robot::ArenaDtor(void* object) {
-  Robot* _this = reinterpret_cast< Robot* >(object);
-  (void)_this;
-}
-void Robot::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void Robot::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void Robot::Clear() {
@@ -381,61 +403,61 @@ void Robot::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x0000003fu) {
     if (cached_has_bits & 0x00000001u) {
-      name_.ClearNonDefaultToEmpty();
+      _impl_.name_.ClearNonDefaultToEmpty();
     }
     if (cached_has_bits & 0x00000002u) {
-      team_.ClearNonDefaultToEmpty();
+      _impl_.team_.ClearNonDefaultToEmpty();
     }
     if (cached_has_bits & 0x00000004u) {
-      host_.ClearNonDefaultToEmpty();
+      _impl_.host_.ClearNonDefaultToEmpty();
     }
     if (cached_has_bits & 0x00000008u) {
-      GOOGLE_DCHECK(last_seen_ != nullptr);
-      last_seen_->Clear();
+      GOOGLE_DCHECK(_impl_.last_seen_ != nullptr);
+      _impl_.last_seen_->Clear();
     }
     if (cached_has_bits & 0x00000010u) {
-      GOOGLE_DCHECK(pose_ != nullptr);
-      pose_->Clear();
+      GOOGLE_DCHECK(_impl_.pose_ != nullptr);
+      _impl_.pose_->Clear();
     }
     if (cached_has_bits & 0x00000020u) {
-      GOOGLE_DCHECK(vision_pose_ != nullptr);
-      vision_pose_->Clear();
+      GOOGLE_DCHECK(_impl_.vision_pose_ != nullptr);
+      _impl_.vision_pose_->Clear();
     }
   }
   if (cached_has_bits & 0x000000c0u) {
-    ::memset(&number_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&maintenance_time_remaining_) -
-        reinterpret_cast<char*>(&number_)) + sizeof(maintenance_time_remaining_));
+    ::memset(&_impl_.number_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&_impl_.maintenance_time_remaining_) -
+        reinterpret_cast<char*>(&_impl_.number_)) + sizeof(_impl_.maintenance_time_remaining_));
   }
   if (cached_has_bits & 0x00000700u) {
-    ::memset(&maintenance_cycles_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&team_color_) -
-        reinterpret_cast<char*>(&maintenance_cycles_)) + sizeof(team_color_));
-    state_ = 1;
+    ::memset(&_impl_.maintenance_cycles_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&_impl_.team_color_) -
+        reinterpret_cast<char*>(&_impl_.maintenance_cycles_)) + sizeof(_impl_.team_color_));
+    _impl_.state_ = 1;
   }
-  _has_bits_.Clear();
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* Robot::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* Robot::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // required string name = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           auto str = _internal_mutable_name();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          #ifndef NDEBUG
-          ::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "llsf_msgs.Robot.name");
-          #endif  // !NDEBUG
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          #ifndef NDEBUG
+          ::_pbi::VerifyUTF8(str, "llsf_msgs.Robot.name");
+          #endif  // !NDEBUG
         } else
           goto handle_unusual;
         continue;
@@ -443,11 +465,11 @@ const char* Robot::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::inte
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
           auto str = _internal_mutable_team();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          #ifndef NDEBUG
-          ::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "llsf_msgs.Robot.team");
-          #endif  // !NDEBUG
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          #ifndef NDEBUG
+          ::_pbi::VerifyUTF8(str, "llsf_msgs.Robot.team");
+          #endif  // !NDEBUG
         } else
           goto handle_unusual;
         continue;
@@ -455,11 +477,11 @@ const char* Robot::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::inte
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
           auto str = _internal_mutable_host();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          #ifndef NDEBUG
-          ::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "llsf_msgs.Robot.host");
-          #endif  // !NDEBUG
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          #ifndef NDEBUG
+          ::_pbi::VerifyUTF8(str, "llsf_msgs.Robot.host");
+          #endif  // !NDEBUG
         } else
           goto handle_unusual;
         continue;
@@ -483,7 +505,7 @@ const char* Robot::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::inte
       case 7:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 56)) {
           _Internal::set_has_number(&has_bits);
-          number_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _impl_.number_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -505,7 +527,7 @@ const char* Robot::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::inte
       case 9:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 77)) {
           _Internal::set_has_maintenance_time_remaining(&has_bits);
-          maintenance_time_remaining_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          _impl_.maintenance_time_remaining_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
         } else
           goto handle_unusual;
@@ -514,7 +536,7 @@ const char* Robot::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::inte
       case 10:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 80)) {
           _Internal::set_has_maintenance_cycles(&has_bits);
-          maintenance_cycles_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _impl_.maintenance_cycles_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -556,7 +578,7 @@ const char* Robot::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::inte
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -570,7 +592,7 @@ uint8_t* Robot::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   // required string name = 1;
   if (cached_has_bits & 0x00000001u) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
@@ -603,62 +625,59 @@ uint8_t* Robot::_InternalSerialize(
 
   // required .llsf_msgs.Time last_seen = 4;
   if (cached_has_bits & 0x00000008u) {
-    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        4, _Internal::last_seen(this), target, stream);
+      InternalWriteMessage(4, _Internal::last_seen(this),
+        _Internal::last_seen(this).GetCachedSize(), target, stream);
   }
 
   // optional .llsf_msgs.Pose2D pose = 6;
   if (cached_has_bits & 0x00000010u) {
-    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        6, _Internal::pose(this), target, stream);
+      InternalWriteMessage(6, _Internal::pose(this),
+        _Internal::pose(this).GetCachedSize(), target, stream);
   }
 
   // required uint32 number = 7;
   if (cached_has_bits & 0x00000040u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(7, this->_internal_number(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(7, this->_internal_number(), target);
   }
 
   // optional .llsf_msgs.RobotState state = 8;
   if (cached_has_bits & 0x00000400u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
       8, this->_internal_state(), target);
   }
 
   // optional float maintenance_time_remaining = 9 [default = 0];
   if (cached_has_bits & 0x00000080u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(9, this->_internal_maintenance_time_remaining(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(9, this->_internal_maintenance_time_remaining(), target);
   }
 
   // optional uint32 maintenance_cycles = 10;
   if (cached_has_bits & 0x00000100u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(10, this->_internal_maintenance_cycles(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(10, this->_internal_maintenance_cycles(), target);
   }
 
   // optional .llsf_msgs.Pose2D vision_pose = 11;
   if (cached_has_bits & 0x00000020u) {
-    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        11, _Internal::vision_pose(this), target, stream);
+      InternalWriteMessage(11, _Internal::vision_pose(this),
+        _Internal::vision_pose(this).GetCachedSize(), target, stream);
   }
 
   // required .llsf_msgs.Team team_color = 12;
   if (cached_has_bits & 0x00000200u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
       12, this->_internal_team_color(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:llsf_msgs.Robot)
@@ -694,18 +713,18 @@ size_t Robot::RequiredFieldsByteSizeFallback() const {
     // required .llsf_msgs.Time last_seen = 4;
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *last_seen_);
+        *_impl_.last_seen_);
   }
 
   if (_internal_has_number()) {
     // required uint32 number = 7;
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_number());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_number());
   }
 
   if (_internal_has_team_color()) {
     // required .llsf_msgs.Team team_color = 12;
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_team_color());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_team_color());
   }
 
   return total_size;
@@ -714,7 +733,7 @@ size_t Robot::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:llsf_msgs.Robot)
   size_t total_size = 0;
 
-  if (((_has_bits_[0] & 0x0000024f) ^ 0x0000024f) == 0) {  // All required fields are present.
+  if (((_impl_._has_bits_[0] & 0x0000024f) ^ 0x0000024f) == 0) {  // All required fields are present.
     // required string name = 1;
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
@@ -733,14 +752,14 @@ size_t Robot::ByteSizeLong() const {
     // required .llsf_msgs.Time last_seen = 4;
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *last_seen_);
+        *_impl_.last_seen_);
 
     // required uint32 number = 7;
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_number());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_number());
 
     // required .llsf_msgs.Team team_color = 12;
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_team_color());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_team_color());
 
   } else {
     total_size += RequiredFieldsByteSizeFallback();
@@ -749,20 +768,20 @@ size_t Robot::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000030u) {
     // optional .llsf_msgs.Pose2D pose = 6;
     if (cached_has_bits & 0x00000010u) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          *pose_);
+          *_impl_.pose_);
     }
 
     // optional .llsf_msgs.Pose2D vision_pose = 11;
     if (cached_has_bits & 0x00000020u) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          *vision_pose_);
+          *_impl_.vision_pose_);
     }
 
   }
@@ -773,78 +792,77 @@ size_t Robot::ByteSizeLong() const {
 
   // optional uint32 maintenance_cycles = 10;
   if (cached_has_bits & 0x00000100u) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_maintenance_cycles());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_maintenance_cycles());
   }
 
   // optional .llsf_msgs.RobotState state = 8;
   if (cached_has_bits & 0x00000400u) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_state());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_state());
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Robot::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     Robot::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Robot::GetClassData() const { return &_class_data_; }
 
-void Robot::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<Robot *>(to)->MergeFrom(
-      static_cast<const Robot &>(from));
-}
 
-
-void Robot::MergeFrom(const Robot& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.Robot)
-  GOOGLE_DCHECK_NE(&from, this);
+void Robot::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<Robot*>(&to_msg);
+  auto& from = static_cast<const Robot&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.Robot)
+  GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = from._has_bits_[0];
+  cached_has_bits = from._impl_._has_bits_[0];
   if (cached_has_bits & 0x000000ffu) {
     if (cached_has_bits & 0x00000001u) {
-      _internal_set_name(from._internal_name());
+      _this->_internal_set_name(from._internal_name());
     }
     if (cached_has_bits & 0x00000002u) {
-      _internal_set_team(from._internal_team());
+      _this->_internal_set_team(from._internal_team());
     }
     if (cached_has_bits & 0x00000004u) {
-      _internal_set_host(from._internal_host());
+      _this->_internal_set_host(from._internal_host());
     }
     if (cached_has_bits & 0x00000008u) {
-      _internal_mutable_last_seen()->::llsf_msgs::Time::MergeFrom(from._internal_last_seen());
+      _this->_internal_mutable_last_seen()->::llsf_msgs::Time::MergeFrom(
+          from._internal_last_seen());
     }
     if (cached_has_bits & 0x00000010u) {
-      _internal_mutable_pose()->::llsf_msgs::Pose2D::MergeFrom(from._internal_pose());
+      _this->_internal_mutable_pose()->::llsf_msgs::Pose2D::MergeFrom(
+          from._internal_pose());
     }
     if (cached_has_bits & 0x00000020u) {
-      _internal_mutable_vision_pose()->::llsf_msgs::Pose2D::MergeFrom(from._internal_vision_pose());
+      _this->_internal_mutable_vision_pose()->::llsf_msgs::Pose2D::MergeFrom(
+          from._internal_vision_pose());
     }
     if (cached_has_bits & 0x00000040u) {
-      number_ = from.number_;
+      _this->_impl_.number_ = from._impl_.number_;
     }
     if (cached_has_bits & 0x00000080u) {
-      maintenance_time_remaining_ = from.maintenance_time_remaining_;
+      _this->_impl_.maintenance_time_remaining_ = from._impl_.maintenance_time_remaining_;
     }
-    _has_bits_[0] |= cached_has_bits;
+    _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
   if (cached_has_bits & 0x00000700u) {
     if (cached_has_bits & 0x00000100u) {
-      maintenance_cycles_ = from.maintenance_cycles_;
+      _this->_impl_.maintenance_cycles_ = from._impl_.maintenance_cycles_;
     }
     if (cached_has_bits & 0x00000200u) {
-      team_color_ = from.team_color_;
+      _this->_impl_.team_color_ = from._impl_.team_color_;
     }
     if (cached_has_bits & 0x00000400u) {
-      state_ = from.state_;
+      _this->_impl_.state_ = from._impl_.state_;
     }
-    _has_bits_[0] |= cached_has_bits;
+    _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void Robot::CopyFrom(const Robot& from) {
@@ -855,15 +873,15 @@ void Robot::CopyFrom(const Robot& from) {
 }
 
 bool Robot::IsInitialized() const {
-  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
+  if (_Internal::MissingRequiredFields(_impl_._has_bits_)) return false;
   if (_internal_has_last_seen()) {
-    if (!last_seen_->IsInitialized()) return false;
+    if (!_impl_.last_seen_->IsInitialized()) return false;
   }
   if (_internal_has_pose()) {
-    if (!pose_->IsInitialized()) return false;
+    if (!_impl_.pose_->IsInitialized()) return false;
   }
   if (_internal_has_vision_pose()) {
-    if (!vision_pose_->IsInitialized()) return false;
+    if (!_impl_.vision_pose_->IsInitialized()) return false;
   }
   return true;
 }
@@ -873,33 +891,30 @@ void Robot::InternalSwap(Robot* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &name_, lhs_arena,
-      &other->name_, rhs_arena
+      &_impl_.name_, lhs_arena,
+      &other->_impl_.name_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &team_, lhs_arena,
-      &other->team_, rhs_arena
+      &_impl_.team_, lhs_arena,
+      &other->_impl_.team_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &host_, lhs_arena,
-      &other->host_, rhs_arena
+      &_impl_.host_, lhs_arena,
+      &other->_impl_.host_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(Robot, team_color_)
-      + sizeof(Robot::team_color_)
-      - PROTOBUF_FIELD_OFFSET(Robot, last_seen_)>(
-          reinterpret_cast<char*>(&last_seen_),
-          reinterpret_cast<char*>(&other->last_seen_));
-  swap(state_, other->state_);
+      PROTOBUF_FIELD_OFFSET(Robot, _impl_.team_color_)
+      + sizeof(Robot::_impl_.team_color_)
+      - PROTOBUF_FIELD_OFFSET(Robot, _impl_.last_seen_)>(
+          reinterpret_cast<char*>(&_impl_.last_seen_),
+          reinterpret_cast<char*>(&other->_impl_.last_seen_));
+  swap(_impl_.state_, other->_impl_.state_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Robot::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_RobotInfo_2eproto_getter, &descriptor_table_RobotInfo_2eproto_once,
       file_level_metadata_RobotInfo_2eproto[0]);
 }
@@ -912,43 +927,47 @@ class RobotInfo::_Internal {
 
 RobotInfo::RobotInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
-  robots_(arena) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:llsf_msgs.RobotInfo)
 }
 RobotInfo::RobotInfo(const RobotInfo& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      robots_(from.robots_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  RobotInfo* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.robots_){from._impl_.robots_}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   // @@protoc_insertion_point(copy_constructor:llsf_msgs.RobotInfo)
 }
 
-inline void RobotInfo::SharedCtor() {
+inline void RobotInfo::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.robots_){arena}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
 }
 
 RobotInfo::~RobotInfo() {
   // @@protoc_insertion_point(destructor:llsf_msgs.RobotInfo)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void RobotInfo::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.robots_.~RepeatedPtrField();
 }
 
-void RobotInfo::ArenaDtor(void* object) {
-  RobotInfo* _this = reinterpret_cast< RobotInfo* >(object);
-  (void)_this;
-}
-void RobotInfo::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void RobotInfo::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void RobotInfo::Clear() {
@@ -957,15 +976,15 @@ void RobotInfo::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  robots_.Clear();
+  _impl_.robots_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* RobotInfo::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* RobotInfo::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // repeated .llsf_msgs.Robot robots = 1;
       case 1:
@@ -1010,15 +1029,15 @@ uint8_t* RobotInfo::_InternalSerialize(
   (void) cached_has_bits;
 
   // repeated .llsf_msgs.Robot robots = 1;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->_internal_robots_size()); i < n; i++) {
-    target = stream->EnsureSpace(target);
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_robots_size()); i < n; i++) {
+    const auto& repfield = this->_internal_robots(i);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(1, this->_internal_robots(i), target, stream);
+        InternalWriteMessage(1, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:llsf_msgs.RobotInfo)
@@ -1035,35 +1054,31 @@ size_t RobotInfo::ByteSizeLong() const {
 
   // repeated .llsf_msgs.Robot robots = 1;
   total_size += 1UL * this->_internal_robots_size();
-  for (const auto& msg : this->robots_) {
+  for (const auto& msg : this->_impl_.robots_) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData RobotInfo::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     RobotInfo::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*RobotInfo::GetClassData() const { return &_class_data_; }
 
-void RobotInfo::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<RobotInfo *>(to)->MergeFrom(
-      static_cast<const RobotInfo &>(from));
-}
 
-
-void RobotInfo::MergeFrom(const RobotInfo& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.RobotInfo)
-  GOOGLE_DCHECK_NE(&from, this);
+void RobotInfo::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<RobotInfo*>(&to_msg);
+  auto& from = static_cast<const RobotInfo&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.RobotInfo)
+  GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  robots_.MergeFrom(from.robots_);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_impl_.robots_.MergeFrom(from._impl_.robots_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void RobotInfo::CopyFrom(const RobotInfo& from) {
@@ -1074,7 +1089,7 @@ void RobotInfo::CopyFrom(const RobotInfo& from) {
 }
 
 bool RobotInfo::IsInitialized() const {
-  if (!::PROTOBUF_NAMESPACE_ID::internal::AllAreInitialized(robots_))
+  if (!::PROTOBUF_NAMESPACE_ID::internal::AllAreInitialized(_impl_.robots_))
     return false;
   return true;
 }
@@ -1082,11 +1097,11 @@ bool RobotInfo::IsInitialized() const {
 void RobotInfo::InternalSwap(RobotInfo* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  robots_.InternalSwap(&other->robots_);
+  _impl_.robots_.InternalSwap(&other->_impl_.robots_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata RobotInfo::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_RobotInfo_2eproto_getter, &descriptor_table_RobotInfo_2eproto_once,
       file_level_metadata_RobotInfo_2eproto[1]);
 }
@@ -1094,10 +1109,12 @@ void RobotInfo::InternalSwap(RobotInfo* other) {
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace llsf_msgs
 PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::llsf_msgs::Robot* Arena::CreateMaybeMessage< ::llsf_msgs::Robot >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::llsf_msgs::Robot*
+Arena::CreateMaybeMessage< ::llsf_msgs::Robot >(Arena* arena) {
   return Arena::CreateMessageInternal< ::llsf_msgs::Robot >(arena);
 }
-template<> PROTOBUF_NOINLINE ::llsf_msgs::RobotInfo* Arena::CreateMaybeMessage< ::llsf_msgs::RobotInfo >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::llsf_msgs::RobotInfo*
+Arena::CreateMaybeMessage< ::llsf_msgs::RobotInfo >(Arena* arena) {
   return Arena::CreateMessageInternal< ::llsf_msgs::RobotInfo >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE

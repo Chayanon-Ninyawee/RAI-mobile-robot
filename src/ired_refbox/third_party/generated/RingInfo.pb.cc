@@ -16,47 +16,53 @@
 #include <google/protobuf/port_def.inc>
 
 PROTOBUF_PRAGMA_INIT_SEG
+
+namespace _pb = ::PROTOBUF_NAMESPACE_ID;
+namespace _pbi = _pb::internal;
+
 namespace llsf_msgs {
-constexpr Ring::Ring(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : raw_material_(0u)
-  , ring_color_(1)
-{}
+PROTOBUF_CONSTEXPR Ring::Ring(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.raw_material_)*/0u
+  , /*decltype(_impl_.ring_color_)*/1} {}
 struct RingDefaultTypeInternal {
-  constexpr RingDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR RingDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~RingDefaultTypeInternal() {}
   union {
     Ring _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT RingDefaultTypeInternal _Ring_default_instance_;
-constexpr RingInfo::RingInfo(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : rings_(){}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RingDefaultTypeInternal _Ring_default_instance_;
+PROTOBUF_CONSTEXPR RingInfo::RingInfo(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.rings_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct RingInfoDefaultTypeInternal {
-  constexpr RingInfoDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR RingInfoDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~RingInfoDefaultTypeInternal() {}
   union {
     RingInfo _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT RingInfoDefaultTypeInternal _RingInfo_default_instance_;
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RingInfoDefaultTypeInternal _RingInfo_default_instance_;
 }  // namespace llsf_msgs
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_RingInfo_2eproto[2];
-static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_RingInfo_2eproto[1];
-static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_RingInfo_2eproto = nullptr;
+static ::_pb::Metadata file_level_metadata_RingInfo_2eproto[2];
+static const ::_pb::EnumDescriptor* file_level_enum_descriptors_RingInfo_2eproto[1];
+static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_RingInfo_2eproto = nullptr;
 
 const uint32_t TableStruct_RingInfo_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Ring, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Ring, _impl_._has_bits_),
   PROTOBUF_FIELD_OFFSET(::llsf_msgs::Ring, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Ring, ring_color_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Ring, raw_material_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Ring, _impl_.ring_color_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::Ring, _impl_.raw_material_),
   1,
   0,
   ~0u,  // no _has_bits_
@@ -65,16 +71,16 @@ const uint32_t TableStruct_RingInfo_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::RingInfo, rings_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::RingInfo, _impl_.rings_),
 };
-static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 8, -1, sizeof(::llsf_msgs::Ring)},
   { 10, -1, -1, sizeof(::llsf_msgs::RingInfo)},
 };
 
-static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::llsf_msgs::_Ring_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::llsf_msgs::_RingInfo_default_instance_),
+static const ::_pb::Message* const file_default_instances[] = {
+  &::llsf_msgs::_Ring_default_instance_._instance,
+  &::llsf_msgs::_RingInfo_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_RingInfo_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -86,22 +92,24 @@ const char descriptor_table_protodef_RingInfo_2eproto[] PROTOBUF_SECTION_VARIABL
   "E\020nB1\n\037org.robocup_logistics.llsf_msgsB\016"
   "RingInfoProtos"
   ;
-static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_RingInfo_2eproto_deps[1] = {
+static const ::_pbi::DescriptorTable* const descriptor_table_RingInfo_2eproto_deps[1] = {
   &::descriptor_table_ProductColor_2eproto,
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_RingInfo_2eproto_once;
-const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_RingInfo_2eproto = {
-  false, false, 254, descriptor_table_protodef_RingInfo_2eproto, "RingInfo.proto", 
-  &descriptor_table_RingInfo_2eproto_once, descriptor_table_RingInfo_2eproto_deps, 1, 2,
-  schemas, file_default_instances, TableStruct_RingInfo_2eproto::offsets,
-  file_level_metadata_RingInfo_2eproto, file_level_enum_descriptors_RingInfo_2eproto, file_level_service_descriptors_RingInfo_2eproto,
+static ::_pbi::once_flag descriptor_table_RingInfo_2eproto_once;
+const ::_pbi::DescriptorTable descriptor_table_RingInfo_2eproto = {
+    false, false, 254, descriptor_table_protodef_RingInfo_2eproto,
+    "RingInfo.proto",
+    &descriptor_table_RingInfo_2eproto_once, descriptor_table_RingInfo_2eproto_deps, 1, 2,
+    schemas, file_default_instances, TableStruct_RingInfo_2eproto::offsets,
+    file_level_metadata_RingInfo_2eproto, file_level_enum_descriptors_RingInfo_2eproto,
+    file_level_service_descriptors_RingInfo_2eproto,
 };
-PROTOBUF_ATTRIBUTE_WEAK const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable* descriptor_table_RingInfo_2eproto_getter() {
+PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_RingInfo_2eproto_getter() {
   return &descriptor_table_RingInfo_2eproto;
 }
 
 // Force running AddDescriptors() at dynamic initialization time.
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY static ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptorsRunner dynamic_init_dummy_RingInfo_2eproto(&descriptor_table_RingInfo_2eproto);
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_RingInfo_2eproto(&descriptor_table_RingInfo_2eproto);
 namespace llsf_msgs {
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* RingInfo_CompType_descriptor() {
   ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_RingInfo_2eproto);
@@ -129,7 +137,7 @@ constexpr int RingInfo::CompType_ARRAYSIZE;
 
 class Ring::_Internal {
  public:
-  using HasBits = decltype(std::declval<Ring>()._has_bits_);
+  using HasBits = decltype(std::declval<Ring>()._impl_._has_bits_);
   static void set_has_ring_color(HasBits* has_bits) {
     (*has_bits)[0] |= 2u;
   }
@@ -144,46 +152,52 @@ class Ring::_Internal {
 Ring::Ring(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:llsf_msgs.Ring)
 }
 Ring::Ring(const Ring& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  Ring* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.raw_material_){}
+    , decltype(_impl_.ring_color_){}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::memcpy(&raw_material_, &from.raw_material_,
-    static_cast<size_t>(reinterpret_cast<char*>(&ring_color_) -
-    reinterpret_cast<char*>(&raw_material_)) + sizeof(ring_color_));
+  ::memcpy(&_impl_.raw_material_, &from._impl_.raw_material_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.ring_color_) -
+    reinterpret_cast<char*>(&_impl_.raw_material_)) + sizeof(_impl_.ring_color_));
   // @@protoc_insertion_point(copy_constructor:llsf_msgs.Ring)
 }
 
-inline void Ring::SharedCtor() {
-raw_material_ = 0u;
-ring_color_ = 1;
+inline void Ring::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.raw_material_){0u}
+    , decltype(_impl_.ring_color_){1}
+  };
 }
 
 Ring::~Ring() {
   // @@protoc_insertion_point(destructor:llsf_msgs.Ring)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void Ring::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
 }
 
-void Ring::ArenaDtor(void* object) {
-  Ring* _this = reinterpret_cast< Ring* >(object);
-  (void)_this;
-}
-void Ring::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void Ring::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void Ring::Clear() {
@@ -192,21 +206,21 @@ void Ring::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
-    raw_material_ = 0u;
-    ring_color_ = 1;
+    _impl_.raw_material_ = 0u;
+    _impl_.ring_color_ = 1;
   }
-  _has_bits_.Clear();
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* Ring::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* Ring::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // required .llsf_msgs.RingColor ring_color = 1;
       case 1:
@@ -225,7 +239,7 @@ const char* Ring::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::inter
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
           _Internal::set_has_raw_material(&has_bits);
-          raw_material_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _impl_.raw_material_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -246,7 +260,7 @@ const char* Ring::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::inter
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -260,22 +274,22 @@ uint8_t* Ring::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   // required .llsf_msgs.RingColor ring_color = 1;
   if (cached_has_bits & 0x00000002u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
       1, this->_internal_ring_color(), target);
   }
 
   // required uint32 raw_material = 2;
   if (cached_has_bits & 0x00000001u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(2, this->_internal_raw_material(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(2, this->_internal_raw_material(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:llsf_msgs.Ring)
@@ -288,13 +302,13 @@ size_t Ring::RequiredFieldsByteSizeFallback() const {
 
   if (_internal_has_raw_material()) {
     // required uint32 raw_material = 2;
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_raw_material());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_raw_material());
   }
 
   if (_internal_has_ring_color()) {
     // required .llsf_msgs.RingColor ring_color = 1;
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_ring_color());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_ring_color());
   }
 
   return total_size;
@@ -303,13 +317,13 @@ size_t Ring::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:llsf_msgs.Ring)
   size_t total_size = 0;
 
-  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
+  if (((_impl_._has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
     // required uint32 raw_material = 2;
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_raw_material());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_raw_material());
 
     // required .llsf_msgs.RingColor ring_color = 1;
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_ring_color());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_ring_color());
 
   } else {
     total_size += RequiredFieldsByteSizeFallback();
@@ -318,39 +332,35 @@ size_t Ring::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Ring::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     Ring::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Ring::GetClassData() const { return &_class_data_; }
 
-void Ring::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<Ring *>(to)->MergeFrom(
-      static_cast<const Ring &>(from));
-}
 
-
-void Ring::MergeFrom(const Ring& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.Ring)
-  GOOGLE_DCHECK_NE(&from, this);
+void Ring::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<Ring*>(&to_msg);
+  auto& from = static_cast<const Ring&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.Ring)
+  GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = from._has_bits_[0];
+  cached_has_bits = from._impl_._has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
     if (cached_has_bits & 0x00000001u) {
-      raw_material_ = from.raw_material_;
+      _this->_impl_.raw_material_ = from._impl_.raw_material_;
     }
     if (cached_has_bits & 0x00000002u) {
-      ring_color_ = from.ring_color_;
+      _this->_impl_.ring_color_ = from._impl_.ring_color_;
     }
-    _has_bits_[0] |= cached_has_bits;
+    _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void Ring::CopyFrom(const Ring& from) {
@@ -361,20 +371,20 @@ void Ring::CopyFrom(const Ring& from) {
 }
 
 bool Ring::IsInitialized() const {
-  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
+  if (_Internal::MissingRequiredFields(_impl_._has_bits_)) return false;
   return true;
 }
 
 void Ring::InternalSwap(Ring* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
-  swap(raw_material_, other->raw_material_);
-  swap(ring_color_, other->ring_color_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  swap(_impl_.raw_material_, other->_impl_.raw_material_);
+  swap(_impl_.ring_color_, other->_impl_.ring_color_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Ring::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_RingInfo_2eproto_getter, &descriptor_table_RingInfo_2eproto_once,
       file_level_metadata_RingInfo_2eproto[0]);
 }
@@ -387,43 +397,47 @@ class RingInfo::_Internal {
 
 RingInfo::RingInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
-  rings_(arena) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:llsf_msgs.RingInfo)
 }
 RingInfo::RingInfo(const RingInfo& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      rings_(from.rings_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  RingInfo* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.rings_){from._impl_.rings_}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   // @@protoc_insertion_point(copy_constructor:llsf_msgs.RingInfo)
 }
 
-inline void RingInfo::SharedCtor() {
+inline void RingInfo::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.rings_){arena}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
 }
 
 RingInfo::~RingInfo() {
   // @@protoc_insertion_point(destructor:llsf_msgs.RingInfo)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void RingInfo::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.rings_.~RepeatedPtrField();
 }
 
-void RingInfo::ArenaDtor(void* object) {
-  RingInfo* _this = reinterpret_cast< RingInfo* >(object);
-  (void)_this;
-}
-void RingInfo::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void RingInfo::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void RingInfo::Clear() {
@@ -432,15 +446,15 @@ void RingInfo::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  rings_.Clear();
+  _impl_.rings_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* RingInfo::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* RingInfo::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // repeated .llsf_msgs.Ring rings = 1;
       case 1:
@@ -485,15 +499,15 @@ uint8_t* RingInfo::_InternalSerialize(
   (void) cached_has_bits;
 
   // repeated .llsf_msgs.Ring rings = 1;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->_internal_rings_size()); i < n; i++) {
-    target = stream->EnsureSpace(target);
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_rings_size()); i < n; i++) {
+    const auto& repfield = this->_internal_rings(i);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(1, this->_internal_rings(i), target, stream);
+        InternalWriteMessage(1, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:llsf_msgs.RingInfo)
@@ -510,35 +524,31 @@ size_t RingInfo::ByteSizeLong() const {
 
   // repeated .llsf_msgs.Ring rings = 1;
   total_size += 1UL * this->_internal_rings_size();
-  for (const auto& msg : this->rings_) {
+  for (const auto& msg : this->_impl_.rings_) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData RingInfo::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     RingInfo::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*RingInfo::GetClassData() const { return &_class_data_; }
 
-void RingInfo::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<RingInfo *>(to)->MergeFrom(
-      static_cast<const RingInfo &>(from));
-}
 
-
-void RingInfo::MergeFrom(const RingInfo& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.RingInfo)
-  GOOGLE_DCHECK_NE(&from, this);
+void RingInfo::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<RingInfo*>(&to_msg);
+  auto& from = static_cast<const RingInfo&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.RingInfo)
+  GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  rings_.MergeFrom(from.rings_);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_impl_.rings_.MergeFrom(from._impl_.rings_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void RingInfo::CopyFrom(const RingInfo& from) {
@@ -549,7 +559,7 @@ void RingInfo::CopyFrom(const RingInfo& from) {
 }
 
 bool RingInfo::IsInitialized() const {
-  if (!::PROTOBUF_NAMESPACE_ID::internal::AllAreInitialized(rings_))
+  if (!::PROTOBUF_NAMESPACE_ID::internal::AllAreInitialized(_impl_.rings_))
     return false;
   return true;
 }
@@ -557,11 +567,11 @@ bool RingInfo::IsInitialized() const {
 void RingInfo::InternalSwap(RingInfo* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  rings_.InternalSwap(&other->rings_);
+  _impl_.rings_.InternalSwap(&other->_impl_.rings_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata RingInfo::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_RingInfo_2eproto_getter, &descriptor_table_RingInfo_2eproto_once,
       file_level_metadata_RingInfo_2eproto[1]);
 }
@@ -569,10 +579,12 @@ void RingInfo::InternalSwap(RingInfo* other) {
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace llsf_msgs
 PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::llsf_msgs::Ring* Arena::CreateMaybeMessage< ::llsf_msgs::Ring >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::llsf_msgs::Ring*
+Arena::CreateMaybeMessage< ::llsf_msgs::Ring >(Arena* arena) {
   return Arena::CreateMessageInternal< ::llsf_msgs::Ring >(arena);
 }
-template<> PROTOBUF_NOINLINE ::llsf_msgs::RingInfo* Arena::CreateMaybeMessage< ::llsf_msgs::RingInfo >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::llsf_msgs::RingInfo*
+Arena::CreateMaybeMessage< ::llsf_msgs::RingInfo >(Arena* arena) {
   return Arena::CreateMessageInternal< ::llsf_msgs::RingInfo >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE

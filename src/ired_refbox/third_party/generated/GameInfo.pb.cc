@@ -16,37 +16,43 @@
 #include <google/protobuf/port_def.inc>
 
 PROTOBUF_PRAGMA_INIT_SEG
+
+namespace _pb = ::PROTOBUF_NAMESPACE_ID;
+namespace _pbi = _pb::internal;
+
 namespace llsf_msgs {
-constexpr GameInfo::GameInfo(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : known_teams_(){}
+PROTOBUF_CONSTEXPR GameInfo::GameInfo(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.known_teams_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct GameInfoDefaultTypeInternal {
-  constexpr GameInfoDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR GameInfoDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~GameInfoDefaultTypeInternal() {}
   union {
     GameInfo _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT GameInfoDefaultTypeInternal _GameInfo_default_instance_;
-constexpr SetTeamName::SetTeamName(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : team_name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , team_color_(0)
-{}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GameInfoDefaultTypeInternal _GameInfo_default_instance_;
+PROTOBUF_CONSTEXPR SetTeamName::SetTeamName(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.team_name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.team_color_)*/0} {}
 struct SetTeamNameDefaultTypeInternal {
-  constexpr SetTeamNameDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR SetTeamNameDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~SetTeamNameDefaultTypeInternal() {}
   union {
     SetTeamName _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT SetTeamNameDefaultTypeInternal _SetTeamName_default_instance_;
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SetTeamNameDefaultTypeInternal _SetTeamName_default_instance_;
 }  // namespace llsf_msgs
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_GameInfo_2eproto[2];
-static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_GameInfo_2eproto[2];
-static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_GameInfo_2eproto = nullptr;
+static ::_pb::Metadata file_level_metadata_GameInfo_2eproto[2];
+static const ::_pb::EnumDescriptor* file_level_enum_descriptors_GameInfo_2eproto[2];
+static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_GameInfo_2eproto = nullptr;
 
 const uint32_t TableStruct_GameInfo_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   ~0u,  // no _has_bits_
@@ -55,26 +61,26 @@ const uint32_t TableStruct_GameInfo_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::GameInfo, known_teams_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::SetTeamName, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::GameInfo, _impl_.known_teams_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::SetTeamName, _impl_._has_bits_),
   PROTOBUF_FIELD_OFFSET(::llsf_msgs::SetTeamName, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::SetTeamName, team_name_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::SetTeamName, team_color_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::SetTeamName, _impl_.team_name_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::SetTeamName, _impl_.team_color_),
   0,
   1,
 };
-static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::llsf_msgs::GameInfo)},
   { 7, 15, -1, sizeof(::llsf_msgs::SetTeamName)},
 };
 
-static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::llsf_msgs::_GameInfo_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::llsf_msgs::_SetTeamName_default_instance_),
+static const ::_pb::Message* const file_default_instances[] = {
+  &::llsf_msgs::_GameInfo_default_instance_._instance,
+  &::llsf_msgs::_SetTeamName_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_GameInfo_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -86,22 +92,24 @@ const char descriptor_table_protodef_GameInfo_2eproto[] PROTOBUF_SECTION_VARIABL
   "OMP_ID\020\320\017\022\014\n\010MSG_TYPE\020RB1\n\037org.robocup_l"
   "ogistics.llsf_msgsB\016GameInfoProtos"
   ;
-static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_GameInfo_2eproto_deps[1] = {
+static const ::_pbi::DescriptorTable* const descriptor_table_GameInfo_2eproto_deps[1] = {
   &::descriptor_table_Team_2eproto,
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_GameInfo_2eproto_once;
-const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_GameInfo_2eproto = {
-  false, false, 274, descriptor_table_protodef_GameInfo_2eproto, "GameInfo.proto", 
-  &descriptor_table_GameInfo_2eproto_once, descriptor_table_GameInfo_2eproto_deps, 1, 2,
-  schemas, file_default_instances, TableStruct_GameInfo_2eproto::offsets,
-  file_level_metadata_GameInfo_2eproto, file_level_enum_descriptors_GameInfo_2eproto, file_level_service_descriptors_GameInfo_2eproto,
+static ::_pbi::once_flag descriptor_table_GameInfo_2eproto_once;
+const ::_pbi::DescriptorTable descriptor_table_GameInfo_2eproto = {
+    false, false, 274, descriptor_table_protodef_GameInfo_2eproto,
+    "GameInfo.proto",
+    &descriptor_table_GameInfo_2eproto_once, descriptor_table_GameInfo_2eproto_deps, 1, 2,
+    schemas, file_default_instances, TableStruct_GameInfo_2eproto::offsets,
+    file_level_metadata_GameInfo_2eproto, file_level_enum_descriptors_GameInfo_2eproto,
+    file_level_service_descriptors_GameInfo_2eproto,
 };
-PROTOBUF_ATTRIBUTE_WEAK const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable* descriptor_table_GameInfo_2eproto_getter() {
+PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_GameInfo_2eproto_getter() {
   return &descriptor_table_GameInfo_2eproto;
 }
 
 // Force running AddDescriptors() at dynamic initialization time.
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY static ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptorsRunner dynamic_init_dummy_GameInfo_2eproto(&descriptor_table_GameInfo_2eproto);
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_GameInfo_2eproto(&descriptor_table_GameInfo_2eproto);
 namespace llsf_msgs {
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* GameInfo_CompType_descriptor() {
   ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_GameInfo_2eproto);
@@ -154,43 +162,47 @@ class GameInfo::_Internal {
 
 GameInfo::GameInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
-  known_teams_(arena) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:llsf_msgs.GameInfo)
 }
 GameInfo::GameInfo(const GameInfo& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      known_teams_(from.known_teams_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  GameInfo* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.known_teams_){from._impl_.known_teams_}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   // @@protoc_insertion_point(copy_constructor:llsf_msgs.GameInfo)
 }
 
-inline void GameInfo::SharedCtor() {
+inline void GameInfo::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.known_teams_){arena}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
 }
 
 GameInfo::~GameInfo() {
   // @@protoc_insertion_point(destructor:llsf_msgs.GameInfo)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void GameInfo::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.known_teams_.~RepeatedPtrField();
 }
 
-void GameInfo::ArenaDtor(void* object) {
-  GameInfo* _this = reinterpret_cast< GameInfo* >(object);
-  (void)_this;
-}
-void GameInfo::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void GameInfo::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void GameInfo::Clear() {
@@ -199,15 +211,15 @@ void GameInfo::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  known_teams_.Clear();
+  _impl_.known_teams_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* GameInfo::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* GameInfo::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // repeated string known_teams = 1;
       case 1:
@@ -216,11 +228,11 @@ const char* GameInfo::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::i
           do {
             ptr += 1;
             auto str = _internal_add_known_teams();
-            ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-            #ifndef NDEBUG
-            ::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "llsf_msgs.GameInfo.known_teams");
-            #endif  // !NDEBUG
+            ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
             CHK_(ptr);
+            #ifndef NDEBUG
+            ::_pbi::VerifyUTF8(str, "llsf_msgs.GameInfo.known_teams");
+            #endif  // !NDEBUG
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
         } else
@@ -266,7 +278,7 @@ uint8_t* GameInfo::_InternalSerialize(
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:llsf_msgs.GameInfo)
@@ -283,36 +295,32 @@ size_t GameInfo::ByteSizeLong() const {
 
   // repeated string known_teams = 1;
   total_size += 1 *
-      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(known_teams_.size());
-  for (int i = 0, n = known_teams_.size(); i < n; i++) {
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(_impl_.known_teams_.size());
+  for (int i = 0, n = _impl_.known_teams_.size(); i < n; i++) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-      known_teams_.Get(i));
+      _impl_.known_teams_.Get(i));
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData GameInfo::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     GameInfo::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GameInfo::GetClassData() const { return &_class_data_; }
 
-void GameInfo::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<GameInfo *>(to)->MergeFrom(
-      static_cast<const GameInfo &>(from));
-}
 
-
-void GameInfo::MergeFrom(const GameInfo& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.GameInfo)
-  GOOGLE_DCHECK_NE(&from, this);
+void GameInfo::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<GameInfo*>(&to_msg);
+  auto& from = static_cast<const GameInfo&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.GameInfo)
+  GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  known_teams_.MergeFrom(from.known_teams_);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_impl_.known_teams_.MergeFrom(from._impl_.known_teams_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void GameInfo::CopyFrom(const GameInfo& from) {
@@ -329,11 +337,11 @@ bool GameInfo::IsInitialized() const {
 void GameInfo::InternalSwap(GameInfo* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  known_teams_.InternalSwap(&other->known_teams_);
+  _impl_.known_teams_.InternalSwap(&other->_impl_.known_teams_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata GameInfo::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_GameInfo_2eproto_getter, &descriptor_table_GameInfo_2eproto_once,
       file_level_metadata_GameInfo_2eproto[0]);
 }
@@ -342,7 +350,7 @@ void GameInfo::InternalSwap(GameInfo* other) {
 
 class SetTeamName::_Internal {
  public:
-  using HasBits = decltype(std::declval<SetTeamName>()._has_bits_);
+  using HasBits = decltype(std::declval<SetTeamName>()._impl_._has_bits_);
   static void set_has_team_name(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
@@ -357,56 +365,63 @@ class SetTeamName::_Internal {
 SetTeamName::SetTeamName(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:llsf_msgs.SetTeamName)
 }
 SetTeamName::SetTeamName(const SetTeamName& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  SetTeamName* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.team_name_){}
+    , decltype(_impl_.team_color_){}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  team_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.team_name_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    team_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+    _impl_.team_name_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (from._internal_has_team_name()) {
-    team_name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_team_name(), 
-      GetArenaForAllocation());
+    _this->_impl_.team_name_.Set(from._internal_team_name(), 
+      _this->GetArenaForAllocation());
   }
-  team_color_ = from.team_color_;
+  _this->_impl_.team_color_ = from._impl_.team_color_;
   // @@protoc_insertion_point(copy_constructor:llsf_msgs.SetTeamName)
 }
 
-inline void SetTeamName::SharedCtor() {
-team_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  team_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-team_color_ = 0;
+inline void SetTeamName::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.team_name_){}
+    , decltype(_impl_.team_color_){0}
+  };
+  _impl_.team_name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.team_name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 SetTeamName::~SetTeamName() {
   // @@protoc_insertion_point(destructor:llsf_msgs.SetTeamName)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void SetTeamName::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  team_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.team_name_.Destroy();
 }
 
-void SetTeamName::ArenaDtor(void* object) {
-  SetTeamName* _this = reinterpret_cast< SetTeamName* >(object);
-  (void)_this;
-}
-void SetTeamName::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void SetTeamName::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void SetTeamName::Clear() {
@@ -415,31 +430,31 @@ void SetTeamName::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    team_name_.ClearNonDefaultToEmpty();
+    _impl_.team_name_.ClearNonDefaultToEmpty();
   }
-  team_color_ = 0;
-  _has_bits_.Clear();
+  _impl_.team_color_ = 0;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* SetTeamName::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* SetTeamName::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // required string team_name = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           auto str = _internal_mutable_team_name();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          #ifndef NDEBUG
-          ::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "llsf_msgs.SetTeamName.team_name");
-          #endif  // !NDEBUG
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          #ifndef NDEBUG
+          ::_pbi::VerifyUTF8(str, "llsf_msgs.SetTeamName.team_name");
+          #endif  // !NDEBUG
         } else
           goto handle_unusual;
         continue;
@@ -472,7 +487,7 @@ const char* SetTeamName::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -486,7 +501,7 @@ uint8_t* SetTeamName::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   // required string team_name = 1;
   if (cached_has_bits & 0x00000001u) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
@@ -500,12 +515,12 @@ uint8_t* SetTeamName::_InternalSerialize(
   // required .llsf_msgs.Team team_color = 2;
   if (cached_has_bits & 0x00000002u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
       2, this->_internal_team_color(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:llsf_msgs.SetTeamName)
@@ -526,7 +541,7 @@ size_t SetTeamName::RequiredFieldsByteSizeFallback() const {
   if (_internal_has_team_color()) {
     // required .llsf_msgs.Team team_color = 2;
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_team_color());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_team_color());
   }
 
   return total_size;
@@ -535,7 +550,7 @@ size_t SetTeamName::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:llsf_msgs.SetTeamName)
   size_t total_size = 0;
 
-  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
+  if (((_impl_._has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
     // required string team_name = 1;
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
@@ -543,7 +558,7 @@ size_t SetTeamName::ByteSizeLong() const {
 
     // required .llsf_msgs.Team team_color = 2;
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_team_color());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_team_color());
 
   } else {
     total_size += RequiredFieldsByteSizeFallback();
@@ -552,39 +567,35 @@ size_t SetTeamName::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData SetTeamName::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     SetTeamName::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SetTeamName::GetClassData() const { return &_class_data_; }
 
-void SetTeamName::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<SetTeamName *>(to)->MergeFrom(
-      static_cast<const SetTeamName &>(from));
-}
 
-
-void SetTeamName::MergeFrom(const SetTeamName& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.SetTeamName)
-  GOOGLE_DCHECK_NE(&from, this);
+void SetTeamName::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<SetTeamName*>(&to_msg);
+  auto& from = static_cast<const SetTeamName&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.SetTeamName)
+  GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = from._has_bits_[0];
+  cached_has_bits = from._impl_._has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
     if (cached_has_bits & 0x00000001u) {
-      _internal_set_team_name(from._internal_team_name());
+      _this->_internal_set_team_name(from._internal_team_name());
     }
     if (cached_has_bits & 0x00000002u) {
-      team_color_ = from.team_color_;
+      _this->_impl_.team_color_ = from._impl_.team_color_;
     }
-    _has_bits_[0] |= cached_has_bits;
+    _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void SetTeamName::CopyFrom(const SetTeamName& from) {
@@ -595,7 +606,7 @@ void SetTeamName::CopyFrom(const SetTeamName& from) {
 }
 
 bool SetTeamName::IsInitialized() const {
-  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
+  if (_Internal::MissingRequiredFields(_impl_._has_bits_)) return false;
   return true;
 }
 
@@ -604,17 +615,16 @@ void SetTeamName::InternalSwap(SetTeamName* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &team_name_, lhs_arena,
-      &other->team_name_, rhs_arena
+      &_impl_.team_name_, lhs_arena,
+      &other->_impl_.team_name_, rhs_arena
   );
-  swap(team_color_, other->team_color_);
+  swap(_impl_.team_color_, other->_impl_.team_color_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata SetTeamName::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_GameInfo_2eproto_getter, &descriptor_table_GameInfo_2eproto_once,
       file_level_metadata_GameInfo_2eproto[1]);
 }
@@ -622,10 +632,12 @@ void SetTeamName::InternalSwap(SetTeamName* other) {
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace llsf_msgs
 PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::llsf_msgs::GameInfo* Arena::CreateMaybeMessage< ::llsf_msgs::GameInfo >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::llsf_msgs::GameInfo*
+Arena::CreateMaybeMessage< ::llsf_msgs::GameInfo >(Arena* arena) {
   return Arena::CreateMessageInternal< ::llsf_msgs::GameInfo >(arena);
 }
-template<> PROTOBUF_NOINLINE ::llsf_msgs::SetTeamName* Arena::CreateMaybeMessage< ::llsf_msgs::SetTeamName >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::llsf_msgs::SetTeamName*
+Arena::CreateMaybeMessage< ::llsf_msgs::SetTeamName >(Arena* arena) {
   return Arena::CreateMessageInternal< ::llsf_msgs::SetTeamName >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE

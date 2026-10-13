@@ -16,49 +16,55 @@
 #include <google/protobuf/port_def.inc>
 
 PROTOBUF_PRAGMA_INIT_SEG
+
+namespace _pb = ::PROTOBUF_NAMESPACE_ID;
+namespace _pbi = _pb::internal;
+
 namespace llsf_msgs {
-constexpr VersionInfo::VersionInfo(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : version_string_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , version_major_(0u)
-  , version_minor_(0u)
-  , version_micro_(0u){}
+PROTOBUF_CONSTEXPR VersionInfo::VersionInfo(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.version_string_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.version_major_)*/0u
+  , /*decltype(_impl_.version_minor_)*/0u
+  , /*decltype(_impl_.version_micro_)*/0u} {}
 struct VersionInfoDefaultTypeInternal {
-  constexpr VersionInfoDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR VersionInfoDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~VersionInfoDefaultTypeInternal() {}
   union {
     VersionInfo _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT VersionInfoDefaultTypeInternal _VersionInfo_default_instance_;
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 VersionInfoDefaultTypeInternal _VersionInfo_default_instance_;
 }  // namespace llsf_msgs
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_VersionInfo_2eproto[1];
-static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_VersionInfo_2eproto[1];
-static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_VersionInfo_2eproto = nullptr;
+static ::_pb::Metadata file_level_metadata_VersionInfo_2eproto[1];
+static const ::_pb::EnumDescriptor* file_level_enum_descriptors_VersionInfo_2eproto[1];
+static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_VersionInfo_2eproto = nullptr;
 
 const uint32_t TableStruct_VersionInfo_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::VersionInfo, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::VersionInfo, _impl_._has_bits_),
   PROTOBUF_FIELD_OFFSET(::llsf_msgs::VersionInfo, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::VersionInfo, version_major_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::VersionInfo, version_minor_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::VersionInfo, version_micro_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::VersionInfo, version_string_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::VersionInfo, _impl_.version_major_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::VersionInfo, _impl_.version_minor_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::VersionInfo, _impl_.version_micro_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::VersionInfo, _impl_.version_string_),
   1,
   2,
   3,
   0,
 };
-static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 10, -1, sizeof(::llsf_msgs::VersionInfo)},
 };
 
-static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::llsf_msgs::_VersionInfo_default_instance_),
+static const ::_pb::Message* const file_default_instances[] = {
+  &::llsf_msgs::_VersionInfo_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_VersionInfo_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -69,19 +75,21 @@ const char descriptor_table_protodef_VersionInfo_2eproto[] PROTOBUF_SECTION_VARI
   "ID\020\320\017\022\014\n\010MSG_TYPE\020\003B0\n\037org.robocup_logis"
   "tics.llsf_msgsB\rVersionProtos"
   ;
-static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_VersionInfo_2eproto_once;
-const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_VersionInfo_2eproto = {
-  false, false, 229, descriptor_table_protodef_VersionInfo_2eproto, "VersionInfo.proto", 
-  &descriptor_table_VersionInfo_2eproto_once, nullptr, 0, 1,
-  schemas, file_default_instances, TableStruct_VersionInfo_2eproto::offsets,
-  file_level_metadata_VersionInfo_2eproto, file_level_enum_descriptors_VersionInfo_2eproto, file_level_service_descriptors_VersionInfo_2eproto,
+static ::_pbi::once_flag descriptor_table_VersionInfo_2eproto_once;
+const ::_pbi::DescriptorTable descriptor_table_VersionInfo_2eproto = {
+    false, false, 229, descriptor_table_protodef_VersionInfo_2eproto,
+    "VersionInfo.proto",
+    &descriptor_table_VersionInfo_2eproto_once, nullptr, 0, 1,
+    schemas, file_default_instances, TableStruct_VersionInfo_2eproto::offsets,
+    file_level_metadata_VersionInfo_2eproto, file_level_enum_descriptors_VersionInfo_2eproto,
+    file_level_service_descriptors_VersionInfo_2eproto,
 };
-PROTOBUF_ATTRIBUTE_WEAK const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable* descriptor_table_VersionInfo_2eproto_getter() {
+PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_VersionInfo_2eproto_getter() {
   return &descriptor_table_VersionInfo_2eproto;
 }
 
 // Force running AddDescriptors() at dynamic initialization time.
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY static ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptorsRunner dynamic_init_dummy_VersionInfo_2eproto(&descriptor_table_VersionInfo_2eproto);
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_VersionInfo_2eproto(&descriptor_table_VersionInfo_2eproto);
 namespace llsf_msgs {
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* VersionInfo_CompType_descriptor() {
   ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_VersionInfo_2eproto);
@@ -109,7 +117,7 @@ constexpr int VersionInfo::CompType_ARRAYSIZE;
 
 class VersionInfo::_Internal {
  public:
-  using HasBits = decltype(std::declval<VersionInfo>()._has_bits_);
+  using HasBits = decltype(std::declval<VersionInfo>()._impl_._has_bits_);
   static void set_has_version_major(HasBits* has_bits) {
     (*has_bits)[0] |= 2u;
   }
@@ -130,61 +138,69 @@ class VersionInfo::_Internal {
 VersionInfo::VersionInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:llsf_msgs.VersionInfo)
 }
 VersionInfo::VersionInfo(const VersionInfo& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  VersionInfo* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.version_string_){}
+    , decltype(_impl_.version_major_){}
+    , decltype(_impl_.version_minor_){}
+    , decltype(_impl_.version_micro_){}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  version_string_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.version_string_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    version_string_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+    _impl_.version_string_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (from._internal_has_version_string()) {
-    version_string_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_version_string(), 
-      GetArenaForAllocation());
+    _this->_impl_.version_string_.Set(from._internal_version_string(), 
+      _this->GetArenaForAllocation());
   }
-  ::memcpy(&version_major_, &from.version_major_,
-    static_cast<size_t>(reinterpret_cast<char*>(&version_micro_) -
-    reinterpret_cast<char*>(&version_major_)) + sizeof(version_micro_));
+  ::memcpy(&_impl_.version_major_, &from._impl_.version_major_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.version_micro_) -
+    reinterpret_cast<char*>(&_impl_.version_major_)) + sizeof(_impl_.version_micro_));
   // @@protoc_insertion_point(copy_constructor:llsf_msgs.VersionInfo)
 }
 
-inline void VersionInfo::SharedCtor() {
-version_string_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  version_string_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&version_major_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&version_micro_) -
-    reinterpret_cast<char*>(&version_major_)) + sizeof(version_micro_));
+inline void VersionInfo::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.version_string_){}
+    , decltype(_impl_.version_major_){0u}
+    , decltype(_impl_.version_minor_){0u}
+    , decltype(_impl_.version_micro_){0u}
+  };
+  _impl_.version_string_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.version_string_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 VersionInfo::~VersionInfo() {
   // @@protoc_insertion_point(destructor:llsf_msgs.VersionInfo)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void VersionInfo::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  version_string_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.version_string_.Destroy();
 }
 
-void VersionInfo::ArenaDtor(void* object) {
-  VersionInfo* _this = reinterpret_cast< VersionInfo* >(object);
-  (void)_this;
-}
-void VersionInfo::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void VersionInfo::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void VersionInfo::Clear() {
@@ -193,31 +209,31 @@ void VersionInfo::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    version_string_.ClearNonDefaultToEmpty();
+    _impl_.version_string_.ClearNonDefaultToEmpty();
   }
   if (cached_has_bits & 0x0000000eu) {
-    ::memset(&version_major_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&version_micro_) -
-        reinterpret_cast<char*>(&version_major_)) + sizeof(version_micro_));
+    ::memset(&_impl_.version_major_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&_impl_.version_micro_) -
+        reinterpret_cast<char*>(&_impl_.version_major_)) + sizeof(_impl_.version_micro_));
   }
-  _has_bits_.Clear();
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* VersionInfo::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* VersionInfo::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // required uint32 version_major = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           _Internal::set_has_version_major(&has_bits);
-          version_major_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _impl_.version_major_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -226,7 +242,7 @@ const char* VersionInfo::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
           _Internal::set_has_version_minor(&has_bits);
-          version_minor_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _impl_.version_minor_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -235,7 +251,7 @@ const char* VersionInfo::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
           _Internal::set_has_version_micro(&has_bits);
-          version_micro_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _impl_.version_micro_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -244,11 +260,11 @@ const char* VersionInfo::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
           auto str = _internal_mutable_version_string();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          #ifndef NDEBUG
-          ::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "llsf_msgs.VersionInfo.version_string");
-          #endif  // !NDEBUG
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          #ifndef NDEBUG
+          ::_pbi::VerifyUTF8(str, "llsf_msgs.VersionInfo.version_string");
+          #endif  // !NDEBUG
         } else
           goto handle_unusual;
         continue;
@@ -268,7 +284,7 @@ const char* VersionInfo::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -282,23 +298,23 @@ uint8_t* VersionInfo::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   // required uint32 version_major = 1;
   if (cached_has_bits & 0x00000002u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->_internal_version_major(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(1, this->_internal_version_major(), target);
   }
 
   // required uint32 version_minor = 2;
   if (cached_has_bits & 0x00000004u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(2, this->_internal_version_minor(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(2, this->_internal_version_minor(), target);
   }
 
   // required uint32 version_micro = 3;
   if (cached_has_bits & 0x00000008u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(3, this->_internal_version_micro(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(3, this->_internal_version_micro(), target);
   }
 
   // required string version_string = 4;
@@ -312,7 +328,7 @@ uint8_t* VersionInfo::_InternalSerialize(
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:llsf_msgs.VersionInfo)
@@ -332,17 +348,17 @@ size_t VersionInfo::RequiredFieldsByteSizeFallback() const {
 
   if (_internal_has_version_major()) {
     // required uint32 version_major = 1;
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_version_major());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_version_major());
   }
 
   if (_internal_has_version_minor()) {
     // required uint32 version_minor = 2;
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_version_minor());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_version_minor());
   }
 
   if (_internal_has_version_micro()) {
     // required uint32 version_micro = 3;
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_version_micro());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_version_micro());
   }
 
   return total_size;
@@ -351,20 +367,20 @@ size_t VersionInfo::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:llsf_msgs.VersionInfo)
   size_t total_size = 0;
 
-  if (((_has_bits_[0] & 0x0000000f) ^ 0x0000000f) == 0) {  // All required fields are present.
+  if (((_impl_._has_bits_[0] & 0x0000000f) ^ 0x0000000f) == 0) {  // All required fields are present.
     // required string version_string = 4;
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_version_string());
 
     // required uint32 version_major = 1;
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_version_major());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_version_major());
 
     // required uint32 version_minor = 2;
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_version_minor());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_version_minor());
 
     // required uint32 version_micro = 3;
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_version_micro());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_version_micro());
 
   } else {
     total_size += RequiredFieldsByteSizeFallback();
@@ -373,45 +389,41 @@ size_t VersionInfo::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData VersionInfo::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     VersionInfo::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*VersionInfo::GetClassData() const { return &_class_data_; }
 
-void VersionInfo::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<VersionInfo *>(to)->MergeFrom(
-      static_cast<const VersionInfo &>(from));
-}
 
-
-void VersionInfo::MergeFrom(const VersionInfo& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.VersionInfo)
-  GOOGLE_DCHECK_NE(&from, this);
+void VersionInfo::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<VersionInfo*>(&to_msg);
+  auto& from = static_cast<const VersionInfo&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.VersionInfo)
+  GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = from._has_bits_[0];
+  cached_has_bits = from._impl_._has_bits_[0];
   if (cached_has_bits & 0x0000000fu) {
     if (cached_has_bits & 0x00000001u) {
-      _internal_set_version_string(from._internal_version_string());
+      _this->_internal_set_version_string(from._internal_version_string());
     }
     if (cached_has_bits & 0x00000002u) {
-      version_major_ = from.version_major_;
+      _this->_impl_.version_major_ = from._impl_.version_major_;
     }
     if (cached_has_bits & 0x00000004u) {
-      version_minor_ = from.version_minor_;
+      _this->_impl_.version_minor_ = from._impl_.version_minor_;
     }
     if (cached_has_bits & 0x00000008u) {
-      version_micro_ = from.version_micro_;
+      _this->_impl_.version_micro_ = from._impl_.version_micro_;
     }
-    _has_bits_[0] |= cached_has_bits;
+    _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void VersionInfo::CopyFrom(const VersionInfo& from) {
@@ -422,7 +434,7 @@ void VersionInfo::CopyFrom(const VersionInfo& from) {
 }
 
 bool VersionInfo::IsInitialized() const {
-  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
+  if (_Internal::MissingRequiredFields(_impl_._has_bits_)) return false;
   return true;
 }
 
@@ -431,22 +443,21 @@ void VersionInfo::InternalSwap(VersionInfo* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &version_string_, lhs_arena,
-      &other->version_string_, rhs_arena
+      &_impl_.version_string_, lhs_arena,
+      &other->_impl_.version_string_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(VersionInfo, version_micro_)
-      + sizeof(VersionInfo::version_micro_)
-      - PROTOBUF_FIELD_OFFSET(VersionInfo, version_major_)>(
-          reinterpret_cast<char*>(&version_major_),
-          reinterpret_cast<char*>(&other->version_major_));
+      PROTOBUF_FIELD_OFFSET(VersionInfo, _impl_.version_micro_)
+      + sizeof(VersionInfo::_impl_.version_micro_)
+      - PROTOBUF_FIELD_OFFSET(VersionInfo, _impl_.version_major_)>(
+          reinterpret_cast<char*>(&_impl_.version_major_),
+          reinterpret_cast<char*>(&other->_impl_.version_major_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata VersionInfo::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_VersionInfo_2eproto_getter, &descriptor_table_VersionInfo_2eproto_once,
       file_level_metadata_VersionInfo_2eproto[0]);
 }
@@ -454,7 +465,8 @@ void VersionInfo::InternalSwap(VersionInfo* other) {
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace llsf_msgs
 PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::llsf_msgs::VersionInfo* Arena::CreateMaybeMessage< ::llsf_msgs::VersionInfo >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::llsf_msgs::VersionInfo*
+Arena::CreateMaybeMessage< ::llsf_msgs::VersionInfo >(Arena* arena) {
   return Arena::CreateMessageInternal< ::llsf_msgs::VersionInfo >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE

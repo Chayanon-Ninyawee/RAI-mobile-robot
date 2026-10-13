@@ -16,62 +16,69 @@
 #include <google/protobuf/port_def.inc>
 
 PROTOBUF_PRAGMA_INIT_SEG
-namespace llsf_msgs {
-constexpr BeaconSignal::BeaconSignal(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : finished_tasks_()
-  , team_name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , peer_name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , time_(nullptr)
-  , pose_(nullptr)
-  , task_(nullptr)
-  , seq_(uint64_t{0u})
-  , team_color_(0)
 
-  , number_(0u){}
+namespace _pb = ::PROTOBUF_NAMESPACE_ID;
+namespace _pbi = _pb::internal;
+
+namespace llsf_msgs {
+PROTOBUF_CONSTEXPR BeaconSignal::BeaconSignal(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.finished_tasks_)*/{}
+  , /*decltype(_impl_.team_name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.peer_name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.time_)*/nullptr
+  , /*decltype(_impl_.pose_)*/nullptr
+  , /*decltype(_impl_.task_)*/nullptr
+  , /*decltype(_impl_.seq_)*/uint64_t{0u}
+  , /*decltype(_impl_.team_color_)*/0
+  , /*decltype(_impl_.number_)*/0u} {}
 struct BeaconSignalDefaultTypeInternal {
-  constexpr BeaconSignalDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR BeaconSignalDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~BeaconSignalDefaultTypeInternal() {}
   union {
     BeaconSignal _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT BeaconSignalDefaultTypeInternal _BeaconSignal_default_instance_;
-constexpr FinishedTask::FinishedTask(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : taskid_(0u)
-  , successful_(false){}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 BeaconSignalDefaultTypeInternal _BeaconSignal_default_instance_;
+PROTOBUF_CONSTEXPR FinishedTask::FinishedTask(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.taskid_)*/0u
+  , /*decltype(_impl_.successful_)*/false} {}
 struct FinishedTaskDefaultTypeInternal {
-  constexpr FinishedTaskDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR FinishedTaskDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~FinishedTaskDefaultTypeInternal() {}
   union {
     FinishedTask _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT FinishedTaskDefaultTypeInternal _FinishedTask_default_instance_;
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 FinishedTaskDefaultTypeInternal _FinishedTask_default_instance_;
 }  // namespace llsf_msgs
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_BeaconSignal_2eproto[2];
-static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_BeaconSignal_2eproto[1];
-static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_BeaconSignal_2eproto = nullptr;
+static ::_pb::Metadata file_level_metadata_BeaconSignal_2eproto[2];
+static const ::_pb::EnumDescriptor* file_level_enum_descriptors_BeaconSignal_2eproto[1];
+static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_BeaconSignal_2eproto = nullptr;
 
 const uint32_t TableStruct_BeaconSignal_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::BeaconSignal, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::BeaconSignal, _impl_._has_bits_),
   PROTOBUF_FIELD_OFFSET(::llsf_msgs::BeaconSignal, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::BeaconSignal, time_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::BeaconSignal, seq_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::BeaconSignal, number_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::BeaconSignal, team_name_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::BeaconSignal, peer_name_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::BeaconSignal, team_color_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::BeaconSignal, pose_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::BeaconSignal, task_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::BeaconSignal, finished_tasks_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::BeaconSignal, _impl_.time_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::BeaconSignal, _impl_.seq_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::BeaconSignal, _impl_.number_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::BeaconSignal, _impl_.team_name_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::BeaconSignal, _impl_.peer_name_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::BeaconSignal, _impl_.team_color_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::BeaconSignal, _impl_.pose_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::BeaconSignal, _impl_.task_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::BeaconSignal, _impl_.finished_tasks_),
   2,
   5,
   7,
@@ -81,25 +88,25 @@ const uint32_t TableStruct_BeaconSignal_2eproto::offsets[] PROTOBUF_SECTION_VARI
   3,
   4,
   ~0u,
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::FinishedTask, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::FinishedTask, _impl_._has_bits_),
   PROTOBUF_FIELD_OFFSET(::llsf_msgs::FinishedTask, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::FinishedTask, taskid_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::FinishedTask, successful_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::FinishedTask, _impl_.taskid_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::FinishedTask, _impl_.successful_),
   0,
   1,
 };
-static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 15, -1, sizeof(::llsf_msgs::BeaconSignal)},
   { 24, 32, -1, sizeof(::llsf_msgs::FinishedTask)},
 };
 
-static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::llsf_msgs::_BeaconSignal_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::llsf_msgs::_FinishedTask_default_instance_),
+static const ::_pb::Message* const file_default_instances[] = {
+  &::llsf_msgs::_BeaconSignal_default_instance_._instance,
+  &::llsf_msgs::_FinishedTask_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_BeaconSignal_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -117,25 +124,27 @@ const char descriptor_table_protodef_BeaconSignal_2eproto[] PROTOBUF_SECTION_VAR
   "ul\030\002 \002(\010B5\n\037org.robocup_logistics.llsf_m"
   "sgsB\022BeaconSignalProtos"
   ;
-static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_BeaconSignal_2eproto_deps[4] = {
+static const ::_pbi::DescriptorTable* const descriptor_table_BeaconSignal_2eproto_deps[4] = {
   &::descriptor_table_AgentTask_2eproto,
   &::descriptor_table_Pose2D_2eproto,
   &::descriptor_table_Team_2eproto,
   &::descriptor_table_Time_2eproto,
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_BeaconSignal_2eproto_once;
-const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_BeaconSignal_2eproto = {
-  false, false, 503, descriptor_table_protodef_BeaconSignal_2eproto, "BeaconSignal.proto", 
-  &descriptor_table_BeaconSignal_2eproto_once, descriptor_table_BeaconSignal_2eproto_deps, 4, 2,
-  schemas, file_default_instances, TableStruct_BeaconSignal_2eproto::offsets,
-  file_level_metadata_BeaconSignal_2eproto, file_level_enum_descriptors_BeaconSignal_2eproto, file_level_service_descriptors_BeaconSignal_2eproto,
+static ::_pbi::once_flag descriptor_table_BeaconSignal_2eproto_once;
+const ::_pbi::DescriptorTable descriptor_table_BeaconSignal_2eproto = {
+    false, false, 503, descriptor_table_protodef_BeaconSignal_2eproto,
+    "BeaconSignal.proto",
+    &descriptor_table_BeaconSignal_2eproto_once, descriptor_table_BeaconSignal_2eproto_deps, 4, 2,
+    schemas, file_default_instances, TableStruct_BeaconSignal_2eproto::offsets,
+    file_level_metadata_BeaconSignal_2eproto, file_level_enum_descriptors_BeaconSignal_2eproto,
+    file_level_service_descriptors_BeaconSignal_2eproto,
 };
-PROTOBUF_ATTRIBUTE_WEAK const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable* descriptor_table_BeaconSignal_2eproto_getter() {
+PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_BeaconSignal_2eproto_getter() {
   return &descriptor_table_BeaconSignal_2eproto;
 }
 
 // Force running AddDescriptors() at dynamic initialization time.
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY static ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptorsRunner dynamic_init_dummy_BeaconSignal_2eproto(&descriptor_table_BeaconSignal_2eproto);
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_BeaconSignal_2eproto(&descriptor_table_BeaconSignal_2eproto);
 namespace llsf_msgs {
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* BeaconSignal_CompType_descriptor() {
   ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_BeaconSignal_2eproto);
@@ -163,7 +172,7 @@ constexpr int BeaconSignal::CompType_ARRAYSIZE;
 
 class BeaconSignal::_Internal {
  public:
-  using HasBits = decltype(std::declval<BeaconSignal>()._has_bits_);
+  using HasBits = decltype(std::declval<BeaconSignal>()._impl_._has_bits_);
   static const ::llsf_msgs::Time& time(const BeaconSignal* msg);
   static void set_has_time(HasBits* has_bits) {
     (*has_bits)[0] |= 4u;
@@ -198,119 +207,130 @@ class BeaconSignal::_Internal {
 
 const ::llsf_msgs::Time&
 BeaconSignal::_Internal::time(const BeaconSignal* msg) {
-  return *msg->time_;
+  return *msg->_impl_.time_;
 }
 const ::llsf_msgs::Pose2D&
 BeaconSignal::_Internal::pose(const BeaconSignal* msg) {
-  return *msg->pose_;
+  return *msg->_impl_.pose_;
 }
 const ::llsf_msgs::AgentTask&
 BeaconSignal::_Internal::task(const BeaconSignal* msg) {
-  return *msg->task_;
+  return *msg->_impl_.task_;
 }
 void BeaconSignal::clear_time() {
-  if (time_ != nullptr) time_->Clear();
-  _has_bits_[0] &= ~0x00000004u;
+  if (_impl_.time_ != nullptr) _impl_.time_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000004u;
 }
 void BeaconSignal::clear_pose() {
-  if (pose_ != nullptr) pose_->Clear();
-  _has_bits_[0] &= ~0x00000008u;
+  if (_impl_.pose_ != nullptr) _impl_.pose_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000008u;
 }
 void BeaconSignal::clear_task() {
-  if (task_ != nullptr) task_->Clear();
-  _has_bits_[0] &= ~0x00000010u;
+  if (_impl_.task_ != nullptr) _impl_.task_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000010u;
 }
 BeaconSignal::BeaconSignal(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
-  finished_tasks_(arena) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:llsf_msgs.BeaconSignal)
 }
 BeaconSignal::BeaconSignal(const BeaconSignal& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_),
-      finished_tasks_(from.finished_tasks_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  BeaconSignal* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.finished_tasks_){from._impl_.finished_tasks_}
+    , decltype(_impl_.team_name_){}
+    , decltype(_impl_.peer_name_){}
+    , decltype(_impl_.time_){nullptr}
+    , decltype(_impl_.pose_){nullptr}
+    , decltype(_impl_.task_){nullptr}
+    , decltype(_impl_.seq_){}
+    , decltype(_impl_.team_color_){}
+    , decltype(_impl_.number_){}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  team_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.team_name_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    team_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+    _impl_.team_name_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (from._internal_has_team_name()) {
-    team_name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_team_name(), 
-      GetArenaForAllocation());
+    _this->_impl_.team_name_.Set(from._internal_team_name(), 
+      _this->GetArenaForAllocation());
   }
-  peer_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.peer_name_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    peer_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+    _impl_.peer_name_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (from._internal_has_peer_name()) {
-    peer_name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_peer_name(), 
-      GetArenaForAllocation());
+    _this->_impl_.peer_name_.Set(from._internal_peer_name(), 
+      _this->GetArenaForAllocation());
   }
   if (from._internal_has_time()) {
-    time_ = new ::llsf_msgs::Time(*from.time_);
-  } else {
-    time_ = nullptr;
+    _this->_impl_.time_ = new ::llsf_msgs::Time(*from._impl_.time_);
   }
   if (from._internal_has_pose()) {
-    pose_ = new ::llsf_msgs::Pose2D(*from.pose_);
-  } else {
-    pose_ = nullptr;
+    _this->_impl_.pose_ = new ::llsf_msgs::Pose2D(*from._impl_.pose_);
   }
   if (from._internal_has_task()) {
-    task_ = new ::llsf_msgs::AgentTask(*from.task_);
-  } else {
-    task_ = nullptr;
+    _this->_impl_.task_ = new ::llsf_msgs::AgentTask(*from._impl_.task_);
   }
-  ::memcpy(&seq_, &from.seq_,
-    static_cast<size_t>(reinterpret_cast<char*>(&number_) -
-    reinterpret_cast<char*>(&seq_)) + sizeof(number_));
+  ::memcpy(&_impl_.seq_, &from._impl_.seq_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.number_) -
+    reinterpret_cast<char*>(&_impl_.seq_)) + sizeof(_impl_.number_));
   // @@protoc_insertion_point(copy_constructor:llsf_msgs.BeaconSignal)
 }
 
-inline void BeaconSignal::SharedCtor() {
-team_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  team_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-peer_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  peer_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&time_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&number_) -
-    reinterpret_cast<char*>(&time_)) + sizeof(number_));
+inline void BeaconSignal::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.finished_tasks_){arena}
+    , decltype(_impl_.team_name_){}
+    , decltype(_impl_.peer_name_){}
+    , decltype(_impl_.time_){nullptr}
+    , decltype(_impl_.pose_){nullptr}
+    , decltype(_impl_.task_){nullptr}
+    , decltype(_impl_.seq_){uint64_t{0u}}
+    , decltype(_impl_.team_color_){0}
+    , decltype(_impl_.number_){0u}
+  };
+  _impl_.team_name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.team_name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.peer_name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.peer_name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 BeaconSignal::~BeaconSignal() {
   // @@protoc_insertion_point(destructor:llsf_msgs.BeaconSignal)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void BeaconSignal::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  team_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  peer_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (this != internal_default_instance()) delete time_;
-  if (this != internal_default_instance()) delete pose_;
-  if (this != internal_default_instance()) delete task_;
+  _impl_.finished_tasks_.~RepeatedPtrField();
+  _impl_.team_name_.Destroy();
+  _impl_.peer_name_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.time_;
+  if (this != internal_default_instance()) delete _impl_.pose_;
+  if (this != internal_default_instance()) delete _impl_.task_;
 }
 
-void BeaconSignal::ArenaDtor(void* object) {
-  BeaconSignal* _this = reinterpret_cast< BeaconSignal* >(object);
-  (void)_this;
-}
-void BeaconSignal::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void BeaconSignal::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void BeaconSignal::Clear() {
@@ -319,43 +339,43 @@ void BeaconSignal::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  finished_tasks_.Clear();
-  cached_has_bits = _has_bits_[0];
+  _impl_.finished_tasks_.Clear();
+  cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x0000001fu) {
     if (cached_has_bits & 0x00000001u) {
-      team_name_.ClearNonDefaultToEmpty();
+      _impl_.team_name_.ClearNonDefaultToEmpty();
     }
     if (cached_has_bits & 0x00000002u) {
-      peer_name_.ClearNonDefaultToEmpty();
+      _impl_.peer_name_.ClearNonDefaultToEmpty();
     }
     if (cached_has_bits & 0x00000004u) {
-      GOOGLE_DCHECK(time_ != nullptr);
-      time_->Clear();
+      GOOGLE_DCHECK(_impl_.time_ != nullptr);
+      _impl_.time_->Clear();
     }
     if (cached_has_bits & 0x00000008u) {
-      GOOGLE_DCHECK(pose_ != nullptr);
-      pose_->Clear();
+      GOOGLE_DCHECK(_impl_.pose_ != nullptr);
+      _impl_.pose_->Clear();
     }
     if (cached_has_bits & 0x00000010u) {
-      GOOGLE_DCHECK(task_ != nullptr);
-      task_->Clear();
+      GOOGLE_DCHECK(_impl_.task_ != nullptr);
+      _impl_.task_->Clear();
     }
   }
   if (cached_has_bits & 0x000000e0u) {
-    ::memset(&seq_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&number_) -
-        reinterpret_cast<char*>(&seq_)) + sizeof(number_));
+    ::memset(&_impl_.seq_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&_impl_.number_) -
+        reinterpret_cast<char*>(&_impl_.seq_)) + sizeof(_impl_.number_));
   }
-  _has_bits_.Clear();
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* BeaconSignal::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* BeaconSignal::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // required .llsf_msgs.Time time = 1;
       case 1:
@@ -369,7 +389,7 @@ const char* BeaconSignal::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
           _Internal::set_has_seq(&has_bits);
-          seq_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          _impl_.seq_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -378,11 +398,11 @@ const char* BeaconSignal::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
           auto str = _internal_mutable_team_name();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          #ifndef NDEBUG
-          ::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "llsf_msgs.BeaconSignal.team_name");
-          #endif  // !NDEBUG
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          #ifndef NDEBUG
+          ::_pbi::VerifyUTF8(str, "llsf_msgs.BeaconSignal.team_name");
+          #endif  // !NDEBUG
         } else
           goto handle_unusual;
         continue;
@@ -390,11 +410,11 @@ const char* BeaconSignal::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
       case 5:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
           auto str = _internal_mutable_peer_name();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          #ifndef NDEBUG
-          ::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "llsf_msgs.BeaconSignal.peer_name");
-          #endif  // !NDEBUG
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          #ifndef NDEBUG
+          ::_pbi::VerifyUTF8(str, "llsf_msgs.BeaconSignal.peer_name");
+          #endif  // !NDEBUG
         } else
           goto handle_unusual;
         continue;
@@ -423,7 +443,7 @@ const char* BeaconSignal::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
       case 8:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 64)) {
           _Internal::set_has_number(&has_bits);
-          number_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _impl_.number_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -465,7 +485,7 @@ const char* BeaconSignal::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -479,19 +499,18 @@ uint8_t* BeaconSignal::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   // required .llsf_msgs.Time time = 1;
   if (cached_has_bits & 0x00000004u) {
-    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::time(this), target, stream);
+      InternalWriteMessage(1, _Internal::time(this),
+        _Internal::time(this).GetCachedSize(), target, stream);
   }
 
   // required uint64 seq = 2;
   if (cached_has_bits & 0x00000020u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt64ToArray(2, this->_internal_seq(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(2, this->_internal_seq(), target);
   }
 
   // required string team_name = 4;
@@ -517,42 +536,40 @@ uint8_t* BeaconSignal::_InternalSerialize(
   // optional .llsf_msgs.Team team_color = 6;
   if (cached_has_bits & 0x00000040u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
       6, this->_internal_team_color(), target);
   }
 
   // optional .llsf_msgs.Pose2D pose = 7;
   if (cached_has_bits & 0x00000008u) {
-    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        7, _Internal::pose(this), target, stream);
+      InternalWriteMessage(7, _Internal::pose(this),
+        _Internal::pose(this).GetCachedSize(), target, stream);
   }
 
   // required uint32 number = 8;
   if (cached_has_bits & 0x00000080u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(8, this->_internal_number(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(8, this->_internal_number(), target);
   }
 
   // optional .llsf_msgs.AgentTask task = 9;
   if (cached_has_bits & 0x00000010u) {
-    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        9, _Internal::task(this), target, stream);
+      InternalWriteMessage(9, _Internal::task(this),
+        _Internal::task(this).GetCachedSize(), target, stream);
   }
 
   // repeated .llsf_msgs.FinishedTask finished_tasks = 10;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->_internal_finished_tasks_size()); i < n; i++) {
-    target = stream->EnsureSpace(target);
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_finished_tasks_size()); i < n; i++) {
+    const auto& repfield = this->_internal_finished_tasks(i);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(10, this->_internal_finished_tasks(i), target, stream);
+        InternalWriteMessage(10, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:llsf_msgs.BeaconSignal)
@@ -581,17 +598,17 @@ size_t BeaconSignal::RequiredFieldsByteSizeFallback() const {
     // required .llsf_msgs.Time time = 1;
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *time_);
+        *_impl_.time_);
   }
 
   if (_internal_has_seq()) {
     // required uint64 seq = 2;
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt64SizePlusOne(this->_internal_seq());
+    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_seq());
   }
 
   if (_internal_has_number()) {
     // required uint32 number = 8;
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_number());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_number());
   }
 
   return total_size;
@@ -600,7 +617,7 @@ size_t BeaconSignal::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:llsf_msgs.BeaconSignal)
   size_t total_size = 0;
 
-  if (((_has_bits_[0] & 0x000000a7) ^ 0x000000a7) == 0) {  // All required fields are present.
+  if (((_impl_._has_bits_[0] & 0x000000a7) ^ 0x000000a7) == 0) {  // All required fields are present.
     // required string team_name = 4;
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
@@ -614,13 +631,13 @@ size_t BeaconSignal::ByteSizeLong() const {
     // required .llsf_msgs.Time time = 1;
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *time_);
+        *_impl_.time_);
 
     // required uint64 seq = 2;
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt64SizePlusOne(this->_internal_seq());
+    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_seq());
 
     // required uint32 number = 8;
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_number());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_number());
 
   } else {
     total_size += RequiredFieldsByteSizeFallback();
@@ -631,86 +648,85 @@ size_t BeaconSignal::ByteSizeLong() const {
 
   // repeated .llsf_msgs.FinishedTask finished_tasks = 10;
   total_size += 1UL * this->_internal_finished_tasks_size();
-  for (const auto& msg : this->finished_tasks_) {
+  for (const auto& msg : this->_impl_.finished_tasks_) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000018u) {
     // optional .llsf_msgs.Pose2D pose = 7;
     if (cached_has_bits & 0x00000008u) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          *pose_);
+          *_impl_.pose_);
     }
 
     // optional .llsf_msgs.AgentTask task = 9;
     if (cached_has_bits & 0x00000010u) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          *task_);
+          *_impl_.task_);
     }
 
   }
   // optional .llsf_msgs.Team team_color = 6;
   if (cached_has_bits & 0x00000040u) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_team_color());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_team_color());
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData BeaconSignal::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     BeaconSignal::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*BeaconSignal::GetClassData() const { return &_class_data_; }
 
-void BeaconSignal::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<BeaconSignal *>(to)->MergeFrom(
-      static_cast<const BeaconSignal &>(from));
-}
 
-
-void BeaconSignal::MergeFrom(const BeaconSignal& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.BeaconSignal)
-  GOOGLE_DCHECK_NE(&from, this);
+void BeaconSignal::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<BeaconSignal*>(&to_msg);
+  auto& from = static_cast<const BeaconSignal&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.BeaconSignal)
+  GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  finished_tasks_.MergeFrom(from.finished_tasks_);
-  cached_has_bits = from._has_bits_[0];
+  _this->_impl_.finished_tasks_.MergeFrom(from._impl_.finished_tasks_);
+  cached_has_bits = from._impl_._has_bits_[0];
   if (cached_has_bits & 0x000000ffu) {
     if (cached_has_bits & 0x00000001u) {
-      _internal_set_team_name(from._internal_team_name());
+      _this->_internal_set_team_name(from._internal_team_name());
     }
     if (cached_has_bits & 0x00000002u) {
-      _internal_set_peer_name(from._internal_peer_name());
+      _this->_internal_set_peer_name(from._internal_peer_name());
     }
     if (cached_has_bits & 0x00000004u) {
-      _internal_mutable_time()->::llsf_msgs::Time::MergeFrom(from._internal_time());
+      _this->_internal_mutable_time()->::llsf_msgs::Time::MergeFrom(
+          from._internal_time());
     }
     if (cached_has_bits & 0x00000008u) {
-      _internal_mutable_pose()->::llsf_msgs::Pose2D::MergeFrom(from._internal_pose());
+      _this->_internal_mutable_pose()->::llsf_msgs::Pose2D::MergeFrom(
+          from._internal_pose());
     }
     if (cached_has_bits & 0x00000010u) {
-      _internal_mutable_task()->::llsf_msgs::AgentTask::MergeFrom(from._internal_task());
+      _this->_internal_mutable_task()->::llsf_msgs::AgentTask::MergeFrom(
+          from._internal_task());
     }
     if (cached_has_bits & 0x00000020u) {
-      seq_ = from.seq_;
+      _this->_impl_.seq_ = from._impl_.seq_;
     }
     if (cached_has_bits & 0x00000040u) {
-      team_color_ = from.team_color_;
+      _this->_impl_.team_color_ = from._impl_.team_color_;
     }
     if (cached_has_bits & 0x00000080u) {
-      number_ = from.number_;
+      _this->_impl_.number_ = from._impl_.number_;
     }
-    _has_bits_[0] |= cached_has_bits;
+    _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void BeaconSignal::CopyFrom(const BeaconSignal& from) {
@@ -721,17 +737,17 @@ void BeaconSignal::CopyFrom(const BeaconSignal& from) {
 }
 
 bool BeaconSignal::IsInitialized() const {
-  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
-  if (!::PROTOBUF_NAMESPACE_ID::internal::AllAreInitialized(finished_tasks_))
+  if (_Internal::MissingRequiredFields(_impl_._has_bits_)) return false;
+  if (!::PROTOBUF_NAMESPACE_ID::internal::AllAreInitialized(_impl_.finished_tasks_))
     return false;
   if (_internal_has_time()) {
-    if (!time_->IsInitialized()) return false;
+    if (!_impl_.time_->IsInitialized()) return false;
   }
   if (_internal_has_pose()) {
-    if (!pose_->IsInitialized()) return false;
+    if (!_impl_.pose_->IsInitialized()) return false;
   }
   if (_internal_has_task()) {
-    if (!task_->IsInitialized()) return false;
+    if (!_impl_.task_->IsInitialized()) return false;
   }
   return true;
 }
@@ -741,28 +757,26 @@ void BeaconSignal::InternalSwap(BeaconSignal* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
-  finished_tasks_.InternalSwap(&other->finished_tasks_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  _impl_.finished_tasks_.InternalSwap(&other->_impl_.finished_tasks_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &team_name_, lhs_arena,
-      &other->team_name_, rhs_arena
+      &_impl_.team_name_, lhs_arena,
+      &other->_impl_.team_name_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &peer_name_, lhs_arena,
-      &other->peer_name_, rhs_arena
+      &_impl_.peer_name_, lhs_arena,
+      &other->_impl_.peer_name_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(BeaconSignal, number_)
-      + sizeof(BeaconSignal::number_)
-      - PROTOBUF_FIELD_OFFSET(BeaconSignal, time_)>(
-          reinterpret_cast<char*>(&time_),
-          reinterpret_cast<char*>(&other->time_));
+      PROTOBUF_FIELD_OFFSET(BeaconSignal, _impl_.number_)
+      + sizeof(BeaconSignal::_impl_.number_)
+      - PROTOBUF_FIELD_OFFSET(BeaconSignal, _impl_.time_)>(
+          reinterpret_cast<char*>(&_impl_.time_),
+          reinterpret_cast<char*>(&other->_impl_.time_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata BeaconSignal::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_BeaconSignal_2eproto_getter, &descriptor_table_BeaconSignal_2eproto_once,
       file_level_metadata_BeaconSignal_2eproto[0]);
 }
@@ -771,7 +785,7 @@ void BeaconSignal::InternalSwap(BeaconSignal* other) {
 
 class FinishedTask::_Internal {
  public:
-  using HasBits = decltype(std::declval<FinishedTask>()._has_bits_);
+  using HasBits = decltype(std::declval<FinishedTask>()._impl_._has_bits_);
   static void set_has_taskid(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
@@ -786,48 +800,52 @@ class FinishedTask::_Internal {
 FinishedTask::FinishedTask(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:llsf_msgs.FinishedTask)
 }
 FinishedTask::FinishedTask(const FinishedTask& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  FinishedTask* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.taskid_){}
+    , decltype(_impl_.successful_){}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::memcpy(&taskid_, &from.taskid_,
-    static_cast<size_t>(reinterpret_cast<char*>(&successful_) -
-    reinterpret_cast<char*>(&taskid_)) + sizeof(successful_));
+  ::memcpy(&_impl_.taskid_, &from._impl_.taskid_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.successful_) -
+    reinterpret_cast<char*>(&_impl_.taskid_)) + sizeof(_impl_.successful_));
   // @@protoc_insertion_point(copy_constructor:llsf_msgs.FinishedTask)
 }
 
-inline void FinishedTask::SharedCtor() {
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&taskid_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&successful_) -
-    reinterpret_cast<char*>(&taskid_)) + sizeof(successful_));
+inline void FinishedTask::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.taskid_){0u}
+    , decltype(_impl_.successful_){false}
+  };
 }
 
 FinishedTask::~FinishedTask() {
   // @@protoc_insertion_point(destructor:llsf_msgs.FinishedTask)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void FinishedTask::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
 }
 
-void FinishedTask::ArenaDtor(void* object) {
-  FinishedTask* _this = reinterpret_cast< FinishedTask* >(object);
-  (void)_this;
-}
-void FinishedTask::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void FinishedTask::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void FinishedTask::Clear() {
@@ -836,28 +854,28 @@ void FinishedTask::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
-    ::memset(&taskid_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&successful_) -
-        reinterpret_cast<char*>(&taskid_)) + sizeof(successful_));
+    ::memset(&_impl_.taskid_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&_impl_.successful_) -
+        reinterpret_cast<char*>(&_impl_.taskid_)) + sizeof(_impl_.successful_));
   }
-  _has_bits_.Clear();
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* FinishedTask::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* FinishedTask::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // required uint32 TaskId = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           _Internal::set_has_taskid(&has_bits);
-          taskid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _impl_.taskid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -866,7 +884,7 @@ const char* FinishedTask::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
           _Internal::set_has_successful(&has_bits);
-          successful_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          _impl_.successful_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -887,7 +905,7 @@ const char* FinishedTask::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -901,21 +919,21 @@ uint8_t* FinishedTask::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   // required uint32 TaskId = 1;
   if (cached_has_bits & 0x00000001u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->_internal_taskid(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(1, this->_internal_taskid(), target);
   }
 
   // required bool successful = 2;
   if (cached_has_bits & 0x00000002u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(2, this->_internal_successful(), target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(2, this->_internal_successful(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:llsf_msgs.FinishedTask)
@@ -928,7 +946,7 @@ size_t FinishedTask::RequiredFieldsByteSizeFallback() const {
 
   if (_internal_has_taskid()) {
     // required uint32 TaskId = 1;
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_taskid());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_taskid());
   }
 
   if (_internal_has_successful()) {
@@ -942,9 +960,9 @@ size_t FinishedTask::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:llsf_msgs.FinishedTask)
   size_t total_size = 0;
 
-  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
+  if (((_impl_._has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
     // required uint32 TaskId = 1;
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_taskid());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_taskid());
 
     // required bool successful = 2;
     total_size += 1 + 1;
@@ -956,39 +974,35 @@ size_t FinishedTask::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData FinishedTask::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     FinishedTask::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*FinishedTask::GetClassData() const { return &_class_data_; }
 
-void FinishedTask::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<FinishedTask *>(to)->MergeFrom(
-      static_cast<const FinishedTask &>(from));
-}
 
-
-void FinishedTask::MergeFrom(const FinishedTask& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.FinishedTask)
-  GOOGLE_DCHECK_NE(&from, this);
+void FinishedTask::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<FinishedTask*>(&to_msg);
+  auto& from = static_cast<const FinishedTask&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.FinishedTask)
+  GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = from._has_bits_[0];
+  cached_has_bits = from._impl_._has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
     if (cached_has_bits & 0x00000001u) {
-      taskid_ = from.taskid_;
+      _this->_impl_.taskid_ = from._impl_.taskid_;
     }
     if (cached_has_bits & 0x00000002u) {
-      successful_ = from.successful_;
+      _this->_impl_.successful_ = from._impl_.successful_;
     }
-    _has_bits_[0] |= cached_has_bits;
+    _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void FinishedTask::CopyFrom(const FinishedTask& from) {
@@ -999,24 +1013,24 @@ void FinishedTask::CopyFrom(const FinishedTask& from) {
 }
 
 bool FinishedTask::IsInitialized() const {
-  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
+  if (_Internal::MissingRequiredFields(_impl_._has_bits_)) return false;
   return true;
 }
 
 void FinishedTask::InternalSwap(FinishedTask* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(FinishedTask, successful_)
-      + sizeof(FinishedTask::successful_)
-      - PROTOBUF_FIELD_OFFSET(FinishedTask, taskid_)>(
-          reinterpret_cast<char*>(&taskid_),
-          reinterpret_cast<char*>(&other->taskid_));
+      PROTOBUF_FIELD_OFFSET(FinishedTask, _impl_.successful_)
+      + sizeof(FinishedTask::_impl_.successful_)
+      - PROTOBUF_FIELD_OFFSET(FinishedTask, _impl_.taskid_)>(
+          reinterpret_cast<char*>(&_impl_.taskid_),
+          reinterpret_cast<char*>(&other->_impl_.taskid_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata FinishedTask::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_BeaconSignal_2eproto_getter, &descriptor_table_BeaconSignal_2eproto_once,
       file_level_metadata_BeaconSignal_2eproto[1]);
 }
@@ -1024,10 +1038,12 @@ void FinishedTask::InternalSwap(FinishedTask* other) {
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace llsf_msgs
 PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::llsf_msgs::BeaconSignal* Arena::CreateMaybeMessage< ::llsf_msgs::BeaconSignal >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::llsf_msgs::BeaconSignal*
+Arena::CreateMaybeMessage< ::llsf_msgs::BeaconSignal >(Arena* arena) {
   return Arena::CreateMessageInternal< ::llsf_msgs::BeaconSignal >(arena);
 }
-template<> PROTOBUF_NOINLINE ::llsf_msgs::FinishedTask* Arena::CreateMaybeMessage< ::llsf_msgs::FinishedTask >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::llsf_msgs::FinishedTask*
+Arena::CreateMaybeMessage< ::llsf_msgs::FinishedTask >(Arena* arena) {
   return Arena::CreateMessageInternal< ::llsf_msgs::FinishedTask >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE

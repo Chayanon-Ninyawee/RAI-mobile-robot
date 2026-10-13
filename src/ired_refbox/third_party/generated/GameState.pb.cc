@@ -16,83 +16,89 @@
 #include <google/protobuf/port_def.inc>
 
 PROTOBUF_PRAGMA_INIT_SEG
+
+namespace _pb = ::PROTOBUF_NAMESPACE_ID;
+namespace _pbi = _pb::internal;
+
 namespace llsf_msgs {
-constexpr GameState::GameState(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : team_cyan_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , team_magenta_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , game_time_(nullptr)
-  , state_(0)
-
-  , phase_(0)
-
-  , points_cyan_(0u)
-  , points_magenta_(0u){}
+PROTOBUF_CONSTEXPR GameState::GameState(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.team_cyan_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.team_magenta_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.game_time_)*/nullptr
+  , /*decltype(_impl_.state_)*/0
+  , /*decltype(_impl_.phase_)*/0
+  , /*decltype(_impl_.points_cyan_)*/0u
+  , /*decltype(_impl_.points_magenta_)*/0u} {}
 struct GameStateDefaultTypeInternal {
-  constexpr GameStateDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR GameStateDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~GameStateDefaultTypeInternal() {}
   union {
     GameState _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT GameStateDefaultTypeInternal _GameState_default_instance_;
-constexpr SetGameState::SetGameState(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : state_(0)
-{}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GameStateDefaultTypeInternal _GameState_default_instance_;
+PROTOBUF_CONSTEXPR SetGameState::SetGameState(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.state_)*/0} {}
 struct SetGameStateDefaultTypeInternal {
-  constexpr SetGameStateDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR SetGameStateDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~SetGameStateDefaultTypeInternal() {}
   union {
     SetGameState _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT SetGameStateDefaultTypeInternal _SetGameState_default_instance_;
-constexpr SetGamePhase::SetGamePhase(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : phase_(0)
-{}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SetGameStateDefaultTypeInternal _SetGameState_default_instance_;
+PROTOBUF_CONSTEXPR SetGamePhase::SetGamePhase(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.phase_)*/0} {}
 struct SetGamePhaseDefaultTypeInternal {
-  constexpr SetGamePhaseDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR SetGamePhaseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~SetGamePhaseDefaultTypeInternal() {}
   union {
     SetGamePhase _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT SetGamePhaseDefaultTypeInternal _SetGamePhase_default_instance_;
-constexpr RandomizeField::RandomizeField(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized){}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SetGamePhaseDefaultTypeInternal _SetGamePhase_default_instance_;
+PROTOBUF_CONSTEXPR RandomizeField::RandomizeField(
+    ::_pbi::ConstantInitialized) {}
 struct RandomizeFieldDefaultTypeInternal {
-  constexpr RandomizeFieldDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR RandomizeFieldDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~RandomizeFieldDefaultTypeInternal() {}
   union {
     RandomizeField _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT RandomizeFieldDefaultTypeInternal _RandomizeField_default_instance_;
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RandomizeFieldDefaultTypeInternal _RandomizeField_default_instance_;
 }  // namespace llsf_msgs
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_GameState_2eproto[4];
-static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_GameState_2eproto[6];
-static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_GameState_2eproto = nullptr;
+static ::_pb::Metadata file_level_metadata_GameState_2eproto[4];
+static const ::_pb::EnumDescriptor* file_level_enum_descriptors_GameState_2eproto[6];
+static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_GameState_2eproto = nullptr;
 
 const uint32_t TableStruct_GameState_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::GameState, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::GameState, _impl_._has_bits_),
   PROTOBUF_FIELD_OFFSET(::llsf_msgs::GameState, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::GameState, game_time_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::GameState, state_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::GameState, phase_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::GameState, points_cyan_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::GameState, team_cyan_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::GameState, points_magenta_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::GameState, team_magenta_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::GameState, _impl_.game_time_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::GameState, _impl_.state_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::GameState, _impl_.phase_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::GameState, _impl_.points_cyan_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::GameState, _impl_.team_cyan_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::GameState, _impl_.points_magenta_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::GameState, _impl_.team_magenta_),
   2,
   3,
   4,
@@ -100,21 +106,21 @@ const uint32_t TableStruct_GameState_2eproto::offsets[] PROTOBUF_SECTION_VARIABL
   0,
   6,
   1,
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::SetGameState, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::SetGameState, _impl_._has_bits_),
   PROTOBUF_FIELD_OFFSET(::llsf_msgs::SetGameState, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::SetGameState, state_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::SetGameState, _impl_.state_),
   0,
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::SetGamePhase, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::SetGamePhase, _impl_._has_bits_),
   PROTOBUF_FIELD_OFFSET(::llsf_msgs::SetGamePhase, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::SetGamePhase, phase_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::SetGamePhase, _impl_.phase_),
   0,
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::llsf_msgs::RandomizeField, _internal_metadata_),
@@ -123,18 +129,18 @@ const uint32_t TableStruct_GameState_2eproto::offsets[] PROTOBUF_SECTION_VARIABL
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
 };
-static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 13, -1, sizeof(::llsf_msgs::GameState)},
   { 20, 27, -1, sizeof(::llsf_msgs::SetGameState)},
   { 28, 35, -1, sizeof(::llsf_msgs::SetGamePhase)},
   { 36, -1, -1, sizeof(::llsf_msgs::RandomizeField)},
 };
 
-static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::llsf_msgs::_GameState_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::llsf_msgs::_SetGameState_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::llsf_msgs::_SetGamePhase_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::llsf_msgs::_RandomizeField_default_instance_),
+static const ::_pb::Message* const file_default_instances[] = {
+  &::llsf_msgs::_GameState_default_instance_._instance,
+  &::llsf_msgs::_SetGameState_default_instance_._instance,
+  &::llsf_msgs::_SetGamePhase_default_instance_._instance,
+  &::llsf_msgs::_RandomizeField_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_GameState_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -158,22 +164,24 @@ const char descriptor_table_protodef_GameState_2eproto[] PROTOBUF_SECTION_VARIAB
   "_ID\020\320\017\022\014\n\010MSG_TYPE\020\027B2\n\037org.robocup_logi"
   "stics.llsf_msgsB\017GameStateProtos"
   ;
-static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_GameState_2eproto_deps[1] = {
+static const ::_pbi::DescriptorTable* const descriptor_table_GameState_2eproto_deps[1] = {
   &::descriptor_table_Time_2eproto,
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_GameState_2eproto_once;
-const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_GameState_2eproto = {
-  false, false, 752, descriptor_table_protodef_GameState_2eproto, "GameState.proto", 
-  &descriptor_table_GameState_2eproto_once, descriptor_table_GameState_2eproto_deps, 1, 4,
-  schemas, file_default_instances, TableStruct_GameState_2eproto::offsets,
-  file_level_metadata_GameState_2eproto, file_level_enum_descriptors_GameState_2eproto, file_level_service_descriptors_GameState_2eproto,
+static ::_pbi::once_flag descriptor_table_GameState_2eproto_once;
+const ::_pbi::DescriptorTable descriptor_table_GameState_2eproto = {
+    false, false, 752, descriptor_table_protodef_GameState_2eproto,
+    "GameState.proto",
+    &descriptor_table_GameState_2eproto_once, descriptor_table_GameState_2eproto_deps, 1, 4,
+    schemas, file_default_instances, TableStruct_GameState_2eproto::offsets,
+    file_level_metadata_GameState_2eproto, file_level_enum_descriptors_GameState_2eproto,
+    file_level_service_descriptors_GameState_2eproto,
 };
-PROTOBUF_ATTRIBUTE_WEAK const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable* descriptor_table_GameState_2eproto_getter() {
+PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_GameState_2eproto_getter() {
   return &descriptor_table_GameState_2eproto;
 }
 
 // Force running AddDescriptors() at dynamic initialization time.
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY static ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptorsRunner dynamic_init_dummy_GameState_2eproto(&descriptor_table_GameState_2eproto);
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_GameState_2eproto(&descriptor_table_GameState_2eproto);
 namespace llsf_msgs {
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* GameState_CompType_descriptor() {
   ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_GameState_2eproto);
@@ -316,7 +324,7 @@ constexpr int RandomizeField::CompType_ARRAYSIZE;
 
 class GameState::_Internal {
  public:
-  using HasBits = decltype(std::declval<GameState>()._has_bits_);
+  using HasBits = decltype(std::declval<GameState>()._impl_._has_bits_);
   static const ::llsf_msgs::Time& game_time(const GameState* msg);
   static void set_has_game_time(HasBits* has_bits) {
     (*has_bits)[0] |= 4u;
@@ -346,89 +354,101 @@ class GameState::_Internal {
 
 const ::llsf_msgs::Time&
 GameState::_Internal::game_time(const GameState* msg) {
-  return *msg->game_time_;
+  return *msg->_impl_.game_time_;
 }
 void GameState::clear_game_time() {
-  if (game_time_ != nullptr) game_time_->Clear();
-  _has_bits_[0] &= ~0x00000004u;
+  if (_impl_.game_time_ != nullptr) _impl_.game_time_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000004u;
 }
 GameState::GameState(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:llsf_msgs.GameState)
 }
 GameState::GameState(const GameState& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  GameState* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.team_cyan_){}
+    , decltype(_impl_.team_magenta_){}
+    , decltype(_impl_.game_time_){nullptr}
+    , decltype(_impl_.state_){}
+    , decltype(_impl_.phase_){}
+    , decltype(_impl_.points_cyan_){}
+    , decltype(_impl_.points_magenta_){}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  team_cyan_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.team_cyan_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    team_cyan_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+    _impl_.team_cyan_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (from._internal_has_team_cyan()) {
-    team_cyan_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_team_cyan(), 
-      GetArenaForAllocation());
+    _this->_impl_.team_cyan_.Set(from._internal_team_cyan(), 
+      _this->GetArenaForAllocation());
   }
-  team_magenta_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.team_magenta_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    team_magenta_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+    _impl_.team_magenta_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (from._internal_has_team_magenta()) {
-    team_magenta_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_team_magenta(), 
-      GetArenaForAllocation());
+    _this->_impl_.team_magenta_.Set(from._internal_team_magenta(), 
+      _this->GetArenaForAllocation());
   }
   if (from._internal_has_game_time()) {
-    game_time_ = new ::llsf_msgs::Time(*from.game_time_);
-  } else {
-    game_time_ = nullptr;
+    _this->_impl_.game_time_ = new ::llsf_msgs::Time(*from._impl_.game_time_);
   }
-  ::memcpy(&state_, &from.state_,
-    static_cast<size_t>(reinterpret_cast<char*>(&points_magenta_) -
-    reinterpret_cast<char*>(&state_)) + sizeof(points_magenta_));
+  ::memcpy(&_impl_.state_, &from._impl_.state_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.points_magenta_) -
+    reinterpret_cast<char*>(&_impl_.state_)) + sizeof(_impl_.points_magenta_));
   // @@protoc_insertion_point(copy_constructor:llsf_msgs.GameState)
 }
 
-inline void GameState::SharedCtor() {
-team_cyan_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  team_cyan_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-team_magenta_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  team_magenta_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&game_time_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&points_magenta_) -
-    reinterpret_cast<char*>(&game_time_)) + sizeof(points_magenta_));
+inline void GameState::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.team_cyan_){}
+    , decltype(_impl_.team_magenta_){}
+    , decltype(_impl_.game_time_){nullptr}
+    , decltype(_impl_.state_){0}
+    , decltype(_impl_.phase_){0}
+    , decltype(_impl_.points_cyan_){0u}
+    , decltype(_impl_.points_magenta_){0u}
+  };
+  _impl_.team_cyan_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.team_cyan_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.team_magenta_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.team_magenta_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 GameState::~GameState() {
   // @@protoc_insertion_point(destructor:llsf_msgs.GameState)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void GameState::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  team_cyan_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  team_magenta_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (this != internal_default_instance()) delete game_time_;
+  _impl_.team_cyan_.Destroy();
+  _impl_.team_magenta_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.game_time_;
 }
 
-void GameState::ArenaDtor(void* object) {
-  GameState* _this = reinterpret_cast< GameState* >(object);
-  (void)_this;
-}
-void GameState::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void GameState::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void GameState::Clear() {
@@ -437,34 +457,34 @@ void GameState::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000007u) {
     if (cached_has_bits & 0x00000001u) {
-      team_cyan_.ClearNonDefaultToEmpty();
+      _impl_.team_cyan_.ClearNonDefaultToEmpty();
     }
     if (cached_has_bits & 0x00000002u) {
-      team_magenta_.ClearNonDefaultToEmpty();
+      _impl_.team_magenta_.ClearNonDefaultToEmpty();
     }
     if (cached_has_bits & 0x00000004u) {
-      GOOGLE_DCHECK(game_time_ != nullptr);
-      game_time_->Clear();
+      GOOGLE_DCHECK(_impl_.game_time_ != nullptr);
+      _impl_.game_time_->Clear();
     }
   }
   if (cached_has_bits & 0x00000078u) {
-    ::memset(&state_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&points_magenta_) -
-        reinterpret_cast<char*>(&state_)) + sizeof(points_magenta_));
+    ::memset(&_impl_.state_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&_impl_.points_magenta_) -
+        reinterpret_cast<char*>(&_impl_.state_)) + sizeof(_impl_.points_magenta_));
   }
-  _has_bits_.Clear();
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* GameState::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* GameState::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // required .llsf_msgs.Time game_time = 1;
       case 1:
@@ -504,7 +524,7 @@ const char* GameState::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::
       case 5:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 40)) {
           _Internal::set_has_points_cyan(&has_bits);
-          points_cyan_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _impl_.points_cyan_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -513,11 +533,11 @@ const char* GameState::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::
       case 6:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 50)) {
           auto str = _internal_mutable_team_cyan();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          #ifndef NDEBUG
-          ::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "llsf_msgs.GameState.team_cyan");
-          #endif  // !NDEBUG
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          #ifndef NDEBUG
+          ::_pbi::VerifyUTF8(str, "llsf_msgs.GameState.team_cyan");
+          #endif  // !NDEBUG
         } else
           goto handle_unusual;
         continue;
@@ -525,7 +545,7 @@ const char* GameState::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::
       case 8:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 64)) {
           _Internal::set_has_points_magenta(&has_bits);
-          points_magenta_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _impl_.points_magenta_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -534,11 +554,11 @@ const char* GameState::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::
       case 9:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 74)) {
           auto str = _internal_mutable_team_magenta();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          #ifndef NDEBUG
-          ::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "llsf_msgs.GameState.team_magenta");
-          #endif  // !NDEBUG
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          #ifndef NDEBUG
+          ::_pbi::VerifyUTF8(str, "llsf_msgs.GameState.team_magenta");
+          #endif  // !NDEBUG
         } else
           goto handle_unusual;
         continue;
@@ -558,7 +578,7 @@ const char* GameState::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -572,33 +592,32 @@ uint8_t* GameState::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   // required .llsf_msgs.Time game_time = 1;
   if (cached_has_bits & 0x00000004u) {
-    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::game_time(this), target, stream);
+      InternalWriteMessage(1, _Internal::game_time(this),
+        _Internal::game_time(this).GetCachedSize(), target, stream);
   }
 
   // required .llsf_msgs.GameState.State state = 3;
   if (cached_has_bits & 0x00000008u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
       3, this->_internal_state(), target);
   }
 
   // required .llsf_msgs.GameState.Phase phase = 4;
   if (cached_has_bits & 0x00000010u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
       4, this->_internal_phase(), target);
   }
 
   // optional uint32 points_cyan = 5;
   if (cached_has_bits & 0x00000020u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(5, this->_internal_points_cyan(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(5, this->_internal_points_cyan(), target);
   }
 
   // optional string team_cyan = 6;
@@ -614,7 +633,7 @@ uint8_t* GameState::_InternalSerialize(
   // optional uint32 points_magenta = 8;
   if (cached_has_bits & 0x00000040u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(8, this->_internal_points_magenta(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(8, this->_internal_points_magenta(), target);
   }
 
   // optional string team_magenta = 9;
@@ -628,7 +647,7 @@ uint8_t* GameState::_InternalSerialize(
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:llsf_msgs.GameState)
@@ -643,19 +662,19 @@ size_t GameState::RequiredFieldsByteSizeFallback() const {
     // required .llsf_msgs.Time game_time = 1;
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *game_time_);
+        *_impl_.game_time_);
   }
 
   if (_internal_has_state()) {
     // required .llsf_msgs.GameState.State state = 3;
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_state());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_state());
   }
 
   if (_internal_has_phase()) {
     // required .llsf_msgs.GameState.Phase phase = 4;
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_phase());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_phase());
   }
 
   return total_size;
@@ -664,19 +683,19 @@ size_t GameState::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:llsf_msgs.GameState)
   size_t total_size = 0;
 
-  if (((_has_bits_[0] & 0x0000001c) ^ 0x0000001c) == 0) {  // All required fields are present.
+  if (((_impl_._has_bits_[0] & 0x0000001c) ^ 0x0000001c) == 0) {  // All required fields are present.
     // required .llsf_msgs.Time game_time = 1;
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *game_time_);
+        *_impl_.game_time_);
 
     // required .llsf_msgs.GameState.State state = 3;
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_state());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_state());
 
     // required .llsf_msgs.GameState.Phase phase = 4;
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_phase());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_phase());
 
   } else {
     total_size += RequiredFieldsByteSizeFallback();
@@ -685,7 +704,7 @@ size_t GameState::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
     // optional string team_cyan = 6;
     if (cached_has_bits & 0x00000001u) {
@@ -705,63 +724,60 @@ size_t GameState::ByteSizeLong() const {
   if (cached_has_bits & 0x00000060u) {
     // optional uint32 points_cyan = 5;
     if (cached_has_bits & 0x00000020u) {
-      total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_points_cyan());
+      total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_points_cyan());
     }
 
     // optional uint32 points_magenta = 8;
     if (cached_has_bits & 0x00000040u) {
-      total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_points_magenta());
+      total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_points_magenta());
     }
 
   }
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData GameState::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     GameState::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GameState::GetClassData() const { return &_class_data_; }
 
-void GameState::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<GameState *>(to)->MergeFrom(
-      static_cast<const GameState &>(from));
-}
 
-
-void GameState::MergeFrom(const GameState& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.GameState)
-  GOOGLE_DCHECK_NE(&from, this);
+void GameState::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<GameState*>(&to_msg);
+  auto& from = static_cast<const GameState&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.GameState)
+  GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = from._has_bits_[0];
+  cached_has_bits = from._impl_._has_bits_[0];
   if (cached_has_bits & 0x0000007fu) {
     if (cached_has_bits & 0x00000001u) {
-      _internal_set_team_cyan(from._internal_team_cyan());
+      _this->_internal_set_team_cyan(from._internal_team_cyan());
     }
     if (cached_has_bits & 0x00000002u) {
-      _internal_set_team_magenta(from._internal_team_magenta());
+      _this->_internal_set_team_magenta(from._internal_team_magenta());
     }
     if (cached_has_bits & 0x00000004u) {
-      _internal_mutable_game_time()->::llsf_msgs::Time::MergeFrom(from._internal_game_time());
+      _this->_internal_mutable_game_time()->::llsf_msgs::Time::MergeFrom(
+          from._internal_game_time());
     }
     if (cached_has_bits & 0x00000008u) {
-      state_ = from.state_;
+      _this->_impl_.state_ = from._impl_.state_;
     }
     if (cached_has_bits & 0x00000010u) {
-      phase_ = from.phase_;
+      _this->_impl_.phase_ = from._impl_.phase_;
     }
     if (cached_has_bits & 0x00000020u) {
-      points_cyan_ = from.points_cyan_;
+      _this->_impl_.points_cyan_ = from._impl_.points_cyan_;
     }
     if (cached_has_bits & 0x00000040u) {
-      points_magenta_ = from.points_magenta_;
+      _this->_impl_.points_magenta_ = from._impl_.points_magenta_;
     }
-    _has_bits_[0] |= cached_has_bits;
+    _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void GameState::CopyFrom(const GameState& from) {
@@ -772,9 +788,9 @@ void GameState::CopyFrom(const GameState& from) {
 }
 
 bool GameState::IsInitialized() const {
-  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
+  if (_Internal::MissingRequiredFields(_impl_._has_bits_)) return false;
   if (_internal_has_game_time()) {
-    if (!game_time_->IsInitialized()) return false;
+    if (!_impl_.game_time_->IsInitialized()) return false;
   }
   return true;
 }
@@ -784,27 +800,25 @@ void GameState::InternalSwap(GameState* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &team_cyan_, lhs_arena,
-      &other->team_cyan_, rhs_arena
+      &_impl_.team_cyan_, lhs_arena,
+      &other->_impl_.team_cyan_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &team_magenta_, lhs_arena,
-      &other->team_magenta_, rhs_arena
+      &_impl_.team_magenta_, lhs_arena,
+      &other->_impl_.team_magenta_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(GameState, points_magenta_)
-      + sizeof(GameState::points_magenta_)
-      - PROTOBUF_FIELD_OFFSET(GameState, game_time_)>(
-          reinterpret_cast<char*>(&game_time_),
-          reinterpret_cast<char*>(&other->game_time_));
+      PROTOBUF_FIELD_OFFSET(GameState, _impl_.points_magenta_)
+      + sizeof(GameState::_impl_.points_magenta_)
+      - PROTOBUF_FIELD_OFFSET(GameState, _impl_.game_time_)>(
+          reinterpret_cast<char*>(&_impl_.game_time_),
+          reinterpret_cast<char*>(&other->_impl_.game_time_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata GameState::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_GameState_2eproto_getter, &descriptor_table_GameState_2eproto_once,
       file_level_metadata_GameState_2eproto[0]);
 }
@@ -813,7 +827,7 @@ void GameState::InternalSwap(GameState* other) {
 
 class SetGameState::_Internal {
  public:
-  using HasBits = decltype(std::declval<SetGameState>()._has_bits_);
+  using HasBits = decltype(std::declval<SetGameState>()._impl_._has_bits_);
   static void set_has_state(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
@@ -825,43 +839,48 @@ class SetGameState::_Internal {
 SetGameState::SetGameState(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:llsf_msgs.SetGameState)
 }
 SetGameState::SetGameState(const SetGameState& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  SetGameState* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.state_){}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  state_ = from.state_;
+  _this->_impl_.state_ = from._impl_.state_;
   // @@protoc_insertion_point(copy_constructor:llsf_msgs.SetGameState)
 }
 
-inline void SetGameState::SharedCtor() {
-state_ = 0;
+inline void SetGameState::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.state_){0}
+  };
 }
 
 SetGameState::~SetGameState() {
   // @@protoc_insertion_point(destructor:llsf_msgs.SetGameState)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void SetGameState::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
 }
 
-void SetGameState::ArenaDtor(void* object) {
-  SetGameState* _this = reinterpret_cast< SetGameState* >(object);
-  (void)_this;
-}
-void SetGameState::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void SetGameState::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void SetGameState::Clear() {
@@ -870,17 +889,17 @@ void SetGameState::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  state_ = 0;
-  _has_bits_.Clear();
+  _impl_.state_ = 0;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* SetGameState::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* SetGameState::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // required .llsf_msgs.GameState.State state = 1;
       case 1:
@@ -911,7 +930,7 @@ const char* SetGameState::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -925,16 +944,16 @@ uint8_t* SetGameState::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   // required .llsf_msgs.GameState.State state = 1;
   if (cached_has_bits & 0x00000001u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
       1, this->_internal_state(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:llsf_msgs.SetGameState)
@@ -948,38 +967,34 @@ size_t SetGameState::ByteSizeLong() const {
   // required .llsf_msgs.GameState.State state = 1;
   if (_internal_has_state()) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_state());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_state());
   }
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData SetGameState::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     SetGameState::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SetGameState::GetClassData() const { return &_class_data_; }
 
-void SetGameState::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<SetGameState *>(to)->MergeFrom(
-      static_cast<const SetGameState &>(from));
-}
 
-
-void SetGameState::MergeFrom(const SetGameState& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.SetGameState)
-  GOOGLE_DCHECK_NE(&from, this);
+void SetGameState::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<SetGameState*>(&to_msg);
+  auto& from = static_cast<const SetGameState&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.SetGameState)
+  GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (from._internal_has_state()) {
-    _internal_set_state(from._internal_state());
+    _this->_internal_set_state(from._internal_state());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void SetGameState::CopyFrom(const SetGameState& from) {
@@ -990,19 +1005,19 @@ void SetGameState::CopyFrom(const SetGameState& from) {
 }
 
 bool SetGameState::IsInitialized() const {
-  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
+  if (_Internal::MissingRequiredFields(_impl_._has_bits_)) return false;
   return true;
 }
 
 void SetGameState::InternalSwap(SetGameState* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
-  swap(state_, other->state_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  swap(_impl_.state_, other->_impl_.state_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata SetGameState::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_GameState_2eproto_getter, &descriptor_table_GameState_2eproto_once,
       file_level_metadata_GameState_2eproto[1]);
 }
@@ -1011,7 +1026,7 @@ void SetGameState::InternalSwap(SetGameState* other) {
 
 class SetGamePhase::_Internal {
  public:
-  using HasBits = decltype(std::declval<SetGamePhase>()._has_bits_);
+  using HasBits = decltype(std::declval<SetGamePhase>()._impl_._has_bits_);
   static void set_has_phase(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
@@ -1023,43 +1038,48 @@ class SetGamePhase::_Internal {
 SetGamePhase::SetGamePhase(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:llsf_msgs.SetGamePhase)
 }
 SetGamePhase::SetGamePhase(const SetGamePhase& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  SetGamePhase* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.phase_){}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  phase_ = from.phase_;
+  _this->_impl_.phase_ = from._impl_.phase_;
   // @@protoc_insertion_point(copy_constructor:llsf_msgs.SetGamePhase)
 }
 
-inline void SetGamePhase::SharedCtor() {
-phase_ = 0;
+inline void SetGamePhase::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.phase_){0}
+  };
 }
 
 SetGamePhase::~SetGamePhase() {
   // @@protoc_insertion_point(destructor:llsf_msgs.SetGamePhase)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void SetGamePhase::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
 }
 
-void SetGamePhase::ArenaDtor(void* object) {
-  SetGamePhase* _this = reinterpret_cast< SetGamePhase* >(object);
-  (void)_this;
-}
-void SetGamePhase::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void SetGamePhase::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void SetGamePhase::Clear() {
@@ -1068,17 +1088,17 @@ void SetGamePhase::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  phase_ = 0;
-  _has_bits_.Clear();
+  _impl_.phase_ = 0;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* SetGamePhase::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* SetGamePhase::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // required .llsf_msgs.GameState.Phase phase = 1;
       case 1:
@@ -1109,7 +1129,7 @@ const char* SetGamePhase::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -1123,16 +1143,16 @@ uint8_t* SetGamePhase::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   // required .llsf_msgs.GameState.Phase phase = 1;
   if (cached_has_bits & 0x00000001u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
       1, this->_internal_phase(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:llsf_msgs.SetGamePhase)
@@ -1146,38 +1166,34 @@ size_t SetGamePhase::ByteSizeLong() const {
   // required .llsf_msgs.GameState.Phase phase = 1;
   if (_internal_has_phase()) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_phase());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_phase());
   }
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData SetGamePhase::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     SetGamePhase::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SetGamePhase::GetClassData() const { return &_class_data_; }
 
-void SetGamePhase::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<SetGamePhase *>(to)->MergeFrom(
-      static_cast<const SetGamePhase &>(from));
-}
 
-
-void SetGamePhase::MergeFrom(const SetGamePhase& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.SetGamePhase)
-  GOOGLE_DCHECK_NE(&from, this);
+void SetGamePhase::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<SetGamePhase*>(&to_msg);
+  auto& from = static_cast<const SetGamePhase&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.SetGamePhase)
+  GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (from._internal_has_phase()) {
-    _internal_set_phase(from._internal_phase());
+    _this->_internal_set_phase(from._internal_phase());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void SetGamePhase::CopyFrom(const SetGamePhase& from) {
@@ -1188,19 +1204,19 @@ void SetGamePhase::CopyFrom(const SetGamePhase& from) {
 }
 
 bool SetGamePhase::IsInitialized() const {
-  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
+  if (_Internal::MissingRequiredFields(_impl_._has_bits_)) return false;
   return true;
 }
 
 void SetGamePhase::InternalSwap(SetGamePhase* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
-  swap(phase_, other->phase_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  swap(_impl_.phase_, other->_impl_.phase_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata SetGamePhase::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_GameState_2eproto_getter, &descriptor_table_GameState_2eproto_once,
       file_level_metadata_GameState_2eproto[2]);
 }
@@ -1218,6 +1234,7 @@ RandomizeField::RandomizeField(::PROTOBUF_NAMESPACE_ID::Arena* arena,
 }
 RandomizeField::RandomizeField(const RandomizeField& from)
   : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase() {
+  RandomizeField* const _this = this; (void)_this;
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   // @@protoc_insertion_point(copy_constructor:llsf_msgs.RandomizeField)
 }
@@ -1239,7 +1256,7 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*RandomizeField::GetClassData()
 
 
 ::PROTOBUF_NAMESPACE_ID::Metadata RandomizeField::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_GameState_2eproto_getter, &descriptor_table_GameState_2eproto_once,
       file_level_metadata_GameState_2eproto[3]);
 }
@@ -1247,16 +1264,20 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*RandomizeField::GetClassData()
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace llsf_msgs
 PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::llsf_msgs::GameState* Arena::CreateMaybeMessage< ::llsf_msgs::GameState >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::llsf_msgs::GameState*
+Arena::CreateMaybeMessage< ::llsf_msgs::GameState >(Arena* arena) {
   return Arena::CreateMessageInternal< ::llsf_msgs::GameState >(arena);
 }
-template<> PROTOBUF_NOINLINE ::llsf_msgs::SetGameState* Arena::CreateMaybeMessage< ::llsf_msgs::SetGameState >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::llsf_msgs::SetGameState*
+Arena::CreateMaybeMessage< ::llsf_msgs::SetGameState >(Arena* arena) {
   return Arena::CreateMessageInternal< ::llsf_msgs::SetGameState >(arena);
 }
-template<> PROTOBUF_NOINLINE ::llsf_msgs::SetGamePhase* Arena::CreateMaybeMessage< ::llsf_msgs::SetGamePhase >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::llsf_msgs::SetGamePhase*
+Arena::CreateMaybeMessage< ::llsf_msgs::SetGamePhase >(Arena* arena) {
   return Arena::CreateMessageInternal< ::llsf_msgs::SetGamePhase >(arena);
 }
-template<> PROTOBUF_NOINLINE ::llsf_msgs::RandomizeField* Arena::CreateMaybeMessage< ::llsf_msgs::RandomizeField >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::llsf_msgs::RandomizeField*
+Arena::CreateMaybeMessage< ::llsf_msgs::RandomizeField >(Arena* arena) {
   return Arena::CreateMessageInternal< ::llsf_msgs::RandomizeField >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE

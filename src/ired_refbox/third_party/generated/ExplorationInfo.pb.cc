@@ -16,72 +16,79 @@
 #include <google/protobuf/port_def.inc>
 
 PROTOBUF_PRAGMA_INIT_SEG
+
+namespace _pb = ::PROTOBUF_NAMESPACE_ID;
+namespace _pbi = _pb::internal;
+
 namespace llsf_msgs {
-constexpr ExplorationSignal::ExplorationSignal(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : lights_()
-  , type_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
+PROTOBUF_CONSTEXPR ExplorationSignal::ExplorationSignal(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.lights_)*/{}
+  , /*decltype(_impl_.type_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}} {}
 struct ExplorationSignalDefaultTypeInternal {
-  constexpr ExplorationSignalDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR ExplorationSignalDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~ExplorationSignalDefaultTypeInternal() {}
   union {
     ExplorationSignal _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ExplorationSignalDefaultTypeInternal _ExplorationSignal_default_instance_;
-constexpr ExplorationZone::ExplorationZone(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : team_color_(0)
-
-  , zone_(18)
-{}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ExplorationSignalDefaultTypeInternal _ExplorationSignal_default_instance_;
+PROTOBUF_CONSTEXPR ExplorationZone::ExplorationZone(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.team_color_)*/0
+  , /*decltype(_impl_.zone_)*/18} {}
 struct ExplorationZoneDefaultTypeInternal {
-  constexpr ExplorationZoneDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR ExplorationZoneDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~ExplorationZoneDefaultTypeInternal() {}
   union {
     ExplorationZone _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ExplorationZoneDefaultTypeInternal _ExplorationZone_default_instance_;
-constexpr ExplorationInfo::ExplorationInfo(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : signals_()
-  , zones_(){}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ExplorationZoneDefaultTypeInternal _ExplorationZone_default_instance_;
+PROTOBUF_CONSTEXPR ExplorationInfo::ExplorationInfo(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.signals_)*/{}
+  , /*decltype(_impl_.zones_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct ExplorationInfoDefaultTypeInternal {
-  constexpr ExplorationInfoDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR ExplorationInfoDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~ExplorationInfoDefaultTypeInternal() {}
   union {
     ExplorationInfo _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ExplorationInfoDefaultTypeInternal _ExplorationInfo_default_instance_;
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ExplorationInfoDefaultTypeInternal _ExplorationInfo_default_instance_;
 }  // namespace llsf_msgs
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_ExplorationInfo_2eproto[3];
-static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_ExplorationInfo_2eproto[3];
-static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_ExplorationInfo_2eproto = nullptr;
+static ::_pb::Metadata file_level_metadata_ExplorationInfo_2eproto[3];
+static const ::_pb::EnumDescriptor* file_level_enum_descriptors_ExplorationInfo_2eproto[3];
+static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_ExplorationInfo_2eproto = nullptr;
 
 const uint32_t TableStruct_ExplorationInfo_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::ExplorationSignal, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::ExplorationSignal, _impl_._has_bits_),
   PROTOBUF_FIELD_OFFSET(::llsf_msgs::ExplorationSignal, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::ExplorationSignal, type_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::ExplorationSignal, lights_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::ExplorationSignal, _impl_.type_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::ExplorationSignal, _impl_.lights_),
   0,
   ~0u,
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::ExplorationZone, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::ExplorationZone, _impl_._has_bits_),
   PROTOBUF_FIELD_OFFSET(::llsf_msgs::ExplorationZone, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::ExplorationZone, zone_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::ExplorationZone, team_color_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::ExplorationZone, _impl_.zone_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::ExplorationZone, _impl_.team_color_),
   1,
   0,
   ~0u,  // no _has_bits_
@@ -90,19 +97,19 @@ const uint32_t TableStruct_ExplorationInfo_2eproto::offsets[] PROTOBUF_SECTION_V
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::ExplorationInfo, signals_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::ExplorationInfo, zones_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::ExplorationInfo, _impl_.signals_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::ExplorationInfo, _impl_.zones_),
 };
-static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 8, -1, sizeof(::llsf_msgs::ExplorationSignal)},
   { 10, 18, -1, sizeof(::llsf_msgs::ExplorationZone)},
   { 20, -1, -1, sizeof(::llsf_msgs::ExplorationInfo)},
 };
 
-static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::llsf_msgs::_ExplorationSignal_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::llsf_msgs::_ExplorationZone_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::llsf_msgs::_ExplorationInfo_default_instance_),
+static const ::_pb::Message* const file_default_instances[] = {
+  &::llsf_msgs::_ExplorationSignal_default_instance_._instance,
+  &::llsf_msgs::_ExplorationZone_default_instance_._instance,
+  &::llsf_msgs::_ExplorationInfo_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_ExplorationInfo_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -121,24 +128,26 @@ const char descriptor_table_protodef_ExplorationInfo_2eproto[] PROTOBUF_SECTION_
   "up_logistics.llsf_msgsB\025ExplorationInfoP"
   "rotos"
   ;
-static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_ExplorationInfo_2eproto_deps[3] = {
+static const ::_pbi::DescriptorTable* const descriptor_table_ExplorationInfo_2eproto_deps[3] = {
   &::descriptor_table_MachineInfo_2eproto,
   &::descriptor_table_Team_2eproto,
   &::descriptor_table_Zone_2eproto,
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_ExplorationInfo_2eproto_once;
-const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_ExplorationInfo_2eproto = {
-  false, false, 525, descriptor_table_protodef_ExplorationInfo_2eproto, "ExplorationInfo.proto", 
-  &descriptor_table_ExplorationInfo_2eproto_once, descriptor_table_ExplorationInfo_2eproto_deps, 3, 3,
-  schemas, file_default_instances, TableStruct_ExplorationInfo_2eproto::offsets,
-  file_level_metadata_ExplorationInfo_2eproto, file_level_enum_descriptors_ExplorationInfo_2eproto, file_level_service_descriptors_ExplorationInfo_2eproto,
+static ::_pbi::once_flag descriptor_table_ExplorationInfo_2eproto_once;
+const ::_pbi::DescriptorTable descriptor_table_ExplorationInfo_2eproto = {
+    false, false, 525, descriptor_table_protodef_ExplorationInfo_2eproto,
+    "ExplorationInfo.proto",
+    &descriptor_table_ExplorationInfo_2eproto_once, descriptor_table_ExplorationInfo_2eproto_deps, 3, 3,
+    schemas, file_default_instances, TableStruct_ExplorationInfo_2eproto::offsets,
+    file_level_metadata_ExplorationInfo_2eproto, file_level_enum_descriptors_ExplorationInfo_2eproto,
+    file_level_service_descriptors_ExplorationInfo_2eproto,
 };
-PROTOBUF_ATTRIBUTE_WEAK const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable* descriptor_table_ExplorationInfo_2eproto_getter() {
+PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_ExplorationInfo_2eproto_getter() {
   return &descriptor_table_ExplorationInfo_2eproto;
 }
 
 // Force running AddDescriptors() at dynamic initialization time.
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY static ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptorsRunner dynamic_init_dummy_ExplorationInfo_2eproto(&descriptor_table_ExplorationInfo_2eproto);
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_ExplorationInfo_2eproto(&descriptor_table_ExplorationInfo_2eproto);
 namespace llsf_msgs {
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* ExplorationSignal_CompType_descriptor() {
   ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_ExplorationInfo_2eproto);
@@ -208,7 +217,7 @@ constexpr int ExplorationInfo::CompType_ARRAYSIZE;
 
 class ExplorationSignal::_Internal {
  public:
-  using HasBits = decltype(std::declval<ExplorationSignal>()._has_bits_);
+  using HasBits = decltype(std::declval<ExplorationSignal>()._impl_._has_bits_);
   static void set_has_type(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
@@ -218,61 +227,68 @@ class ExplorationSignal::_Internal {
 };
 
 void ExplorationSignal::clear_lights() {
-  lights_.Clear();
+  _impl_.lights_.Clear();
 }
 ExplorationSignal::ExplorationSignal(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
-  lights_(arena) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:llsf_msgs.ExplorationSignal)
 }
 ExplorationSignal::ExplorationSignal(const ExplorationSignal& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_),
-      lights_(from.lights_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ExplorationSignal* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.lights_){from._impl_.lights_}
+    , decltype(_impl_.type_){}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  type_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.type_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    type_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+    _impl_.type_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (from._internal_has_type()) {
-    type_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_type(), 
-      GetArenaForAllocation());
+    _this->_impl_.type_.Set(from._internal_type(), 
+      _this->GetArenaForAllocation());
   }
   // @@protoc_insertion_point(copy_constructor:llsf_msgs.ExplorationSignal)
 }
 
-inline void ExplorationSignal::SharedCtor() {
-type_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  type_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+inline void ExplorationSignal::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.lights_){arena}
+    , decltype(_impl_.type_){}
+  };
+  _impl_.type_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.type_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 ExplorationSignal::~ExplorationSignal() {
   // @@protoc_insertion_point(destructor:llsf_msgs.ExplorationSignal)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void ExplorationSignal::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  type_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.lights_.~RepeatedPtrField();
+  _impl_.type_.Destroy();
 }
 
-void ExplorationSignal::ArenaDtor(void* object) {
-  ExplorationSignal* _this = reinterpret_cast< ExplorationSignal* >(object);
-  (void)_this;
-}
-void ExplorationSignal::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ExplorationSignal::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void ExplorationSignal::Clear() {
@@ -281,31 +297,31 @@ void ExplorationSignal::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  lights_.Clear();
-  cached_has_bits = _has_bits_[0];
+  _impl_.lights_.Clear();
+  cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    type_.ClearNonDefaultToEmpty();
+    _impl_.type_.ClearNonDefaultToEmpty();
   }
-  _has_bits_.Clear();
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ExplorationSignal::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ExplorationSignal::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // required string type = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           auto str = _internal_mutable_type();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          #ifndef NDEBUG
-          ::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "llsf_msgs.ExplorationSignal.type");
-          #endif  // !NDEBUG
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          #ifndef NDEBUG
+          ::_pbi::VerifyUTF8(str, "llsf_msgs.ExplorationSignal.type");
+          #endif  // !NDEBUG
         } else
           goto handle_unusual;
         continue;
@@ -338,7 +354,7 @@ const char* ExplorationSignal::_InternalParse(const char* ptr, ::PROTOBUF_NAMESP
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -352,7 +368,7 @@ uint8_t* ExplorationSignal::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   // required string type = 1;
   if (cached_has_bits & 0x00000001u) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
@@ -364,15 +380,15 @@ uint8_t* ExplorationSignal::_InternalSerialize(
   }
 
   // repeated .llsf_msgs.LightSpec lights = 2;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->_internal_lights_size()); i < n; i++) {
-    target = stream->EnsureSpace(target);
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_lights_size()); i < n; i++) {
+    const auto& repfield = this->_internal_lights(i);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(2, this->_internal_lights(i), target, stream);
+        InternalWriteMessage(2, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:llsf_msgs.ExplorationSignal)
@@ -395,38 +411,34 @@ size_t ExplorationSignal::ByteSizeLong() const {
 
   // repeated .llsf_msgs.LightSpec lights = 2;
   total_size += 1UL * this->_internal_lights_size();
-  for (const auto& msg : this->lights_) {
+  for (const auto& msg : this->_impl_.lights_) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ExplorationSignal::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     ExplorationSignal::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ExplorationSignal::GetClassData() const { return &_class_data_; }
 
-void ExplorationSignal::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<ExplorationSignal *>(to)->MergeFrom(
-      static_cast<const ExplorationSignal &>(from));
-}
 
-
-void ExplorationSignal::MergeFrom(const ExplorationSignal& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.ExplorationSignal)
-  GOOGLE_DCHECK_NE(&from, this);
+void ExplorationSignal::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ExplorationSignal*>(&to_msg);
+  auto& from = static_cast<const ExplorationSignal&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.ExplorationSignal)
+  GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  lights_.MergeFrom(from.lights_);
+  _this->_impl_.lights_.MergeFrom(from._impl_.lights_);
   if (from._internal_has_type()) {
-    _internal_set_type(from._internal_type());
+    _this->_internal_set_type(from._internal_type());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ExplorationSignal::CopyFrom(const ExplorationSignal& from) {
@@ -437,8 +449,8 @@ void ExplorationSignal::CopyFrom(const ExplorationSignal& from) {
 }
 
 bool ExplorationSignal::IsInitialized() const {
-  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
-  if (!::PROTOBUF_NAMESPACE_ID::internal::AllAreInitialized(lights_))
+  if (_Internal::MissingRequiredFields(_impl_._has_bits_)) return false;
+  if (!::PROTOBUF_NAMESPACE_ID::internal::AllAreInitialized(_impl_.lights_))
     return false;
   return true;
 }
@@ -448,17 +460,16 @@ void ExplorationSignal::InternalSwap(ExplorationSignal* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
-  lights_.InternalSwap(&other->lights_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  _impl_.lights_.InternalSwap(&other->_impl_.lights_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &type_, lhs_arena,
-      &other->type_, rhs_arena
+      &_impl_.type_, lhs_arena,
+      &other->_impl_.type_, rhs_arena
   );
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ExplorationSignal::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_ExplorationInfo_2eproto_getter, &descriptor_table_ExplorationInfo_2eproto_once,
       file_level_metadata_ExplorationInfo_2eproto[0]);
 }
@@ -467,7 +478,7 @@ void ExplorationSignal::InternalSwap(ExplorationSignal* other) {
 
 class ExplorationZone::_Internal {
  public:
-  using HasBits = decltype(std::declval<ExplorationZone>()._has_bits_);
+  using HasBits = decltype(std::declval<ExplorationZone>()._impl_._has_bits_);
   static void set_has_zone(HasBits* has_bits) {
     (*has_bits)[0] |= 2u;
   }
@@ -482,46 +493,52 @@ class ExplorationZone::_Internal {
 ExplorationZone::ExplorationZone(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:llsf_msgs.ExplorationZone)
 }
 ExplorationZone::ExplorationZone(const ExplorationZone& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ExplorationZone* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.team_color_){}
+    , decltype(_impl_.zone_){}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::memcpy(&team_color_, &from.team_color_,
-    static_cast<size_t>(reinterpret_cast<char*>(&zone_) -
-    reinterpret_cast<char*>(&team_color_)) + sizeof(zone_));
+  ::memcpy(&_impl_.team_color_, &from._impl_.team_color_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.zone_) -
+    reinterpret_cast<char*>(&_impl_.team_color_)) + sizeof(_impl_.zone_));
   // @@protoc_insertion_point(copy_constructor:llsf_msgs.ExplorationZone)
 }
 
-inline void ExplorationZone::SharedCtor() {
-team_color_ = 0;
-zone_ = 18;
+inline void ExplorationZone::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.team_color_){0}
+    , decltype(_impl_.zone_){18}
+  };
 }
 
 ExplorationZone::~ExplorationZone() {
   // @@protoc_insertion_point(destructor:llsf_msgs.ExplorationZone)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void ExplorationZone::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
 }
 
-void ExplorationZone::ArenaDtor(void* object) {
-  ExplorationZone* _this = reinterpret_cast< ExplorationZone* >(object);
-  (void)_this;
-}
-void ExplorationZone::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ExplorationZone::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void ExplorationZone::Clear() {
@@ -530,21 +547,21 @@ void ExplorationZone::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
-    team_color_ = 0;
-    zone_ = 18;
+    _impl_.team_color_ = 0;
+    _impl_.zone_ = 18;
   }
-  _has_bits_.Clear();
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ExplorationZone::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ExplorationZone::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // required .llsf_msgs.Zone zone = 2;
       case 2:
@@ -588,7 +605,7 @@ const char* ExplorationZone::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPAC
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -602,23 +619,23 @@ uint8_t* ExplorationZone::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   // required .llsf_msgs.Zone zone = 2;
   if (cached_has_bits & 0x00000002u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
       2, this->_internal_zone(), target);
   }
 
   // required .llsf_msgs.Team team_color = 3;
   if (cached_has_bits & 0x00000001u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
       3, this->_internal_team_color(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:llsf_msgs.ExplorationZone)
@@ -632,13 +649,13 @@ size_t ExplorationZone::RequiredFieldsByteSizeFallback() const {
   if (_internal_has_team_color()) {
     // required .llsf_msgs.Team team_color = 3;
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_team_color());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_team_color());
   }
 
   if (_internal_has_zone()) {
     // required .llsf_msgs.Zone zone = 2;
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_zone());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_zone());
   }
 
   return total_size;
@@ -647,14 +664,14 @@ size_t ExplorationZone::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:llsf_msgs.ExplorationZone)
   size_t total_size = 0;
 
-  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
+  if (((_impl_._has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
     // required .llsf_msgs.Team team_color = 3;
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_team_color());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_team_color());
 
     // required .llsf_msgs.Zone zone = 2;
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_zone());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_zone());
 
   } else {
     total_size += RequiredFieldsByteSizeFallback();
@@ -663,39 +680,35 @@ size_t ExplorationZone::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ExplorationZone::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     ExplorationZone::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ExplorationZone::GetClassData() const { return &_class_data_; }
 
-void ExplorationZone::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<ExplorationZone *>(to)->MergeFrom(
-      static_cast<const ExplorationZone &>(from));
-}
 
-
-void ExplorationZone::MergeFrom(const ExplorationZone& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.ExplorationZone)
-  GOOGLE_DCHECK_NE(&from, this);
+void ExplorationZone::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ExplorationZone*>(&to_msg);
+  auto& from = static_cast<const ExplorationZone&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.ExplorationZone)
+  GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = from._has_bits_[0];
+  cached_has_bits = from._impl_._has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
     if (cached_has_bits & 0x00000001u) {
-      team_color_ = from.team_color_;
+      _this->_impl_.team_color_ = from._impl_.team_color_;
     }
     if (cached_has_bits & 0x00000002u) {
-      zone_ = from.zone_;
+      _this->_impl_.zone_ = from._impl_.zone_;
     }
-    _has_bits_[0] |= cached_has_bits;
+    _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ExplorationZone::CopyFrom(const ExplorationZone& from) {
@@ -706,20 +719,20 @@ void ExplorationZone::CopyFrom(const ExplorationZone& from) {
 }
 
 bool ExplorationZone::IsInitialized() const {
-  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
+  if (_Internal::MissingRequiredFields(_impl_._has_bits_)) return false;
   return true;
 }
 
 void ExplorationZone::InternalSwap(ExplorationZone* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
-  swap(team_color_, other->team_color_);
-  swap(zone_, other->zone_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  swap(_impl_.team_color_, other->_impl_.team_color_);
+  swap(_impl_.zone_, other->_impl_.zone_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ExplorationZone::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_ExplorationInfo_2eproto_getter, &descriptor_table_ExplorationInfo_2eproto_once,
       file_level_metadata_ExplorationInfo_2eproto[1]);
 }
@@ -732,45 +745,50 @@ class ExplorationInfo::_Internal {
 
 ExplorationInfo::ExplorationInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
-  signals_(arena),
-  zones_(arena) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:llsf_msgs.ExplorationInfo)
 }
 ExplorationInfo::ExplorationInfo(const ExplorationInfo& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      signals_(from.signals_),
-      zones_(from.zones_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ExplorationInfo* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.signals_){from._impl_.signals_}
+    , decltype(_impl_.zones_){from._impl_.zones_}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   // @@protoc_insertion_point(copy_constructor:llsf_msgs.ExplorationInfo)
 }
 
-inline void ExplorationInfo::SharedCtor() {
+inline void ExplorationInfo::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.signals_){arena}
+    , decltype(_impl_.zones_){arena}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
 }
 
 ExplorationInfo::~ExplorationInfo() {
   // @@protoc_insertion_point(destructor:llsf_msgs.ExplorationInfo)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void ExplorationInfo::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.signals_.~RepeatedPtrField();
+  _impl_.zones_.~RepeatedPtrField();
 }
 
-void ExplorationInfo::ArenaDtor(void* object) {
-  ExplorationInfo* _this = reinterpret_cast< ExplorationInfo* >(object);
-  (void)_this;
-}
-void ExplorationInfo::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ExplorationInfo::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void ExplorationInfo::Clear() {
@@ -779,16 +797,16 @@ void ExplorationInfo::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  signals_.Clear();
-  zones_.Clear();
+  _impl_.signals_.Clear();
+  _impl_.zones_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ExplorationInfo::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ExplorationInfo::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // repeated .llsf_msgs.ExplorationSignal signals = 1;
       case 1:
@@ -846,23 +864,23 @@ uint8_t* ExplorationInfo::_InternalSerialize(
   (void) cached_has_bits;
 
   // repeated .llsf_msgs.ExplorationSignal signals = 1;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->_internal_signals_size()); i < n; i++) {
-    target = stream->EnsureSpace(target);
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_signals_size()); i < n; i++) {
+    const auto& repfield = this->_internal_signals(i);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(1, this->_internal_signals(i), target, stream);
+        InternalWriteMessage(1, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   // repeated .llsf_msgs.ExplorationZone zones = 2;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->_internal_zones_size()); i < n; i++) {
-    target = stream->EnsureSpace(target);
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_zones_size()); i < n; i++) {
+    const auto& repfield = this->_internal_zones(i);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(2, this->_internal_zones(i), target, stream);
+        InternalWriteMessage(2, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:llsf_msgs.ExplorationInfo)
@@ -879,43 +897,39 @@ size_t ExplorationInfo::ByteSizeLong() const {
 
   // repeated .llsf_msgs.ExplorationSignal signals = 1;
   total_size += 1UL * this->_internal_signals_size();
-  for (const auto& msg : this->signals_) {
+  for (const auto& msg : this->_impl_.signals_) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
   // repeated .llsf_msgs.ExplorationZone zones = 2;
   total_size += 1UL * this->_internal_zones_size();
-  for (const auto& msg : this->zones_) {
+  for (const auto& msg : this->_impl_.zones_) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ExplorationInfo::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     ExplorationInfo::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ExplorationInfo::GetClassData() const { return &_class_data_; }
 
-void ExplorationInfo::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<ExplorationInfo *>(to)->MergeFrom(
-      static_cast<const ExplorationInfo &>(from));
-}
 
-
-void ExplorationInfo::MergeFrom(const ExplorationInfo& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.ExplorationInfo)
-  GOOGLE_DCHECK_NE(&from, this);
+void ExplorationInfo::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ExplorationInfo*>(&to_msg);
+  auto& from = static_cast<const ExplorationInfo&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.ExplorationInfo)
+  GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  signals_.MergeFrom(from.signals_);
-  zones_.MergeFrom(from.zones_);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_impl_.signals_.MergeFrom(from._impl_.signals_);
+  _this->_impl_.zones_.MergeFrom(from._impl_.zones_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ExplorationInfo::CopyFrom(const ExplorationInfo& from) {
@@ -926,9 +940,9 @@ void ExplorationInfo::CopyFrom(const ExplorationInfo& from) {
 }
 
 bool ExplorationInfo::IsInitialized() const {
-  if (!::PROTOBUF_NAMESPACE_ID::internal::AllAreInitialized(signals_))
+  if (!::PROTOBUF_NAMESPACE_ID::internal::AllAreInitialized(_impl_.signals_))
     return false;
-  if (!::PROTOBUF_NAMESPACE_ID::internal::AllAreInitialized(zones_))
+  if (!::PROTOBUF_NAMESPACE_ID::internal::AllAreInitialized(_impl_.zones_))
     return false;
   return true;
 }
@@ -936,12 +950,12 @@ bool ExplorationInfo::IsInitialized() const {
 void ExplorationInfo::InternalSwap(ExplorationInfo* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  signals_.InternalSwap(&other->signals_);
-  zones_.InternalSwap(&other->zones_);
+  _impl_.signals_.InternalSwap(&other->_impl_.signals_);
+  _impl_.zones_.InternalSwap(&other->_impl_.zones_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ExplorationInfo::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_ExplorationInfo_2eproto_getter, &descriptor_table_ExplorationInfo_2eproto_once,
       file_level_metadata_ExplorationInfo_2eproto[2]);
 }
@@ -949,13 +963,16 @@ void ExplorationInfo::InternalSwap(ExplorationInfo* other) {
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace llsf_msgs
 PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::llsf_msgs::ExplorationSignal* Arena::CreateMaybeMessage< ::llsf_msgs::ExplorationSignal >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::llsf_msgs::ExplorationSignal*
+Arena::CreateMaybeMessage< ::llsf_msgs::ExplorationSignal >(Arena* arena) {
   return Arena::CreateMessageInternal< ::llsf_msgs::ExplorationSignal >(arena);
 }
-template<> PROTOBUF_NOINLINE ::llsf_msgs::ExplorationZone* Arena::CreateMaybeMessage< ::llsf_msgs::ExplorationZone >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::llsf_msgs::ExplorationZone*
+Arena::CreateMaybeMessage< ::llsf_msgs::ExplorationZone >(Arena* arena) {
   return Arena::CreateMessageInternal< ::llsf_msgs::ExplorationZone >(arena);
 }
-template<> PROTOBUF_NOINLINE ::llsf_msgs::ExplorationInfo* Arena::CreateMaybeMessage< ::llsf_msgs::ExplorationInfo >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::llsf_msgs::ExplorationInfo*
+Arena::CreateMaybeMessage< ::llsf_msgs::ExplorationInfo >(Arena* arena) {
   return Arena::CreateMessageInternal< ::llsf_msgs::ExplorationInfo >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE

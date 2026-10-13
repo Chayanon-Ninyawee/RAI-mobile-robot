@@ -16,138 +16,145 @@
 #include <google/protobuf/port_def.inc>
 
 PROTOBUF_PRAGMA_INIT_SEG
+
+namespace _pb = ::PROTOBUF_NAMESPACE_ID;
+namespace _pbi = _pb::internal;
+
 namespace llsf_msgs {
-constexpr MachineReportEntry::MachineReportEntry(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , type_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , rotation_(0u)
-  , zone_(18)
-{}
+PROTOBUF_CONSTEXPR MachineReportEntry::MachineReportEntry(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.type_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.rotation_)*/0u
+  , /*decltype(_impl_.zone_)*/18} {}
 struct MachineReportEntryDefaultTypeInternal {
-  constexpr MachineReportEntryDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR MachineReportEntryDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~MachineReportEntryDefaultTypeInternal() {}
   union {
     MachineReportEntry _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT MachineReportEntryDefaultTypeInternal _MachineReportEntry_default_instance_;
-constexpr MachineReport::MachineReport(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : machines_()
-  , team_color_(0)
-{}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 MachineReportEntryDefaultTypeInternal _MachineReportEntry_default_instance_;
+PROTOBUF_CONSTEXPR MachineReport::MachineReport(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.machines_)*/{}
+  , /*decltype(_impl_.team_color_)*/0} {}
 struct MachineReportDefaultTypeInternal {
-  constexpr MachineReportDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR MachineReportDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~MachineReportDefaultTypeInternal() {}
   union {
     MachineReport _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT MachineReportDefaultTypeInternal _MachineReport_default_instance_;
-constexpr MachineReportInfo::MachineReportInfo(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : reported_machines_()
-  , reported_types_()
-  , team_color_(0)
-{}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 MachineReportDefaultTypeInternal _MachineReport_default_instance_;
+PROTOBUF_CONSTEXPR MachineReportInfo::MachineReportInfo(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.reported_machines_)*/{}
+  , /*decltype(_impl_.reported_types_)*/{}
+  , /*decltype(_impl_.team_color_)*/0} {}
 struct MachineReportInfoDefaultTypeInternal {
-  constexpr MachineReportInfoDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR MachineReportInfoDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~MachineReportInfoDefaultTypeInternal() {}
   union {
     MachineReportInfo _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT MachineReportInfoDefaultTypeInternal _MachineReportInfo_default_instance_;
-constexpr MachineTypeFeedback::MachineTypeFeedback(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : type_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , team_color_(0)
-
-  , zone_(18)
-{}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 MachineReportInfoDefaultTypeInternal _MachineReportInfo_default_instance_;
+PROTOBUF_CONSTEXPR MachineTypeFeedback::MachineTypeFeedback(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.type_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.team_color_)*/0
+  , /*decltype(_impl_.zone_)*/18} {}
 struct MachineTypeFeedbackDefaultTypeInternal {
-  constexpr MachineTypeFeedbackDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR MachineTypeFeedbackDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~MachineTypeFeedbackDefaultTypeInternal() {}
   union {
     MachineTypeFeedback _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT MachineTypeFeedbackDefaultTypeInternal _MachineTypeFeedback_default_instance_;
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 MachineTypeFeedbackDefaultTypeInternal _MachineTypeFeedback_default_instance_;
 }  // namespace llsf_msgs
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_MachineReport_2eproto[4];
-static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_MachineReport_2eproto[4];
-static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_MachineReport_2eproto = nullptr;
+static ::_pb::Metadata file_level_metadata_MachineReport_2eproto[4];
+static const ::_pb::EnumDescriptor* file_level_enum_descriptors_MachineReport_2eproto[4];
+static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_MachineReport_2eproto = nullptr;
 
 const uint32_t TableStruct_MachineReport_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::MachineReportEntry, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::MachineReportEntry, _impl_._has_bits_),
   PROTOBUF_FIELD_OFFSET(::llsf_msgs::MachineReportEntry, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::MachineReportEntry, name_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::MachineReportEntry, type_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::MachineReportEntry, zone_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::MachineReportEntry, rotation_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::MachineReportEntry, _impl_.name_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::MachineReportEntry, _impl_.type_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::MachineReportEntry, _impl_.zone_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::MachineReportEntry, _impl_.rotation_),
   0,
   1,
   3,
   2,
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::MachineReport, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::MachineReport, _impl_._has_bits_),
   PROTOBUF_FIELD_OFFSET(::llsf_msgs::MachineReport, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::MachineReport, team_color_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::MachineReport, machines_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::MachineReport, _impl_.team_color_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::MachineReport, _impl_.machines_),
   0,
   ~0u,
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::MachineReportInfo, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::MachineReportInfo, _impl_._has_bits_),
   PROTOBUF_FIELD_OFFSET(::llsf_msgs::MachineReportInfo, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::MachineReportInfo, reported_machines_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::MachineReportInfo, team_color_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::MachineReportInfo, reported_types_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::MachineReportInfo, _impl_.reported_machines_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::MachineReportInfo, _impl_.team_color_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::MachineReportInfo, _impl_.reported_types_),
   ~0u,
   0,
   ~0u,
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::MachineTypeFeedback, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::MachineTypeFeedback, _impl_._has_bits_),
   PROTOBUF_FIELD_OFFSET(::llsf_msgs::MachineTypeFeedback, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::MachineTypeFeedback, type_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::MachineTypeFeedback, zone_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::MachineTypeFeedback, name_),
-  PROTOBUF_FIELD_OFFSET(::llsf_msgs::MachineTypeFeedback, team_color_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::MachineTypeFeedback, _impl_.type_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::MachineTypeFeedback, _impl_.zone_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::MachineTypeFeedback, _impl_.name_),
+  PROTOBUF_FIELD_OFFSET(::llsf_msgs::MachineTypeFeedback, _impl_.team_color_),
   0,
   3,
   1,
   2,
 };
-static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 10, -1, sizeof(::llsf_msgs::MachineReportEntry)},
   { 14, 22, -1, sizeof(::llsf_msgs::MachineReport)},
   { 24, 33, -1, sizeof(::llsf_msgs::MachineReportInfo)},
   { 36, 46, -1, sizeof(::llsf_msgs::MachineTypeFeedback)},
 };
 
-static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::llsf_msgs::_MachineReportEntry_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::llsf_msgs::_MachineReport_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::llsf_msgs::_MachineReportInfo_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::llsf_msgs::_MachineTypeFeedback_default_instance_),
+static const ::_pb::Message* const file_default_instances[] = {
+  &::llsf_msgs::_MachineReportEntry_default_instance_._instance,
+  &::llsf_msgs::_MachineReport_default_instance_._instance,
+  &::llsf_msgs::_MachineReportInfo_default_instance_._instance,
+  &::llsf_msgs::_MachineTypeFeedback_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_MachineReport_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -171,23 +178,25 @@ const char descriptor_table_protodef_MachineReport_2eproto[] PROTOBUF_SECTION_VA
   "\020\?B6\n\037org.robocup_logistics.llsf_msgsB\023M"
   "achineReportProtos"
   ;
-static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_MachineReport_2eproto_deps[2] = {
+static const ::_pbi::DescriptorTable* const descriptor_table_MachineReport_2eproto_deps[2] = {
   &::descriptor_table_Team_2eproto,
   &::descriptor_table_Zone_2eproto,
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_MachineReport_2eproto_once;
-const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_MachineReport_2eproto = {
-  false, false, 738, descriptor_table_protodef_MachineReport_2eproto, "MachineReport.proto", 
-  &descriptor_table_MachineReport_2eproto_once, descriptor_table_MachineReport_2eproto_deps, 2, 4,
-  schemas, file_default_instances, TableStruct_MachineReport_2eproto::offsets,
-  file_level_metadata_MachineReport_2eproto, file_level_enum_descriptors_MachineReport_2eproto, file_level_service_descriptors_MachineReport_2eproto,
+static ::_pbi::once_flag descriptor_table_MachineReport_2eproto_once;
+const ::_pbi::DescriptorTable descriptor_table_MachineReport_2eproto = {
+    false, false, 738, descriptor_table_protodef_MachineReport_2eproto,
+    "MachineReport.proto",
+    &descriptor_table_MachineReport_2eproto_once, descriptor_table_MachineReport_2eproto_deps, 2, 4,
+    schemas, file_default_instances, TableStruct_MachineReport_2eproto::offsets,
+    file_level_metadata_MachineReport_2eproto, file_level_enum_descriptors_MachineReport_2eproto,
+    file_level_service_descriptors_MachineReport_2eproto,
 };
-PROTOBUF_ATTRIBUTE_WEAK const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable* descriptor_table_MachineReport_2eproto_getter() {
+PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_MachineReport_2eproto_getter() {
   return &descriptor_table_MachineReport_2eproto;
 }
 
 // Force running AddDescriptors() at dynamic initialization time.
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY static ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptorsRunner dynamic_init_dummy_MachineReport_2eproto(&descriptor_table_MachineReport_2eproto);
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_MachineReport_2eproto(&descriptor_table_MachineReport_2eproto);
 namespace llsf_msgs {
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* MachineReportEntry_CompType_descriptor() {
   ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_MachineReport_2eproto);
@@ -278,7 +287,7 @@ constexpr int MachineTypeFeedback::CompType_ARRAYSIZE;
 
 class MachineReportEntry::_Internal {
  public:
-  using HasBits = decltype(std::declval<MachineReportEntry>()._has_bits_);
+  using HasBits = decltype(std::declval<MachineReportEntry>()._impl_._has_bits_);
   static void set_has_name(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
@@ -296,72 +305,82 @@ class MachineReportEntry::_Internal {
 MachineReportEntry::MachineReportEntry(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:llsf_msgs.MachineReportEntry)
 }
 MachineReportEntry::MachineReportEntry(const MachineReportEntry& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  MachineReportEntry* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.name_){}
+    , decltype(_impl_.type_){}
+    , decltype(_impl_.rotation_){}
+    , decltype(_impl_.zone_){}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.name_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+    _impl_.name_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (from._internal_has_name()) {
-    name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_name(), 
-      GetArenaForAllocation());
+    _this->_impl_.name_.Set(from._internal_name(), 
+      _this->GetArenaForAllocation());
   }
-  type_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.type_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    type_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+    _impl_.type_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (from._internal_has_type()) {
-    type_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_type(), 
-      GetArenaForAllocation());
+    _this->_impl_.type_.Set(from._internal_type(), 
+      _this->GetArenaForAllocation());
   }
-  ::memcpy(&rotation_, &from.rotation_,
-    static_cast<size_t>(reinterpret_cast<char*>(&zone_) -
-    reinterpret_cast<char*>(&rotation_)) + sizeof(zone_));
+  ::memcpy(&_impl_.rotation_, &from._impl_.rotation_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.zone_) -
+    reinterpret_cast<char*>(&_impl_.rotation_)) + sizeof(_impl_.zone_));
   // @@protoc_insertion_point(copy_constructor:llsf_msgs.MachineReportEntry)
 }
 
-inline void MachineReportEntry::SharedCtor() {
-name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-type_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  type_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-rotation_ = 0u;
-zone_ = 18;
+inline void MachineReportEntry::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.name_){}
+    , decltype(_impl_.type_){}
+    , decltype(_impl_.rotation_){0u}
+    , decltype(_impl_.zone_){18}
+  };
+  _impl_.name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.type_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.type_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 MachineReportEntry::~MachineReportEntry() {
   // @@protoc_insertion_point(destructor:llsf_msgs.MachineReportEntry)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void MachineReportEntry::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  type_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.name_.Destroy();
+  _impl_.type_.Destroy();
 }
 
-void MachineReportEntry::ArenaDtor(void* object) {
-  MachineReportEntry* _this = reinterpret_cast< MachineReportEntry* >(object);
-  (void)_this;
-}
-void MachineReportEntry::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void MachineReportEntry::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void MachineReportEntry::Clear() {
@@ -370,39 +389,39 @@ void MachineReportEntry::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
     if (cached_has_bits & 0x00000001u) {
-      name_.ClearNonDefaultToEmpty();
+      _impl_.name_.ClearNonDefaultToEmpty();
     }
     if (cached_has_bits & 0x00000002u) {
-      type_.ClearNonDefaultToEmpty();
+      _impl_.type_.ClearNonDefaultToEmpty();
     }
   }
   if (cached_has_bits & 0x0000000cu) {
-    rotation_ = 0u;
-    zone_ = 18;
+    _impl_.rotation_ = 0u;
+    _impl_.zone_ = 18;
   }
-  _has_bits_.Clear();
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* MachineReportEntry::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* MachineReportEntry::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // optional string name = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           auto str = _internal_mutable_name();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          #ifndef NDEBUG
-          ::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "llsf_msgs.MachineReportEntry.name");
-          #endif  // !NDEBUG
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          #ifndef NDEBUG
+          ::_pbi::VerifyUTF8(str, "llsf_msgs.MachineReportEntry.name");
+          #endif  // !NDEBUG
         } else
           goto handle_unusual;
         continue;
@@ -410,11 +429,11 @@ const char* MachineReportEntry::_InternalParse(const char* ptr, ::PROTOBUF_NAMES
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
           auto str = _internal_mutable_type();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          #ifndef NDEBUG
-          ::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "llsf_msgs.MachineReportEntry.type");
-          #endif  // !NDEBUG
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          #ifndef NDEBUG
+          ::_pbi::VerifyUTF8(str, "llsf_msgs.MachineReportEntry.type");
+          #endif  // !NDEBUG
         } else
           goto handle_unusual;
         continue;
@@ -435,7 +454,7 @@ const char* MachineReportEntry::_InternalParse(const char* ptr, ::PROTOBUF_NAMES
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
           _Internal::set_has_rotation(&has_bits);
-          rotation_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _impl_.rotation_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -456,7 +475,7 @@ const char* MachineReportEntry::_InternalParse(const char* ptr, ::PROTOBUF_NAMES
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -470,7 +489,7 @@ uint8_t* MachineReportEntry::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   // optional string name = 1;
   if (cached_has_bits & 0x00000001u) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
@@ -494,18 +513,18 @@ uint8_t* MachineReportEntry::_InternalSerialize(
   // optional .llsf_msgs.Zone zone = 3;
   if (cached_has_bits & 0x00000008u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
       3, this->_internal_zone(), target);
   }
 
   // optional uint32 rotation = 4;
   if (cached_has_bits & 0x00000004u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(4, this->_internal_rotation(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(4, this->_internal_rotation(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:llsf_msgs.MachineReportEntry)
@@ -520,7 +539,7 @@ size_t MachineReportEntry::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x0000000fu) {
     // optional string name = 1;
     if (cached_has_bits & 0x00000001u) {
@@ -538,55 +557,51 @@ size_t MachineReportEntry::ByteSizeLong() const {
 
     // optional uint32 rotation = 4;
     if (cached_has_bits & 0x00000004u) {
-      total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_rotation());
+      total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_rotation());
     }
 
     // optional .llsf_msgs.Zone zone = 3;
     if (cached_has_bits & 0x00000008u) {
       total_size += 1 +
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_zone());
+        ::_pbi::WireFormatLite::EnumSize(this->_internal_zone());
     }
 
   }
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData MachineReportEntry::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     MachineReportEntry::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*MachineReportEntry::GetClassData() const { return &_class_data_; }
 
-void MachineReportEntry::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<MachineReportEntry *>(to)->MergeFrom(
-      static_cast<const MachineReportEntry &>(from));
-}
 
-
-void MachineReportEntry::MergeFrom(const MachineReportEntry& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.MachineReportEntry)
-  GOOGLE_DCHECK_NE(&from, this);
+void MachineReportEntry::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<MachineReportEntry*>(&to_msg);
+  auto& from = static_cast<const MachineReportEntry&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.MachineReportEntry)
+  GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = from._has_bits_[0];
+  cached_has_bits = from._impl_._has_bits_[0];
   if (cached_has_bits & 0x0000000fu) {
     if (cached_has_bits & 0x00000001u) {
-      _internal_set_name(from._internal_name());
+      _this->_internal_set_name(from._internal_name());
     }
     if (cached_has_bits & 0x00000002u) {
-      _internal_set_type(from._internal_type());
+      _this->_internal_set_type(from._internal_type());
     }
     if (cached_has_bits & 0x00000004u) {
-      rotation_ = from.rotation_;
+      _this->_impl_.rotation_ = from._impl_.rotation_;
     }
     if (cached_has_bits & 0x00000008u) {
-      zone_ = from.zone_;
+      _this->_impl_.zone_ = from._impl_.zone_;
     }
-    _has_bits_[0] |= cached_has_bits;
+    _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void MachineReportEntry::CopyFrom(const MachineReportEntry& from) {
@@ -605,23 +620,21 @@ void MachineReportEntry::InternalSwap(MachineReportEntry* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &name_, lhs_arena,
-      &other->name_, rhs_arena
+      &_impl_.name_, lhs_arena,
+      &other->_impl_.name_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &type_, lhs_arena,
-      &other->type_, rhs_arena
+      &_impl_.type_, lhs_arena,
+      &other->_impl_.type_, rhs_arena
   );
-  swap(rotation_, other->rotation_);
-  swap(zone_, other->zone_);
+  swap(_impl_.rotation_, other->_impl_.rotation_);
+  swap(_impl_.zone_, other->_impl_.zone_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata MachineReportEntry::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_MachineReport_2eproto_getter, &descriptor_table_MachineReport_2eproto_once,
       file_level_metadata_MachineReport_2eproto[0]);
 }
@@ -630,7 +643,7 @@ void MachineReportEntry::InternalSwap(MachineReportEntry* other) {
 
 class MachineReport::_Internal {
  public:
-  using HasBits = decltype(std::declval<MachineReport>()._has_bits_);
+  using HasBits = decltype(std::declval<MachineReport>()._impl_._has_bits_);
   static void set_has_team_color(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
@@ -641,46 +654,52 @@ class MachineReport::_Internal {
 
 MachineReport::MachineReport(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
-  machines_(arena) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:llsf_msgs.MachineReport)
 }
 MachineReport::MachineReport(const MachineReport& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_),
-      machines_(from.machines_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  MachineReport* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.machines_){from._impl_.machines_}
+    , decltype(_impl_.team_color_){}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  team_color_ = from.team_color_;
+  _this->_impl_.team_color_ = from._impl_.team_color_;
   // @@protoc_insertion_point(copy_constructor:llsf_msgs.MachineReport)
 }
 
-inline void MachineReport::SharedCtor() {
-team_color_ = 0;
+inline void MachineReport::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.machines_){arena}
+    , decltype(_impl_.team_color_){0}
+  };
 }
 
 MachineReport::~MachineReport() {
   // @@protoc_insertion_point(destructor:llsf_msgs.MachineReport)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void MachineReport::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.machines_.~RepeatedPtrField();
 }
 
-void MachineReport::ArenaDtor(void* object) {
-  MachineReport* _this = reinterpret_cast< MachineReport* >(object);
-  (void)_this;
-}
-void MachineReport::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void MachineReport::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void MachineReport::Clear() {
@@ -689,18 +708,18 @@ void MachineReport::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  machines_.Clear();
-  team_color_ = 0;
-  _has_bits_.Clear();
+  _impl_.machines_.Clear();
+  _impl_.team_color_ = 0;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* MachineReport::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* MachineReport::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // repeated .llsf_msgs.MachineReportEntry machines = 1;
       case 1:
@@ -744,7 +763,7 @@ const char* MachineReport::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -759,23 +778,23 @@ uint8_t* MachineReport::_InternalSerialize(
   (void) cached_has_bits;
 
   // repeated .llsf_msgs.MachineReportEntry machines = 1;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->_internal_machines_size()); i < n; i++) {
-    target = stream->EnsureSpace(target);
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_machines_size()); i < n; i++) {
+    const auto& repfield = this->_internal_machines(i);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(1, this->_internal_machines(i), target, stream);
+        InternalWriteMessage(1, repfield, repfield.GetCachedSize(), target, stream);
   }
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   // required .llsf_msgs.Team team_color = 2;
   if (cached_has_bits & 0x00000001u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
       2, this->_internal_team_color(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:llsf_msgs.MachineReport)
@@ -789,7 +808,7 @@ size_t MachineReport::ByteSizeLong() const {
   // required .llsf_msgs.Team team_color = 2;
   if (_internal_has_team_color()) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_team_color());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_team_color());
   }
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
@@ -797,38 +816,34 @@ size_t MachineReport::ByteSizeLong() const {
 
   // repeated .llsf_msgs.MachineReportEntry machines = 1;
   total_size += 1UL * this->_internal_machines_size();
-  for (const auto& msg : this->machines_) {
+  for (const auto& msg : this->_impl_.machines_) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData MachineReport::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     MachineReport::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*MachineReport::GetClassData() const { return &_class_data_; }
 
-void MachineReport::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<MachineReport *>(to)->MergeFrom(
-      static_cast<const MachineReport &>(from));
-}
 
-
-void MachineReport::MergeFrom(const MachineReport& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.MachineReport)
-  GOOGLE_DCHECK_NE(&from, this);
+void MachineReport::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<MachineReport*>(&to_msg);
+  auto& from = static_cast<const MachineReport&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.MachineReport)
+  GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  machines_.MergeFrom(from.machines_);
+  _this->_impl_.machines_.MergeFrom(from._impl_.machines_);
   if (from._internal_has_team_color()) {
-    _internal_set_team_color(from._internal_team_color());
+    _this->_internal_set_team_color(from._internal_team_color());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void MachineReport::CopyFrom(const MachineReport& from) {
@@ -839,20 +854,20 @@ void MachineReport::CopyFrom(const MachineReport& from) {
 }
 
 bool MachineReport::IsInitialized() const {
-  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
+  if (_Internal::MissingRequiredFields(_impl_._has_bits_)) return false;
   return true;
 }
 
 void MachineReport::InternalSwap(MachineReport* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
-  machines_.InternalSwap(&other->machines_);
-  swap(team_color_, other->team_color_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  _impl_.machines_.InternalSwap(&other->_impl_.machines_);
+  swap(_impl_.team_color_, other->_impl_.team_color_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata MachineReport::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_MachineReport_2eproto_getter, &descriptor_table_MachineReport_2eproto_once,
       file_level_metadata_MachineReport_2eproto[1]);
 }
@@ -861,7 +876,7 @@ void MachineReport::InternalSwap(MachineReport* other) {
 
 class MachineReportInfo::_Internal {
  public:
-  using HasBits = decltype(std::declval<MachineReportInfo>()._has_bits_);
+  using HasBits = decltype(std::declval<MachineReportInfo>()._impl_._has_bits_);
   static void set_has_team_color(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
@@ -872,48 +887,55 @@ class MachineReportInfo::_Internal {
 
 MachineReportInfo::MachineReportInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
-  reported_machines_(arena),
-  reported_types_(arena) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:llsf_msgs.MachineReportInfo)
 }
 MachineReportInfo::MachineReportInfo(const MachineReportInfo& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_),
-      reported_machines_(from.reported_machines_),
-      reported_types_(from.reported_types_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  MachineReportInfo* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.reported_machines_){from._impl_.reported_machines_}
+    , decltype(_impl_.reported_types_){from._impl_.reported_types_}
+    , decltype(_impl_.team_color_){}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  team_color_ = from.team_color_;
+  _this->_impl_.team_color_ = from._impl_.team_color_;
   // @@protoc_insertion_point(copy_constructor:llsf_msgs.MachineReportInfo)
 }
 
-inline void MachineReportInfo::SharedCtor() {
-team_color_ = 0;
+inline void MachineReportInfo::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.reported_machines_){arena}
+    , decltype(_impl_.reported_types_){arena}
+    , decltype(_impl_.team_color_){0}
+  };
 }
 
 MachineReportInfo::~MachineReportInfo() {
   // @@protoc_insertion_point(destructor:llsf_msgs.MachineReportInfo)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void MachineReportInfo::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.reported_machines_.~RepeatedPtrField();
+  _impl_.reported_types_.~RepeatedPtrField();
 }
 
-void MachineReportInfo::ArenaDtor(void* object) {
-  MachineReportInfo* _this = reinterpret_cast< MachineReportInfo* >(object);
-  (void)_this;
-}
-void MachineReportInfo::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void MachineReportInfo::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void MachineReportInfo::Clear() {
@@ -922,19 +944,19 @@ void MachineReportInfo::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  reported_machines_.Clear();
-  reported_types_.Clear();
-  team_color_ = 0;
-  _has_bits_.Clear();
+  _impl_.reported_machines_.Clear();
+  _impl_.reported_types_.Clear();
+  _impl_.team_color_ = 0;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* MachineReportInfo::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* MachineReportInfo::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // repeated string reported_machines = 1;
       case 1:
@@ -943,11 +965,11 @@ const char* MachineReportInfo::_InternalParse(const char* ptr, ::PROTOBUF_NAMESP
           do {
             ptr += 1;
             auto str = _internal_add_reported_machines();
-            ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-            #ifndef NDEBUG
-            ::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "llsf_msgs.MachineReportInfo.reported_machines");
-            #endif  // !NDEBUG
+            ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
             CHK_(ptr);
+            #ifndef NDEBUG
+            ::_pbi::VerifyUTF8(str, "llsf_msgs.MachineReportInfo.reported_machines");
+            #endif  // !NDEBUG
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
         } else
@@ -995,7 +1017,7 @@ const char* MachineReportInfo::_InternalParse(const char* ptr, ::PROTOBUF_NAMESP
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -1019,24 +1041,24 @@ uint8_t* MachineReportInfo::_InternalSerialize(
     target = stream->WriteString(1, s, target);
   }
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   // required .llsf_msgs.Team team_color = 2;
   if (cached_has_bits & 0x00000001u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
       2, this->_internal_team_color(), target);
   }
 
   // repeated .llsf_msgs.MachineTypeFeedback reported_types = 3;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->_internal_reported_types_size()); i < n; i++) {
-    target = stream->EnsureSpace(target);
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_reported_types_size()); i < n; i++) {
+    const auto& repfield = this->_internal_reported_types(i);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(3, this->_internal_reported_types(i), target, stream);
+        InternalWriteMessage(3, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:llsf_msgs.MachineReportInfo)
@@ -1050,7 +1072,7 @@ size_t MachineReportInfo::ByteSizeLong() const {
   // required .llsf_msgs.Team team_color = 2;
   if (_internal_has_team_color()) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_team_color());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_team_color());
   }
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
@@ -1058,47 +1080,43 @@ size_t MachineReportInfo::ByteSizeLong() const {
 
   // repeated string reported_machines = 1;
   total_size += 1 *
-      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(reported_machines_.size());
-  for (int i = 0, n = reported_machines_.size(); i < n; i++) {
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(_impl_.reported_machines_.size());
+  for (int i = 0, n = _impl_.reported_machines_.size(); i < n; i++) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-      reported_machines_.Get(i));
+      _impl_.reported_machines_.Get(i));
   }
 
   // repeated .llsf_msgs.MachineTypeFeedback reported_types = 3;
   total_size += 1UL * this->_internal_reported_types_size();
-  for (const auto& msg : this->reported_types_) {
+  for (const auto& msg : this->_impl_.reported_types_) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData MachineReportInfo::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     MachineReportInfo::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*MachineReportInfo::GetClassData() const { return &_class_data_; }
 
-void MachineReportInfo::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<MachineReportInfo *>(to)->MergeFrom(
-      static_cast<const MachineReportInfo &>(from));
-}
 
-
-void MachineReportInfo::MergeFrom(const MachineReportInfo& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.MachineReportInfo)
-  GOOGLE_DCHECK_NE(&from, this);
+void MachineReportInfo::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<MachineReportInfo*>(&to_msg);
+  auto& from = static_cast<const MachineReportInfo&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.MachineReportInfo)
+  GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  reported_machines_.MergeFrom(from.reported_machines_);
-  reported_types_.MergeFrom(from.reported_types_);
+  _this->_impl_.reported_machines_.MergeFrom(from._impl_.reported_machines_);
+  _this->_impl_.reported_types_.MergeFrom(from._impl_.reported_types_);
   if (from._internal_has_team_color()) {
-    _internal_set_team_color(from._internal_team_color());
+    _this->_internal_set_team_color(from._internal_team_color());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void MachineReportInfo::CopyFrom(const MachineReportInfo& from) {
@@ -1109,8 +1127,8 @@ void MachineReportInfo::CopyFrom(const MachineReportInfo& from) {
 }
 
 bool MachineReportInfo::IsInitialized() const {
-  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
-  if (!::PROTOBUF_NAMESPACE_ID::internal::AllAreInitialized(reported_types_))
+  if (_Internal::MissingRequiredFields(_impl_._has_bits_)) return false;
+  if (!::PROTOBUF_NAMESPACE_ID::internal::AllAreInitialized(_impl_.reported_types_))
     return false;
   return true;
 }
@@ -1118,14 +1136,14 @@ bool MachineReportInfo::IsInitialized() const {
 void MachineReportInfo::InternalSwap(MachineReportInfo* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
-  reported_machines_.InternalSwap(&other->reported_machines_);
-  reported_types_.InternalSwap(&other->reported_types_);
-  swap(team_color_, other->team_color_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  _impl_.reported_machines_.InternalSwap(&other->_impl_.reported_machines_);
+  _impl_.reported_types_.InternalSwap(&other->_impl_.reported_types_);
+  swap(_impl_.team_color_, other->_impl_.team_color_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata MachineReportInfo::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_MachineReport_2eproto_getter, &descriptor_table_MachineReport_2eproto_once,
       file_level_metadata_MachineReport_2eproto[2]);
 }
@@ -1134,7 +1152,7 @@ void MachineReportInfo::InternalSwap(MachineReportInfo* other) {
 
 class MachineTypeFeedback::_Internal {
  public:
-  using HasBits = decltype(std::declval<MachineTypeFeedback>()._has_bits_);
+  using HasBits = decltype(std::declval<MachineTypeFeedback>()._impl_._has_bits_);
   static void set_has_type(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
@@ -1155,72 +1173,82 @@ class MachineTypeFeedback::_Internal {
 MachineTypeFeedback::MachineTypeFeedback(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:llsf_msgs.MachineTypeFeedback)
 }
 MachineTypeFeedback::MachineTypeFeedback(const MachineTypeFeedback& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  MachineTypeFeedback* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.type_){}
+    , decltype(_impl_.name_){}
+    , decltype(_impl_.team_color_){}
+    , decltype(_impl_.zone_){}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  type_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.type_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    type_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+    _impl_.type_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (from._internal_has_type()) {
-    type_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_type(), 
-      GetArenaForAllocation());
+    _this->_impl_.type_.Set(from._internal_type(), 
+      _this->GetArenaForAllocation());
   }
-  name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.name_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+    _impl_.name_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (from._internal_has_name()) {
-    name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_name(), 
-      GetArenaForAllocation());
+    _this->_impl_.name_.Set(from._internal_name(), 
+      _this->GetArenaForAllocation());
   }
-  ::memcpy(&team_color_, &from.team_color_,
-    static_cast<size_t>(reinterpret_cast<char*>(&zone_) -
-    reinterpret_cast<char*>(&team_color_)) + sizeof(zone_));
+  ::memcpy(&_impl_.team_color_, &from._impl_.team_color_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.zone_) -
+    reinterpret_cast<char*>(&_impl_.team_color_)) + sizeof(_impl_.zone_));
   // @@protoc_insertion_point(copy_constructor:llsf_msgs.MachineTypeFeedback)
 }
 
-inline void MachineTypeFeedback::SharedCtor() {
-type_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  type_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-team_color_ = 0;
-zone_ = 18;
+inline void MachineTypeFeedback::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.type_){}
+    , decltype(_impl_.name_){}
+    , decltype(_impl_.team_color_){0}
+    , decltype(_impl_.zone_){18}
+  };
+  _impl_.type_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.type_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 MachineTypeFeedback::~MachineTypeFeedback() {
   // @@protoc_insertion_point(destructor:llsf_msgs.MachineTypeFeedback)
-  if (GetArenaForAllocation() != nullptr) return;
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 inline void MachineTypeFeedback::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  type_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.type_.Destroy();
+  _impl_.name_.Destroy();
 }
 
-void MachineTypeFeedback::ArenaDtor(void* object) {
-  MachineTypeFeedback* _this = reinterpret_cast< MachineTypeFeedback* >(object);
-  (void)_this;
-}
-void MachineTypeFeedback::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void MachineTypeFeedback::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
 void MachineTypeFeedback::Clear() {
@@ -1229,39 +1257,39 @@ void MachineTypeFeedback::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
     if (cached_has_bits & 0x00000001u) {
-      type_.ClearNonDefaultToEmpty();
+      _impl_.type_.ClearNonDefaultToEmpty();
     }
     if (cached_has_bits & 0x00000002u) {
-      name_.ClearNonDefaultToEmpty();
+      _impl_.name_.ClearNonDefaultToEmpty();
     }
   }
   if (cached_has_bits & 0x0000000cu) {
-    team_color_ = 0;
-    zone_ = 18;
+    _impl_.team_color_ = 0;
+    _impl_.zone_ = 18;
   }
-  _has_bits_.Clear();
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* MachineTypeFeedback::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* MachineTypeFeedback::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // required string type = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           auto str = _internal_mutable_type();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          #ifndef NDEBUG
-          ::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "llsf_msgs.MachineTypeFeedback.type");
-          #endif  // !NDEBUG
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          #ifndef NDEBUG
+          ::_pbi::VerifyUTF8(str, "llsf_msgs.MachineTypeFeedback.type");
+          #endif  // !NDEBUG
         } else
           goto handle_unusual;
         continue;
@@ -1282,11 +1310,11 @@ const char* MachineTypeFeedback::_InternalParse(const char* ptr, ::PROTOBUF_NAME
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
           auto str = _internal_mutable_name();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          #ifndef NDEBUG
-          ::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "llsf_msgs.MachineTypeFeedback.name");
-          #endif  // !NDEBUG
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          #ifndef NDEBUG
+          ::_pbi::VerifyUTF8(str, "llsf_msgs.MachineTypeFeedback.name");
+          #endif  // !NDEBUG
         } else
           goto handle_unusual;
         continue;
@@ -1319,7 +1347,7 @@ const char* MachineTypeFeedback::_InternalParse(const char* ptr, ::PROTOBUF_NAME
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -1333,7 +1361,7 @@ uint8_t* MachineTypeFeedback::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   // required string type = 1;
   if (cached_has_bits & 0x00000001u) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
@@ -1347,7 +1375,7 @@ uint8_t* MachineTypeFeedback::_InternalSerialize(
   // required .llsf_msgs.Zone zone = 2;
   if (cached_has_bits & 0x00000008u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
       2, this->_internal_zone(), target);
   }
 
@@ -1364,12 +1392,12 @@ uint8_t* MachineTypeFeedback::_InternalSerialize(
   // optional .llsf_msgs.Team team_color = 4;
   if (cached_has_bits & 0x00000004u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
       4, this->_internal_team_color(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:llsf_msgs.MachineTypeFeedback)
@@ -1390,7 +1418,7 @@ size_t MachineTypeFeedback::RequiredFieldsByteSizeFallback() const {
   if (_internal_has_zone()) {
     // required .llsf_msgs.Zone zone = 2;
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_zone());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_zone());
   }
 
   return total_size;
@@ -1399,7 +1427,7 @@ size_t MachineTypeFeedback::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:llsf_msgs.MachineTypeFeedback)
   size_t total_size = 0;
 
-  if (((_has_bits_[0] & 0x00000009) ^ 0x00000009) == 0) {  // All required fields are present.
+  if (((_impl_._has_bits_[0] & 0x00000009) ^ 0x00000009) == 0) {  // All required fields are present.
     // required string type = 1;
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
@@ -1407,7 +1435,7 @@ size_t MachineTypeFeedback::ByteSizeLong() const {
 
     // required .llsf_msgs.Zone zone = 2;
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_zone());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_zone());
 
   } else {
     total_size += RequiredFieldsByteSizeFallback();
@@ -1416,7 +1444,7 @@ size_t MachineTypeFeedback::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000006u) {
     // optional string name = 3;
     if (cached_has_bits & 0x00000002u) {
@@ -1428,49 +1456,45 @@ size_t MachineTypeFeedback::ByteSizeLong() const {
     // optional .llsf_msgs.Team team_color = 4;
     if (cached_has_bits & 0x00000004u) {
       total_size += 1 +
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_team_color());
+        ::_pbi::WireFormatLite::EnumSize(this->_internal_team_color());
     }
 
   }
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData MachineTypeFeedback::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     MachineTypeFeedback::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*MachineTypeFeedback::GetClassData() const { return &_class_data_; }
 
-void MachineTypeFeedback::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<MachineTypeFeedback *>(to)->MergeFrom(
-      static_cast<const MachineTypeFeedback &>(from));
-}
 
-
-void MachineTypeFeedback::MergeFrom(const MachineTypeFeedback& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.MachineTypeFeedback)
-  GOOGLE_DCHECK_NE(&from, this);
+void MachineTypeFeedback::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<MachineTypeFeedback*>(&to_msg);
+  auto& from = static_cast<const MachineTypeFeedback&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:llsf_msgs.MachineTypeFeedback)
+  GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = from._has_bits_[0];
+  cached_has_bits = from._impl_._has_bits_[0];
   if (cached_has_bits & 0x0000000fu) {
     if (cached_has_bits & 0x00000001u) {
-      _internal_set_type(from._internal_type());
+      _this->_internal_set_type(from._internal_type());
     }
     if (cached_has_bits & 0x00000002u) {
-      _internal_set_name(from._internal_name());
+      _this->_internal_set_name(from._internal_name());
     }
     if (cached_has_bits & 0x00000004u) {
-      team_color_ = from.team_color_;
+      _this->_impl_.team_color_ = from._impl_.team_color_;
     }
     if (cached_has_bits & 0x00000008u) {
-      zone_ = from.zone_;
+      _this->_impl_.zone_ = from._impl_.zone_;
     }
-    _has_bits_[0] |= cached_has_bits;
+    _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void MachineTypeFeedback::CopyFrom(const MachineTypeFeedback& from) {
@@ -1481,7 +1505,7 @@ void MachineTypeFeedback::CopyFrom(const MachineTypeFeedback& from) {
 }
 
 bool MachineTypeFeedback::IsInitialized() const {
-  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
+  if (_Internal::MissingRequiredFields(_impl_._has_bits_)) return false;
   return true;
 }
 
@@ -1490,23 +1514,21 @@ void MachineTypeFeedback::InternalSwap(MachineTypeFeedback* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &type_, lhs_arena,
-      &other->type_, rhs_arena
+      &_impl_.type_, lhs_arena,
+      &other->_impl_.type_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &name_, lhs_arena,
-      &other->name_, rhs_arena
+      &_impl_.name_, lhs_arena,
+      &other->_impl_.name_, rhs_arena
   );
-  swap(team_color_, other->team_color_);
-  swap(zone_, other->zone_);
+  swap(_impl_.team_color_, other->_impl_.team_color_);
+  swap(_impl_.zone_, other->_impl_.zone_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata MachineTypeFeedback::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_MachineReport_2eproto_getter, &descriptor_table_MachineReport_2eproto_once,
       file_level_metadata_MachineReport_2eproto[3]);
 }
@@ -1514,16 +1536,20 @@ void MachineTypeFeedback::InternalSwap(MachineTypeFeedback* other) {
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace llsf_msgs
 PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::llsf_msgs::MachineReportEntry* Arena::CreateMaybeMessage< ::llsf_msgs::MachineReportEntry >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::llsf_msgs::MachineReportEntry*
+Arena::CreateMaybeMessage< ::llsf_msgs::MachineReportEntry >(Arena* arena) {
   return Arena::CreateMessageInternal< ::llsf_msgs::MachineReportEntry >(arena);
 }
-template<> PROTOBUF_NOINLINE ::llsf_msgs::MachineReport* Arena::CreateMaybeMessage< ::llsf_msgs::MachineReport >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::llsf_msgs::MachineReport*
+Arena::CreateMaybeMessage< ::llsf_msgs::MachineReport >(Arena* arena) {
   return Arena::CreateMessageInternal< ::llsf_msgs::MachineReport >(arena);
 }
-template<> PROTOBUF_NOINLINE ::llsf_msgs::MachineReportInfo* Arena::CreateMaybeMessage< ::llsf_msgs::MachineReportInfo >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::llsf_msgs::MachineReportInfo*
+Arena::CreateMaybeMessage< ::llsf_msgs::MachineReportInfo >(Arena* arena) {
   return Arena::CreateMessageInternal< ::llsf_msgs::MachineReportInfo >(arena);
 }
-template<> PROTOBUF_NOINLINE ::llsf_msgs::MachineTypeFeedback* Arena::CreateMaybeMessage< ::llsf_msgs::MachineTypeFeedback >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::llsf_msgs::MachineTypeFeedback*
+Arena::CreateMaybeMessage< ::llsf_msgs::MachineTypeFeedback >(Arena* arena) {
   return Arena::CreateMessageInternal< ::llsf_msgs::MachineTypeFeedback >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
