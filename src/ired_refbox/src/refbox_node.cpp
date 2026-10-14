@@ -4,9 +4,12 @@
 #include "generated/GameInfo.pb.h"
 #include "generated/GameState.pb.h"
 #include "generated/MachineInfo.pb.h"
+#include "generated/MachineReport.pb.h"
+#include "generated/NavigationChallenge.pb.h"
 #include "generated/OrderInfo.pb.h"
 #include "generated/RingInfo.pb.h"
 #include "generated/RobotInfo.pb.h"
+#include "generated/VersionInfo.pb.h"
 
 #include <boost/bind/bind.hpp>
 
@@ -14,12 +17,15 @@
 #include <rclcpp/rclcpp.hpp>
 #include <std_msgs/msg/string.hpp>
 
+#include <algorithm>
+#include <cctype>
 #include <chrono>
 #include <cmath>
 #include <cstdint>
 #include <memory>
 #include <stdexcept>
 #include <string>
+#include <unordered_map>
 
 using namespace protobuf_comm;
 using namespace boost::placeholders;
@@ -48,14 +54,6 @@ public:
         }
 
         messages_pub_ = create_publisher<std_msgs::msg::String>("/ired_refbox/messages", 10);
-        game_state_pub_ = create_publisher<std_msgs::msg::String>("/ired_refbox/game_state", 10);
-        game_info_pub_ = create_publisher<std_msgs::msg::String>("/ired_refbox/game_info", 10);
-        navigation_routes_pub_ = create_publisher<std_msgs::msg::String>("/ired_refbox/navigation_routes", 10);
-        machine_info_pub_ = create_publisher<std_msgs::msg::String>("/ired_refbox/machine_info", 10);
-        machine_report_info_pub_ = create_publisher<std_msgs::msg::String>("/ired_refbox/machine_report_info", 10);
-        robot_info_pub_ = create_publisher<std_msgs::msg::String>("/ired_refbox/robot_info", 10);
-        order_info_pub_ = create_publisher<std_msgs::msg::String>("/ired_refbox/order_info", 10);
-        ring_info_pub_ = create_publisher<std_msgs::msg::String>("/ired_refbox/ring_info", 10);
 
         pose_sub_ = create_subscription<geometry_msgs::msg::PoseWithCovarianceStamped>(
             pose_topic_,
@@ -93,6 +91,7 @@ private:
         mr_.add_message_type<llsf_msgs::OrderInfo>();
         mr_.add_message_type<llsf_msgs::RingInfo>();
         mr_.add_message_type<llsf_msgs::BeaconSignal>();
+        mr_.add_message_type<llsf_msgs::VersionInfo>();
     }
 
     void create_peers() {
@@ -108,6 +107,19 @@ private:
         private_peer_->signal_recv_error().connect(boost::bind(&RefboxNode::handle_recv_error, this, _1, _2));
 
         public_peer_->signal_recv_error().connect(boost::bind(&RefboxNode::handle_recv_error, this, _1, _2));
+    }
+
+    std::string make_topic_name(const std::string &type) {
+        const std::string prefix = "llsf_msgs.";
+        std::string name = type;
+
+        if (name.compare(0, prefix.size(), prefix) == 0) {
+            name.erase(0, prefix.size());
+        }
+
+        std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return static_cast<char>(std::tolower(c)); });
+
+        return "/ired_refbox/" + name;
     }
 
     void handle_message(
@@ -135,30 +147,21 @@ private:
 
         messages_pub_->publish(raw_msg);
 
-        if (auto msg = std::dynamic_pointer_cast<llsf_msgs::GameState>(message)) {
-            publish_debug(game_state_pub_, *msg);
-        } else if (auto msg = std::dynamic_pointer_cast<llsf_msgs::GameInfo>(message)) {
-            publish_debug(game_info_pub_, *msg);
-        } else if (auto msg = std::dynamic_pointer_cast<llsf_msgs::NavigationRoutes>(message)) {
-            publish_debug(navigation_routes_pub_, *msg);
-        } else if (auto msg = std::dynamic_pointer_cast<llsf_msgs::MachineInfo>(message)) {
-            publish_debug(machine_info_pub_, *msg);
-        } else if (auto msg = std::dynamic_pointer_cast<llsf_msgs::MachineReportInfo>(message)) {
-            publish_debug(machine_report_info_pub_, *msg);
-        } else if (auto msg = std::dynamic_pointer_cast<llsf_msgs::RobotInfo>(message)) {
-            publish_debug(robot_info_pub_, *msg);
-        } else if (auto msg = std::dynamic_pointer_cast<llsf_msgs::OrderInfo>(message)) {
-            publish_debug(order_info_pub_, *msg);
-        } else if (auto msg = std::dynamic_pointer_cast<llsf_msgs::RingInfo>(message)) {
-            publish_debug(ring_info_pub_, *msg);
-        }
-    }
+        const std::string topic = make_topic_name(type);
 
-    template <typename Message>
-    void publish_debug(const rclcpp::Publisher<std_msgs::msg::String>::SharedPtr &pub, const Message &message) {
+        auto it = message_publishers_.find(topic);
+
+        if (it == message_publishers_.end()) {
+            auto publisher = create_publisher<std_msgs::msg::String>(topic, 10);
+
+            it = message_publishers_.emplace(topic, publisher).first;
+
+            RCLCPP_INFO(get_logger(), "Created publisher: %s", topic.c_str());
+        }
+
         std_msgs::msg::String msg;
-        msg.data = message.DebugString();
-        pub->publish(msg);
+        msg.data = data;
+        it->second->publish(msg);
     }
 
     void handle_recv_error(boost::asio::ip::udp::endpoint &endpoint, std::string error) {
@@ -169,7 +172,9 @@ private:
         auto beacon = std::make_shared<llsf_msgs::BeaconSignal>();
 
         const auto now = std::chrono::system_clock::now().time_since_epoch();
+
         const auto sec = std::chrono::duration_cast<std::chrono::seconds>(now);
+
         const auto nsec = std::chrono::duration_cast<std::chrono::nanoseconds>(now - sec);
 
         auto *time = beacon->mutable_time();
@@ -184,6 +189,7 @@ private:
 
         if (pose_received_) {
             auto *pose = beacon->mutable_pose();
+
             pose->set_x(pose_x_);
             pose->set_y(pose_y_);
             pose->set_ori(pose_yaw_);
@@ -203,14 +209,8 @@ private:
     std::unique_ptr<ProtobufBroadcastPeer> public_peer_;
 
     rclcpp::Publisher<std_msgs::msg::String>::SharedPtr messages_pub_;
-    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr game_state_pub_;
-    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr game_info_pub_;
-    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr navigation_routes_pub_;
-    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr machine_info_pub_;
-    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr machine_report_info_pub_;
-    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr robot_info_pub_;
-    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr order_info_pub_;
-    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr ring_info_pub_;
+
+    std::unordered_map<std::string, rclcpp::Publisher<std_msgs::msg::String>::SharedPtr> message_publishers_;
 
     rclcpp::Subscription<geometry_msgs::msg::PoseWithCovarianceStamped>::SharedPtr pose_sub_;
 
