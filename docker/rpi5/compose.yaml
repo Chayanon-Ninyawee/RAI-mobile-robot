@@ -1,0 +1,40 @@
+services:
+  robot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: ired-robot
+    working_dir: /workspace
+
+    stdin_open: true
+    tty: true
+    init: true
+
+    environment:
+      ROS_DISTRO: jazzy
+      ROS_DOMAIN_ID: "102" # Change this to 10x where x is your group number
+      RMW_IMPLEMENTATION: rmw_fastrtps_cpp
+      BASH_ENV: /etc/bash.bashrc
+
+    ports:
+      - "4444:4444/udp" # CYAN and MAGENTA public send
+      - "4500:4500/udp" # CYAN public receive
+      - "4441:4441/udp" # CYAN private receive
+      - "4446:4446/udp" # CYAN private send
+      - "4501:4501/udp" # MAGENTA public receive
+      - "4442:4442/udp" # MAGENTA private receive
+      - "4447:4447/udp" # MAGENTA private send
+
+    volumes:
+      - ../..:/workspace
+      - ired-build:/workspace/build
+      - ired-install:/workspace/install
+      - ired-log:/workspace/log
+
+    command: ["bash", "-lc", "source /opt/ros/jazzy/setup.bash && exec bash"]
+
+volumes:
+  ired-build:
+  ired-install:
+  ired-log:
