@@ -4,8 +4,6 @@
 #include "generated/GameInfo.pb.h"
 #include "generated/GameState.pb.h"
 #include "generated/MachineInfo.pb.h"
-#include "generated/MachineReport.pb.h"
-#include "generated/NavigationChallenge.pb.h"
 #include "generated/OrderInfo.pb.h"
 #include "generated/RingInfo.pb.h"
 #include "generated/RobotInfo.pb.h"
@@ -49,13 +47,15 @@ public:
             throw std::runtime_error("team_color must be CYAN or MAGENTA");
         }
 
-        messages_pub_ = create_publisher<std_msgs::msg::String>("refbox/messages", 10);
-
-        game_state_pub_ = create_publisher<std_msgs::msg::String>("refbox/game_state", 10);
-
-        navigation_routes_pub_ = create_publisher<std_msgs::msg::String>("refbox/navigation_routes", 10);
-
-        machine_report_info_pub_ = create_publisher<std_msgs::msg::String>("refbox/machine_report_info", 10);
+        messages_pub_ = create_publisher<std_msgs::msg::String>("/ired_refbox/messages", 10);
+        game_state_pub_ = create_publisher<std_msgs::msg::String>("/ired_refbox/game_state", 10);
+        game_info_pub_ = create_publisher<std_msgs::msg::String>("/ired_refbox/game_info", 10);
+        navigation_routes_pub_ = create_publisher<std_msgs::msg::String>("/ired_refbox/navigation_routes", 10);
+        machine_info_pub_ = create_publisher<std_msgs::msg::String>("/ired_refbox/machine_info", 10);
+        machine_report_info_pub_ = create_publisher<std_msgs::msg::String>("/ired_refbox/machine_report_info", 10);
+        robot_info_pub_ = create_publisher<std_msgs::msg::String>("/ired_refbox/robot_info", 10);
+        order_info_pub_ = create_publisher<std_msgs::msg::String>("/ired_refbox/order_info", 10);
+        ring_info_pub_ = create_publisher<std_msgs::msg::String>("/ired_refbox/ring_info", 10);
 
         pose_sub_ = create_subscription<geometry_msgs::msg::PoseWithCovarianceStamped>(
             pose_topic_,
@@ -135,16 +135,22 @@ private:
 
         messages_pub_->publish(raw_msg);
 
-        if (auto state = std::dynamic_pointer_cast<llsf_msgs::GameState>(message)) {
-            publish_debug(game_state_pub_, *state);
-        }
-
-        if (auto routes = std::dynamic_pointer_cast<llsf_msgs::NavigationRoutes>(message)) {
-            publish_debug(navigation_routes_pub_, *routes);
-        }
-
-        if (auto report = std::dynamic_pointer_cast<llsf_msgs::MachineReportInfo>(message)) {
-            publish_debug(machine_report_info_pub_, *report);
+        if (auto msg = std::dynamic_pointer_cast<llsf_msgs::GameState>(message)) {
+            publish_debug(game_state_pub_, *msg);
+        } else if (auto msg = std::dynamic_pointer_cast<llsf_msgs::GameInfo>(message)) {
+            publish_debug(game_info_pub_, *msg);
+        } else if (auto msg = std::dynamic_pointer_cast<llsf_msgs::NavigationRoutes>(message)) {
+            publish_debug(navigation_routes_pub_, *msg);
+        } else if (auto msg = std::dynamic_pointer_cast<llsf_msgs::MachineInfo>(message)) {
+            publish_debug(machine_info_pub_, *msg);
+        } else if (auto msg = std::dynamic_pointer_cast<llsf_msgs::MachineReportInfo>(message)) {
+            publish_debug(machine_report_info_pub_, *msg);
+        } else if (auto msg = std::dynamic_pointer_cast<llsf_msgs::RobotInfo>(message)) {
+            publish_debug(robot_info_pub_, *msg);
+        } else if (auto msg = std::dynamic_pointer_cast<llsf_msgs::OrderInfo>(message)) {
+            publish_debug(order_info_pub_, *msg);
+        } else if (auto msg = std::dynamic_pointer_cast<llsf_msgs::RingInfo>(message)) {
+            publish_debug(ring_info_pub_, *msg);
         }
     }
 
@@ -163,9 +169,7 @@ private:
         auto beacon = std::make_shared<llsf_msgs::BeaconSignal>();
 
         const auto now = std::chrono::system_clock::now().time_since_epoch();
-
         const auto sec = std::chrono::duration_cast<std::chrono::seconds>(now);
-
         const auto nsec = std::chrono::duration_cast<std::chrono::nanoseconds>(now - sec);
 
         auto *time = beacon->mutable_time();
@@ -180,7 +184,6 @@ private:
 
         if (pose_received_) {
             auto *pose = beacon->mutable_pose();
-
             pose->set_x(pose_x_);
             pose->set_y(pose_y_);
             pose->set_ori(pose_yaw_);
@@ -201,8 +204,13 @@ private:
 
     rclcpp::Publisher<std_msgs::msg::String>::SharedPtr messages_pub_;
     rclcpp::Publisher<std_msgs::msg::String>::SharedPtr game_state_pub_;
+    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr game_info_pub_;
     rclcpp::Publisher<std_msgs::msg::String>::SharedPtr navigation_routes_pub_;
+    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr machine_info_pub_;
     rclcpp::Publisher<std_msgs::msg::String>::SharedPtr machine_report_info_pub_;
+    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr robot_info_pub_;
+    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr order_info_pub_;
+    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr ring_info_pub_;
 
     rclcpp::Subscription<geometry_msgs::msg::PoseWithCovarianceStamped>::SharedPtr pose_sub_;
 
