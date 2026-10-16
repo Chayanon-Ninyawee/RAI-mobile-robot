@@ -6,6 +6,7 @@ Panels:
       Expanded:
         - /TF1/Frames1
         - /TF1/Tree1
+        - /Map1/Topic1
       Splitter Ratio: 0.5
     Tree Height: 658
   - Class: rviz_common/Selection
@@ -158,7 +159,7 @@ Visualization Manager:
       Name: Map
       Topic:
         Depth: 5
-        Durability Policy: Volatile
+        Durability Policy: Transient Local
         Filter size: 10
         History Policy: Keep Last
         Reliability Policy: Reliable
@@ -359,10 +360,7 @@ Visualization Manager:
       Enabled: true
       Name: RefBoxMarker
       Namespaces:
-        machine_labels: true
-        machines: true
-        remaining_labels: true
-        remaining_zones: true
+        {}
       Topic:
         Depth: 5
         Durability Policy: Volatile

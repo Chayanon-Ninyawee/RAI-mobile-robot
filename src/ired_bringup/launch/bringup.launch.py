@@ -223,6 +223,7 @@ def generate_launch_description():
                 package="ired_bringup",
                 executable="refbox_parser",
                 name="refbox_parser",
+                parameters=[refbox_param_dir],
                 output="screen",
             ),
             map_generator,

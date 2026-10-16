@@ -1,10 +1,12 @@
 # TEAM_CYAN
+/**:
+  ros__parameters:
+    team_color: "CYAN"
 ired_refbox:
   ros__parameters:
     refbox_host: "192.168.122.210"
     crypto_key: "randomkey"
 
-    team_color: "CYAN"
     team_name: "TEAM_CYAN"
     robot_number: 1
     peer_name: "Women"
@@ -16,12 +18,14 @@ ired_refbox:
 
     pose_topic: "/amcl_pose"
 # TEAM_MAGENTA
+# /**:
+#   ros__parameters:
+#     team_color: "MAGENTA"
 # ired_refbox:
 #   ros__parameters:
-#     refbox_host: "172.16.1.107"
+#     refbox_host: "192.168.122.210"
 #     crypto_key: "randomkey"
 #
-#     team_color: "MAGENTA"
 #     team_name: "TEAM_MAGENTA"
 #     robot_number: 1
 #     peer_name: "Women"

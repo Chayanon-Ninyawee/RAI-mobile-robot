@@ -69,6 +69,9 @@ class RefboxParser(Node):
     def __init__(self):
         super().__init__("refbox_parser")
 
+        self.declare_parameter("team_color", "CYAN")
+        self.team_color = self.get_parameter("team_color").value
+
         self.machineinfo = ""
         self.navigationroutes = ""
         self.gamestate = ""
@@ -109,6 +112,12 @@ class RefboxParser(Node):
         self.gamestate_pub = self.create_publisher(
             String,
             "/ired_refbox/parsed/gamestate",
+            10,
+        )
+
+        self.team_color_pub = self.create_publisher(
+            String,
+            "/ired_refbox/parsed/team_color",
             10,
         )
 
@@ -410,6 +419,10 @@ class RefboxParser(Node):
             challenge_msg = String()
             challenge_msg.data = game["challenge_type"]
             self.challenge_pub.publish(challenge_msg)
+
+        msg = String()
+        msg.data = self.team_color
+        self.team_color_pub.publish(msg)
 
         if self.machineinfo or self.navigationroutes:
             self.marker_pub.publish(self.make_markers(machines, routes))
