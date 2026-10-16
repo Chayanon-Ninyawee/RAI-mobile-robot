@@ -22,6 +22,12 @@ def generate_launch_description():
             get_package_share_directory("ired_bringup"), "param", "laser_config.yaml"
         ),
     )
+    refbox_param_dir = LaunchConfiguration(
+        "refbox_param_dir",
+        default=os.path.join(
+            get_package_share_directory("ired_bringup"), "param", "refbox.yaml"
+        ),
+    )
     urdf_file = os.path.join(
         get_package_share_directory("ired_bringup"), "urdf", "ired.urdf.xacro"
     )
@@ -37,6 +43,16 @@ def generate_launch_description():
                 "param_dir",
                 default_value=param_dir,
                 description="Specifying parameter direction",
+            ),
+            DeclareLaunchArgument(
+                "laser_param_dir",
+                default_value=laser_param_dir,
+                description="Laser filter parameter file",
+            ),
+            DeclareLaunchArgument(
+                "refbox_param_dir",
+                default_value=refbox_param_dir,
+                description="RefBox parameter file",
             ),
             Node(
                 package="robot_state_publisher",
@@ -98,6 +114,18 @@ def generate_launch_description():
                 executable="scan_to_scan_filter_chain",
                 parameters=[param_dir, laser_param_dir],
                 output="screen",
+            ),
+            IncludeLaunchDescription(
+                PythonLaunchDescriptionSource(
+                    os.path.join(
+                        get_package_share_directory("ired_refbox"),
+                        "launch",
+                        "refbox.launch.py",
+                    )
+                ),
+                launch_arguments={
+                    "refbox_param": refbox_param_dir,
+                }.items(),
             ),
             Node(
                 package="ired_bringup",

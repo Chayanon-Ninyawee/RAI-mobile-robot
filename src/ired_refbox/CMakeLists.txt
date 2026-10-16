@@ -83,6 +83,6 @@ target_link_libraries(ired_refbox_node ${Protobuf_LIBRARIES} OpenSSL::Crypto
 
 install(TARGETS ired_refbox_node DESTINATION lib/${PROJECT_NAME})
 
-install(DIRECTORY config launch DESTINATION share/${PROJECT_NAME})
+install(DIRECTORY launch DESTINATION share/${PROJECT_NAME})
 
 ament_package()
