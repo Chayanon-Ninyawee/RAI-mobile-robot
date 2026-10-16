@@ -37,6 +37,7 @@ setup(
             "odom_node = ired_bringup.odom:main",
             "aruco_node = ired_bringup.aruco:main",
             "refbox_parser = ired_bringup.refbox_parser:main",
+            "map_generator = ired_bringup.map_generator:main",
         ],
     },
 )

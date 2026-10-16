@@ -1,0 +1,7 @@
+map_generator:
+  ros__parameters:
+    width: 5.0
+    height: 5.0
+    resolution: 0.01
+    wall_thickness: 0.03
+    output_dir: /tmp/ired_map
