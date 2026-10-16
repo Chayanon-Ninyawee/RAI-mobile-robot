@@ -1,7 +1,7 @@
 # TEAM_CYAN
 ired_refbox:
   ros__parameters:
-    refbox_host: "172.16.1.107"
+    refbox_host: "192.168.122.210"
     crypto_key: "randomkey"
 
     team_color: "CYAN"

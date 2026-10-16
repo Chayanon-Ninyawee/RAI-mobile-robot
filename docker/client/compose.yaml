@@ -1,0 +1,25 @@
+services:
+  client:
+    build:
+      context: ../..
+      dockerfile: docker/client/Dockerfile
+
+    image: ired-client:jazzy
+    container_name: ired-client
+
+    network_mode: host
+    init: true
+    stdin_open: true
+    tty: true
+
+    environment:
+      DISPLAY: ${DISPLAY:-}
+      QT_X11_NO_MITSHM: "1"
+
+      ROS_DOMAIN_ID: 102
+      ROS_LOCALHOST_ONLY: "0"
+      RMW_IMPLEMENTATION: rmw_fastrtps_cpp
+
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ../../src:/opt/ired_ws/src:rw
