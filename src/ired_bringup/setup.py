@@ -36,6 +36,7 @@ setup(
             "pid_tuner = ired_bringup.pid_tuner:main",
             "odom_node = ired_bringup.odom:main",
             "aruco_node = ired_bringup.aruco:main",
+            "refbox_parser = ired_bringup.refbox_parser:main",
         ],
     },
 )

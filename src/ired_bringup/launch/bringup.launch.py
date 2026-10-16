@@ -99,5 +99,11 @@ def generate_launch_description():
                 parameters=[param_dir, laser_param_dir],
                 output="screen",
             ),
+            Node(
+                package="ired_bringup",
+                executable="refbox_parser",
+                name="refbox_parser",
+                output="screen",
+            ),
         ]
     )
