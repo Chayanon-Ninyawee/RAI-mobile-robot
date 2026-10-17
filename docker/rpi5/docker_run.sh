@@ -15,7 +15,7 @@ if ! docker info >/dev/null 2>&1; then
     exit 1
 fi
 
-docker compose up -d --build
+docker compose up -d
 
 echo "Entering the iRED container..."
 docker compose exec robot bash

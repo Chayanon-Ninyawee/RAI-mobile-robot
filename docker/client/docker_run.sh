@@ -18,7 +18,7 @@ fi
 # Allow the root process in this container to access the XWayland display.
 xhost +si:localuser:root
 
-if ! docker compose up -d --build; then
+if ! docker compose up -d; then
     xhost -si:localuser:root || true
     exit 1
 fi
