@@ -234,5 +234,11 @@ def generate_launch_description():
                 name="localization_initializer",
                 output="screen",
             ),
+            Node(
+                package="ired_bringup",
+                executable="challenge_manager",
+                name="challenge_manager",
+                output="screen",
+            ),
         ]
     )

@@ -39,6 +39,7 @@ setup(
             "refbox_parser = ired_bringup.refbox_parser:main",
             "map_generator = ired_bringup.map_generator:main",
             "localization_initializer = ired_bringup.localization_initializer:main",
+            "challenge_manager = ired_bringup.challenges.challenge_manager:main",
         ],
     },
 )
