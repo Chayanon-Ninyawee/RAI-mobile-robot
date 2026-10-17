@@ -12,7 +12,7 @@ class MapGenerator(Node):
         self.declare_parameter("width", 5.0)
         self.declare_parameter("height", 5.0)
         self.declare_parameter("resolution", 0.01)
-        self.declare_parameter("wall_thickness", 0.03)
+        self.declare_parameter("wall_thickness", 0.05)
         self.declare_parameter("output_dir", "/tmp/ired_map")
 
         self.width = float(self.get_parameter("width").value)
@@ -23,7 +23,6 @@ class MapGenerator(Node):
 
         self.validate_parameters()
 
-        self.team_color = None
         self.generated = False
 
         self.create_subscription(
@@ -34,7 +33,7 @@ class MapGenerator(Node):
         )
 
         self.get_logger().info(
-            "Waiting for team color on " "/ired_refbox/parsed/team_color..."
+            "Waiting for team color on /ired_refbox/parsed/team_color..."
         )
 
     def validate_parameters(self):
@@ -57,32 +56,87 @@ class MapGenerator(Node):
             self.get_logger().warning(f"Ignoring invalid team color: {msg.data!r}")
             return
 
-        self.team_color = team_color
-
-        self.get_logger().info(f"Received team color: {self.team_color}")
+        self.get_logger().info(f"Received team color: {team_color}")
 
         try:
-            self.generate_map()
+            self.generate_map(team_color)
             self.generated = True
+
             self.get_logger().info("Map generation completed successfully")
             rclpy.shutdown()
+
         except (OSError, ValueError) as error:
-            self.get_logger().error(f"Map generation failed: {error}")
+            self.get_logger().fatal(f"Map generation failed: {error}")
             raise
 
-    def generate_map(self):
-        width_cells = round(self.width / self.resolution)
-        height_cells = round(self.height / self.resolution)
-        wall_cells = max(
-            1,
-            round(self.wall_thickness / self.resolution),
-        )
+    def generate_map(self, team_color):
+        resolution = self.resolution
+
+        width_cells = round(self.width / resolution)
+        height_cells = round(self.height / resolution)
+        wall_cells = max(1, round(self.wall_thickness / resolution))
 
         if width_cells < 1 or height_cells < 1:
             raise ValueError("Map must contain at least one cell")
 
-        map_width_cells = width_cells + 2 * wall_cells
-        map_height_cells = height_cells + 2 * wall_cells
+        # Use cell-aligned dimensions so the map metadata matches the PGM.
+        field_width = width_cells * resolution
+        field_height = height_cells * resolution
+        wall_thickness = wall_cells * resolution
+
+        map_width_cells = width_cells + wall_cells
+        map_height_cells = height_cells + wall_cells
+
+        # Outer map edges extend half a wall thickness beyond the field.
+        origin_x = -wall_thickness / 2.0
+        origin_y = -wall_thickness / 2.0
+
+        map_width = map_width_cells * resolution
+        map_height = map_height_cells * resolution
+
+        # Pixel centers are used to draw walls centered on their boundaries.
+        def inside(value, lower, upper):
+            return lower <= value < upper
+
+        def in_wall_segment(x, y):
+            half_wall = wall_thickness / 2.0
+
+            # Bottom and top perimeter walls.
+            if inside(y, -half_wall, half_wall) or inside(
+                y,
+                field_height - half_wall,
+                field_height + half_wall,
+            ):
+                return True
+
+            # Left perimeter wall.
+            if inside(x, -half_wall, half_wall):
+                return True
+
+            # Right perimeter wall, with openings beside C_Z51 and C_Z53.
+            if inside(
+                x,
+                field_width - half_wall,
+                field_width + half_wall,
+            ):
+                # C_Z51: y = 0 to 1.
+                # C_Z53: y = 2 to 3.
+                if not (inside(y, 0.0, 1.0) or inside(y, 2.0, 3.0)):
+                    return True
+
+            # Start-zone wall above C_Z51 and C_Z41.
+            # Horizontal segment: x = 3 to 5, y = 1.
+            if inside(x, 3.0, field_width) and inside(
+                y, 1.0 - half_wall, 1.0 + half_wall
+            ):
+                return True
+
+            # Start-zone wall to the left of C_Z31.
+            # Vertical segment: x = 2, y = 0 to 1.
+            if inside(x, 2.0 - half_wall, 2.0 + half_wall) and inside(y, 0.0, 1.0):
+                return True
+
+            return False
 
         os.makedirs(self.output_dir, exist_ok=True)
 
@@ -92,33 +146,32 @@ class MapGenerator(Node):
         with open(pgm_path, "wb") as image:
             image.write(f"P5\n{map_width_cells} {map_height_cells}\n255\n".encode())
 
+            # PGM rows run from top to bottom, while map y runs bottom to top.
             for row in range(map_height_cells):
-                pixels = bytearray([254] * map_width_cells)
+                y = origin_y + map_height - (row + 0.5) * resolution
 
-                if row < wall_cells or row >= map_height_cells - wall_cells:
-                    pixels[:] = bytes(map_width_cells)
-                else:
-                    pixels[:wall_cells] = bytes(wall_cells)
-                    pixels[-wall_cells:] = bytes(wall_cells)
+                pixels = bytearray(map_width_cells)
+
+                for column in range(map_width_cells):
+                    x = origin_x + (column + 0.5) * resolution
+
+                    # 0 = occupied wall; 254 = free space.
+                    pixels[column] = 0 if in_wall_segment(x, y) else 254
+
+                # Mirror the entire map across the Y-axis for Magenta.
+                if team_color == "MAGENTA":
+                    pixels.reverse()
 
                 image.write(pixels)
 
-        # Mirror Cyan across the Y-axis for Magenta.
-        map_width = map_width_cells * self.resolution
-        map_height = map_height_cells * self.resolution
-
-        if self.team_color == "MAGENTA":
-            origin_x = -map_width
-        else:
-            origin_x = 0.0
-
-        origin_y = 0.0
+        if team_color == "MAGENTA":
+            origin_x = -(field_width + wall_thickness / 2.0)
 
         with open(yaml_path, "w") as config:
             config.write(
                 f"image: map.pgm\n"
                 f"mode: trinary\n"
-                f"resolution: {self.resolution}\n"
+                f"resolution: {resolution}\n"
                 f"origin: [{origin_x}, {origin_y}, 0.0]\n"
                 f"negate: 0\n"
                 f"occupied_thresh: 0.65\n"
@@ -126,13 +179,12 @@ class MapGenerator(Node):
             )
 
         self.get_logger().info(
-            f"Generated {self.width} x {self.height} m interior "
-            f"for {self.team_color} with "
-            f"{self.wall_thickness} m walls. "
-            f"Total map: "
-            f"{map_width_cells * self.resolution} x "
-            f"{map_height_cells * self.resolution} m. "
-            f"Map: {yaml_path}"
+            f"Generated {team_color} map\n"
+            f"  Field: {field_width:.3f} x {field_height:.3f} m\n"
+            f"  Wall thickness: {wall_thickness:.3f} m\n"
+            f"  Map size: {map_width:.3f} x {map_height:.3f} m\n"
+            f"  Origin: ({origin_x:.3f}, {origin_y:.3f})\n"
+            f"  Map file: {yaml_path}"
         )
 
 
