@@ -1,119 +1,164 @@
 #!/usr/bin/env python3
+import json
+
 import rclpy
 from geometry_msgs.msg import TwistStamped
 from ired_msgs.msg import MotorData, MotorSpeed
 from rclpy.node import Node
+from std_msgs.msg import Bool, String
 
 
 class INVERSEKINEMATICS(Node):
     def __init__(self):
         super().__init__("inverse_kinematics_node")
 
-        # Initialise Variables and Parameters
         self.initial_parameters()
         self.initial_variables()
 
-        # Initialise ROS Publisher and Subscriber
         self.speed_control_pub = self.create_publisher(
             MotorSpeed, self.inverse_kinematics_topic, 10
         )
+
         self.create_subscription(
-            TwistStamped, self.cmd_vel_topic, self.fetchCommandVelocityCallback, 10
+            TwistStamped,
+            self.cmd_vel_topic,
+            self.nav_command_callback,
+            10,
         )
         self.create_subscription(
-            MotorData, self.motor_data_topic, self.fetchMotorSpeedCallback, 10
+            TwistStamped,
+            self.teleop_cmd_vel_topic,
+            self.teleop_command_callback,
+            10,
+        )
+        self.create_subscription(
+            MotorData,
+            self.motor_data_topic,
+            self.fetchMotorSpeedCallback,
+            10,
+        )
+        self.create_subscription(
+            Bool,
+            "/ired/localization/ready",
+            self.localization_callback,
+            10,
+        )
+        self.create_subscription(
+            String,
+            "/ired_refbox/parsed/gamestate",
+            self.gamestate_callback,
+            10,
         )
 
-        # Initialise ROS Timers
-        timer_period = 0.0333333333  # 30 Hz
-        self.timer = self.create_timer(timer_period, self.update_callback)
+        self.timer = self.create_timer(1.0 / 30.0, self.update_callback)
 
-        # ROS Logger
-        self.get_logger().info(
-            f"Inverse : ROS publisher on {self.inverse_kinematics_topic} [ired_msgs/MotorSpeed]"
-        )
-        self.get_logger().info(
-            f"Inverse : ROS subscriber on {self.cmd_vel_topic} [geometry_msgs/TwistStamped]"
-        )
+        self.get_logger().info(f"Nav2 commands: {self.cmd_vel_topic}")
+        self.get_logger().info(f"Teleop commands: {self.teleop_cmd_vel_topic}")
+        self.get_logger().info(f"Motor commands: {self.inverse_kinematics_topic}")
+        self.get_logger().warning("Motor safety gate enabled. Movement starts LOCKED.")
 
     def initial_parameters(self):
-        # Declare parameters
         self.declare_parameter("cmd_vel_topic", "/cmd_vel")
+        self.declare_parameter("teleop_cmd_vel_topic", "/teleop/cmd_vel")
         self.declare_parameter("motor_control_topic", "/ired/motor/speed_control")
         self.declare_parameter("wheel_seperation", 0.215)
         self.declare_parameter("mps_to_rpm", 150.38262339391686)
-
         self.declare_parameter("motor_data_topic", "/ired/motor/data")
         self.declare_parameter("rpm_to_mps", 0.00664970445)
 
-        # ROS Parameters
-        self.cmd_vel_topic = (
-            self.get_parameter("cmd_vel_topic").get_parameter_value().string_value
-        )
-        self.inverse_kinematics_topic = (
-            self.get_parameter("motor_control_topic").get_parameter_value().string_value
-        )
-        self.wheel_seperation = (
-            self.get_parameter("wheel_seperation").get_parameter_value().double_value
-        )
-        self.mps_to_rpm = (
-            self.get_parameter("mps_to_rpm").get_parameter_value().double_value
-        )
-        self.last_time_cmd_vel = self.get_clock().now()
-
-        self.motor_data_topic = (
-            self.get_parameter("motor_data_topic").get_parameter_value().string_value
-        )
-        self.rpm_to_mps = (
-            self.get_parameter("rpm_to_mps").get_parameter_value().double_value
-        )
-        self.last_time_speed_fb = self.get_clock().now()
-
-        self.pid = [
-            PIDController(kp=0.8, ki=0.0, kd=0.0),
-            PIDController(kp=0.8, ki=0.0, kd=0.0),
-            PIDController(kp=0.8, ki=0.0, kd=0.0),
-            PIDController(kp=0.8, ki=0.0, kd=0.0),
-        ]
-        self.dt = 0.1
-        self.last_update_time = self.get_clock().now()
+        self.cmd_vel_topic = self.get_parameter("cmd_vel_topic").value
+        self.teleop_cmd_vel_topic = self.get_parameter("teleop_cmd_vel_topic").value
+        self.inverse_kinematics_topic = self.get_parameter("motor_control_topic").value
+        self.wheel_seperation = float(self.get_parameter("wheel_seperation").value)
+        self.mps_to_rpm = float(self.get_parameter("mps_to_rpm").value)
+        self.motor_data_topic = self.get_parameter("motor_data_topic").value
+        self.rpm_to_mps = float(self.get_parameter("rpm_to_mps").value)
 
     def initial_variables(self):
         self.goal_linear_velocity_x = 0.0
         self.goal_linear_velocity_y = 0.0
         self.goal_angular_velocity_z = 0.0
-        self.wheel_speed_cmd = [0.0, 0.0, 0.0, 0.0]
+
+        self.nav_cmd = None
+        self.teleop_cmd = None
+
+        self.last_time_nav_cmd = None
+        self.last_time_teleop_cmd = None
+        self.last_time_speed_fb = self.get_clock().now()
+        self.last_time_localization = None
+        self.last_time_gamestate = None
+        self.last_update_time = self.get_clock().now()
+
+        self.localization_ready = False
+        self.game_allows_movement = False
+        self.active_command_source = None
+        self.last_gate_state = None
+
+        self.wheel_speed_cmd = [0.0] * 4
         self.motor_speed = MotorSpeed()
-        self.motor_speed.speed = [0.0, 0.0, 0.0, 0.0]
-        self.wheel_speed_fb = [0.0, 0.0, 0.0, 0.0]
+        self.motor_speed.speed = [0.0] * 4
+        self.wheel_speed_fb = [0.0] * 4
+
         self.FLEFT = 0
         self.FRIGHT = 1
         self.RLEFT = 2
         self.RRIGHT = 3
-        self.last_time_cmd_vel = self.get_clock().now()
-        self.last_time_speed_fb = self.get_clock().now()
-        self.last_update_time = self.get_clock().now()
 
-    def fetchCommandVelocityCallback(self, msg):
-        self.last_time_cmd_vel = self.get_clock().now()
+        self.dt = 1.0 / 30.0
 
-        self.goal_linear_velocity_x = msg.twist.linear.x
-        self.goal_linear_velocity_y = msg.twist.linear.y
-        self.goal_angular_velocity_z = msg.twist.angular.z
+    def nav_command_callback(self, msg):
+        self.nav_cmd = msg
+        self.last_time_nav_cmd = self.get_clock().now()
+
+    def teleop_command_callback(self, msg):
+        self.teleop_cmd = msg
+        self.last_time_teleop_cmd = self.get_clock().now()
 
     def fetchMotorSpeedCallback(self, msg):
         self.last_time_speed_fb = self.get_clock().now()
         self.wheel_speed_fb = list(msg.speed_fb)
 
-    def calculateMotorPID(self, target_speed):
-        motor_command = [0.0] * 4
+    def localization_callback(self, msg):
+        self.last_time_localization = self.get_clock().now()
+        self.localization_ready = bool(msg.data)
 
-        for i in range(4):
-            motor_command[i] = self.pid[i].update(
-                2.7 * target_speed[i], self.wheel_speed_fb[i], self.dt
-            )
+    def gamestate_callback(self, msg):
+        self.last_time_gamestate = self.get_clock().now()
 
-        return motor_command
+        try:
+            game = json.loads(msg.data)
+        except (json.JSONDecodeError, TypeError):
+            self.game_allows_movement = False
+            return
+
+        self.game_allows_movement = (
+            game.get("state") == "RUNNING" and game.get("phase") == "PRODUCTION"
+        )
+
+    def command_is_fresh(self, timestamp, now, timeout=1.0):
+        return timestamp is not None and (now - timestamp).nanoseconds <= int(
+            timeout * 1e9
+        )
+
+    def select_command(self, now):
+        teleop_fresh = self.command_is_fresh(self.last_time_teleop_cmd, now)
+
+        nav_fresh = self.command_is_fresh(self.last_time_nav_cmd, now)
+
+        gamestate_fresh = self.command_is_fresh(self.last_time_gamestate, now, 1.5)
+
+        # Teleop has priority and does not require an allowed RefBox state.
+        if teleop_fresh:
+            self.active_command_source = "teleop"
+            return self.teleop_cmd.twist
+
+        # Nav2 is permitted only during RUNNING / PRODUCTION.
+        if nav_fresh and gamestate_fresh and self.game_allows_movement:
+            self.active_command_source = "nav2"
+            return self.nav_cmd.twist
+
+        self.active_command_source = None
+        return None
 
     def calculateInverseKinematics(self):
         vx = self.goal_linear_velocity_x
@@ -123,104 +168,93 @@ class INVERSEKINEMATICS(Node):
         k = self.wheel_seperation
         s = 1.41421356237
 
-        # Physical wheel velocities
         v_fl = s * (vx - vy) - k * wz
         v_fr = s * (-vx - vy) - k * wz
         v_rl = s * (vx + vy) - k * wz
         v_rr = s * (-vx + vy) - k * wz
-
-        speed_cmd = [0.0] * 4
 
         # fl: motor and encoder + mean CCW (GOOD)
         # fr: motor and encoder + mean CW  (fix in software)
         # bl: motor and encoder + mean CCW (GOOD)
         # br: motor and encoder + mean CW  (fix in software)
 
-        speed_cmd[self.FLEFT] = v_fl * self.mps_to_rpm
-        speed_cmd[self.FRIGHT] = -v_fr * self.mps_to_rpm
-        speed_cmd[self.RLEFT] = v_rl * self.mps_to_rpm
-        speed_cmd[self.RRIGHT] = -v_rr * self.mps_to_rpm
-        # self.get_logger().info(f"FL: {speed_cmd[self.FLEFT]}, FR: {speed_cmd[self.FRIGHT]}, RL: {speed_cmd[self.RLEFT]}, RR: {speed_cmd[self.RRIGHT]}")
+        self.wheel_speed_cmd[self.FLEFT] = v_fl * self.mps_to_rpm
+        self.wheel_speed_cmd[self.FRIGHT] = -v_fr * self.mps_to_rpm
+        self.wheel_speed_cmd[self.RLEFT] = v_rl * self.mps_to_rpm
+        self.wheel_speed_cmd[self.RRIGHT] = -v_rr * self.mps_to_rpm
 
-        self.wheel_speed_cmd = speed_cmd
+    def movement_is_allowed(self, now):
+        localization_fresh = self.command_is_fresh(self.last_time_localization, now)
+
+        return self.localization_ready and localization_fresh
 
     def update_callback(self):
-        time_now = self.get_clock().now()
+        now = self.get_clock().now()
 
-        self.dt = (time_now - self.last_update_time).nanoseconds / 1e9
-        self.last_update_time = time_now
+        self.dt = max(
+            (now - self.last_update_time).nanoseconds / 1e9,
+            1e-6,
+        )
+        self.last_update_time = now
 
-        if (time_now - self.last_time_cmd_vel).nanoseconds / 1e9 > 1.0:
+        if not self.command_is_fresh(self.last_time_speed_fb, now):
+            self.wheel_speed_fb = [0.0] * 4
+
+        localization_allowed = self.movement_is_allowed(now)
+        command = self.select_command(now)
+
+        if command is not None:
+            if self.active_command_source == "teleop":
+                allowed = True
+            else:
+                allowed = self.movement_is_allowed(now)
+        else:
+            allowed = False
+
+        if allowed and command is not None:
+            self.goal_linear_velocity_x = command.linear.x
+            self.goal_linear_velocity_y = command.linear.y
+            self.goal_angular_velocity_z = command.angular.z
+        else:
             self.goal_linear_velocity_x = 0.0
             self.goal_linear_velocity_y = 0.0
             self.goal_angular_velocity_z = 0.0
 
-        if (time_now - self.last_time_speed_fb).nanoseconds / 1e9 > 1.0:
-            self.wheel_speed_fb = [0.0] * 4
+        if allowed != self.last_gate_state:
+            self.last_gate_state = allowed
+
+            if allowed:
+                self.get_logger().warning(
+                    f"Motor gate OPEN: source={self.active_command_source}"
+                )
+            else:
+                self.get_logger().warning(
+                    "Motor gate CLOSED: localization or command unavailable."
+                )
 
         self.calculateInverseKinematics()
-        # motor_command = self.calculateMotorPID(self.wheel_speed_cmd)
-        # self.motor_speed.speed = [round(x, 4) for x in motor_command]
-        self.motor_speed.speed = [round(1.36 * x, 4) for x in self.wheel_speed_cmd]
-        self.speed_control_pub.publish(self.motor_speed)
 
-
-class PIDController:
-    def __init__(self, kp, ki, kd, output_min=None, output_max=None):
-        self.kp = kp
-        self.ki = ki
-        self.kd = kd
-
-        self.output_min = output_min
-        self.output_max = output_max
-
-        self.integral = 0.0
-        self.previous_error = 0.0
-        self.initialized = False
-
-    def reset(self):
-        self.integral = 0.0
-        self.previous_error = 0.0
-        self.initialized = False
-
-    def update(self, target, actual, dt):
-        if dt <= 0.0:
-            return 0.0
-
-        error = target - actual
-
-        # Integral
-        self.integral += error * dt
-
-        # Derivative
-        if self.initialized:
-            derivative = (error - self.previous_error) / dt
+        if not allowed:
+            self.motor_speed.speed = [0.0] * 4
         else:
-            derivative = 0.0
-            self.initialized = True
+            self.motor_speed.speed = [
+                round(1.36 * speed, 4) for speed in self.wheel_speed_cmd
+            ]
 
-        output = self.kp * error + self.ki * self.integral + self.kd * derivative
-
-        # Output limiting
-        if self.output_min is not None:
-            output = max(self.output_min, output)
-
-        if self.output_max is not None:
-            output = min(self.output_max, output)
-
-        self.previous_error = error
-
-        return output
+        self.speed_control_pub.publish(self.motor_speed)
 
 
 def main(args=None):
     rclpy.init(args=args)
-    inverse_kinematics = INVERSEKINEMATICS()
+    node = INVERSEKINEMATICS()
 
-    rclpy.spin(inverse_kinematics)
-
-    inverse_kinematics.destroy_node()
-    rclpy.shutdown()
+    try:
+        rclpy.spin(node)
+    except KeyboardInterrupt:
+        pass
+    finally:
+        node.destroy_node()
+        rclpy.shutdown()
 
 
 if __name__ == "__main__":

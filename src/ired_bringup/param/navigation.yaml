@@ -43,8 +43,8 @@ amcl:
     tf_broadcast: true
     transform_tolerance: 0.5
 
-    update_min_a: 0.15
-    update_min_d: 0.08
+    update_min_a: 0.0
+    update_min_d: 0.0
 
     scan_topic: scan_filtered
     map_topic: map

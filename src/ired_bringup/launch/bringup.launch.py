@@ -228,5 +228,11 @@ def generate_launch_description():
             ),
             map_generator,
             start_navigation_after_map,
+            Node(
+                package="ired_bringup",
+                executable="localization_initializer",
+                name="localization_initializer",
+                output="screen",
+            ),
         ]
     )

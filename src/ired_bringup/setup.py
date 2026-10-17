@@ -38,6 +38,7 @@ setup(
             "aruco_node = ired_bringup.aruco:main",
             "refbox_parser = ired_bringup.refbox_parser:main",
             "map_generator = ired_bringup.map_generator:main",
+            "localization_initializer = ired_bringup.localization_initializer:main",
         ],
     },
 )

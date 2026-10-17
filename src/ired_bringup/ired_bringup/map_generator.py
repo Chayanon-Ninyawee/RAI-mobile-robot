@@ -12,7 +12,7 @@ class MapGenerator(Node):
         self.declare_parameter("width", 5.0)
         self.declare_parameter("height", 5.0)
         self.declare_parameter("resolution", 0.01)
-        self.declare_parameter("wall_thickness", 0.05)
+        self.declare_parameter("wall_thickness", 0.03)
         self.declare_parameter("output_dir", "/tmp/ired_map")
 
         self.width = float(self.get_parameter("width").value)
