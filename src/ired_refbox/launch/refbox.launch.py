@@ -25,7 +25,7 @@ def generate_launch_description():
                 package="ired_refbox",
                 executable="ired_refbox_node",
                 name="ired_refbox",
-                output="screen",
+                output="log",
                 parameters=[refbox_param],
             ),
         ]
