@@ -4,7 +4,7 @@
     team_color: "CYAN"
 ired_refbox:
   ros__parameters:
-    refbox_host: "192.168.122.210"
+    refbox_host: "192.168.130.211"
     crypto_key: "randomkey"
 
     team_name: "TEAM_CYAN"
