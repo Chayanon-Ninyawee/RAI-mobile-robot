@@ -6,12 +6,11 @@ from launch_ros.actions import Node
 from launch import LaunchDescription
 from launch.actions import (
     DeclareLaunchArgument,
-    ExecuteProcess,
     IncludeLaunchDescription,
     LogInfo,
     RegisterEventHandler,
 )
-from launch.event_handlers import OnProcessExit, OnProcessIO, OnShutdown
+from launch.event_handlers import OnProcessIO
 from launch.launch_description_sources import (
     AnyLaunchDescriptionSource,
     PythonLaunchDescriptionSource,
@@ -48,10 +47,6 @@ def generate_launch_description():
 
     robot_description = Command(["xacro ", urdf_file])
 
-    # ---------------------------------------------------------
-    # Hardware and base nodes
-    # ---------------------------------------------------------
-
     robot_state_publisher = Node(
         package="robot_state_publisher",
         executable="robot_state_publisher",
@@ -64,6 +59,10 @@ def generate_launch_description():
             }
         ],
     )
+
+    # ---------------------------------------------------------
+    # Hardware and base nodes
+    # ---------------------------------------------------------
 
     forward_kinematics = Node(
         package="ired_bringup",
@@ -107,6 +106,10 @@ def generate_launch_description():
         output="screen",
     )
 
+    # ---------------------------------------------------------
+    # LiDAR and scan filtering
+    # ---------------------------------------------------------
+
     rplidar_node = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(
@@ -128,6 +131,10 @@ def generate_launch_description():
         parameters=[param_dir, laser_param_dir],
         output="screen",
     )
+
+    # ---------------------------------------------------------
+    # RefBox
+    # ---------------------------------------------------------
 
     refbox = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
@@ -158,8 +165,8 @@ def generate_launch_description():
         package="ired_bringup",
         executable="map_generator",
         name="map_generator",
-        output="screen",
         parameters=[map_generator_param_dir],
+        output="screen",
     )
 
     # ---------------------------------------------------------
@@ -178,27 +185,6 @@ def generate_launch_description():
             "nav_param_dir": nav_param_dir,
             "map_file": map_file,
         }.items(),
-    )
-
-    # Wait up to 120 seconds for AMCL to become active.
-    # The launch environment must already have ROS sourced.
-    wait_for_amcl = ExecuteProcess(
-        cmd=[
-            "bash",
-            "-lc",
-            """
-            for i in $(seq 1 120); do
-                if ros2 lifecycle get /amcl 2>/dev/null | grep -q 'active'; then
-                    exit 0
-                fi
-                sleep 1
-            done
-
-            echo 'ERROR: AMCL did not become active within 120 seconds.'
-            exit 1
-            """,
-        ],
-        output="screen",
     )
 
     # ---------------------------------------------------------
@@ -226,7 +212,7 @@ def generate_launch_description():
     map_output = ""
     navigation_started = False
 
-    def start_navigation_when_map_generated(event):
+    def start_navigation_after_map(event):
         nonlocal map_output, navigation_started
 
         chunk = event.text
@@ -242,41 +228,22 @@ def generate_launch_description():
             navigation_started = True
 
             return [
-                LogInfo(msg="Map generation completed. Starting Nav2..."),
+                LogInfo(
+                    msg=(
+                        "Map generation completed. " "Starting Nav2 and localization..."
+                    )
+                ),
                 navigation,
-                wait_for_amcl,
+                localization_initializer,
             ]
 
         return []
 
-    start_navigation_after_map = RegisterEventHandler(
+    start_navigation_handler = RegisterEventHandler(
         OnProcessIO(
             target_action=map_generator,
-            on_stdout=start_navigation_when_map_generated,
-            on_stderr=start_navigation_when_map_generated,
-        )
-    )
-
-    def start_localization(event):
-        if event.returncode == 0:
-            return [
-                LogInfo(msg="AMCL is active. Starting localization initializer..."),
-                localization_initializer,
-            ]
-
-        return [
-            LogInfo(
-                msg=(
-                    "ERROR: AMCL readiness check failed. "
-                    "Localization initializer will not start."
-                )
-            ),
-        ]
-
-    start_localization_after_amcl = RegisterEventHandler(
-        OnProcessExit(
-            target_action=wait_for_amcl,
-            on_exit=start_localization,
+            on_stdout=start_navigation_after_map,
+            on_stderr=start_navigation_after_map,
         )
     )
 
@@ -307,21 +274,11 @@ def generate_launch_description():
 
         return []
 
-    start_challenge_manager_after_localization = RegisterEventHandler(
+    start_challenge_manager_handler = RegisterEventHandler(
         OnProcessIO(
             target_action=localization_initializer,
             on_stdout=start_challenge_manager_after_initial_pose,
             on_stderr=start_challenge_manager_after_initial_pose,
-        )
-    )
-
-    # Log launch shutdown. This reports that shutdown started,
-    # but does not identify the process that requested it.
-    shutdown_logger = RegisterEventHandler(
-        OnShutdown(
-            on_shutdown=[
-                LogInfo(msg="SHUTDOWN: iRED bringup is shutting down."),
-            ]
         )
     )
 
@@ -364,7 +321,6 @@ def generate_launch_description():
                 default_value="/tmp/ired_map/map.yaml",
                 description="Generated map YAML file",
             ),
-            shutdown_logger,
             robot_state_publisher,
             forward_kinematics,
             inverse_kinematics,
@@ -377,8 +333,7 @@ def generate_launch_description():
             refbox,
             refbox_parser,
             map_generator,
-            start_navigation_after_map,
-            start_localization_after_amcl,
-            start_challenge_manager_after_localization,
+            start_navigation_handler,
+            start_challenge_manager_handler,
         ]
     )
