@@ -6,11 +6,12 @@ from launch_ros.actions import Node
 from launch import LaunchDescription
 from launch.actions import (
     DeclareLaunchArgument,
+    ExecuteProcess,
     IncludeLaunchDescription,
     LogInfo,
     RegisterEventHandler,
 )
-from launch.event_handlers import OnProcessIO
+from launch.event_handlers import OnProcessExit, OnProcessIO
 from launch.launch_description_sources import (
     AnyLaunchDescriptionSource,
     PythonLaunchDescriptionSource,
@@ -19,53 +20,41 @@ from launch.substitutions import Command, LaunchConfiguration
 
 
 def generate_launch_description():
+    bringup_share = get_package_share_directory("ired_bringup")
+
     param_dir = LaunchConfiguration(
         "param_dir",
-        default=os.path.join(
-            get_package_share_directory("ired_bringup"), "param", "ired.yaml"
-        ),
+        default=os.path.join(bringup_share, "param", "ired.yaml"),
     )
     laser_param_dir = LaunchConfiguration(
         "laser_param_dir",
-        default=os.path.join(
-            get_package_share_directory("ired_bringup"), "param", "laser_config.yaml"
-        ),
+        default=os.path.join(bringup_share, "param", "laser_config.yaml"),
     )
     refbox_param_dir = LaunchConfiguration(
         "refbox_param_dir",
-        default=os.path.join(
-            get_package_share_directory("ired_bringup"), "param", "refbox.yaml"
-        ),
+        default=os.path.join(bringup_share, "param", "refbox.yaml"),
     )
     map_generator_param_dir = LaunchConfiguration(
         "map_generator_param_dir",
-        default=os.path.join(
-            get_package_share_directory("ired_bringup"),
-            "param",
-            "map_generator.yaml",
-        ),
+        default=os.path.join(bringup_share, "param", "map_generator.yaml"),
     )
     nav_param_dir = LaunchConfiguration(
         "nav_param_dir",
-        default=os.path.join(
-            get_package_share_directory("ired_bringup"),
-            "param",
-            "navigation.yaml",
-        ),
+        default=os.path.join(bringup_share, "param", "navigation.yaml"),
     )
-    urdf_file = os.path.join(
-        get_package_share_directory("ired_bringup"), "urdf", "ired.urdf.xacro"
+    map_file = LaunchConfiguration(
+        "map_file",
+        default="/tmp/ired_map/map.yaml",
     )
-    robot_description = Command(["xacro ", str(urdf_file)])
+
+    urdf_file = os.path.join(bringup_share, "urdf", "ired.urdf.xacro")
+    robot_description = Command(["xacro ", urdf_file])
+
     rplidar_launch = LaunchConfiguration(
         "rplidar_launch",
         default=os.path.join(get_package_share_directory("rplidar_ros"), "launch"),
     )
 
-    map_file = LaunchConfiguration(
-        "map_file",
-        default="/tmp/ired_map/map.yaml",
-    )
     map_generator = Node(
         package="ired_bringup",
         executable="map_generator",
@@ -73,6 +62,7 @@ def generate_launch_description():
         output="screen",
         parameters=[map_generator_param_dir],
     )
+
     navigation = IncludeLaunchDescription(
         AnyLaunchDescriptionSource(
             os.path.join(
@@ -87,14 +77,42 @@ def generate_launch_description():
         }.items(),
     )
 
+    # Wait until Nav2 reports that AMCL is active.
+    wait_for_amcl = ExecuteProcess(
+        cmd=[
+            "bash",
+            "-lc",
+            "until ros2 lifecycle get /amcl 2>/dev/null "
+            "| grep -q 'active'; do sleep 1; done",
+        ],
+        output="screen",
+    )
+
+    localization_initializer = Node(
+        package="ired_bringup",
+        executable="localization_initializer",
+        name="localization_initializer",
+        output="screen",
+    )
+
+    challenge_manager = Node(
+        package="ired_bringup",
+        executable="challenge_manager",
+        name="challenge_manager",
+        output="screen",
+    )
+
     map_output = ""
     navigation_started = False
 
     def start_navigation_when_map_generated(event):
         nonlocal map_output, navigation_started
 
-        output = event.text.decode(errors="replace")
-        map_output += output
+        chunk = event.text
+        if isinstance(chunk, bytes):
+            chunk = chunk.decode(errors="replace")
+
+        map_output += chunk
 
         if (
             not navigation_started
@@ -102,8 +120,9 @@ def generate_launch_description():
         ):
             navigation_started = True
             return [
-                LogInfo(msg="Map generated successfully. Starting navigation..."),
+                LogInfo(msg="Map generated. Starting navigation..."),
                 navigation,
+                wait_for_amcl,
             ]
 
         return []
@@ -116,13 +135,63 @@ def generate_launch_description():
         )
     )
 
+    def start_localization(event):
+        if event.returncode == 0:
+            return [
+                LogInfo(msg="AMCL is active. Starting localization initializer..."),
+                localization_initializer,
+            ]
+
+        return [
+            LogInfo(msg="AMCL readiness check failed."),
+        ]
+
+    start_localization_after_amcl = RegisterEventHandler(
+        OnProcessExit(
+            target_action=wait_for_amcl,
+            on_exit=start_localization,
+        )
+    )
+
+    initializer_output = ""
+    challenge_manager_started = False
+
+    def start_challenge_manager(event):
+        nonlocal initializer_output, challenge_manager_started
+
+        chunk = event.text
+        if isinstance(chunk, bytes):
+            chunk = chunk.decode(errors="replace")
+
+        initializer_output += chunk
+
+        if (
+            not challenge_manager_started
+            and "Published AMCL initial pose (5/5)" in initializer_output
+        ):
+            challenge_manager_started = True
+            return [
+                LogInfo(msg="Initial pose published. Starting challenge manager..."),
+                challenge_manager,
+            ]
+
+        return []
+
+    start_challenge_manager_after_localization = RegisterEventHandler(
+        OnProcessIO(
+            target_action=localization_initializer,
+            on_stdout=start_challenge_manager,
+            on_stderr=start_challenge_manager,
+        )
+    )
+
     return LaunchDescription(
         [
-            LogInfo(msg=["Starting iRED Bringup..."]),
+            LogInfo(msg="Starting iRED Bringup..."),
             DeclareLaunchArgument(
                 "param_dir",
                 default_value=param_dir,
-                description="Specifying parameter direction",
+                description="Robot parameter file",
             ),
             DeclareLaunchArgument(
                 "laser_param_dir",
@@ -137,17 +206,17 @@ def generate_launch_description():
             DeclareLaunchArgument(
                 "map_generator_param_dir",
                 default_value=map_generator_param_dir,
-                description="Path to the map generator parameters",
+                description="Map generator parameter file",
             ),
             DeclareLaunchArgument(
                 "map_file",
                 default_value=map_file,
-                description="Path to the generated map YAML",
+                description="Generated map YAML file",
             ),
             DeclareLaunchArgument(
                 "nav_param_dir",
                 default_value=nav_param_dir,
-                description="Path to the Nav2 parameter file",
+                description="Nav2 parameter file",
             ),
             Node(
                 package="robot_state_publisher",
@@ -155,7 +224,10 @@ def generate_launch_description():
                 name="robot_state_publisher",
                 output="screen",
                 parameters=[
-                    {"robot_description": robot_description, "publish_frequency": 10.0}
+                    {
+                        "robot_description": robot_description,
+                        "publish_frequency": 10.0,
+                    }
                 ],
             ),
             Node(
@@ -231,17 +303,7 @@ def generate_launch_description():
             ),
             map_generator,
             start_navigation_after_map,
-            Node(
-                package="ired_bringup",
-                executable="localization_initializer",
-                name="localization_initializer",
-                output="screen",
-            ),
-            Node(
-                package="ired_bringup",
-                executable="challenge_manager",
-                name="challenge_manager",
-                output="screen",
-            ),
+            start_localization_after_amcl,
+            start_challenge_manager_after_localization,
         ]
     )
