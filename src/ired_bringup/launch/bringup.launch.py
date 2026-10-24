@@ -112,6 +112,7 @@ def generate_launch_description():
         OnProcessIO(
             target_action=map_generator,
             on_stdout=start_navigation_when_map_generated,
+            on_stderr=start_navigation_when_map_generated,
         )
     )
 
