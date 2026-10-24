@@ -131,15 +131,15 @@ private:
         const std::string type = message->GetTypeName();
         const std::string data = message->DebugString();
 
-        RCLCPP_INFO(
-            get_logger(),
-            "Received %s (%u:%u) from %s:%u",
-            type.c_str(),
-            component_id,
-            message_id,
-            endpoint.address().to_string().c_str(),
-            endpoint.port()
-        );
+        // RCLCPP_INFO(
+        //     get_logger(),
+        //     "Received %s (%u:%u) from %s:%u",
+        //     type.c_str(),
+        //     component_id,
+        //     message_id,
+        //     endpoint.address().to_string().c_str(),
+        //     endpoint.port()
+        // );
 
         std_msgs::msg::String raw_msg;
         raw_msg.data = "component_id: " + std::to_string(component_id) + "\nmessage_id: " + std::to_string(message_id) + "\ntype: " + type +
