@@ -283,7 +283,7 @@ local_costmap:
         plugin: nav2_costmap_2d::InflationLayer
 
         # Gives DWB a useful safety buffer around obstacles.
-        inflation_radius: 0.35
+        inflation_radius: 0.20
         cost_scaling_factor: 5.0
 
       always_send_full_costmap: true
@@ -342,7 +342,7 @@ global_costmap:
         plugin: nav2_costmap_2d::InflationLayer
 
         # Give the global planner some obstacle clearance too.
-        inflation_radius: 0.35
+        inflation_radius: 0.20
         cost_scaling_factor: 10.0
 
       always_send_full_costmap: true
