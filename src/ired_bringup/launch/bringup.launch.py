@@ -206,7 +206,7 @@ def generate_launch_description():
     )
 
     # ---------------------------------------------------------
-    # Startup event handlers
+    # Startup event handler
     # ---------------------------------------------------------
 
     map_output = ""
@@ -230,11 +230,13 @@ def generate_launch_description():
             return [
                 LogInfo(
                     msg=(
-                        "Map generation completed. " "Starting Nav2 and localization..."
+                        "Map generation completed. "
+                        "Starting Nav2, localization, and challenge manager..."
                     )
                 ),
                 navigation,
                 localization_initializer,
+                challenge_manager,
             ]
 
         return []
@@ -247,41 +249,6 @@ def generate_launch_description():
         )
     )
 
-    initializer_output = ""
-    challenge_manager_started = False
-
-    def start_challenge_manager_after_initial_pose(event):
-        nonlocal initializer_output, challenge_manager_started
-
-        chunk = event.text
-        if isinstance(chunk, bytes):
-            chunk = chunk.decode(errors="replace")
-
-        initializer_output = (initializer_output + chunk)[-4096:]
-
-        if (
-            not challenge_manager_started
-            and "Published AMCL initial pose (5/5)" in initializer_output
-        ):
-            challenge_manager_started = True
-
-            return [
-                LogInfo(
-                    msg=("Initial pose published. " "Starting challenge manager...")
-                ),
-                challenge_manager,
-            ]
-
-        return []
-
-    start_challenge_manager_handler = RegisterEventHandler(
-        OnProcessIO(
-            target_action=localization_initializer,
-            on_stdout=start_challenge_manager_after_initial_pose,
-            on_stderr=start_challenge_manager_after_initial_pose,
-        )
-    )
-
     # ---------------------------------------------------------
     # Launch description
     # ---------------------------------------------------------
@@ -291,29 +258,47 @@ def generate_launch_description():
             LogInfo(msg="Starting iRED bringup..."),
             DeclareLaunchArgument(
                 "param_dir",
-                default_value=os.path.join(bringup_share, "param", "ired.yaml"),
+                default_value=os.path.join(
+                    bringup_share,
+                    "param",
+                    "ired.yaml",
+                ),
                 description="Robot parameter file",
             ),
             DeclareLaunchArgument(
                 "laser_param_dir",
-                default_value=os.path.join(bringup_share, "param", "laser_config.yaml"),
+                default_value=os.path.join(
+                    bringup_share,
+                    "param",
+                    "laser_config.yaml",
+                ),
                 description="Laser filter parameter file",
             ),
             DeclareLaunchArgument(
                 "refbox_param_dir",
-                default_value=os.path.join(bringup_share, "param", "refbox.yaml"),
+                default_value=os.path.join(
+                    bringup_share,
+                    "param",
+                    "refbox.yaml",
+                ),
                 description="RefBox parameter file",
             ),
             DeclareLaunchArgument(
                 "map_generator_param_dir",
                 default_value=os.path.join(
-                    bringup_share, "param", "map_generator.yaml"
+                    bringup_share,
+                    "param",
+                    "map_generator.yaml",
                 ),
                 description="Map generator parameter file",
             ),
             DeclareLaunchArgument(
                 "nav_param_dir",
-                default_value=os.path.join(bringup_share, "param", "navigation.yaml"),
+                default_value=os.path.join(
+                    bringup_share,
+                    "param",
+                    "navigation.yaml",
+                ),
                 description="Nav2 parameter file",
             ),
             DeclareLaunchArgument(
@@ -321,6 +306,8 @@ def generate_launch_description():
                 default_value="/tmp/ired_map/map.yaml",
                 description="Generated map YAML file",
             ),
+            # Register the handler before starting map_generator.
+            start_navigation_handler,
             robot_state_publisher,
             forward_kinematics,
             inverse_kinematics,
@@ -333,7 +320,5 @@ def generate_launch_description():
             refbox,
             refbox_parser,
             map_generator,
-            start_navigation_handler,
-            start_challenge_manager_handler,
         ]
     )

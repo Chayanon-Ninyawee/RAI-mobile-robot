@@ -2,9 +2,8 @@ import json
 import math
 import re
 
-import rclpy
 from action_msgs.msg import GoalStatus
-from geometry_msgs.msg import PoseStamped
+from geometry_msgs.msg import PoseStamped, PoseWithCovarianceStamped
 from nav2_msgs.action import NavigateToPose
 from rclpy.action import ActionClient
 from rclpy.duration import Duration
@@ -48,10 +47,18 @@ class NavigationChallenge(Node):
         self.declare_parameter("map_frame", "map")
         self.declare_parameter("initial_point_wait", 2.0)
         self.declare_parameter("retry_delay", 2.0)
+        self.declare_parameter("localization_timeout", 2.0)
+        self.declare_parameter("max_position_variance", 0.5)
 
         self.map_frame = self.get_parameter("map_frame").value
         self.initial_point_wait = float(self.get_parameter("initial_point_wait").value)
         self.retry_delay = float(self.get_parameter("retry_delay").value)
+        self.localization_timeout = float(
+            self.get_parameter("localization_timeout").value
+        )
+        self.max_position_variance = float(
+            self.get_parameter("max_position_variance").value
+        )
 
         self.team_color = "CYAN"
         self.game_state = {}
@@ -73,6 +80,10 @@ class NavigationChallenge(Node):
 
         self.challenge_complete = False
         self.stopping = False
+
+        self.last_pose_time = None
+        self.localization_ready = False
+        self.localization_warning_logged = False
 
         self.create_subscription(
             String,
@@ -99,6 +110,13 @@ class NavigationChallenge(Node):
             String,
             "/ired_refbox/parsed/team_color",
             self.team_color_callback,
+            10,
+        )
+
+        self.create_subscription(
+            PoseWithCovarianceStamped,
+            "/amcl_pose",
+            self.amcl_pose_callback,
             10,
         )
 
@@ -153,6 +171,45 @@ class NavigationChallenge(Node):
             self.team_color = color
 
     # ---------------------------------------------------------
+    # Localization
+    # ---------------------------------------------------------
+
+    def amcl_pose_callback(self, msg):
+        position = msg.pose.pose.position
+        covariance = msg.pose.covariance
+
+        values = (
+            position.x,
+            position.y,
+            covariance[0],
+            covariance[7],
+        )
+
+        if not all(math.isfinite(value) for value in values):
+            self.localization_ready = False
+            return
+
+        if (
+            covariance[0] < 0.0
+            or covariance[7] < 0.0
+            or covariance[0] > self.max_position_variance
+            or covariance[7] > self.max_position_variance
+        ):
+            self.localization_ready = False
+            return
+
+        self.last_pose_time = self.get_clock().now()
+        self.localization_ready = True
+
+    def is_localization_ready(self):
+        if not self.localization_ready or self.last_pose_time is None:
+            return False
+
+        elapsed = (self.get_clock().now() - self.last_pose_time).nanoseconds / 1e9
+
+        return elapsed <= self.localization_timeout
+
+    # ---------------------------------------------------------
     # Challenge state
     # ---------------------------------------------------------
 
@@ -169,11 +226,13 @@ class NavigationChallenge(Node):
         self.status_pub.publish(msg)
 
     def stop(self):
+        if self.stopping:
+            return
+
         self.stopping = True
 
         if self.goal_handle is not None:
             self.get_logger().info("Cancelling active Nav2 goal")
-
             self.goal_handle.cancel_goal_async()
 
         self.publish_status("INACTIVE")
@@ -194,13 +253,9 @@ class NavigationChallenge(Node):
         if route_color and route_color != self.team_color:
             return []
 
-        # Your parser puts team_color at the top level.
-        # If there is one route, use it directly.
         if len(routes) == 1:
             selected = routes[0]
         else:
-            # If multiple routes are supplied, use an explicit
-            # per-route team_color when available.
             selected = next(
                 (
                     route
@@ -212,7 +267,7 @@ class NavigationChallenge(Node):
             )
 
         if not isinstance(selected, dict):
-            self.get_logger().warn(f"No route found for team {self.team_color}")
+            self.get_logger().warning(f"No route found for team {self.team_color}")
             return []
 
         remaining = selected.get("remaining", [])
@@ -236,7 +291,6 @@ class NavigationChallenge(Node):
             self.publish_status("WAITING_FOR_ROUTE")
             return False
 
-        # The first point is mandatory. Only reorder the rest.
         self.initial_zone = zones[0]
         self.route_zones = self.optimize_route(zones)
         self.remaining_zones = list(self.route_zones)
@@ -247,9 +301,7 @@ class NavigationChallenge(Node):
         self.challenge_complete = False
         self.retry_after = None
 
-        self.get_logger().info(
-            f"Loaded {self.team_color} route: " f"{self.route_zones}"
-        )
+        self.get_logger().info(f"Loaded {self.team_color} route: {self.route_zones}")
 
         self.publish_status("ROUTE_LOADED")
         return True
@@ -352,7 +404,7 @@ class NavigationChallenge(Node):
             return
 
         if not handle.accepted:
-            self.get_logger().warn("Nav2 rejected the goal")
+            self.get_logger().warning("Nav2 rejected the goal")
             self.schedule_retry()
             return
 
@@ -385,7 +437,7 @@ class NavigationChallenge(Node):
             return
 
         if result.status != GoalStatus.STATUS_SUCCEEDED:
-            self.get_logger().warn(
+            self.get_logger().warning(
                 f"Goal {completed_zone} failed " f"(status {result.status}); retrying"
             )
             self.schedule_retry()
@@ -477,10 +529,7 @@ class NavigationChallenge(Node):
     # ---------------------------------------------------------
 
     def update(self):
-        if self.stopping:
-            return
-
-        if not self.is_active():
+        if self.stopping or not self.is_active():
             return
 
         self.publish_machine_markers()
@@ -491,6 +540,19 @@ class NavigationChallenge(Node):
 
         if self.challenge_complete:
             return
+
+        # Do not issue a goal until localization is available.
+        # Keep the route loaded while waiting.
+        if not self.is_localization_ready():
+            self.publish_status("WAITING_FOR_LOCALIZATION")
+
+            if not self.localization_warning_logged:
+                self.get_logger().info("Waiting for a recent, usable AMCL pose")
+                self.localization_warning_logged = True
+
+            return
+
+        self.localization_warning_logged = False
 
         if self.goal_pending or self.goal_handle is not None:
             return
