@@ -27,6 +27,7 @@ class MapGenerator(Node):
 
         self.generated = False
         self.map_msg = None
+        self.map_published = False
 
         self.map_pub = self.create_publisher(
             OccupancyGrid,
@@ -44,8 +45,6 @@ class MapGenerator(Node):
             self.team_color_callback,
             10,
         )
-
-        self.create_timer(1.0, self.publish_map)
 
         self.get_logger().info(
             "Waiting for team color on /ired_refbox/parsed/team_color..."
@@ -86,11 +85,14 @@ class MapGenerator(Node):
             raise
 
     def publish_map(self):
-        if self.map_msg is None:
+        if self.map_msg is None or self.map_published:
             return
 
         self.map_msg.header.stamp = self.get_clock().now().to_msg()
         self.map_pub.publish(self.map_msg)
+        self.map_published = True
+
+        self.get_logger().info("Published map on /map")
 
     def generate_map(self, team_color):
         resolution = self.resolution
@@ -149,13 +151,19 @@ class MapGenerator(Node):
             # Start-zone wall above C_Z51 and C_Z41.
             # Horizontal segment: x = 3 to 5, y = 1.
             if inside(x, 3.0, field_width) and inside(
-                y, 1.0 - half_wall, 1.0 + half_wall
+                y,
+                1.0 - half_wall,
+                1.0 + half_wall,
             ):
                 return True
 
             # Start-zone wall to the left of C_Z31.
             # Vertical segment: x = 2, y = 0 to 1.
-            if inside(x, 2.0 - half_wall, 2.0 + half_wall) and inside(y, 0.0, 1.0):
+            if inside(
+                x,
+                2.0 - half_wall,
+                2.0 + half_wall,
+            ) and inside(y, 0.0, 1.0):
                 return True
 
             return False
@@ -240,8 +248,11 @@ class MapGenerator(Node):
             f"  Map size: {map_width:.3f} x {map_height:.3f} m\n"
             f"  Origin: ({origin_x:.3f}, {origin_y:.3f})\n"
             f"  Map file: {yaml_path}\n"
-            f"  ROS topic: /map (1 Hz)"
+            f"  ROS topic: /map (published once, transient-local)"
         )
+
+        # Publish immediately after generation.
+        self.publish_map()
 
 
 def main(args=None):
