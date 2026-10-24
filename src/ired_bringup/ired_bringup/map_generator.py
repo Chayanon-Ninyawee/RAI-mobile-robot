@@ -3,6 +3,7 @@ import os
 import rclpy
 from nav_msgs.msg import OccupancyGrid
 from rclpy.node import Node
+from rclpy.qos import DurabilityPolicy, QoSProfile, ReliabilityPolicy
 from std_msgs.msg import String
 
 
@@ -30,7 +31,11 @@ class MapGenerator(Node):
         self.map_pub = self.create_publisher(
             OccupancyGrid,
             "/map",
-            10,
+            QoSProfile(
+                depth=1,
+                reliability=ReliabilityPolicy.RELIABLE,
+                durability=DurabilityPolicy.TRANSIENT_LOCAL,
+            ),
         )
 
         self.create_subscription(
@@ -144,19 +149,13 @@ class MapGenerator(Node):
             # Start-zone wall above C_Z51 and C_Z41.
             # Horizontal segment: x = 3 to 5, y = 1.
             if inside(x, 3.0, field_width) and inside(
-                y,
-                1.0 - half_wall,
-                1.0 + half_wall,
+                y, 1.0 - half_wall, 1.0 + half_wall
             ):
                 return True
 
             # Start-zone wall to the left of C_Z31.
             # Vertical segment: x = 2, y = 0 to 1.
-            if inside(
-                x,
-                2.0 - half_wall,
-                2.0 + half_wall,
-            ) and inside(y, 0.0, 1.0):
+            if inside(x, 2.0 - half_wall, 2.0 + half_wall) and inside(y, 0.0, 1.0):
                 return True
 
             return False
@@ -166,12 +165,13 @@ class MapGenerator(Node):
         pgm_path = os.path.join(self.output_dir, "map.pgm")
         yaml_path = os.path.join(self.output_dir, "map.yaml")
 
-        # Save the map image. PGM rows run top to bottom.
         with open(pgm_path, "wb") as image:
             image.write(f"P5\n{map_width_cells} {map_height_cells}\n255\n".encode())
 
+            # PGM rows run from top to bottom, while map y runs bottom to top.
             for row in range(map_height_cells):
                 y = origin_y + map_height - (row + 0.5) * resolution
+
                 pixels = bytearray(map_width_cells)
 
                 for column in range(map_width_cells):
@@ -200,7 +200,7 @@ class MapGenerator(Node):
                 f"free_thresh: 0.196\n"
             )
 
-        # Build the ROS OccupancyGrid. Its data uses bottom-to-top row order.
+        # Build the ROS OccupancyGrid in bottom-to-top row order.
         map_msg = OccupancyGrid()
         map_msg.header.frame_id = "map"
 
@@ -216,7 +216,6 @@ class MapGenerator(Node):
 
         for row in range(map_height_cells):
             y = -wall_thickness / 2.0 + (row + 0.5) * resolution
-
             row_data = []
 
             for column in range(map_width_cells):
@@ -225,7 +224,7 @@ class MapGenerator(Node):
                 # 100 = occupied; 0 = free.
                 row_data.append(100 if in_wall_segment(x, y) else 0)
 
-            # Mirror the map across the Y-axis for Magenta.
+            # Mirror the entire map across the Y-axis for Magenta.
             if team_color == "MAGENTA":
                 row_data.reverse()
 

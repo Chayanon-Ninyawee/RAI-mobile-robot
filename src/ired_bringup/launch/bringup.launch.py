@@ -1,19 +1,16 @@
 import os
 
-import rclpy
 from ament_index_python.packages import get_package_share_directory
 from launch_ros.actions import Node
 
-from launch import LaunchContext, LaunchDescription
+from launch import LaunchDescription
 from launch.actions import (
     DeclareLaunchArgument,
-    ExecuteProcess,
     IncludeLaunchDescription,
     LogInfo,
-    OpaqueFunction,
     RegisterEventHandler,
 )
-from launch.event_handlers import OnProcessExit
+from launch.event_handlers import OnProcessIO
 from launch.launch_description_sources import (
     AnyLaunchDescriptionSource,
     PythonLaunchDescriptionSource,
@@ -90,40 +87,33 @@ def generate_launch_description():
         }.items(),
     )
 
-    def start_navigation_when_map_received(context):
-        rclpy.init()
-        node = rclpy.create_node("map_launch_monitor")
-        started = False
+    map_output = ""
+    navigation_started = False
 
-        def map_callback(msg):
-            nonlocal started
+    def start_navigation_when_map_generated(event):
+        nonlocal map_output, navigation_started
 
-            if started:
-                return
+        output = event.text.decode(errors="replace")
+        map_output += output
 
-            started = True
-            node.get_logger().info("Map received. Starting navigation...")
-            node.destroy_subscription(subscription)
-            node.destroy_node()
-            rclpy.shutdown()
+        if (
+            not navigation_started
+            and "Map generation completed successfully" in map_output
+        ):
+            navigation_started = True
+            return [
+                LogInfo(msg="Map generated successfully. Starting navigation..."),
+                navigation,
+            ]
 
-        subscription = node.create_subscription(
-            __import__("nav_msgs.msg", fromlist=["OccupancyGrid"]).OccupancyGrid,
-            "/map",
-            map_callback,
-            10,
+        return []
+
+    start_navigation_after_map = RegisterEventHandler(
+        OnProcessIO(
+            target_action=map_generator,
+            on_stdout=start_navigation_when_map_generated,
         )
-
-        import threading
-
-        def spin_monitor():
-            rclpy.spin(node)
-
-        threading.Thread(target=spin_monitor, daemon=True).start()
-
-        return [
-            LogInfo(msg="Waiting for the first map message on /map..."),
-        ]
+    )
 
     return LaunchDescription(
         [
@@ -239,7 +229,7 @@ def generate_launch_description():
                 output="screen",
             ),
             map_generator,
-            OpaqueFunction(function=start_navigation_when_map_received),
+            start_navigation_after_map,
             Node(
                 package="ired_bringup",
                 executable="localization_initializer",
